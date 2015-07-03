@@ -1,7 +1,7 @@
 'use strict';
 
 // Let's laod our ProcessOut module
-var ProcessOut = require('./index.js');
+var ProcessOut = require('../index.js');
 
 // Create a new ProcessOut instance
 var processout = new ProcessOut.ProcessOut(
