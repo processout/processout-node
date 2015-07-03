@@ -1,0 +1,30 @@
+{
+  "name": "processout-name",
+  "version": "1.0.0",
+  "description": "ProcessOut API bindings for NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProcessOut/processout-node.git"
+  },
+  "keywords": [
+    "ProcessOut",
+    "API",
+    "bindings",
+    "payment",
+    "processor",
+    "aggregation"
+  ],
+  "author": "Manuel Huez <manuel@processout.com> (https://www.processout.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ProcessOut/processout-node/issues"
+  },
+  "homepage": "https://github.com/ProcessOut/processout-node#readme",
+  "dependencies": {
+    "restler": "^3.3.0"
+  }
+}
