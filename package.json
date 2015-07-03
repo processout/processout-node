@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/ProcessOut/processout-node#readme",
   "dependencies": {
+    "basejs": "^1.1.1",
+    "promise": "^7.0.3",
     "restler": "^3.3.0"
   }
 }
