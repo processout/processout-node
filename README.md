@@ -24,7 +24,7 @@ Installation
 The package can easily be installed using npm
 
 ``` sh
-npm install processout-node
+npm install processout
 ```
 
 -------------------------
@@ -35,7 +35,7 @@ Prerequisites
 ### Import the ProcessOut package
 
 ``` js
-var ProcessOut = require('processout-node');
+var ProcessOut = require('processout');
 ```
 
 ### Instantiate a new ProcessOut instance
