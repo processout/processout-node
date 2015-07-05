@@ -26,7 +26,7 @@ var createInvoice = function() {
     }, function(err) {
         // Some error happened, let's get them
         console.log(err);
-    })
+    });
 };
 createInvoice();
 
