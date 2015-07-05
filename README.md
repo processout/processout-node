@@ -63,9 +63,16 @@ invoice.save();
 
 ``` js
 var tailored = new ProcessOut.TailoredInvoice(processout);
-var invoice = tailored.from('1ca570ac-0cb4-4c54-8ff2-f7c82f4fb12b').invoice();
-// You can set more attributes here too, invoice is an instance of Invoice
-invoice.save();
+tailored.from('1ca570ac-0cb4-4c54-8ff2-f7c82f4fb12b').then(
+    function(tailored) {
+        var invoice = tailored.invoice();
+        // You can set more attributes here too,
+        // invoice is an instance of Invoice
+        invoice.save();
+    }, function(err) {
+        // Oops, an error occured
+        console.log(err);
+    });
 ```
 
 ##### Shared invoice attributes
