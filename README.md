@@ -2,6 +2,7 @@ ProcessOut Node.js
 =================
 
 [![Code Climate](https://codeclimate.com/github/ProcessOut/processout-node/badges/gpa.svg)](https://codeclimate.com/github/ProcessOut/processout-node)
+[![npm version](https://badge.fury.io/js/processout.svg)](http://badge.fury.io/js/processout)
 
 This package provides bindings to the ProcessOut API. Manage your callbacks,
 create new invoices, redirect your users to a newly generated checkout
