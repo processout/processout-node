@@ -80,22 +80,23 @@ tailored.from('1ca570ac-0cb4-4c54-8ff2-f7c82f4fb12b').then(
 
 The following attributes are shared between Invoice and TailoredInvoice instances
 
-- *attribute*     - *example*
-- itemName        - **Amazing product**
-- itemPrice       - **4.20**
-- itemQuantity    - *2*
-- currency        - **USD**
-- taxes           - *4.20*
-- shipping        - *4.20*
-- recurringDays   - *7*
-- requestEmail    - *false*
-- requestShipping - *false*
-- metas           - *{ "meta 1": "value 1", "meta 2": "value 2" }*
-- returnUrl       - *URL to which the customer will be redirected upon purchase*
-- cancelUrl       - *URL to which the customer will be redirected upon cancellation*
-- notifyUrl       - *URL being called by ProcessOut to send callbacks upon transaction updates*
-- custom          - *A custom field containing anything you want, sent back within all callbacks*
-- sandbox         - *Decide weither or not to activate the sandbox mode*
+|  Attribute  | Example |
+| ------------:|:---------- |
+| itemName | **Amazing product** |
+| itemPrice | **4.20** |
+| itemQuantity | *2* |
+| currency  | **USD** |
+| taxes | *4.20* |
+| shipping  | *4.20* |
+| recurringDays | *7* |
+| requestEmail | *false* |
+| requestShipping | *false* |
+| metas | *{ "meta 1": "value 1", "meta 2": "value 2" }* |
+| returnUrl | *URL to which the customer will be redirected upon purchase* |
+| cancelUrl | *URL to which the customer will be redirected upon cancellation* |
+| notifyUrl | *URL being called by ProcessOut to send callbacks upon transaction updates* |
+| custom   | *A custom field containing anything you want, sent back within all callbacks* |
+| sandbox  | *Decide weither or not to activate the sandbox mode* |
 
 ### Promises and errors
 
