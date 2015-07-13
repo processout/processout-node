@@ -149,6 +149,17 @@ if(! callback.validate(data['transaction_id'], data['hmac_signature'])) {
 // One common thing to do would be to check the price, currency, etc...
 ```
 
+### Sandbox
+
+To enable the sandbox on ProcessOut, simply prepend `sandbox-` to your project id:
+
+``` js
+var projectId     = 'public-21184268-76fa-4b33-99a0-63fb15f9041a';
+var projectSecret = 'key-24a2061d0fd2853b75728073d5406de437d525b2ff941fe34ca061cb2180d0f8';
+
+var processout = new ProcessOut.ProcessOut(projectId, projectSecret);
+```
+
 -------------------------
 
 Full API documentation
