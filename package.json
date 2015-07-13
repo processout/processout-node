@@ -1,6 +1,6 @@
 {
   "name": "processout",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "ProcessOut API bindings for NodeJS",
   "main": "index.js",
   "scripts": {
