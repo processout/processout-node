@@ -1,8 +1,14 @@
 'use strict';
 
 module.exports = {
-    ProcessOut:      require('./lib/processout'),
-    Invoice:         require('./lib/invoice/invoice'),
-    TailoredInvoice: require('./lib/invoice/tailoredinvoice'),
-    Callback:        require('./lib/callback/callback')
+    ProcessOut: require('./lib/processout'),
+
+    Event: require('./lib/event'),
+    Invoice: require('./lib/invoice'),
+    PaymentGateway: require('./lib/paymentgateway'),
+    Project: require('./lib/project'),
+    RecurringInvoice: require('./lib/recurringinvoice'),
+    TailoredInvoice: require('./lib/tailoredinvoice'),
+
+    Callback: require('./lib/callback')
 };
