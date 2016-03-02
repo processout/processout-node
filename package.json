@@ -1,0 +1,29 @@
+{
+  "name": "processout",
+  "version": "3.0.0-2",
+  "description": "ProcessOut API bindings.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/processout/processout-node.git"
+  },
+  "keywords": [
+    "ProcessOut",
+    "API",
+    "bindings"
+  ],
+  "author": "ProcessOut <hi@processout.com> (https://www.processout.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/processout/processout-node/issues"
+  },
+  "homepage": "https://github.com/processout/processout-node#readme",
+  "dependencies": {
+    "basejs": "^1.1.1",
+    "promise": "^7.0.3",
+    "restler": "^3.3.0"
+  }
+}
