@@ -2,16 +2,15 @@
 
 module.exports = {
     ProcessOut: require('./lib/processout'),
+    Authorization: require('./lib/authorization'),
+    Customer: require('./lib/customer'),
+    Token: require('./lib/token'),
+    Event: require('./lib/event'),
     Invoice: require('./lib/invoice'),
+    Activity: require('./lib/activity'),
     RecurringInvoice: require('./lib/recurringinvoice'),
     TailoredInvoice: require('./lib/tailoredinvoice'),
-    Customer: require('./lib/customer'),
-    CustomerToken: require('./lib/customertoken'),
-    CustomerAction: require('./lib/customeraction'),
-    Event: require('./lib/event'),
-    Project: require('./lib/project'),
-    PaymentGateway: require('./lib/paymentgateway'),
-    PaymentGatewayPublicKey: require('./lib/paymentgatewaypublickey'),
+    Transaction: require('./lib/transaction'),
     
     Webhook: require('./lib/webhook'),
 };
