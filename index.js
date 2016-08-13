@@ -2,7 +2,7 @@
 
 module.exports = {
     ProcessOut: require('./lib/processout'),
-    Authorization: require('./lib/authorization'),
+    AuthorizationRequest: require('./lib/authorizationrequest'),
     Customer: require('./lib/customer'),
     Token: require('./lib/token'),
     Event: require('./lib/event'),
