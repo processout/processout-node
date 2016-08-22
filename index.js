@@ -11,6 +11,7 @@ module.exports = {
     RecurringInvoice: require('./lib/recurringinvoice'),
     TailoredInvoice: require('./lib/tailoredinvoice'),
     Transaction: require('./lib/transaction'),
+    Webhook: require('./lib/webhook'),
     
     Webhook: require('./lib/webhook'),
 };
