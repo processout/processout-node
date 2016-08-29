@@ -8,6 +8,7 @@ module.exports = {
     Token: require('./lib/token'),
     Event: require('./lib/event'),
     Invoice: require('./lib/invoice'),
+    Project: require('./lib/project'),
     RecurringInvoice: require('./lib/recurringinvoice'),
     TailoredInvoice: require('./lib/tailoredinvoice'),
     Transaction: require('./lib/transaction'),
