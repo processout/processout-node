@@ -7,12 +7,16 @@ module.exports = {
     Customer: require('./lib/customer'),
     Token: require('./lib/token'),
     Event: require('./lib/event'),
+    Gateway: require('./lib/gateway'),
+    GatewayConfiguration: require('./lib/gatewayconfiguration'),
     Invoice: require('./lib/invoice'),
+    CustomerAction: require('./lib/customeraction'),
     Project: require('./lib/project'),
-    RecurringInvoice: require('./lib/recurringinvoice'),
+    Refund: require('./lib/refund'),
+    Subscription: require('./lib/subscription'),
     TailoredInvoice: require('./lib/tailoredinvoice'),
     Transaction: require('./lib/transaction'),
     Webhook: require('./lib/webhook'),
     
-    Webhook: require('./lib/webhook'),
+    GatewayRequest: require('./lib/gatewayrequest'),
 };
