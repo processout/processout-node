@@ -11,10 +11,10 @@ module.exports = {
     GatewayConfiguration: require('./lib/gatewayconfiguration'),
     Invoice: require('./lib/invoice'),
     CustomerAction: require('./lib/customeraction'),
+    Product: require('./lib/product'),
     Project: require('./lib/project'),
     Refund: require('./lib/refund'),
     Subscription: require('./lib/subscription'),
-    TailoredInvoice: require('./lib/tailoredinvoice'),
     Transaction: require('./lib/transaction'),
     Webhook: require('./lib/webhook'),
     
