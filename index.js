@@ -22,5 +22,5 @@ module.exports = {
     Transaction: require('./lib/transaction'),
     Webhook: require('./lib/webhook'),
     
-    GatewayRequest: require('./lib/gatewayrequest'),
+    GatewayRequest: require('./lib/gatewayrequest')
 };
