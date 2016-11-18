@@ -49,3 +49,17 @@ client.newCustomer().create(function(customer) {
 }, function(err) {
     assert(false ,'There should not be any error');
 });
+
+// Expand a customers' project and fetch gateways
+var options = {expand: ["project"]};
+client.newCustomer().create(function(customer, options) {
+    assert(customer.getProject(), 'The invoice project could not be expanded');
+
+    customer.getProject().fetchGatewayConfigurations().then(function(conf) {
+        //
+    }, function(err) {
+        assert(false ,'There should not be any error');
+    });
+}, function(err) {
+    assert(false ,'There should not be any error');
+});
