@@ -3,8 +3,8 @@
 var expect = require('chai').expect;
 
 var processout = require('..');
-var client = new processout.ProcessOut('proj_gAO1Uu0ysZJvDuUpOGPkUBeE3pGalk3x', 
-    'key_fBjPvkgT8gyKc1SUpy0PfjL7UgsRmUug');
+var client = new processout.ProcessOut('test-proj_gAO1Uu0ysZJvDuUpOGPkUBeE3pGalk3x', 
+    'key_jqSPvwq3AG5MlYAgqxlwwgOcAC3Zy7d8');
 
 function handleError(done, fn) {
     try { // boilerplate to be able to get the assert failures
