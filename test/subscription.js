@@ -12,11 +12,12 @@ describe('Subscription', function() {
             expect(customer.getId()).not.to.be.empty;
 
             client.newSubscription({
+                'customer_id': customer.getId(),
                 'amount': '9.99',
                 'currency': 'USD',
                 'interval': '1d',
                 'name': 'great subscription'
-            }).create(customer.getId()).then(function(subscription) {
+            }).create().then(function(subscription) {
                 expect(subscription.getId()).not.to.be.empty;
                 done();
             }, function(err) {
