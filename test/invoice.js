@@ -39,7 +39,7 @@ describe('Invoice', function() {
         });
     });
 
-    it('should capture a payment', function(done) {
+    it('should capture a payment and expand gateway configuration', function(done) {
         this.timeout(4000);
 
         client.newInvoice({
@@ -56,7 +56,17 @@ describe('Invoice', function() {
                 invoice.capture(gr.toString()).then(function(transaction) {
                     handleError(done, function() {
                         expect(transaction.getStatus()).to.equal('completed');
-                        done();
+                        transaction.find(transaction.getId(), {
+                            expand: ['gateway_configuration']
+                        }).then(function(transaction) {
+                            handleError(done, function() {
+                                expect(transaction.getGatewayConfiguration().getId()).not.to.be.empty;
+
+                                done();
+                            });
+                        }, function(err) {
+                            done(err);  
+                        });
                     });
                 }, function(err) {
                     done(err);

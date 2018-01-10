@@ -25,15 +25,6 @@ describe('Project', function() {
                 var project = customer.getProject();
                 expect(project).not.to.be.empty;
                 expect(project.getId()).not.to.be.empty;
-
-                project.fetchGatewayConfigurations().then(function(conf) {
-                    handleError(done, function() {
-                        expect(conf).not.to.be.empty;
-                    });
-                    done();
-                }, function(err) {
-                    done(err);
-                });
             });
         }, function(err) {
             done(err);
