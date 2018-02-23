@@ -16,8 +16,6 @@ function handleError(done, fn) {
 
 describe('Project', function() {
     it('should expand a customer project and expand gateways', function(done) {
-        this.timeout(4000);
-
         var options = {expand: ["project"]};
         client.newCustomer().create(options).then(function(customer) {
             handleError(done, function() {
@@ -25,6 +23,7 @@ describe('Project', function() {
                 var project = customer.getProject();
                 expect(project).not.to.be.empty;
                 expect(project.getId()).not.to.be.empty;
+                done();
             });
         }, function(err) {
             done(err);
