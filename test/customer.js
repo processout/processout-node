@@ -15,6 +15,15 @@ function handleError(done, fn) {
 }
 
 describe('Customer', function() {
+    it('should timeout', function(done) {
+        client.newCustomer().all({
+            "timeout": 10,
+        }).then(function(customers) {
+            done("should timeout")
+        }, function(err) {
+            done();
+        });
+    });
     it('should fetch the customers list', function(done) {
         client.newCustomer().all().then(function(customers) {
             done();
