@@ -6,7 +6,6 @@ module.exports = {
     Addon: require('./lib/addon'),
     APIRequest: require('./lib/apirequest'),
     APIVersion: require('./lib/apiversion'),
-    AuthorizationRequest: require('./lib/authorizationrequest'),
     Card: require('./lib/card'),
     CardInformation: require('./lib/cardinformation'),
     Coupon: require('./lib/coupon'),
