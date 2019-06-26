@@ -6,7 +6,6 @@ This package provides bindings to the ProcessOut API.
 Dependencies
 ------------
 
-* basejs
 * promise
 * restler
 
