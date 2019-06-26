@@ -52,3 +52,4 @@ declare class InvoiceDevice {
     fillWithData(data: any): InvoiceDevice;
 }
 export = InvoiceDevice;
+//# sourceMappingURL=invoicedevice.d.ts.map

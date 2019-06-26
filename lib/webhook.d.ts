@@ -268,3 +268,4 @@ declare class Webhook {
     fillWithData(data: any): Webhook;
 }
 export = Webhook;
+//# sourceMappingURL=webhook.d.ts.map

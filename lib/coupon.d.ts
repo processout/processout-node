@@ -286,3 +286,4 @@ declare class Coupon {
     delete(options: any): Promise<any>;
 }
 export = Coupon;
+//# sourceMappingURL=coupon.d.ts.map

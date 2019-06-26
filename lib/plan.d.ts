@@ -304,3 +304,4 @@ declare class Plan {
     end(options: any): Promise<any>;
 }
 export = Plan;
+//# sourceMappingURL=plan.d.ts.map

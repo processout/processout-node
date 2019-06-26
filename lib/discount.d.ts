@@ -298,3 +298,4 @@ declare class Discount {
     delete(options: any): Promise<any>;
 }
 export = Discount;
+//# sourceMappingURL=discount.d.ts.map

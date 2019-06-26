@@ -73,3 +73,4 @@ declare const _default: {
     GatewayRequest: typeof GatewayRequest;
 };
 export = _default;
+//# sourceMappingURL=index.d.ts.map

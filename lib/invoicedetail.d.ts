@@ -286,3 +286,4 @@ declare class InvoiceDetail {
     fillWithData(data: any): InvoiceDetail;
 }
 export = InvoiceDetail;
+//# sourceMappingURL=invoicedetail.d.ts.map

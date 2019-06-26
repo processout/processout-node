@@ -20,3 +20,4 @@ declare class GatewayRequest {
     toString(): string;
 }
 export = GatewayRequest;
+//# sourceMappingURL=gatewayrequest.d.ts.map

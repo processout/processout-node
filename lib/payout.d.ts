@@ -398,3 +398,4 @@ declare class Payout {
     find(payoutId: any, options: any): Promise<any>;
 }
 export = Payout;
+//# sourceMappingURL=payout.d.ts.map

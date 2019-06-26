@@ -394,3 +394,4 @@ declare class TransactionOperation {
     fillWithData(data: any): TransactionOperation;
 }
 export = TransactionOperation;
+//# sourceMappingURL=transactionoperation.d.ts.map

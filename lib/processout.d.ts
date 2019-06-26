@@ -283,3 +283,4 @@ declare class ProcessOut {
     newWebhookEndpoint(prefill?: WebhookEndpoint): WebhookEndpoint;
 }
 export = ProcessOut;
+//# sourceMappingURL=processout.d.ts.map

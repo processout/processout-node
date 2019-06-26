@@ -275,3 +275,4 @@ declare class Product {
     delete(options: any): Promise<any>;
 }
 export = Product;
+//# sourceMappingURL=product.d.ts.map

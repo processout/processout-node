@@ -171,3 +171,4 @@ declare class Event {
     findByResourceId(resourceId: any, options: any): Promise<any>;
 }
 export = Event;
+//# sourceMappingURL=event.d.ts.map

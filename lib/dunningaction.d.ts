@@ -52,3 +52,4 @@ declare class DunningAction {
     fillWithData(data: any): DunningAction;
 }
 export = DunningAction;
+//# sourceMappingURL=dunningaction.d.ts.map

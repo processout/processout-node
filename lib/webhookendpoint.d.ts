@@ -142,3 +142,4 @@ declare class WebhookEndpoint {
     fillWithData(data: any): WebhookEndpoint;
 }
 export = WebhookEndpoint;
+//# sourceMappingURL=webhookendpoint.d.ts.map

@@ -257,3 +257,4 @@ declare class Project {
     createSupervised(options: any): Promise<any>;
 }
 export = Project;
+//# sourceMappingURL=project.d.ts.map

@@ -3,3 +3,4 @@ declare class ProcessOutValidationError extends Error {
     constructor(code: string, message: string);
 }
 export = ProcessOutValidationError;
+//# sourceMappingURL=processoutvalidationerror.d.ts.map

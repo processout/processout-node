@@ -8,6 +8,8 @@ Dependencies
 
 * promise
 * restler
+* btoa
+* zlib
 
 Installation
 ------------

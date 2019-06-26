@@ -232,3 +232,4 @@ declare class InvoiceShipping {
     fillWithData(data: any): InvoiceShipping;
 }
 export = InvoiceShipping;
+//# sourceMappingURL=invoiceshipping.d.ts.map

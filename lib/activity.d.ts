@@ -157,3 +157,4 @@ declare class Activity {
     find(activityId: any, options: any): Promise<any>;
 }
 export = Activity;
+//# sourceMappingURL=activity.d.ts.map

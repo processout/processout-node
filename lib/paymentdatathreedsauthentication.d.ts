@@ -34,3 +34,4 @@ declare class PaymentDataThreeDSAuthentication {
     fillWithData(data: any): PaymentDataThreeDSAuthentication;
 }
 export = PaymentDataThreeDSAuthentication;
+//# sourceMappingURL=paymentdatathreedsauthentication.d.ts.map

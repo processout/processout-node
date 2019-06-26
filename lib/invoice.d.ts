@@ -645,3 +645,4 @@ declare class Invoice {
     find(invoiceId: any, options: any): Promise<any>;
 }
 export = Invoice;
+//# sourceMappingURL=invoice.d.ts.map

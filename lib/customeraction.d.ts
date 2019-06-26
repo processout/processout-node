@@ -52,3 +52,4 @@ declare class CustomerAction {
     fillWithData(data: any): CustomerAction;
 }
 export = CustomerAction;
+//# sourceMappingURL=customeraction.d.ts.map

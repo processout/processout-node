@@ -222,3 +222,4 @@ declare class Gateway {
     fetchGatewayConfigurations(options: any): Promise<any>;
 }
 export = Gateway;
+//# sourceMappingURL=gateway.d.ts.map

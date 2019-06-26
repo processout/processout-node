@@ -3,3 +3,4 @@ declare class ProcessOutInternalError extends Error {
     constructor(code: string, message: string);
 }
 export = ProcessOutInternalError;
+//# sourceMappingURL=processoutinternalerror.d.ts.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"processouterror.d.ts","sourceRoot":"","sources":["../../src/errors/processouterror.ts"],"names":[],"mappings":"AAIA,cAAM,eAAgB,SAAQ,KAAK;IACxB,IAAI,EAAE,MAAM,CAAC;gBAER,IAAI,EAAE,MAAM,EAAE,OAAO,EAAE,MAAM;CAM5C;AACD,SAAS,eAAe,CAAC"}

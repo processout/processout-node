@@ -945,3 +945,4 @@ declare class Transaction {
     find(transactionId: any, options: any): Promise<any>;
 }
 export = Transaction;
+//# sourceMappingURL=transaction.d.ts.map

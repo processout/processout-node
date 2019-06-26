@@ -150,3 +150,4 @@ declare class CardInformation {
     fetch(iin: any, options: any): Promise<any>;
 }
 export = CardInformation;
+//# sourceMappingURL=cardinformation.d.ts.map

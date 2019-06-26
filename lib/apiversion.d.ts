@@ -70,3 +70,4 @@ declare class APIVersion {
     fillWithData(data: any): APIVersion;
 }
 export = APIVersion;
+//# sourceMappingURL=apiversion.d.ts.map

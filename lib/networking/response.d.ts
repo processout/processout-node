@@ -52,3 +52,4 @@ declare class Response {
     check(): any;
 }
 export = Response;
+//# sourceMappingURL=response.d.ts.map

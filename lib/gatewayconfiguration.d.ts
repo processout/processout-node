@@ -250,3 +250,4 @@ declare class GatewayConfiguration {
     create(gatewayName: any, options: any): Promise<any>;
 }
 export = GatewayConfiguration;
+//# sourceMappingURL=gatewayconfiguration.d.ts.map

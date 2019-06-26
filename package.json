@@ -1,6 +1,6 @@
 {
   "name": "processout",
-  "version": "7.0.3",
+  "version": "7.0.0",
   "description": "ProcessOut API bindings.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -31,5 +31,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^6.0.2"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }

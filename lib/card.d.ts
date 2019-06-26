@@ -553,3 +553,4 @@ declare class Card {
     find(cardId: any, options: any): Promise<any>;
 }
 export = Card;
+//# sourceMappingURL=card.d.ts.map

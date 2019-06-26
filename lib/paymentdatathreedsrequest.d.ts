@@ -88,3 +88,4 @@ declare class PaymentDataThreeDSRequest {
     fillWithData(data: any): PaymentDataThreeDSRequest;
 }
 export = PaymentDataThreeDSRequest;
+//# sourceMappingURL=paymentdatathreedsrequest.d.ts.map

@@ -580,3 +580,4 @@ declare class Customer {
     delete(options: any): Promise<any>;
 }
 export = Customer;
+//# sourceMappingURL=customer.d.ts.map

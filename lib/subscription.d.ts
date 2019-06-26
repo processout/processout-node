@@ -738,3 +738,4 @@ declare class Subscription {
     cancel(options: any): Promise<any>;
 }
 export = Subscription;
+//# sourceMappingURL=subscription.d.ts.map

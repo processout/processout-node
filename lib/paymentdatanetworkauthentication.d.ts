@@ -34,3 +34,4 @@ declare class PaymentDataNetworkAuthentication {
     fillWithData(data: any): PaymentDataNetworkAuthentication;
 }
 export = PaymentDataNetworkAuthentication;
+//# sourceMappingURL=paymentdatanetworkauthentication.d.ts.map

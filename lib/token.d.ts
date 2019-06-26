@@ -294,3 +294,4 @@ declare class Token {
     delete(options: any): Promise<any>;
 }
 export = Token;
+//# sourceMappingURL=token.d.ts.map

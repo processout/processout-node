@@ -250,3 +250,4 @@ declare class PayoutItem {
     fillWithData(data: any): PayoutItem;
 }
 export = PayoutItem;
+//# sourceMappingURL=payoutitem.d.ts.map

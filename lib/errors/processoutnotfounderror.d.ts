@@ -3,3 +3,4 @@ declare class ProcessOutNotFoundError extends Error {
     constructor(code: string, message: string);
 }
 export = ProcessOutNotFoundError;
+//# sourceMappingURL=processoutnotfounderror.d.ts.map

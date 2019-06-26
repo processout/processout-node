@@ -283,3 +283,4 @@ declare class APIRequest {
     find(apiRequestId: any, options: any): Promise<any>;
 }
 export = APIRequest;
+//# sourceMappingURL=apirequest.d.ts.map

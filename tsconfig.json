@@ -1,7 +1,10 @@
 {
     "compilerOptions": {
         "outDir": "./lib",
-        "target": "es5"
+        "target": "es5",
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true
     },
     "include": [
         "./src/**/*"

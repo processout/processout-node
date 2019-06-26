@@ -305,3 +305,4 @@ declare class Addon {
     delete(options: any): Promise<any>;
 }
 export = Addon;
+//# sourceMappingURL=addon.d.ts.map

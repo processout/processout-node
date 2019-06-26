@@ -56,3 +56,4 @@ declare class Request {
     delete(path: string, data: any, options: any): any;
 }
 export = Request;
+//# sourceMappingURL=request.d.ts.map

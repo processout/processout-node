@@ -52,3 +52,4 @@ declare class InvoiceRisk {
     fillWithData(data: any): InvoiceRisk;
 }
 export = InvoiceRisk;
+//# sourceMappingURL=invoicerisk.d.ts.map
