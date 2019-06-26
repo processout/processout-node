@@ -1,6 +1,6 @@
 {
   "name": "processout",
-  "version": "7.0.5",
+  "version": "7.0.6",
   "description": "ProcessOut API bindings.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -33,6 +33,7 @@
     "mocha": "^6.0.2"
   },
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "src/**/*"
   ]
 }
