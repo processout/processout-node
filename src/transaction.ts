@@ -1,0 +1,1693 @@
+// The content of this file was automatically generated
+
+import Promise = require("promise");
+import ProcessOut = require("./processout");
+import Response = require("./networking/response");
+import Request = require("./networking/request");
+
+class Transaction {
+    private client: ProcessOut = null;
+
+    /**
+     * ID of the transaction
+     * @type {string}
+     */
+    private id: string = null;
+
+    /**
+     * Project to which the transaction belongs
+     * @type {any}
+     */
+    private project: any = null;
+
+    /**
+     * ID of the project to which the transaction belongs
+     * @type {string}
+     */
+    private projectId: string = null;
+
+    /**
+     * Invoice used to generate this transaction, if any
+     * @type {any}
+     */
+    private invoice: any = null;
+
+    /**
+     * ID of the invoice used to generate this transaction, if any
+     * @type {string}
+     */
+    private invoiceId: string = null;
+
+    /**
+     * Customer that was linked to this transaction, if any
+     * @type {any}
+     */
+    private customer: any = null;
+
+    /**
+     * ID of the customer that was linked to the transaction, if any
+     * @type {string}
+     */
+    private customerId: string = null;
+
+    /**
+     * Subscription to which this transaction belongs
+     * @type {any}
+     */
+    private subscription: any = null;
+
+    /**
+     * ID of the subscription to which the transaction belongs, if any
+     * @type {string}
+     */
+    private subscriptionId: string = null;
+
+    /**
+     * Token that was used to capture the payment of the transaction, if any
+     * @type {any}
+     */
+    private token: any = null;
+
+    /**
+     * ID of the token was used to capture the payment of the transaction, if any
+     * @type {string}
+     */
+    private tokenId: string = null;
+
+    /**
+     * Card that was used to capture the payment of the transaction, if any
+     * @type {any}
+     */
+    private card: any = null;
+
+    /**
+     * ID of the card that was used to capture the payment of the transaction, if any
+     * @type {string}
+     */
+    private cardId: string = null;
+
+    /**
+     * Gateway Configuration is the last gateway configuration that was used to process the payment, if any
+     * @type {any}
+     */
+    private gatewayConfiguration: any = null;
+
+    /**
+     * ID of the last gateway configuration that was used to process the payment, if any
+     * @type {string}
+     */
+    private gatewayConfigurationId: string = null;
+
+    /**
+     * Operations linked to the transaction
+     * @type {any}
+     */
+    private operations: any = null;
+
+    /**
+     * List of the transaction refunds
+     * @type {any}
+     */
+    private refunds: any = null;
+
+    /**
+     * Name of the transaction
+     * @type {string}
+     */
+    private name: string = null;
+
+    /**
+     * Amount requested when creating the transaction
+     * @type {string}
+     */
+    private amount: string = null;
+
+    /**
+     * Amount requested when creating the transaction, in the currency of the project
+     * @type {string}
+     */
+    private amountLocal: string = null;
+
+    /**
+     * Amount that was successfully authorized on the transaction
+     * @type {string}
+     */
+    private authorizedAmount: string = null;
+
+    /**
+     * Amount that was successfully authorized on the transaction, in the currency of the project
+     * @type {string}
+     */
+    private authorizedAmountLocal: string = null;
+
+    /**
+     * Amount that was successfully captured on the transaction
+     * @type {string}
+     */
+    private capturedAmount: string = null;
+
+    /**
+     * Amount that was successfully captured on the transaction, in the currency of the project
+     * @type {string}
+     */
+    private capturedAmountLocal: string = null;
+
+    /**
+     * Amount that was successfully refunded on the transaction
+     * @type {string}
+     */
+    private refundedAmount: string = null;
+
+    /**
+     * Amount that was successfully refunded on the transaction, in the currency of the project
+     * @type {string}
+     */
+    private refundedAmountLocal: string = null;
+
+    /**
+     * Amount available on the transaction (captured - refunded)
+     * @type {string}
+     */
+    private availableAmount: string = null;
+
+    /**
+     * Amount available on the transaction (captured - refunded), in the currency of the project
+     * @type {string}
+     */
+    private availableAmountLocal: string = null;
+
+    /**
+     * Currency of the transaction
+     * @type {string}
+     */
+    private currency: string = null;
+
+    /**
+     * Error code of the transaction, when the payment has failed
+     * @type {string}
+     */
+    private errorCode: string = null;
+
+    /**
+     * Name of the last gateway the transaction was attempted on (successfully or not). Use the operations list to get the full transaction's history
+     * @type {string}
+     */
+    private gatewayName: string = null;
+
+    /**
+     * Status of the potential 3-D Secure authentication
+     * @type {string}
+     */
+    private threeDSStatus: string = null;
+
+    /**
+     * Status of the transaction
+     * @type {string}
+     */
+    private status: string = null;
+
+    /**
+     * Whether the transaction was authorized or not
+     * @type {boolean}
+     */
+    private authorized: boolean = null;
+
+    /**
+     * Whether the transaction was captured or not
+     * @type {boolean}
+     */
+    private captured: boolean = null;
+
+    /**
+     * Whether the transaction was voided or not
+     * @type {boolean}
+     */
+    private voided: boolean = null;
+
+    /**
+     * Whether the transaction was refunded or not
+     * @type {boolean}
+     */
+    private refunded: boolean = null;
+
+    /**
+     * Whether the transaction was charged back or not
+     * @type {boolean}
+     */
+    private chargedback: boolean = null;
+
+    /**
+     * Whether the transaction received a fraud notification event or not
+     * @type {boolean}
+     */
+    private receivedFraudNotification: boolean = null;
+
+    /**
+     * Whether the transaction received a retrieval request event or not
+     * @type {boolean}
+     */
+    private receivedRetrievalRequest: boolean = null;
+
+    /**
+     * ProcessOut fee applied on the transaction
+     * @type {string}
+     */
+    private processoutFee: string = null;
+
+    /**
+     * Gateway fee estimated before processing the payment
+     * @type {string}
+     */
+    private estimatedFee: string = null;
+
+    /**
+     * Fee taken by the payment gateway to process the payment
+     * @type {string}
+     */
+    private gatewayFee: string = null;
+
+    /**
+     * Fee taken by the payment gateway to process the payment, in the currency of the project
+     * @type {string}
+     */
+    private gatewayFeeLocal: string = null;
+
+    /**
+     * Currency of the fee taken on the transaction (field `gateway_fee`)
+     * @type {string}
+     */
+    private currencyFee: string = null;
+
+    /**
+     * Metadata related to the transaction, in the form of a dictionary (key-value pair)
+     * @type {any}
+     */
+    private metadata: any = null;
+
+    /**
+     * Define whether or not the transaction is in sandbox environment
+     * @type {boolean}
+     */
+    private sandbox: boolean = null;
+
+    /**
+     * Date at which the transaction was created
+     * @type {string}
+     */
+    private createdAt: string = null;
+
+    /**
+     * Date at which the transaction was charged back
+     * @type {string}
+     */
+    private chargedbackAt: string = null;
+
+    /**
+     * Date at which the transaction was refunded
+     * @type {string}
+     */
+    private refundedAt: string = null;
+
+    /**
+     * Transaction constructor
+     * @param {ProcessOut} client
+     * @param {array} prefill (optional)
+     */
+    constructor(client: ProcessOut, prefill: Transaction) {
+        if (typeof client === 'undefined')
+            throw new Error("The Transaction object must be instanciated with the ProcessOut client. You can create one using new ProcessOut('project-id', 'project-secret').newTransaction()");
+
+        this.client = client;
+        if (typeof prefill !== 'undefined')
+            this.fillWithData(prefill);
+    }
+
+    public getProcessOutObjectClass(): string {
+        return "Transaction";
+    }
+
+    /**
+     * Get Id
+     * ID of the transaction
+     * @return {string}
+     */
+    public getId(): string {
+        return this.id;
+    }
+
+    /**
+     * Set Id
+     * ID of the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setId(val: string): Transaction {
+        this.id = val;
+        return this;
+    }
+
+    /**
+     * Get Project
+     * Project to which the transaction belongs
+     * @return {any}
+     */
+    public getProject(): any {
+        return this.project;
+    }
+
+    /**
+     * Set Project
+     * Project to which the transaction belongs
+     * @param {any} val
+     * @return {Transaction}
+     */
+    public setProject(val: any): Transaction {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
+            this.project = val;
+        else {
+            var obj = this.client.newProject();
+            obj.fillWithData(val);
+            this.project = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get ProjectId
+     * ID of the project to which the transaction belongs
+     * @return {string}
+     */
+    public getProjectId(): string {
+        return this.projectId;
+    }
+
+    /**
+     * Set ProjectId
+     * ID of the project to which the transaction belongs
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setProjectId(val: string): Transaction {
+        this.projectId = val;
+        return this;
+    }
+
+    /**
+     * Get Invoice
+     * Invoice used to generate this transaction, if any
+     * @return {any}
+     */
+    public getInvoice(): any {
+        return this.invoice;
+    }
+
+    /**
+     * Set Invoice
+     * Invoice used to generate this transaction, if any
+     * @param {any} val
+     * @return {Transaction}
+     */
+    public setInvoice(val: any): Transaction {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newInvoice().getProcessOutObjectClass())
+            this.invoice = val;
+        else {
+            var obj = this.client.newInvoice();
+            obj.fillWithData(val);
+            this.invoice = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get InvoiceId
+     * ID of the invoice used to generate this transaction, if any
+     * @return {string}
+     */
+    public getInvoiceId(): string {
+        return this.invoiceId;
+    }
+
+    /**
+     * Set InvoiceId
+     * ID of the invoice used to generate this transaction, if any
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setInvoiceId(val: string): Transaction {
+        this.invoiceId = val;
+        return this;
+    }
+
+    /**
+     * Get Customer
+     * Customer that was linked to this transaction, if any
+     * @return {any}
+     */
+    public getCustomer(): any {
+        return this.customer;
+    }
+
+    /**
+     * Set Customer
+     * Customer that was linked to this transaction, if any
+     * @param {any} val
+     * @return {Transaction}
+     */
+    public setCustomer(val: any): Transaction {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newCustomer().getProcessOutObjectClass())
+            this.customer = val;
+        else {
+            var obj = this.client.newCustomer();
+            obj.fillWithData(val);
+            this.customer = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get CustomerId
+     * ID of the customer that was linked to the transaction, if any
+     * @return {string}
+     */
+    public getCustomerId(): string {
+        return this.customerId;
+    }
+
+    /**
+     * Set CustomerId
+     * ID of the customer that was linked to the transaction, if any
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setCustomerId(val: string): Transaction {
+        this.customerId = val;
+        return this;
+    }
+
+    /**
+     * Get Subscription
+     * Subscription to which this transaction belongs
+     * @return {any}
+     */
+    public getSubscription(): any {
+        return this.subscription;
+    }
+
+    /**
+     * Set Subscription
+     * Subscription to which this transaction belongs
+     * @param {any} val
+     * @return {Transaction}
+     */
+    public setSubscription(val: any): Transaction {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newSubscription().getProcessOutObjectClass())
+            this.subscription = val;
+        else {
+            var obj = this.client.newSubscription();
+            obj.fillWithData(val);
+            this.subscription = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get SubscriptionId
+     * ID of the subscription to which the transaction belongs, if any
+     * @return {string}
+     */
+    public getSubscriptionId(): string {
+        return this.subscriptionId;
+    }
+
+    /**
+     * Set SubscriptionId
+     * ID of the subscription to which the transaction belongs, if any
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setSubscriptionId(val: string): Transaction {
+        this.subscriptionId = val;
+        return this;
+    }
+
+    /**
+     * Get Token
+     * Token that was used to capture the payment of the transaction, if any
+     * @return {any}
+     */
+    public getToken(): any {
+        return this.token;
+    }
+
+    /**
+     * Set Token
+     * Token that was used to capture the payment of the transaction, if any
+     * @param {any} val
+     * @return {Transaction}
+     */
+    public setToken(val: any): Transaction {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newToken().getProcessOutObjectClass())
+            this.token = val;
+        else {
+            var obj = this.client.newToken();
+            obj.fillWithData(val);
+            this.token = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get TokenId
+     * ID of the token was used to capture the payment of the transaction, if any
+     * @return {string}
+     */
+    public getTokenId(): string {
+        return this.tokenId;
+    }
+
+    /**
+     * Set TokenId
+     * ID of the token was used to capture the payment of the transaction, if any
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setTokenId(val: string): Transaction {
+        this.tokenId = val;
+        return this;
+    }
+
+    /**
+     * Get Card
+     * Card that was used to capture the payment of the transaction, if any
+     * @return {any}
+     */
+    public getCard(): any {
+        return this.card;
+    }
+
+    /**
+     * Set Card
+     * Card that was used to capture the payment of the transaction, if any
+     * @param {any} val
+     * @return {Transaction}
+     */
+    public setCard(val: any): Transaction {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newCard().getProcessOutObjectClass())
+            this.card = val;
+        else {
+            var obj = this.client.newCard();
+            obj.fillWithData(val);
+            this.card = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get CardId
+     * ID of the card that was used to capture the payment of the transaction, if any
+     * @return {string}
+     */
+    public getCardId(): string {
+        return this.cardId;
+    }
+
+    /**
+     * Set CardId
+     * ID of the card that was used to capture the payment of the transaction, if any
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setCardId(val: string): Transaction {
+        this.cardId = val;
+        return this;
+    }
+
+    /**
+     * Get GatewayConfiguration
+     * Gateway Configuration is the last gateway configuration that was used to process the payment, if any
+     * @return {any}
+     */
+    public getGatewayConfiguration(): any {
+        return this.gatewayConfiguration;
+    }
+
+    /**
+     * Set GatewayConfiguration
+     * Gateway Configuration is the last gateway configuration that was used to process the payment, if any
+     * @param {any} val
+     * @return {Transaction}
+     */
+    public setGatewayConfiguration(val: any): Transaction {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newGatewayConfiguration().getProcessOutObjectClass())
+            this.gatewayConfiguration = val;
+        else {
+            var obj = this.client.newGatewayConfiguration();
+            obj.fillWithData(val);
+            this.gatewayConfiguration = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get GatewayConfigurationId
+     * ID of the last gateway configuration that was used to process the payment, if any
+     * @return {string}
+     */
+    public getGatewayConfigurationId(): string {
+        return this.gatewayConfigurationId;
+    }
+
+    /**
+     * Set GatewayConfigurationId
+     * ID of the last gateway configuration that was used to process the payment, if any
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setGatewayConfigurationId(val: string): Transaction {
+        this.gatewayConfigurationId = val;
+        return this;
+    }
+
+    /**
+     * Get Operations
+     * Operations linked to the transaction
+     * @return {any}
+     */
+    public getOperations(): any {
+        return this.operations;
+    }
+
+    /**
+     * Set Operations
+     * Operations linked to the transaction
+     * @param {any} val
+     * @return {Transaction}
+     */
+    public setOperations(val: any): Transaction {
+        if (val.length > 0 && typeof val[0] === 'object')
+            this.operations = val;
+        else {
+            var a = [];
+            for (var i = val.length; i--;) {
+                var obj = this.client.newTransactionOperation();
+                obj.fillWithData(val);
+                a.push(obj);
+            }
+            this.operations = a;
+        }
+        return this;
+    }
+
+    /**
+     * Get Refunds
+     * List of the transaction refunds
+     * @return {any}
+     */
+    public getRefunds(): any {
+        return this.refunds;
+    }
+
+    /**
+     * Set Refunds
+     * List of the transaction refunds
+     * @param {any} val
+     * @return {Transaction}
+     */
+    public setRefunds(val: any): Transaction {
+        if (val.length > 0 && typeof val[0] === 'object')
+            this.refunds = val;
+        else {
+            var a = [];
+            for (var i = val.length; i--;) {
+                var obj = this.client.newRefund();
+                obj.fillWithData(val);
+                a.push(obj);
+            }
+            this.refunds = a;
+        }
+        return this;
+    }
+
+    /**
+     * Get Name
+     * Name of the transaction
+     * @return {string}
+     */
+    public getName(): string {
+        return this.name;
+    }
+
+    /**
+     * Set Name
+     * Name of the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setName(val: string): Transaction {
+        this.name = val;
+        return this;
+    }
+
+    /**
+     * Get Amount
+     * Amount requested when creating the transaction
+     * @return {string}
+     */
+    public getAmount(): string {
+        return this.amount;
+    }
+
+    /**
+     * Set Amount
+     * Amount requested when creating the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setAmount(val: string): Transaction {
+        this.amount = val;
+        return this;
+    }
+
+    /**
+     * Get AmountLocal
+     * Amount requested when creating the transaction, in the currency of the project
+     * @return {string}
+     */
+    public getAmountLocal(): string {
+        return this.amountLocal;
+    }
+
+    /**
+     * Set AmountLocal
+     * Amount requested when creating the transaction, in the currency of the project
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setAmountLocal(val: string): Transaction {
+        this.amountLocal = val;
+        return this;
+    }
+
+    /**
+     * Get AuthorizedAmount
+     * Amount that was successfully authorized on the transaction
+     * @return {string}
+     */
+    public getAuthorizedAmount(): string {
+        return this.authorizedAmount;
+    }
+
+    /**
+     * Set AuthorizedAmount
+     * Amount that was successfully authorized on the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setAuthorizedAmount(val: string): Transaction {
+        this.authorizedAmount = val;
+        return this;
+    }
+
+    /**
+     * Get AuthorizedAmountLocal
+     * Amount that was successfully authorized on the transaction, in the currency of the project
+     * @return {string}
+     */
+    public getAuthorizedAmountLocal(): string {
+        return this.authorizedAmountLocal;
+    }
+
+    /**
+     * Set AuthorizedAmountLocal
+     * Amount that was successfully authorized on the transaction, in the currency of the project
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setAuthorizedAmountLocal(val: string): Transaction {
+        this.authorizedAmountLocal = val;
+        return this;
+    }
+
+    /**
+     * Get CapturedAmount
+     * Amount that was successfully captured on the transaction
+     * @return {string}
+     */
+    public getCapturedAmount(): string {
+        return this.capturedAmount;
+    }
+
+    /**
+     * Set CapturedAmount
+     * Amount that was successfully captured on the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setCapturedAmount(val: string): Transaction {
+        this.capturedAmount = val;
+        return this;
+    }
+
+    /**
+     * Get CapturedAmountLocal
+     * Amount that was successfully captured on the transaction, in the currency of the project
+     * @return {string}
+     */
+    public getCapturedAmountLocal(): string {
+        return this.capturedAmountLocal;
+    }
+
+    /**
+     * Set CapturedAmountLocal
+     * Amount that was successfully captured on the transaction, in the currency of the project
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setCapturedAmountLocal(val: string): Transaction {
+        this.capturedAmountLocal = val;
+        return this;
+    }
+
+    /**
+     * Get RefundedAmount
+     * Amount that was successfully refunded on the transaction
+     * @return {string}
+     */
+    public getRefundedAmount(): string {
+        return this.refundedAmount;
+    }
+
+    /**
+     * Set RefundedAmount
+     * Amount that was successfully refunded on the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setRefundedAmount(val: string): Transaction {
+        this.refundedAmount = val;
+        return this;
+    }
+
+    /**
+     * Get RefundedAmountLocal
+     * Amount that was successfully refunded on the transaction, in the currency of the project
+     * @return {string}
+     */
+    public getRefundedAmountLocal(): string {
+        return this.refundedAmountLocal;
+    }
+
+    /**
+     * Set RefundedAmountLocal
+     * Amount that was successfully refunded on the transaction, in the currency of the project
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setRefundedAmountLocal(val: string): Transaction {
+        this.refundedAmountLocal = val;
+        return this;
+    }
+
+    /**
+     * Get AvailableAmount
+     * Amount available on the transaction (captured - refunded)
+     * @return {string}
+     */
+    public getAvailableAmount(): string {
+        return this.availableAmount;
+    }
+
+    /**
+     * Set AvailableAmount
+     * Amount available on the transaction (captured - refunded)
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setAvailableAmount(val: string): Transaction {
+        this.availableAmount = val;
+        return this;
+    }
+
+    /**
+     * Get AvailableAmountLocal
+     * Amount available on the transaction (captured - refunded), in the currency of the project
+     * @return {string}
+     */
+    public getAvailableAmountLocal(): string {
+        return this.availableAmountLocal;
+    }
+
+    /**
+     * Set AvailableAmountLocal
+     * Amount available on the transaction (captured - refunded), in the currency of the project
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setAvailableAmountLocal(val: string): Transaction {
+        this.availableAmountLocal = val;
+        return this;
+    }
+
+    /**
+     * Get Currency
+     * Currency of the transaction
+     * @return {string}
+     */
+    public getCurrency(): string {
+        return this.currency;
+    }
+
+    /**
+     * Set Currency
+     * Currency of the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setCurrency(val: string): Transaction {
+        this.currency = val;
+        return this;
+    }
+
+    /**
+     * Get ErrorCode
+     * Error code of the transaction, when the payment has failed
+     * @return {string}
+     */
+    public getErrorCode(): string {
+        return this.errorCode;
+    }
+
+    /**
+     * Set ErrorCode
+     * Error code of the transaction, when the payment has failed
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setErrorCode(val: string): Transaction {
+        this.errorCode = val;
+        return this;
+    }
+
+    /**
+     * Get GatewayName
+     * Name of the last gateway the transaction was attempted on (successfully or not). Use the operations list to get the full transaction's history
+     * @return {string}
+     */
+    public getGatewayName(): string {
+        return this.gatewayName;
+    }
+
+    /**
+     * Set GatewayName
+     * Name of the last gateway the transaction was attempted on (successfully or not). Use the operations list to get the full transaction's history
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setGatewayName(val: string): Transaction {
+        this.gatewayName = val;
+        return this;
+    }
+
+    /**
+     * Get ThreeDSStatus
+     * Status of the potential 3-D Secure authentication
+     * @return {string}
+     */
+    public getThreeDSStatus(): string {
+        return this.threeDSStatus;
+    }
+
+    /**
+     * Set ThreeDSStatus
+     * Status of the potential 3-D Secure authentication
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setThreeDSStatus(val: string): Transaction {
+        this.threeDSStatus = val;
+        return this;
+    }
+
+    /**
+     * Get Status
+     * Status of the transaction
+     * @return {string}
+     */
+    public getStatus(): string {
+        return this.status;
+    }
+
+    /**
+     * Set Status
+     * Status of the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setStatus(val: string): Transaction {
+        this.status = val;
+        return this;
+    }
+
+    /**
+     * Get Authorized
+     * Whether the transaction was authorized or not
+     * @return {boolean}
+     */
+    public getAuthorized(): boolean {
+        return this.authorized;
+    }
+
+    /**
+     * Set Authorized
+     * Whether the transaction was authorized or not
+     * @param {boolean} val
+     * @return {Transaction}
+     */
+    public setAuthorized(val: boolean): Transaction {
+        this.authorized = val;
+        return this;
+    }
+
+    /**
+     * Get Captured
+     * Whether the transaction was captured or not
+     * @return {boolean}
+     */
+    public getCaptured(): boolean {
+        return this.captured;
+    }
+
+    /**
+     * Set Captured
+     * Whether the transaction was captured or not
+     * @param {boolean} val
+     * @return {Transaction}
+     */
+    public setCaptured(val: boolean): Transaction {
+        this.captured = val;
+        return this;
+    }
+
+    /**
+     * Get Voided
+     * Whether the transaction was voided or not
+     * @return {boolean}
+     */
+    public getVoided(): boolean {
+        return this.voided;
+    }
+
+    /**
+     * Set Voided
+     * Whether the transaction was voided or not
+     * @param {boolean} val
+     * @return {Transaction}
+     */
+    public setVoided(val: boolean): Transaction {
+        this.voided = val;
+        return this;
+    }
+
+    /**
+     * Get Refunded
+     * Whether the transaction was refunded or not
+     * @return {boolean}
+     */
+    public getRefunded(): boolean {
+        return this.refunded;
+    }
+
+    /**
+     * Set Refunded
+     * Whether the transaction was refunded or not
+     * @param {boolean} val
+     * @return {Transaction}
+     */
+    public setRefunded(val: boolean): Transaction {
+        this.refunded = val;
+        return this;
+    }
+
+    /**
+     * Get Chargedback
+     * Whether the transaction was charged back or not
+     * @return {boolean}
+     */
+    public getChargedback(): boolean {
+        return this.chargedback;
+    }
+
+    /**
+     * Set Chargedback
+     * Whether the transaction was charged back or not
+     * @param {boolean} val
+     * @return {Transaction}
+     */
+    public setChargedback(val: boolean): Transaction {
+        this.chargedback = val;
+        return this;
+    }
+
+    /**
+     * Get ReceivedFraudNotification
+     * Whether the transaction received a fraud notification event or not
+     * @return {boolean}
+     */
+    public getReceivedFraudNotification(): boolean {
+        return this.receivedFraudNotification;
+    }
+
+    /**
+     * Set ReceivedFraudNotification
+     * Whether the transaction received a fraud notification event or not
+     * @param {boolean} val
+     * @return {Transaction}
+     */
+    public setReceivedFraudNotification(val: boolean): Transaction {
+        this.receivedFraudNotification = val;
+        return this;
+    }
+
+    /**
+     * Get ReceivedRetrievalRequest
+     * Whether the transaction received a retrieval request event or not
+     * @return {boolean}
+     */
+    public getReceivedRetrievalRequest(): boolean {
+        return this.receivedRetrievalRequest;
+    }
+
+    /**
+     * Set ReceivedRetrievalRequest
+     * Whether the transaction received a retrieval request event or not
+     * @param {boolean} val
+     * @return {Transaction}
+     */
+    public setReceivedRetrievalRequest(val: boolean): Transaction {
+        this.receivedRetrievalRequest = val;
+        return this;
+    }
+
+    /**
+     * Get ProcessoutFee
+     * ProcessOut fee applied on the transaction
+     * @return {string}
+     */
+    public getProcessoutFee(): string {
+        return this.processoutFee;
+    }
+
+    /**
+     * Set ProcessoutFee
+     * ProcessOut fee applied on the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setProcessoutFee(val: string): Transaction {
+        this.processoutFee = val;
+        return this;
+    }
+
+    /**
+     * Get EstimatedFee
+     * Gateway fee estimated before processing the payment
+     * @return {string}
+     */
+    public getEstimatedFee(): string {
+        return this.estimatedFee;
+    }
+
+    /**
+     * Set EstimatedFee
+     * Gateway fee estimated before processing the payment
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setEstimatedFee(val: string): Transaction {
+        this.estimatedFee = val;
+        return this;
+    }
+
+    /**
+     * Get GatewayFee
+     * Fee taken by the payment gateway to process the payment
+     * @return {string}
+     */
+    public getGatewayFee(): string {
+        return this.gatewayFee;
+    }
+
+    /**
+     * Set GatewayFee
+     * Fee taken by the payment gateway to process the payment
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setGatewayFee(val: string): Transaction {
+        this.gatewayFee = val;
+        return this;
+    }
+
+    /**
+     * Get GatewayFeeLocal
+     * Fee taken by the payment gateway to process the payment, in the currency of the project
+     * @return {string}
+     */
+    public getGatewayFeeLocal(): string {
+        return this.gatewayFeeLocal;
+    }
+
+    /**
+     * Set GatewayFeeLocal
+     * Fee taken by the payment gateway to process the payment, in the currency of the project
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setGatewayFeeLocal(val: string): Transaction {
+        this.gatewayFeeLocal = val;
+        return this;
+    }
+
+    /**
+     * Get CurrencyFee
+     * Currency of the fee taken on the transaction (field `gateway_fee`)
+     * @return {string}
+     */
+    public getCurrencyFee(): string {
+        return this.currencyFee;
+    }
+
+    /**
+     * Set CurrencyFee
+     * Currency of the fee taken on the transaction (field `gateway_fee`)
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setCurrencyFee(val: string): Transaction {
+        this.currencyFee = val;
+        return this;
+    }
+
+    /**
+     * Get Metadata
+     * Metadata related to the transaction, in the form of a dictionary (key-value pair)
+     * @return {any}
+     */
+    public getMetadata(): any {
+        return this.metadata;
+    }
+
+    /**
+     * Set Metadata
+     * Metadata related to the transaction, in the form of a dictionary (key-value pair)
+     * @param {any} val
+     * @return {Transaction}
+     */
+    public setMetadata(val: any): Transaction {
+        this.metadata = val;
+        return this;
+    }
+
+    /**
+     * Get Sandbox
+     * Define whether or not the transaction is in sandbox environment
+     * @return {boolean}
+     */
+    public getSandbox(): boolean {
+        return this.sandbox;
+    }
+
+    /**
+     * Set Sandbox
+     * Define whether or not the transaction is in sandbox environment
+     * @param {boolean} val
+     * @return {Transaction}
+     */
+    public setSandbox(val: boolean): Transaction {
+        this.sandbox = val;
+        return this;
+    }
+
+    /**
+     * Get CreatedAt
+     * Date at which the transaction was created
+     * @return {string}
+     */
+    public getCreatedAt(): string {
+        return this.createdAt;
+    }
+
+    /**
+     * Set CreatedAt
+     * Date at which the transaction was created
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setCreatedAt(val: string): Transaction {
+        this.createdAt = val;
+        return this;
+    }
+
+    /**
+     * Get ChargedbackAt
+     * Date at which the transaction was charged back
+     * @return {string}
+     */
+    public getChargedbackAt(): string {
+        return this.chargedbackAt;
+    }
+
+    /**
+     * Set ChargedbackAt
+     * Date at which the transaction was charged back
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setChargedbackAt(val: string): Transaction {
+        this.chargedbackAt = val;
+        return this;
+    }
+
+    /**
+     * Get RefundedAt
+     * Date at which the transaction was refunded
+     * @return {string}
+     */
+    public getRefundedAt(): string {
+        return this.refundedAt;
+    }
+
+    /**
+     * Set RefundedAt
+     * Date at which the transaction was refunded
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setRefundedAt(val: string): Transaction {
+        this.refundedAt = val;
+        return this;
+    }
+
+    /**
+     * Fills the current object with the new values pulled from the data
+     * @param  {array} data
+     * @return {Transaction}
+     */
+    public fillWithData(data: any): Transaction {
+        if (data["id"])
+            this.setId(data["id"]);
+        if (data["project"])
+            this.setProject(data["project"]);
+        if (data["project_id"])
+            this.setProjectId(data["project_id"]);
+        if (data["invoice"])
+            this.setInvoice(data["invoice"]);
+        if (data["invoice_id"])
+            this.setInvoiceId(data["invoice_id"]);
+        if (data["customer"])
+            this.setCustomer(data["customer"]);
+        if (data["customer_id"])
+            this.setCustomerId(data["customer_id"]);
+        if (data["subscription"])
+            this.setSubscription(data["subscription"]);
+        if (data["subscription_id"])
+            this.setSubscriptionId(data["subscription_id"]);
+        if (data["token"])
+            this.setToken(data["token"]);
+        if (data["token_id"])
+            this.setTokenId(data["token_id"]);
+        if (data["card"])
+            this.setCard(data["card"]);
+        if (data["card_id"])
+            this.setCardId(data["card_id"]);
+        if (data["gateway_configuration"])
+            this.setGatewayConfiguration(data["gateway_configuration"]);
+        if (data["gateway_configuration_id"])
+            this.setGatewayConfigurationId(data["gateway_configuration_id"]);
+        if (data["operations"])
+            this.setOperations(data["operations"]);
+        if (data["refunds"])
+            this.setRefunds(data["refunds"]);
+        if (data["name"])
+            this.setName(data["name"]);
+        if (data["amount"])
+            this.setAmount(data["amount"]);
+        if (data["amount_local"])
+            this.setAmountLocal(data["amount_local"]);
+        if (data["authorized_amount"])
+            this.setAuthorizedAmount(data["authorized_amount"]);
+        if (data["authorized_amount_local"])
+            this.setAuthorizedAmountLocal(data["authorized_amount_local"]);
+        if (data["captured_amount"])
+            this.setCapturedAmount(data["captured_amount"]);
+        if (data["captured_amount_local"])
+            this.setCapturedAmountLocal(data["captured_amount_local"]);
+        if (data["refunded_amount"])
+            this.setRefundedAmount(data["refunded_amount"]);
+        if (data["refunded_amount_local"])
+            this.setRefundedAmountLocal(data["refunded_amount_local"]);
+        if (data["available_amount"])
+            this.setAvailableAmount(data["available_amount"]);
+        if (data["available_amount_local"])
+            this.setAvailableAmountLocal(data["available_amount_local"]);
+        if (data["currency"])
+            this.setCurrency(data["currency"]);
+        if (data["error_code"])
+            this.setErrorCode(data["error_code"]);
+        if (data["gateway_name"])
+            this.setGatewayName(data["gateway_name"]);
+        if (data["three_d_s_status"])
+            this.setThreeDSStatus(data["three_d_s_status"]);
+        if (data["status"])
+            this.setStatus(data["status"]);
+        if (data["authorized"])
+            this.setAuthorized(data["authorized"]);
+        if (data["captured"])
+            this.setCaptured(data["captured"]);
+        if (data["voided"])
+            this.setVoided(data["voided"]);
+        if (data["refunded"])
+            this.setRefunded(data["refunded"]);
+        if (data["chargedback"])
+            this.setChargedback(data["chargedback"]);
+        if (data["received_fraud_notification"])
+            this.setReceivedFraudNotification(data["received_fraud_notification"]);
+        if (data["received_retrieval_request"])
+            this.setReceivedRetrievalRequest(data["received_retrieval_request"]);
+        if (data["processout_fee"])
+            this.setProcessoutFee(data["processout_fee"]);
+        if (data["estimated_fee"])
+            this.setEstimatedFee(data["estimated_fee"]);
+        if (data["gateway_fee"])
+            this.setGatewayFee(data["gateway_fee"]);
+        if (data["gateway_fee_local"])
+            this.setGatewayFeeLocal(data["gateway_fee_local"]);
+        if (data["currency_fee"])
+            this.setCurrencyFee(data["currency_fee"]);
+        if (data["metadata"])
+            this.setMetadata(data["metadata"]);
+        if (data["sandbox"])
+            this.setSandbox(data["sandbox"]);
+        if (data["created_at"])
+            this.setCreatedAt(data["created_at"]);
+        if (data["chargedback_at"])
+            this.setChargedbackAt(data["chargedback_at"]);
+        if (data["refunded_at"])
+            this.setRefundedAt(data["refunded_at"]);
+        return this;
+    }
+
+    /**
+     * Get the transaction's refunds.
+
+     * @param {any} options
+     * @return {array}
+     */
+    public fetchRefunds(options): Promise<any> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/transactions/" + encodeURI(this.getId()) + "/refunds";
+
+        var data = {
+
+        };
+
+        var req = request.get(path, data, options);
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            req.on('complete', function(result, r) {
+                if (result instanceof Error)
+                    return reject(result);
+
+                var response = new Response(result, r);
+                var err      = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var a    = [];
+                var body = response.body['refunds'];
+                for (var i = body.length; i--;) {
+                    var tmp = cur.client.newRefund();
+                    tmp.fillWithData(body[i]);
+                    a.push(tmp);
+                }
+
+                returnValues.push(a);
+                    
+
+                return resolve.apply(this, returnValues);
+            }).on('timeout', function(ms){
+                reject("request timeout after " + ms + "ms")
+            });
+        });
+    }
+    /**
+     * Find a transaction's refund by its ID.
+	 * @param string refundId
+     * @param {any} options
+     * @return {Refund}
+     */
+    public findRefund(refundId, options): Promise<any> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/transactions/" + encodeURI(this.getId()) + "/refunds/" + encodeURI(refundId) + "";
+
+        var data = {
+
+        };
+
+        var req = request.get(path, data, options);
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            req.on('complete', function(result, r) {
+                if (result instanceof Error)
+                    return reject(result);
+
+                var response = new Response(result, r);
+                var err      = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var body = response.body;
+                body = body['refund'];
+                var obj = cur.client.newRefund();
+                returnValues.push(obj.fillWithData(body));
+
+                return resolve.apply(this, returnValues);
+            }).on('timeout', function(ms){
+                reject("request timeout after " + ms + "ms")
+            });
+        });
+    }
+    /**
+     * Get all the transactions.
+     * 
+     * @param {any} options
+     * @return {array}
+     */
+    public all(options): Promise<any> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/transactions";
+
+        var data = {
+
+        };
+
+        var req = request.get(path, data, options);
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            req.on('complete', function(result, r) {
+                if (result instanceof Error)
+                    return reject(result);
+
+                var response = new Response(result, r);
+                var err      = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var a    = [];
+                var body = response.body['transactions'];
+                for (var i = body.length; i--;) {
+                    var tmp = cur.client.newTransaction();
+                    tmp.fillWithData(body[i]);
+                    a.push(tmp);
+                }
+
+                returnValues.push(a);
+                    
+
+                return resolve.apply(this, returnValues);
+            }).on('timeout', function(ms){
+                reject("request timeout after " + ms + "ms")
+            });
+        });
+    }
+    /**
+     * Find a transaction by its ID.
+	 * @param string transactionId
+     * @param {any} options
+     * @return {this}
+     */
+    public find(transactionId, options): Promise<any> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/transactions/" + encodeURI(transactionId) + "";
+
+        var data = {
+
+        };
+
+        var req = request.get(path, data, options);
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            req.on('complete', function(result, r) {
+                if (result instanceof Error)
+                    return reject(result);
+
+                var response = new Response(result, r);
+                var err      = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var body = response.body;
+                body = body['transaction'];
+                        
+                returnValues.push(cur.fillWithData(body));
+
+                return resolve.apply(this, returnValues);
+            }).on('timeout', function(ms){
+                reject("request timeout after " + ms + "ms")
+            });
+        });
+    }
+    
+}
+export = Transaction;
