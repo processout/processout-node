@@ -1,38 +1,6 @@
+// The content of this file was automatically generated
 
-import Activity = require('./activity');
-import Addon = require('./addon');
-import APIRequest = require('./apirequest');
-import APIVersion = require('./apiversion');
-import Card = require('./card');
-import CardInformation = require('./cardinformation');
-import Coupon = require('./coupon');
-import Customer = require('./customer');
-import Token = require('./token');
-import Discount = require('./discount');
-import Event = require('./event');
-import Gateway = require('./gateway');
-import GatewayConfiguration = require('./gatewayconfiguration');
-import Invoice = require('./invoice');
-import InvoiceRisk = require('./invoicerisk');
-import InvoiceDevice = require('./invoicedevice');
-import InvoiceShipping = require('./invoiceshipping');
-import InvoiceDetail = require('./invoicedetail');
-import CustomerAction = require('./customeraction');
-import DunningAction = require('./dunningaction');
-import Payout = require('./payout');
-import PayoutItem = require('./payoutitem');
-import Plan = require('./plan');
-import Product = require('./product');
-import Project = require('./project');
-import Refund = require('./refund');
-import Subscription = require('./subscription');
-import Transaction = require('./transaction');
-import PaymentDataThreeDSRequest = require('./paymentdatathreedsrequest');
-import PaymentDataNetworkAuthentication = require('./paymentdatanetworkauthentication');
-import PaymentDataThreeDSAuthentication = require('./paymentdatathreedsauthentication');
-import TransactionOperation = require('./transactionoperation');
-import Webhook = require('./webhook');
-import WebhookEndpoint = require('./webhookendpoint');
+import * as p from '.';
 
 class ProcessOut {
     /**
@@ -104,8 +72,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Activity}
      */
-	public newActivity(prefill?: Activity): Activity {
-        return new Activity(this, prefill);
+	public newActivity(prefill?: p.Activity): p.Activity {
+        return new p.Activity(this, prefill);
     }
 	
     /**
@@ -113,8 +81,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Addon}
      */
-	public newAddon(prefill?: Addon): Addon {
-        return new Addon(this, prefill);
+	public newAddon(prefill?: p.Addon): p.Addon {
+        return new p.Addon(this, prefill);
     }
 	
     /**
@@ -122,8 +90,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {APIRequest}
      */
-	public newAPIRequest(prefill?: APIRequest): APIRequest {
-        return new APIRequest(this, prefill);
+	public newAPIRequest(prefill?: p.APIRequest): p.APIRequest {
+        return new p.APIRequest(this, prefill);
     }
 	
     /**
@@ -131,8 +99,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {APIVersion}
      */
-	public newAPIVersion(prefill?: APIVersion): APIVersion {
-        return new APIVersion(this, prefill);
+	public newAPIVersion(prefill?: p.APIVersion): p.APIVersion {
+        return new p.APIVersion(this, prefill);
     }
 	
     /**
@@ -140,8 +108,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Card}
      */
-	public newCard(prefill?: Card): Card {
-        return new Card(this, prefill);
+	public newCard(prefill?: p.Card): p.Card {
+        return new p.Card(this, prefill);
     }
 	
     /**
@@ -149,8 +117,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {CardInformation}
      */
-	public newCardInformation(prefill?: CardInformation): CardInformation {
-        return new CardInformation(this, prefill);
+	public newCardInformation(prefill?: p.CardInformation): p.CardInformation {
+        return new p.CardInformation(this, prefill);
     }
 	
     /**
@@ -158,8 +126,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Coupon}
      */
-	public newCoupon(prefill?: Coupon): Coupon {
-        return new Coupon(this, prefill);
+	public newCoupon(prefill?: p.Coupon): p.Coupon {
+        return new p.Coupon(this, prefill);
     }
 	
     /**
@@ -167,8 +135,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Customer}
      */
-	public newCustomer(prefill?: Customer): Customer {
-        return new Customer(this, prefill);
+	public newCustomer(prefill?: p.Customer): p.Customer {
+        return new p.Customer(this, prefill);
     }
 	
     /**
@@ -176,8 +144,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Token}
      */
-	public newToken(prefill?: Token): Token {
-        return new Token(this, prefill);
+	public newToken(prefill?: p.Token): p.Token {
+        return new p.Token(this, prefill);
     }
 	
     /**
@@ -185,8 +153,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Discount}
      */
-	public newDiscount(prefill?: Discount): Discount {
-        return new Discount(this, prefill);
+	public newDiscount(prefill?: p.Discount): p.Discount {
+        return new p.Discount(this, prefill);
     }
 	
     /**
@@ -194,8 +162,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Event}
      */
-	public newEvent(prefill?: Event): Event {
-        return new Event(this, prefill);
+	public newEvent(prefill?: p.Event): p.Event {
+        return new p.Event(this, prefill);
     }
 	
     /**
@@ -203,8 +171,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Gateway}
      */
-	public newGateway(prefill?: Gateway): Gateway {
-        return new Gateway(this, prefill);
+	public newGateway(prefill?: p.Gateway): p.Gateway {
+        return new p.Gateway(this, prefill);
     }
 	
     /**
@@ -212,8 +180,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {GatewayConfiguration}
      */
-	public newGatewayConfiguration(prefill?: GatewayConfiguration): GatewayConfiguration {
-        return new GatewayConfiguration(this, prefill);
+	public newGatewayConfiguration(prefill?: p.GatewayConfiguration): p.GatewayConfiguration {
+        return new p.GatewayConfiguration(this, prefill);
     }
 	
     /**
@@ -221,8 +189,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Invoice}
      */
-	public newInvoice(prefill?: Invoice): Invoice {
-        return new Invoice(this, prefill);
+	public newInvoice(prefill?: p.Invoice): p.Invoice {
+        return new p.Invoice(this, prefill);
     }
 	
     /**
@@ -230,8 +198,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {InvoiceRisk}
      */
-	public newInvoiceRisk(prefill?: InvoiceRisk): InvoiceRisk {
-        return new InvoiceRisk(this, prefill);
+	public newInvoiceRisk(prefill?: p.InvoiceRisk): p.InvoiceRisk {
+        return new p.InvoiceRisk(this, prefill);
     }
 	
     /**
@@ -239,8 +207,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {InvoiceDevice}
      */
-	public newInvoiceDevice(prefill?: InvoiceDevice): InvoiceDevice {
-        return new InvoiceDevice(this, prefill);
+	public newInvoiceDevice(prefill?: p.InvoiceDevice): p.InvoiceDevice {
+        return new p.InvoiceDevice(this, prefill);
     }
 	
     /**
@@ -248,8 +216,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {InvoiceShipping}
      */
-	public newInvoiceShipping(prefill?: InvoiceShipping): InvoiceShipping {
-        return new InvoiceShipping(this, prefill);
+	public newInvoiceShipping(prefill?: p.InvoiceShipping): p.InvoiceShipping {
+        return new p.InvoiceShipping(this, prefill);
     }
 	
     /**
@@ -257,8 +225,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {InvoiceDetail}
      */
-	public newInvoiceDetail(prefill?: InvoiceDetail): InvoiceDetail {
-        return new InvoiceDetail(this, prefill);
+	public newInvoiceDetail(prefill?: p.InvoiceDetail): p.InvoiceDetail {
+        return new p.InvoiceDetail(this, prefill);
     }
 	
     /**
@@ -266,8 +234,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {CustomerAction}
      */
-	public newCustomerAction(prefill?: CustomerAction): CustomerAction {
-        return new CustomerAction(this, prefill);
+	public newCustomerAction(prefill?: p.CustomerAction): p.CustomerAction {
+        return new p.CustomerAction(this, prefill);
     }
 	
     /**
@@ -275,8 +243,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {DunningAction}
      */
-	public newDunningAction(prefill?: DunningAction): DunningAction {
-        return new DunningAction(this, prefill);
+	public newDunningAction(prefill?: p.DunningAction): p.DunningAction {
+        return new p.DunningAction(this, prefill);
     }
 	
     /**
@@ -284,8 +252,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Payout}
      */
-	public newPayout(prefill?: Payout): Payout {
-        return new Payout(this, prefill);
+	public newPayout(prefill?: p.Payout): p.Payout {
+        return new p.Payout(this, prefill);
     }
 	
     /**
@@ -293,8 +261,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {PayoutItem}
      */
-	public newPayoutItem(prefill?: PayoutItem): PayoutItem {
-        return new PayoutItem(this, prefill);
+	public newPayoutItem(prefill?: p.PayoutItem): p.PayoutItem {
+        return new p.PayoutItem(this, prefill);
     }
 	
     /**
@@ -302,8 +270,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Plan}
      */
-	public newPlan(prefill?: Plan): Plan {
-        return new Plan(this, prefill);
+	public newPlan(prefill?: p.Plan): p.Plan {
+        return new p.Plan(this, prefill);
     }
 	
     /**
@@ -311,8 +279,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Product}
      */
-	public newProduct(prefill?: Product): Product {
-        return new Product(this, prefill);
+	public newProduct(prefill?: p.Product): p.Product {
+        return new p.Product(this, prefill);
     }
 	
     /**
@@ -320,8 +288,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Project}
      */
-	public newProject(prefill?: Project): Project {
-        return new Project(this, prefill);
+	public newProject(prefill?: p.Project): p.Project {
+        return new p.Project(this, prefill);
     }
 	
     /**
@@ -329,8 +297,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Refund}
      */
-	public newRefund(prefill?: Refund): Refund {
-        return new Refund(this, prefill);
+	public newRefund(prefill?: p.Refund): p.Refund {
+        return new p.Refund(this, prefill);
     }
 	
     /**
@@ -338,8 +306,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Subscription}
      */
-	public newSubscription(prefill?: Subscription): Subscription {
-        return new Subscription(this, prefill);
+	public newSubscription(prefill?: p.Subscription): p.Subscription {
+        return new p.Subscription(this, prefill);
     }
 	
     /**
@@ -347,8 +315,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Transaction}
      */
-	public newTransaction(prefill?: Transaction): Transaction {
-        return new Transaction(this, prefill);
+	public newTransaction(prefill?: p.Transaction): p.Transaction {
+        return new p.Transaction(this, prefill);
     }
 	
     /**
@@ -356,8 +324,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {PaymentDataThreeDSRequest}
      */
-	public newPaymentDataThreeDSRequest(prefill?: PaymentDataThreeDSRequest): PaymentDataThreeDSRequest {
-        return new PaymentDataThreeDSRequest(this, prefill);
+	public newPaymentDataThreeDSRequest(prefill?: p.PaymentDataThreeDSRequest): p.PaymentDataThreeDSRequest {
+        return new p.PaymentDataThreeDSRequest(this, prefill);
     }
 	
     /**
@@ -365,8 +333,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {PaymentDataNetworkAuthentication}
      */
-	public newPaymentDataNetworkAuthentication(prefill?: PaymentDataNetworkAuthentication): PaymentDataNetworkAuthentication {
-        return new PaymentDataNetworkAuthentication(this, prefill);
+	public newPaymentDataNetworkAuthentication(prefill?: p.PaymentDataNetworkAuthentication): p.PaymentDataNetworkAuthentication {
+        return new p.PaymentDataNetworkAuthentication(this, prefill);
     }
 	
     /**
@@ -374,8 +342,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {PaymentDataThreeDSAuthentication}
      */
-	public newPaymentDataThreeDSAuthentication(prefill?: PaymentDataThreeDSAuthentication): PaymentDataThreeDSAuthentication {
-        return new PaymentDataThreeDSAuthentication(this, prefill);
+	public newPaymentDataThreeDSAuthentication(prefill?: p.PaymentDataThreeDSAuthentication): p.PaymentDataThreeDSAuthentication {
+        return new p.PaymentDataThreeDSAuthentication(this, prefill);
     }
 	
     /**
@@ -383,8 +351,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {TransactionOperation}
      */
-	public newTransactionOperation(prefill?: TransactionOperation): TransactionOperation {
-        return new TransactionOperation(this, prefill);
+	public newTransactionOperation(prefill?: p.TransactionOperation): p.TransactionOperation {
+        return new p.TransactionOperation(this, prefill);
     }
 	
     /**
@@ -392,8 +360,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {Webhook}
      */
-	public newWebhook(prefill?: Webhook): Webhook {
-        return new Webhook(this, prefill);
+	public newWebhook(prefill?: p.Webhook): p.Webhook {
+        return new p.Webhook(this, prefill);
     }
 	
     /**
@@ -401,8 +369,8 @@ class ProcessOut {
      * @param {array} prefill
      * @return {WebhookEndpoint}
      */
-	public newWebhookEndpoint(prefill?: WebhookEndpoint): WebhookEndpoint {
-        return new WebhookEndpoint(this, prefill);
+	public newWebhookEndpoint(prefill?: p.WebhookEndpoint): p.WebhookEndpoint {
+        return new p.WebhookEndpoint(this, prefill);
     }
 	
 

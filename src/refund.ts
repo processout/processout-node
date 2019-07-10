@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Refund {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Refund {
 
     /**
      * Transaction to which the refund is applied
-     * @type {any}
+     * @type {p.Transaction}
      */
-    private transaction: any = null;
+    private transaction: p.Transaction = null;
 
     /**
      * ID of the transaction to which the refund is applied
@@ -109,19 +111,19 @@ class Refund {
     /**
      * Get Transaction
      * Transaction to which the refund is applied
-     * @return {any}
+     * @return {p.Transaction}
      */
-    public getTransaction(): any {
+    public getTransaction(): p.Transaction {
         return this.transaction;
     }
 
     /**
      * Set Transaction
      * Transaction to which the refund is applied
-     * @param {any} val
+     * @param {p.Transaction} val
      * @return {Refund}
      */
-    public setTransaction(val: any): Refund {
+    public setTransaction(val: p.Transaction): Refund {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newTransaction().getProcessOutObjectClass())
             this.transaction = val;

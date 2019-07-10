@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class APIRequest {
     private client: ProcessOut = null;
@@ -16,15 +18,15 @@ class APIRequest {
 
     /**
      * Project used to send the API request
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * API version used to process the request
-     * @type {any}
+     * @type {p.APIVersion}
      */
-    private apiVersion: any = null;
+    private apiVersion: p.APIVersion = null;
 
     /**
      * Idempotency key used to identify the request
@@ -133,19 +135,19 @@ class APIRequest {
     /**
      * Get Project
      * Project used to send the API request
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project used to send the API request
-     * @param {any} val
+     * @param {p.Project} val
      * @return {APIRequest}
      */
-    public setProject(val: any): APIRequest {
+    public setProject(val: p.Project): APIRequest {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;
@@ -160,19 +162,19 @@ class APIRequest {
     /**
      * Get ApiVersion
      * API version used to process the request
-     * @return {any}
+     * @return {p.APIVersion}
      */
-    public getApiVersion(): any {
+    public getApiVersion(): p.APIVersion {
         return this.apiVersion;
     }
 
     /**
      * Set ApiVersion
      * API version used to process the request
-     * @param {any} val
+     * @param {p.APIVersion} val
      * @return {APIRequest}
      */
-    public setApiVersion(val: any): APIRequest {
+    public setApiVersion(val: p.APIVersion): APIRequest {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newAPIVersion().getProcessOutObjectClass())
             this.apiVersion = val;

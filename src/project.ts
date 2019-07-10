@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Project {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Project {
 
     /**
      * Project used to create this project
-     * @type {any}
+     * @type {p.Project}
      */
-    private supervisorProject: any = null;
+    private supervisorProject: p.Project = null;
 
     /**
      * ID of the project used to create this project
@@ -28,9 +30,9 @@ class Project {
 
     /**
      * Current API version of the project
-     * @type {any}
+     * @type {p.APIVersion}
      */
-    private apiVersion: any = null;
+    private apiVersion: p.APIVersion = null;
 
     /**
      * Name of the project
@@ -115,19 +117,19 @@ class Project {
     /**
      * Get SupervisorProject
      * Project used to create this project
-     * @return {any}
+     * @return {p.Project}
      */
-    public getSupervisorProject(): any {
+    public getSupervisorProject(): p.Project {
         return this.supervisorProject;
     }
 
     /**
      * Set SupervisorProject
      * Project used to create this project
-     * @param {any} val
+     * @param {p.Project} val
      * @return {Project}
      */
-    public setSupervisorProject(val: any): Project {
+    public setSupervisorProject(val: p.Project): Project {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.supervisorProject = val;
@@ -162,19 +164,19 @@ class Project {
     /**
      * Get ApiVersion
      * Current API version of the project
-     * @return {any}
+     * @return {p.APIVersion}
      */
-    public getApiVersion(): any {
+    public getApiVersion(): p.APIVersion {
         return this.apiVersion;
     }
 
     /**
      * Set ApiVersion
      * Current API version of the project
-     * @param {any} val
+     * @param {p.APIVersion} val
      * @return {Project}
      */
-    public setApiVersion(val: any): Project {
+    public setApiVersion(val: p.APIVersion): Project {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newAPIVersion().getProcessOutObjectClass())
             this.apiVersion = val;

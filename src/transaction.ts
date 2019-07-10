@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Transaction {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Transaction {
 
     /**
      * Project to which the transaction belongs
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * ID of the project to which the transaction belongs
@@ -28,9 +30,9 @@ class Transaction {
 
     /**
      * Invoice used to generate this transaction, if any
-     * @type {any}
+     * @type {p.Invoice}
      */
-    private invoice: any = null;
+    private invoice: p.Invoice = null;
 
     /**
      * ID of the invoice used to generate this transaction, if any
@@ -40,9 +42,9 @@ class Transaction {
 
     /**
      * Customer that was linked to this transaction, if any
-     * @type {any}
+     * @type {p.Customer}
      */
-    private customer: any = null;
+    private customer: p.Customer = null;
 
     /**
      * ID of the customer that was linked to the transaction, if any
@@ -52,9 +54,9 @@ class Transaction {
 
     /**
      * Subscription to which this transaction belongs
-     * @type {any}
+     * @type {p.Subscription}
      */
-    private subscription: any = null;
+    private subscription: p.Subscription = null;
 
     /**
      * ID of the subscription to which the transaction belongs, if any
@@ -64,9 +66,9 @@ class Transaction {
 
     /**
      * Token that was used to capture the payment of the transaction, if any
-     * @type {any}
+     * @type {p.Token}
      */
-    private token: any = null;
+    private token: p.Token = null;
 
     /**
      * ID of the token was used to capture the payment of the transaction, if any
@@ -76,9 +78,9 @@ class Transaction {
 
     /**
      * Card that was used to capture the payment of the transaction, if any
-     * @type {any}
+     * @type {p.Card}
      */
-    private card: any = null;
+    private card: p.Card = null;
 
     /**
      * ID of the card that was used to capture the payment of the transaction, if any
@@ -88,9 +90,9 @@ class Transaction {
 
     /**
      * Gateway Configuration is the last gateway configuration that was used to process the payment, if any
-     * @type {any}
+     * @type {p.GatewayConfiguration}
      */
-    private gatewayConfiguration: any = null;
+    private gatewayConfiguration: p.GatewayConfiguration = null;
 
     /**
      * ID of the last gateway configuration that was used to process the payment, if any
@@ -349,19 +351,19 @@ class Transaction {
     /**
      * Get Project
      * Project to which the transaction belongs
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project to which the transaction belongs
-     * @param {any} val
+     * @param {p.Project} val
      * @return {Transaction}
      */
-    public setProject(val: any): Transaction {
+    public setProject(val: p.Project): Transaction {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;
@@ -396,19 +398,19 @@ class Transaction {
     /**
      * Get Invoice
      * Invoice used to generate this transaction, if any
-     * @return {any}
+     * @return {p.Invoice}
      */
-    public getInvoice(): any {
+    public getInvoice(): p.Invoice {
         return this.invoice;
     }
 
     /**
      * Set Invoice
      * Invoice used to generate this transaction, if any
-     * @param {any} val
+     * @param {p.Invoice} val
      * @return {Transaction}
      */
-    public setInvoice(val: any): Transaction {
+    public setInvoice(val: p.Invoice): Transaction {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newInvoice().getProcessOutObjectClass())
             this.invoice = val;
@@ -443,19 +445,19 @@ class Transaction {
     /**
      * Get Customer
      * Customer that was linked to this transaction, if any
-     * @return {any}
+     * @return {p.Customer}
      */
-    public getCustomer(): any {
+    public getCustomer(): p.Customer {
         return this.customer;
     }
 
     /**
      * Set Customer
      * Customer that was linked to this transaction, if any
-     * @param {any} val
+     * @param {p.Customer} val
      * @return {Transaction}
      */
-    public setCustomer(val: any): Transaction {
+    public setCustomer(val: p.Customer): Transaction {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newCustomer().getProcessOutObjectClass())
             this.customer = val;
@@ -490,19 +492,19 @@ class Transaction {
     /**
      * Get Subscription
      * Subscription to which this transaction belongs
-     * @return {any}
+     * @return {p.Subscription}
      */
-    public getSubscription(): any {
+    public getSubscription(): p.Subscription {
         return this.subscription;
     }
 
     /**
      * Set Subscription
      * Subscription to which this transaction belongs
-     * @param {any} val
+     * @param {p.Subscription} val
      * @return {Transaction}
      */
-    public setSubscription(val: any): Transaction {
+    public setSubscription(val: p.Subscription): Transaction {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newSubscription().getProcessOutObjectClass())
             this.subscription = val;
@@ -537,19 +539,19 @@ class Transaction {
     /**
      * Get Token
      * Token that was used to capture the payment of the transaction, if any
-     * @return {any}
+     * @return {p.Token}
      */
-    public getToken(): any {
+    public getToken(): p.Token {
         return this.token;
     }
 
     /**
      * Set Token
      * Token that was used to capture the payment of the transaction, if any
-     * @param {any} val
+     * @param {p.Token} val
      * @return {Transaction}
      */
-    public setToken(val: any): Transaction {
+    public setToken(val: p.Token): Transaction {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newToken().getProcessOutObjectClass())
             this.token = val;
@@ -584,19 +586,19 @@ class Transaction {
     /**
      * Get Card
      * Card that was used to capture the payment of the transaction, if any
-     * @return {any}
+     * @return {p.Card}
      */
-    public getCard(): any {
+    public getCard(): p.Card {
         return this.card;
     }
 
     /**
      * Set Card
      * Card that was used to capture the payment of the transaction, if any
-     * @param {any} val
+     * @param {p.Card} val
      * @return {Transaction}
      */
-    public setCard(val: any): Transaction {
+    public setCard(val: p.Card): Transaction {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newCard().getProcessOutObjectClass())
             this.card = val;
@@ -631,19 +633,19 @@ class Transaction {
     /**
      * Get GatewayConfiguration
      * Gateway Configuration is the last gateway configuration that was used to process the payment, if any
-     * @return {any}
+     * @return {p.GatewayConfiguration}
      */
-    public getGatewayConfiguration(): any {
+    public getGatewayConfiguration(): p.GatewayConfiguration {
         return this.gatewayConfiguration;
     }
 
     /**
      * Set GatewayConfiguration
      * Gateway Configuration is the last gateway configuration that was used to process the payment, if any
-     * @param {any} val
+     * @param {p.GatewayConfiguration} val
      * @return {Transaction}
      */
-    public setGatewayConfiguration(val: any): Transaction {
+    public setGatewayConfiguration(val: p.GatewayConfiguration): Transaction {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newGatewayConfiguration().getProcessOutObjectClass())
             this.gatewayConfiguration = val;

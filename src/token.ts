@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Token {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Token {
 
     /**
      * Customer owning the token
-     * @type {any}
+     * @type {p.Customer}
      */
-    private customer: any = null;
+    private customer: p.Customer = null;
 
     /**
      * ID of the customer linked to the token
@@ -28,9 +30,9 @@ class Token {
 
     /**
      * Gateway configuration to which the token is linked, if any
-     * @type {any}
+     * @type {p.GatewayConfiguration}
      */
-    private gatewayConfiguration: any = null;
+    private gatewayConfiguration: p.GatewayConfiguration = null;
 
     /**
      * ID of the gateway configuration to which the token is linked, if any
@@ -40,9 +42,9 @@ class Token {
 
     /**
      * Card used to create this token, if any
-     * @type {any}
+     * @type {p.Card}
      */
-    private card: any = null;
+    private card: p.Card = null;
 
     /**
      * ID of the card used to create the token, if any
@@ -127,19 +129,19 @@ class Token {
     /**
      * Get Customer
      * Customer owning the token
-     * @return {any}
+     * @return {p.Customer}
      */
-    public getCustomer(): any {
+    public getCustomer(): p.Customer {
         return this.customer;
     }
 
     /**
      * Set Customer
      * Customer owning the token
-     * @param {any} val
+     * @param {p.Customer} val
      * @return {Token}
      */
-    public setCustomer(val: any): Token {
+    public setCustomer(val: p.Customer): Token {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newCustomer().getProcessOutObjectClass())
             this.customer = val;
@@ -174,19 +176,19 @@ class Token {
     /**
      * Get GatewayConfiguration
      * Gateway configuration to which the token is linked, if any
-     * @return {any}
+     * @return {p.GatewayConfiguration}
      */
-    public getGatewayConfiguration(): any {
+    public getGatewayConfiguration(): p.GatewayConfiguration {
         return this.gatewayConfiguration;
     }
 
     /**
      * Set GatewayConfiguration
      * Gateway configuration to which the token is linked, if any
-     * @param {any} val
+     * @param {p.GatewayConfiguration} val
      * @return {Token}
      */
-    public setGatewayConfiguration(val: any): Token {
+    public setGatewayConfiguration(val: p.GatewayConfiguration): Token {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newGatewayConfiguration().getProcessOutObjectClass())
             this.gatewayConfiguration = val;
@@ -221,19 +223,19 @@ class Token {
     /**
      * Get Card
      * Card used to create this token, if any
-     * @return {any}
+     * @return {p.Card}
      */
-    public getCard(): any {
+    public getCard(): p.Card {
         return this.card;
     }
 
     /**
      * Set Card
      * Card used to create this token, if any
-     * @param {any} val
+     * @param {p.Card} val
      * @return {Token}
      */
-    public setCard(val: any): Token {
+    public setCard(val: p.Card): Token {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newCard().getProcessOutObjectClass())
             this.card = val;

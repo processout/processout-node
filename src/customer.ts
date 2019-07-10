@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Customer {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Customer {
 
     /**
      * Project to which the customer belongs
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * ID of the project to which the customer belongs
@@ -28,9 +30,9 @@ class Customer {
 
     /**
      * Default token of the customer
-     * @type {any}
+     * @type {p.Token}
      */
-    private defaultToken: any = null;
+    private defaultToken: p.Token = null;
 
     /**
      * ID of the default token of the customer
@@ -211,19 +213,19 @@ class Customer {
     /**
      * Get Project
      * Project to which the customer belongs
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project to which the customer belongs
-     * @param {any} val
+     * @param {p.Project} val
      * @return {Customer}
      */
-    public setProject(val: any): Customer {
+    public setProject(val: p.Project): Customer {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;
@@ -258,19 +260,19 @@ class Customer {
     /**
      * Get DefaultToken
      * Default token of the customer
-     * @return {any}
+     * @return {p.Token}
      */
-    public getDefaultToken(): any {
+    public getDefaultToken(): p.Token {
         return this.defaultToken;
     }
 
     /**
      * Set DefaultToken
      * Default token of the customer
-     * @param {any} val
+     * @param {p.Token} val
      * @return {Customer}
      */
-    public setDefaultToken(val: any): Customer {
+    public setDefaultToken(val: p.Token): Customer {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newToken().getProcessOutObjectClass())
             this.defaultToken = val;

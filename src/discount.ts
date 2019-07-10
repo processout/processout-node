@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Discount {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Discount {
 
     /**
      * Project to which the discount belongs
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * ID of the project to which the discount belongs
@@ -28,9 +30,9 @@ class Discount {
 
     /**
      * Subscription to which the discount belongs
-     * @type {any}
+     * @type {p.Subscription}
      */
-    private subscription: any = null;
+    private subscription: p.Subscription = null;
 
     /**
      * ID of the subscription to which the addon belongs
@@ -40,9 +42,9 @@ class Discount {
 
     /**
      * Coupon used to create the discount, if any
-     * @type {any}
+     * @type {p.Coupon}
      */
-    private coupon: any = null;
+    private coupon: p.Coupon = null;
 
     /**
      * ID of the coupon used to create the discount, if any
@@ -133,19 +135,19 @@ class Discount {
     /**
      * Get Project
      * Project to which the discount belongs
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project to which the discount belongs
-     * @param {any} val
+     * @param {p.Project} val
      * @return {Discount}
      */
-    public setProject(val: any): Discount {
+    public setProject(val: p.Project): Discount {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;
@@ -180,19 +182,19 @@ class Discount {
     /**
      * Get Subscription
      * Subscription to which the discount belongs
-     * @return {any}
+     * @return {p.Subscription}
      */
-    public getSubscription(): any {
+    public getSubscription(): p.Subscription {
         return this.subscription;
     }
 
     /**
      * Set Subscription
      * Subscription to which the discount belongs
-     * @param {any} val
+     * @param {p.Subscription} val
      * @return {Discount}
      */
-    public setSubscription(val: any): Discount {
+    public setSubscription(val: p.Subscription): Discount {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newSubscription().getProcessOutObjectClass())
             this.subscription = val;
@@ -227,19 +229,19 @@ class Discount {
     /**
      * Get Coupon
      * Coupon used to create the discount, if any
-     * @return {any}
+     * @return {p.Coupon}
      */
-    public getCoupon(): any {
+    public getCoupon(): p.Coupon {
         return this.coupon;
     }
 
     /**
      * Set Coupon
      * Coupon used to create the discount, if any
-     * @param {any} val
+     * @param {p.Coupon} val
      * @return {Discount}
      */
-    public setCoupon(val: any): Discount {
+    public setCoupon(val: p.Coupon): Discount {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newCoupon().getProcessOutObjectClass())
             this.coupon = val;

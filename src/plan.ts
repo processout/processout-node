@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Plan {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Plan {
 
     /**
      * Project to which the plan belongs
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * ID of the project to which the plan belongs
@@ -133,19 +135,19 @@ class Plan {
     /**
      * Get Project
      * Project to which the plan belongs
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project to which the plan belongs
-     * @param {any} val
+     * @param {p.Project} val
      * @return {Plan}
      */
-    public setProject(val: any): Plan {
+    public setProject(val: p.Project): Plan {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;

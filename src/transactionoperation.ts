@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class TransactionOperation {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class TransactionOperation {
 
     /**
      * Transaction to which the operation belongs
-     * @type {any}
+     * @type {p.Transaction}
      */
-    private transaction: any = null;
+    private transaction: p.Transaction = null;
 
     /**
      * ID of the transaction to which the operation belongs
@@ -28,9 +30,9 @@ class TransactionOperation {
 
     /**
      * Token that was used by the operation, if any
-     * @type {any}
+     * @type {p.Token}
      */
-    private token: any = null;
+    private token: p.Token = null;
 
     /**
      * ID of the token was used by the operation, if any
@@ -40,9 +42,9 @@ class TransactionOperation {
 
     /**
      * Card that was used by the operation, if any
-     * @type {any}
+     * @type {p.Card}
      */
-    private card: any = null;
+    private card: p.Card = null;
 
     /**
      * ID of the card that was used by the operation, if any
@@ -100,21 +102,21 @@ class TransactionOperation {
 
     /**
      * ThreeDS request payment data (read-only)
-     * @type {any}
+     * @type {p.PaymentDataThreeDSRequest}
      */
-    private paymentDataThreeDSRequest: any = null;
+    private paymentDataThreeDSRequest: p.PaymentDataThreeDSRequest = null;
 
     /**
      * 3-D Secure authentication payment data (read-only)
-     * @type {any}
+     * @type {p.PaymentDataThreeDSAuthentication}
      */
-    private paymentDataThreeDSAuthentication: any = null;
+    private paymentDataThreeDSAuthentication: p.PaymentDataThreeDSAuthentication = null;
 
     /**
      * Network authentication payment data (read-only)
-     * @type {any}
+     * @type {p.PaymentDataNetworkAuthentication}
      */
-    private paymentDataNetworkAuthentication: any = null;
+    private paymentDataNetworkAuthentication: p.PaymentDataNetworkAuthentication = null;
 
     /**
      * Metadata related to the operation, in the form of a dictionary (key-value pair)
@@ -175,19 +177,19 @@ class TransactionOperation {
     /**
      * Get Transaction
      * Transaction to which the operation belongs
-     * @return {any}
+     * @return {p.Transaction}
      */
-    public getTransaction(): any {
+    public getTransaction(): p.Transaction {
         return this.transaction;
     }
 
     /**
      * Set Transaction
      * Transaction to which the operation belongs
-     * @param {any} val
+     * @param {p.Transaction} val
      * @return {TransactionOperation}
      */
-    public setTransaction(val: any): TransactionOperation {
+    public setTransaction(val: p.Transaction): TransactionOperation {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newTransaction().getProcessOutObjectClass())
             this.transaction = val;
@@ -222,19 +224,19 @@ class TransactionOperation {
     /**
      * Get Token
      * Token that was used by the operation, if any
-     * @return {any}
+     * @return {p.Token}
      */
-    public getToken(): any {
+    public getToken(): p.Token {
         return this.token;
     }
 
     /**
      * Set Token
      * Token that was used by the operation, if any
-     * @param {any} val
+     * @param {p.Token} val
      * @return {TransactionOperation}
      */
-    public setToken(val: any): TransactionOperation {
+    public setToken(val: p.Token): TransactionOperation {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newToken().getProcessOutObjectClass())
             this.token = val;
@@ -269,19 +271,19 @@ class TransactionOperation {
     /**
      * Get Card
      * Card that was used by the operation, if any
-     * @return {any}
+     * @return {p.Card}
      */
-    public getCard(): any {
+    public getCard(): p.Card {
         return this.card;
     }
 
     /**
      * Set Card
      * Card that was used by the operation, if any
-     * @param {any} val
+     * @param {p.Card} val
      * @return {TransactionOperation}
      */
-    public setCard(val: any): TransactionOperation {
+    public setCard(val: p.Card): TransactionOperation {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newCard().getProcessOutObjectClass())
             this.card = val;
@@ -476,19 +478,19 @@ class TransactionOperation {
     /**
      * Get PaymentDataThreeDSRequest
      * ThreeDS request payment data (read-only)
-     * @return {any}
+     * @return {p.PaymentDataThreeDSRequest}
      */
-    public getPaymentDataThreeDSRequest(): any {
+    public getPaymentDataThreeDSRequest(): p.PaymentDataThreeDSRequest {
         return this.paymentDataThreeDSRequest;
     }
 
     /**
      * Set PaymentDataThreeDSRequest
      * ThreeDS request payment data (read-only)
-     * @param {any} val
+     * @param {p.PaymentDataThreeDSRequest} val
      * @return {TransactionOperation}
      */
-    public setPaymentDataThreeDSRequest(val: any): TransactionOperation {
+    public setPaymentDataThreeDSRequest(val: p.PaymentDataThreeDSRequest): TransactionOperation {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newPaymentDataThreeDSRequest().getProcessOutObjectClass())
             this.paymentDataThreeDSRequest = val;
@@ -503,19 +505,19 @@ class TransactionOperation {
     /**
      * Get PaymentDataThreeDSAuthentication
      * 3-D Secure authentication payment data (read-only)
-     * @return {any}
+     * @return {p.PaymentDataThreeDSAuthentication}
      */
-    public getPaymentDataThreeDSAuthentication(): any {
+    public getPaymentDataThreeDSAuthentication(): p.PaymentDataThreeDSAuthentication {
         return this.paymentDataThreeDSAuthentication;
     }
 
     /**
      * Set PaymentDataThreeDSAuthentication
      * 3-D Secure authentication payment data (read-only)
-     * @param {any} val
+     * @param {p.PaymentDataThreeDSAuthentication} val
      * @return {TransactionOperation}
      */
-    public setPaymentDataThreeDSAuthentication(val: any): TransactionOperation {
+    public setPaymentDataThreeDSAuthentication(val: p.PaymentDataThreeDSAuthentication): TransactionOperation {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newPaymentDataThreeDSAuthentication().getProcessOutObjectClass())
             this.paymentDataThreeDSAuthentication = val;
@@ -530,19 +532,19 @@ class TransactionOperation {
     /**
      * Get PaymentDataNetworkAuthentication
      * Network authentication payment data (read-only)
-     * @return {any}
+     * @return {p.PaymentDataNetworkAuthentication}
      */
-    public getPaymentDataNetworkAuthentication(): any {
+    public getPaymentDataNetworkAuthentication(): p.PaymentDataNetworkAuthentication {
         return this.paymentDataNetworkAuthentication;
     }
 
     /**
      * Set PaymentDataNetworkAuthentication
      * Network authentication payment data (read-only)
-     * @param {any} val
+     * @param {p.PaymentDataNetworkAuthentication} val
      * @return {TransactionOperation}
      */
-    public setPaymentDataNetworkAuthentication(val: any): TransactionOperation {
+    public setPaymentDataNetworkAuthentication(val: p.PaymentDataNetworkAuthentication): TransactionOperation {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newPaymentDataNetworkAuthentication().getProcessOutObjectClass())
             this.paymentDataNetworkAuthentication = val;

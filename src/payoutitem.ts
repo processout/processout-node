@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class PayoutItem {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class PayoutItem {
 
     /**
      * Project to which the payout item belongs
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * ID of the project to which the payout item belongs
@@ -28,9 +30,9 @@ class PayoutItem {
 
     /**
      * Payout to which the item belongs
-     * @type {any}
+     * @type {p.Payout}
      */
-    private payout: any = null;
+    private payout: p.Payout = null;
 
     /**
      * ID of the payout to which the item belongs
@@ -40,9 +42,9 @@ class PayoutItem {
 
     /**
      * Transaction linked to this payout item. Can be null
-     * @type {any}
+     * @type {p.Transaction}
      */
-    private transaction: any = null;
+    private transaction: p.Transaction = null;
 
     /**
      * ID of the transaction linked to this payout item. Can be null
@@ -127,19 +129,19 @@ class PayoutItem {
     /**
      * Get Project
      * Project to which the payout item belongs
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project to which the payout item belongs
-     * @param {any} val
+     * @param {p.Project} val
      * @return {PayoutItem}
      */
-    public setProject(val: any): PayoutItem {
+    public setProject(val: p.Project): PayoutItem {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;
@@ -174,19 +176,19 @@ class PayoutItem {
     /**
      * Get Payout
      * Payout to which the item belongs
-     * @return {any}
+     * @return {p.Payout}
      */
-    public getPayout(): any {
+    public getPayout(): p.Payout {
         return this.payout;
     }
 
     /**
      * Set Payout
      * Payout to which the item belongs
-     * @param {any} val
+     * @param {p.Payout} val
      * @return {PayoutItem}
      */
-    public setPayout(val: any): PayoutItem {
+    public setPayout(val: p.Payout): PayoutItem {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newPayout().getProcessOutObjectClass())
             this.payout = val;
@@ -221,19 +223,19 @@ class PayoutItem {
     /**
      * Get Transaction
      * Transaction linked to this payout item. Can be null
-     * @return {any}
+     * @return {p.Transaction}
      */
-    public getTransaction(): any {
+    public getTransaction(): p.Transaction {
         return this.transaction;
     }
 
     /**
      * Set Transaction
      * Transaction linked to this payout item. Can be null
-     * @param {any} val
+     * @param {p.Transaction} val
      * @return {PayoutItem}
      */
-    public setTransaction(val: any): PayoutItem {
+    public setTransaction(val: p.Transaction): PayoutItem {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newTransaction().getProcessOutObjectClass())
             this.transaction = val;

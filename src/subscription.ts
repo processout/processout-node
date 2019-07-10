@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Subscription {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Subscription {
 
     /**
      * Project to which the subscription belongs
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * ID of the project to which the subscription belongs
@@ -28,9 +30,9 @@ class Subscription {
 
     /**
      * Plan linked to this subscription, if any
-     * @type {any}
+     * @type {p.Plan}
      */
-    private plan: any = null;
+    private plan: p.Plan = null;
 
     /**
      * ID of the plan linked to this subscription, if any
@@ -58,9 +60,9 @@ class Subscription {
 
     /**
      * Customer linked to the subscription
-     * @type {any}
+     * @type {p.Customer}
      */
-    private customer: any = null;
+    private customer: p.Customer = null;
 
     /**
      * ID of the customer linked to the subscription
@@ -70,9 +72,9 @@ class Subscription {
 
     /**
      * Token used to capture payments on this subscription
-     * @type {any}
+     * @type {p.Token}
      */
-    private token: any = null;
+    private token: p.Token = null;
 
     /**
      * ID of the token used to capture payments on this subscription
@@ -259,19 +261,19 @@ class Subscription {
     /**
      * Get Project
      * Project to which the subscription belongs
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project to which the subscription belongs
-     * @param {any} val
+     * @param {p.Project} val
      * @return {Subscription}
      */
-    public setProject(val: any): Subscription {
+    public setProject(val: p.Project): Subscription {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;
@@ -306,19 +308,19 @@ class Subscription {
     /**
      * Get Plan
      * Plan linked to this subscription, if any
-     * @return {any}
+     * @return {p.Plan}
      */
-    public getPlan(): any {
+    public getPlan(): p.Plan {
         return this.plan;
     }
 
     /**
      * Set Plan
      * Plan linked to this subscription, if any
-     * @param {any} val
+     * @param {p.Plan} val
      * @return {Subscription}
      */
-    public setPlan(val: any): Subscription {
+    public setPlan(val: p.Plan): Subscription {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newPlan().getProcessOutObjectClass())
             this.plan = val;
@@ -443,19 +445,19 @@ class Subscription {
     /**
      * Get Customer
      * Customer linked to the subscription
-     * @return {any}
+     * @return {p.Customer}
      */
-    public getCustomer(): any {
+    public getCustomer(): p.Customer {
         return this.customer;
     }
 
     /**
      * Set Customer
      * Customer linked to the subscription
-     * @param {any} val
+     * @param {p.Customer} val
      * @return {Subscription}
      */
-    public setCustomer(val: any): Subscription {
+    public setCustomer(val: p.Customer): Subscription {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newCustomer().getProcessOutObjectClass())
             this.customer = val;
@@ -490,19 +492,19 @@ class Subscription {
     /**
      * Get Token
      * Token used to capture payments on this subscription
-     * @return {any}
+     * @return {p.Token}
      */
-    public getToken(): any {
+    public getToken(): p.Token {
         return this.token;
     }
 
     /**
      * Set Token
      * Token used to capture payments on this subscription
-     * @param {any} val
+     * @param {p.Token} val
      * @return {Subscription}
      */
-    public setToken(val: any): Subscription {
+    public setToken(val: p.Token): Subscription {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newToken().getProcessOutObjectClass())
             this.token = val;

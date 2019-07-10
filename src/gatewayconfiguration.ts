@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class GatewayConfiguration {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class GatewayConfiguration {
 
     /**
      * Project to which the gateway configuration belongs
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * ID of the project to which the gateway configuration belongs
@@ -28,9 +30,9 @@ class GatewayConfiguration {
 
     /**
      * Gateway that the configuration configures
-     * @type {any}
+     * @type {p.Gateway}
      */
-    private gateway: any = null;
+    private gateway: p.Gateway = null;
 
     /**
      * ID of the gateway to which the gateway configuration belongs
@@ -115,19 +117,19 @@ class GatewayConfiguration {
     /**
      * Get Project
      * Project to which the gateway configuration belongs
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project to which the gateway configuration belongs
-     * @param {any} val
+     * @param {p.Project} val
      * @return {GatewayConfiguration}
      */
-    public setProject(val: any): GatewayConfiguration {
+    public setProject(val: p.Project): GatewayConfiguration {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;
@@ -162,19 +164,19 @@ class GatewayConfiguration {
     /**
      * Get Gateway
      * Gateway that the configuration configures
-     * @return {any}
+     * @return {p.Gateway}
      */
-    public getGateway(): any {
+    public getGateway(): p.Gateway {
         return this.gateway;
     }
 
     /**
      * Set Gateway
      * Gateway that the configuration configures
-     * @param {any} val
+     * @param {p.Gateway} val
      * @return {GatewayConfiguration}
      */
-    public setGateway(val: any): GatewayConfiguration {
+    public setGateway(val: p.Gateway): GatewayConfiguration {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newGateway().getProcessOutObjectClass())
             this.gateway = val;

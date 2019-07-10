@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Webhook {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Webhook {
 
     /**
      * Project to which the webhook belongs
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * ID of the project to which the webhook belongs
@@ -28,9 +30,9 @@ class Webhook {
 
     /**
      * Event the webhook is linked to
-     * @type {any}
+     * @type {p.Event}
      */
-    private event: any = null;
+    private event: p.Event = null;
 
     /**
      * ID of the event the webhook is linked to
@@ -133,19 +135,19 @@ class Webhook {
     /**
      * Get Project
      * Project to which the webhook belongs
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project to which the webhook belongs
-     * @param {any} val
+     * @param {p.Project} val
      * @return {Webhook}
      */
-    public setProject(val: any): Webhook {
+    public setProject(val: p.Project): Webhook {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;
@@ -180,19 +182,19 @@ class Webhook {
     /**
      * Get Event
      * Event the webhook is linked to
-     * @return {any}
+     * @return {p.Event}
      */
-    public getEvent(): any {
+    public getEvent(): p.Event {
         return this.event;
     }
 
     /**
      * Set Event
      * Event the webhook is linked to
-     * @param {any} val
+     * @param {p.Event} val
      * @return {Webhook}
      */
-    public setEvent(val: any): Webhook {
+    public setEvent(val: p.Event): Webhook {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newEvent().getProcessOutObjectClass())
             this.event = val;

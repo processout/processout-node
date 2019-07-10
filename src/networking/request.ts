@@ -1,6 +1,6 @@
 import rest = require('restler');
-import ProcessOut = require('../processout');
 import zlib = require('zlib');
+import ProcessOut = require('../processout');
 
 // Fix zlib compression
 var original_decode = rest.Request.prototype._decode;
@@ -46,7 +46,7 @@ class Request {
             req.headers = {};
 
         req.headers['API-Version'] = '1.4.0.0';
-        req.headers['User-Agent'] = 'ProcessOut NodeJS-Bindings/7.0.0';
+        req.headers['User-Agent'] = 'ProcessOut NodeJS-Bindings/7.1.0';
 
         if (typeof options === 'undefined')
             return req;

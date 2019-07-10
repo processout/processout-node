@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Card {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Card {
 
     /**
      * Project to which the card belongs
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * ID of the project to which the card belongs
@@ -28,9 +30,9 @@ class Card {
 
     /**
      * Token linked to the card, which can be used to process payments
-     * @type {any}
+     * @type {p.Token}
      */
-    private token: any = null;
+    private token: p.Token = null;
 
     /**
      * Scheme of the card, such as visa or mastercard
@@ -223,19 +225,19 @@ class Card {
     /**
      * Get Project
      * Project to which the card belongs
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project to which the card belongs
-     * @param {any} val
+     * @param {p.Project} val
      * @return {Card}
      */
-    public setProject(val: any): Card {
+    public setProject(val: p.Project): Card {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;
@@ -270,19 +272,19 @@ class Card {
     /**
      * Get Token
      * Token linked to the card, which can be used to process payments
-     * @return {any}
+     * @return {p.Token}
      */
-    public getToken(): any {
+    public getToken(): p.Token {
         return this.token;
     }
 
     /**
      * Set Token
      * Token linked to the card, which can be used to process payments
-     * @param {any} val
+     * @param {p.Token} val
      * @return {Card}
      */
-    public setToken(val: any): Card {
+    public setToken(val: p.Token): Card {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newToken().getProcessOutObjectClass())
             this.token = val;

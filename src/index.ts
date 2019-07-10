@@ -1,3 +1,5 @@
+// The content of this file was automatically generated
+
 import ProcessOut = require('./processout');
 
 import Activity = require('./activity');
@@ -36,42 +38,41 @@ import Webhook = require('./webhook');
 import WebhookEndpoint = require('./webhookendpoint');
 
 import GatewayRequest = require('./gatewayrequest');
-export = {
-    ProcessOut,
-    Activity,
-    Addon,
-    APIRequest,
-    APIVersion,
-    Card,
-    CardInformation,
-    Coupon,
-    Customer,
-    Token,
-    Discount,
-    Event,
-    Gateway,
-    GatewayConfiguration,
-    Invoice,
-    InvoiceRisk,
-    InvoiceDevice,
-    InvoiceShipping,
-    InvoiceDetail,
-    CustomerAction,
-    DunningAction,
-    Payout,
-    PayoutItem,
-    Plan,
-    Product,
-    Project,
-    Refund,
-    Subscription,
-    Transaction,
-    PaymentDataThreeDSRequest,
-    PaymentDataNetworkAuthentication,
-    PaymentDataThreeDSAuthentication,
-    TransactionOperation,
-    Webhook,
-    WebhookEndpoint,
-    
-    GatewayRequest
-}
+
+export {ProcessOut};
+export {Activity};
+export {Addon};
+export {APIRequest};
+export {APIVersion};
+export {Card};
+export {CardInformation};
+export {Coupon};
+export {Customer};
+export {Token};
+export {Discount};
+export {Event};
+export {Gateway};
+export {GatewayConfiguration};
+export {Invoice};
+export {InvoiceRisk};
+export {InvoiceDevice};
+export {InvoiceShipping};
+export {InvoiceDetail};
+export {CustomerAction};
+export {DunningAction};
+export {Payout};
+export {PayoutItem};
+export {Plan};
+export {Product};
+export {Project};
+export {Refund};
+export {Subscription};
+export {Transaction};
+export {PaymentDataThreeDSRequest};
+export {PaymentDataNetworkAuthentication};
+export {PaymentDataThreeDSAuthentication};
+export {TransactionOperation};
+export {Webhook};
+export {WebhookEndpoint};
+
+export {GatewayRequest};

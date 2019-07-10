@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Addon {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Addon {
 
     /**
      * Project to which the addon belongs
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * ID of the project to which the addon belongs
@@ -28,9 +30,9 @@ class Addon {
 
     /**
      * Subscription to which the addon belongs
-     * @type {any}
+     * @type {p.Subscription}
      */
-    private subscription: any = null;
+    private subscription: p.Subscription = null;
 
     /**
      * ID of the subscription to which the addon belongs
@@ -40,9 +42,9 @@ class Addon {
 
     /**
      * Plan used to create the addon, if any
-     * @type {any}
+     * @type {p.Plan}
      */
-    private plan: any = null;
+    private plan: p.Plan = null;
 
     /**
      * ID of the plan used to create the addon, if any
@@ -133,19 +135,19 @@ class Addon {
     /**
      * Get Project
      * Project to which the addon belongs
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project to which the addon belongs
-     * @param {any} val
+     * @param {p.Project} val
      * @return {Addon}
      */
-    public setProject(val: any): Addon {
+    public setProject(val: p.Project): Addon {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;
@@ -180,19 +182,19 @@ class Addon {
     /**
      * Get Subscription
      * Subscription to which the addon belongs
-     * @return {any}
+     * @return {p.Subscription}
      */
-    public getSubscription(): any {
+    public getSubscription(): p.Subscription {
         return this.subscription;
     }
 
     /**
      * Set Subscription
      * Subscription to which the addon belongs
-     * @param {any} val
+     * @param {p.Subscription} val
      * @return {Addon}
      */
-    public setSubscription(val: any): Addon {
+    public setSubscription(val: p.Subscription): Addon {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newSubscription().getProcessOutObjectClass())
             this.subscription = val;
@@ -227,19 +229,19 @@ class Addon {
     /**
      * Get Plan
      * Plan used to create the addon, if any
-     * @return {any}
+     * @return {p.Plan}
      */
-    public getPlan(): any {
+    public getPlan(): p.Plan {
         return this.plan;
     }
 
     /**
      * Set Plan
      * Plan used to create the addon, if any
-     * @param {any} val
+     * @param {p.Plan} val
      * @return {Addon}
      */
-    public setPlan(val: any): Addon {
+    public setPlan(val: p.Plan): Addon {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newPlan().getProcessOutObjectClass())
             this.plan = val;

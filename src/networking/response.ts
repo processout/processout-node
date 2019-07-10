@@ -1,5 +1,3 @@
-'use strict';
-
 import ProcessOutAuthenticationError = require('../errors/processoutauthenticationerror');
 import ProcessOutNotFoundError       = require('../errors/processoutnotfounderror');
 import ProcessOutValidationError     = require('../errors/processoutvalidationerror');

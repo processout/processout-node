@@ -1,9 +1,11 @@
 // The content of this file was automatically generated
 
-import Promise = require("promise");
-import ProcessOut = require("./processout");
-import Response = require("./networking/response");
-import Request = require("./networking/request");
+import Promise    = require('promise');
+import ProcessOut = require('./processout');
+import Response   = require('./networking/response');
+import Request    = require('./networking/request');
+
+import * as p from '.';
 
 class Event {
     private client: ProcessOut = null;
@@ -16,9 +18,9 @@ class Event {
 
     /**
      * Project to which the event belongs
-     * @type {any}
+     * @type {p.Project}
      */
-    private project: any = null;
+    private project: p.Project = null;
 
     /**
      * ID of the project to which the event belongs
@@ -91,19 +93,19 @@ class Event {
     /**
      * Get Project
      * Project to which the event belongs
-     * @return {any}
+     * @return {p.Project}
      */
-    public getProject(): any {
+    public getProject(): p.Project {
         return this.project;
     }
 
     /**
      * Set Project
      * Project to which the event belongs
-     * @param {any} val
+     * @param {p.Project} val
      * @return {Event}
      */
-    public setProject(val: any): Event {
+    public setProject(val: p.Project): Event {
         if (val.getProcessOutObjectClass &&
             val.getProcessOutObjectClass() == this.client.newProject().getProcessOutObjectClass())
             this.project = val;
