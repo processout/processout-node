@@ -1,6 +1,6 @@
 {
   "name": "processout",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "description": "ProcessOut API bindings.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
