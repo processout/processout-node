@@ -484,7 +484,7 @@ class Plan {
                 return resolve.apply(this, returnValues);
             };
 
-            var req = request.get(path, data, options, callback);
+            request.get(path, data, options, callback);
             });
     }
     /**
@@ -535,7 +535,7 @@ class Plan {
                 return resolve.apply(this, returnValues);
             };
 
-            var req = request.post(path, data, options, callback);
+            request.post(path, data, options, callback);
             });
     }
     /**
@@ -578,7 +578,7 @@ class Plan {
                 return resolve.apply(this, returnValues);
             };
 
-            var req = request.get(path, data, options, callback);
+            request.get(path, data, options, callback);
             });
     }
     /**
@@ -625,7 +625,7 @@ class Plan {
                 return resolve.apply(this, returnValues);
             };
 
-            var req = request.put(path, data, options, callback);
+            request.put(path, data, options, callback);
             });
     }
     /**
@@ -665,7 +665,7 @@ class Plan {
                 return resolve.apply(this, returnValues);
             };
 
-            var req = request.delete(path, data, options, callback);
+            request.delete(path, data, options, callback);
             });
     }
     

@@ -372,7 +372,7 @@ class Refund {
                 return resolve.apply(this, returnValues);
             };
 
-            var req = request.get(path, data, options, callback);
+            request.get(path, data, options, callback);
             });
     }
     /**
@@ -416,7 +416,7 @@ class Refund {
                 return resolve.apply(this, returnValues);
             };
 
-            var req = request.get(path, data, options, callback);
+            request.get(path, data, options, callback);
             });
     }
     /**
@@ -459,7 +459,7 @@ class Refund {
                 return resolve.apply(this, returnValues);
             };
 
-            var req = request.post(path, data, options, callback);
+            request.post(path, data, options, callback);
             });
     }
     

@@ -491,7 +491,7 @@ class APIRequest {
                 return resolve.apply(this, returnValues);
             };
 
-            var req = request.get(path, data, options, callback);
+            request.get(path, data, options, callback);
             });
     }
     /**
@@ -534,7 +534,7 @@ class APIRequest {
                 return resolve.apply(this, returnValues);
             };
 
-            var req = request.get(path, data, options, callback);
+            request.get(path, data, options, callback);
             });
     }
     

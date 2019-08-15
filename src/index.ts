@@ -38,6 +38,12 @@ import Webhook = require('./webhook');
 import WebhookEndpoint = require('./webhookendpoint');
 
 import GatewayRequest = require('./gatewayrequest');
+import ProcessOutError = require('./errors/processouterror');
+import ProcessOutNetworkError = require('./errors/processoutnetworkerror');
+import ProcessOutInternalError = require('./errors/processoutinternalerror');
+import ProcessOutAuthenticationError = require('./errors/processoutauthenticationerror');
+import ProcessOutNotFoundError = require('./errors/processoutnotfounderror');
+import ProcessOutValidationError = require('./errors/processoutvalidationerror');
 
 export {ProcessOut};
 export {Activity};
@@ -76,3 +82,9 @@ export {Webhook};
 export {WebhookEndpoint};
 
 export {GatewayRequest};
+export {ProcessOutError};
+export {ProcessOutNetworkError};
+export {ProcessOutInternalError};
+export {ProcessOutAuthenticationError};
+export {ProcessOutNotFoundError};
+export {ProcessOutValidationError};
