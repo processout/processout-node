@@ -5,6 +5,8 @@ import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
 
+import ProcessOutNetworkError = require('./errors/processoutnetworkerror');
+
 import * as p from '.';
 
 class Addon {
@@ -467,14 +469,14 @@ class Addon {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -494,10 +496,10 @@ class Addon {
                     
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Create a new addon to the given subscription ID.
@@ -524,14 +526,14 @@ class Addon {
 			'preview': (options['preview']) ? options['preview'] : null
         };
 
-        var req = request.post(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -545,10 +547,10 @@ class Addon {
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.post(path, data, options, callback);
             });
-        });
     }
     /**
      * Find a subscription's addon by its ID.
@@ -568,14 +570,14 @@ class Addon {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -589,10 +591,10 @@ class Addon {
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Save the updated addon attributes.
@@ -620,14 +622,14 @@ class Addon {
 			'increment_quantity_by': (options['increment_quantity_by']) ? options['increment_quantity_by'] : null
         };
 
-        var req = request.put(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -641,10 +643,10 @@ class Addon {
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.put(path, data, options, callback);
             });
-        });
     }
     /**
      * Delete an addon applied to a subscription.
@@ -665,14 +667,14 @@ class Addon {
 			'preview': (options['preview']) ? options['preview'] : null
         };
 
-        var req = request.delete(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -683,10 +685,10 @@ class Addon {
                 returnValues.push(response.isSuccess());
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.delete(path, data, options, callback);
             });
-        });
     }
     
 }

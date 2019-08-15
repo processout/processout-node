@@ -5,6 +5,8 @@ import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
 
+import ProcessOutNetworkError = require('./errors/processoutnetworkerror');
+
 import * as p from '.';
 
 class Customer {
@@ -854,14 +856,14 @@ class Customer {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -881,10 +883,10 @@ class Customer {
                     
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Verify a customer token's card is valid.
@@ -903,14 +905,14 @@ class Customer {
 
         };
 
-        var req = request.post(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -921,10 +923,10 @@ class Customer {
                 returnValues.push(response.isSuccess());
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.post(path, data, options, callback);
             });
-        });
     }
     /**
      * Get the customer's tokens.
@@ -943,14 +945,14 @@ class Customer {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -970,10 +972,10 @@ class Customer {
                     
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Find a customer's token by its ID.
@@ -992,14 +994,14 @@ class Customer {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1013,10 +1015,10 @@ class Customer {
                 returnValues.push(obj.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Delete a customer's token by its ID.
@@ -1035,14 +1037,14 @@ class Customer {
 
         };
 
-        var req = request.delete(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1053,10 +1055,10 @@ class Customer {
                 returnValues.push(response.isSuccess());
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.delete(path, data, options, callback);
             });
-        });
     }
     /**
      * Get the transactions belonging to the customer.
@@ -1075,14 +1077,14 @@ class Customer {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1102,10 +1104,10 @@ class Customer {
                     
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Get all the customers.
@@ -1124,14 +1126,14 @@ class Customer {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1151,10 +1153,10 @@ class Customer {
                     
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Create a new customer.
@@ -1190,14 +1192,14 @@ class Customer {
 			'id': this.getId()
         };
 
-        var req = request.post(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1211,10 +1213,10 @@ class Customer {
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.post(path, data, options, callback);
             });
-        });
     }
     /**
      * Find a customer by its ID.
@@ -1233,14 +1235,14 @@ class Customer {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1254,10 +1256,10 @@ class Customer {
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Save the updated customer attributes.
@@ -1292,14 +1294,14 @@ class Customer {
 			'metadata': this.getMetadata()
         };
 
-        var req = request.put(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1313,10 +1315,10 @@ class Customer {
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.put(path, data, options, callback);
             });
-        });
     }
     /**
      * Delete the customer.
@@ -1335,14 +1337,14 @@ class Customer {
 
         };
 
-        var req = request.delete(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1353,10 +1355,10 @@ class Customer {
                 returnValues.push(response.isSuccess());
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.delete(path, data, options, callback);
             });
-        });
     }
     
 }

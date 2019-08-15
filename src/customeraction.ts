@@ -5,6 +5,8 @@ import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
 
+import ProcessOutNetworkError = require('./errors/processoutnetworkerror');
+
 import * as p from '.';
 
 class CustomerAction {

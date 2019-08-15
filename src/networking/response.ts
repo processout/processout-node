@@ -30,12 +30,6 @@ class Response {
     public body: any = null;
 
     /**
-     * Serialized body of the response (raw body)
-     * @type {string}
-     */
-    public rawBody: string = null;
-
-    /**
      * Response constructor
      * @param  {object}  result The result returned by parsing the response
      * @param  {restler} resp Restler object
@@ -44,7 +38,6 @@ class Response {
         this.raw        = resp;
         this.statusCode = resp.statusCode;
         this.headers    = resp.headers;
-        this.rawBody    = resp.raw;
         this.body       = result;
     }
 

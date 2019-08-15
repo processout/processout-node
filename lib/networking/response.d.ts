@@ -20,11 +20,6 @@ declare class Response {
      */
     body: any;
     /**
-     * Serialized body of the response (raw body)
-     * @type {string}
-     */
-    rawBody: string;
-    /**
      * Response constructor
      * @param  {object}  result The result returned by parsing the response
      * @param  {restler} resp Restler object

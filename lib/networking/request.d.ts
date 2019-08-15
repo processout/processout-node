@@ -27,33 +27,37 @@ declare class Request {
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
+     * @param  {callback} callback
      * @return {restler}
      */
-    get(path: string, data: any, options: any): any;
+    get(path: string, data: any, options: any, callback: any): any;
     /**
      * Generate a post request
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
+     * @param  {callback} callback
      * @return {restler}
      */
-    post(path: string, data: any, options: any): any;
+    post(path: string, data: any, options: any, callback: any): any;
     /**
      * Generate a post request
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
+     * @param  {callback} callback
      * @return {restler}
      */
-    put(path: string, data: any, options: any): any;
+    put(path: string, data: any, options: any, callback: any): any;
     /**
      * Generate a post request
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
+     * @param  {callback} callback
      * @return {restler}
      */
-    delete(path: string, data: any, options: any): any;
+    delete(path: string, data: any, options: any, callback: any): any;
 }
 export = Request;
 //# sourceMappingURL=request.d.ts.map

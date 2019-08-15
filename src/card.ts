@@ -5,6 +5,8 @@ import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
 
+import ProcessOutNetworkError = require('./errors/processoutnetworkerror');
+
 import * as p from '.';
 
 class Card {
@@ -880,14 +882,14 @@ class Card {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -907,10 +909,10 @@ class Card {
                     
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Find a card by its ID.
@@ -929,14 +931,14 @@ class Card {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -950,10 +952,10 @@ class Card {
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     
 }

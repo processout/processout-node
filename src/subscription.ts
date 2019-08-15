@@ -5,6 +5,8 @@ import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
 
+import ProcessOutNetworkError = require('./errors/processoutnetworkerror');
+
 import * as p from '.';
 
 class Subscription {
@@ -1092,14 +1094,14 @@ class Subscription {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1119,10 +1121,10 @@ class Subscription {
                     
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Find a subscription's addon by its ID.
@@ -1141,14 +1143,14 @@ class Subscription {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1162,10 +1164,10 @@ class Subscription {
                 returnValues.push(obj.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Delete an addon applied to a subscription.
@@ -1186,14 +1188,14 @@ class Subscription {
 			'preview': (options['preview']) ? options['preview'] : null
         };
 
-        var req = request.delete(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1204,10 +1206,10 @@ class Subscription {
                 returnValues.push(response.isSuccess());
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.delete(path, data, options, callback);
             });
-        });
     }
     /**
      * Get the customer owning the subscription.
@@ -1226,14 +1228,14 @@ class Subscription {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1247,10 +1249,10 @@ class Subscription {
                 returnValues.push(obj.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Get the discounts applied to the subscription.
@@ -1269,14 +1271,14 @@ class Subscription {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1296,10 +1298,10 @@ class Subscription {
                     
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Find a subscription's discount by its ID.
@@ -1318,14 +1320,14 @@ class Subscription {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1339,10 +1341,10 @@ class Subscription {
                 returnValues.push(obj.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Delete a discount applied to a subscription.
@@ -1361,14 +1363,14 @@ class Subscription {
 
         };
 
-        var req = request.delete(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1379,10 +1381,10 @@ class Subscription {
                 returnValues.push(response.isSuccess());
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.delete(path, data, options, callback);
             });
-        });
     }
     /**
      * Get the subscriptions past transactions.
@@ -1401,14 +1403,14 @@ class Subscription {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1428,10 +1430,10 @@ class Subscription {
                     
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Get all the subscriptions.
@@ -1450,14 +1452,14 @@ class Subscription {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1477,10 +1479,10 @@ class Subscription {
                     
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Create a new subscription for the given customer.
@@ -1511,14 +1513,14 @@ class Subscription {
 			'coupon_id': (options['coupon_id']) ? options['coupon_id'] : null
         };
 
-        var req = request.post(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1532,10 +1534,10 @@ class Subscription {
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.post(path, data, options, callback);
             });
-        });
     }
     /**
      * Find a subscription by its ID.
@@ -1554,14 +1556,14 @@ class Subscription {
 
         };
 
-        var req = request.get(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1575,10 +1577,10 @@ class Subscription {
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.get(path, data, options, callback);
             });
-        });
     }
     /**
      * Save the updated subscription attributes.
@@ -1607,14 +1609,14 @@ class Subscription {
 			'preview': (options['preview']) ? options['preview'] : null
         };
 
-        var req = request.put(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1628,10 +1630,10 @@ class Subscription {
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.put(path, data, options, callback);
             });
-        });
     }
     /**
      * Cancel a subscription. The reason may be provided as well.
@@ -1652,14 +1654,14 @@ class Subscription {
 			'cancel_at_end': (options['cancel_at_end']) ? options['cancel_at_end'] : null
         };
 
-        var req = request.delete(path, data, options);
         var cur = this;
         return new Promise(function(resolve, reject) {
-            req.on('complete', function(result, r) {
-                if (result instanceof Error)
-                    return reject(result);
+            var callback = function(err, resp, body) {
+                if (err != null) {
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                }
 
-                var response = new Response(result, r);
+                var response = new Response(body, resp);
                 var err      = response.check();
                 if (err != null)
                     return reject(err);
@@ -1673,10 +1675,10 @@ class Subscription {
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
-            }).on('timeout', function(ms){
-                reject("request timeout after " + ms + "ms")
+            };
+
+            var req = request.delete(path, data, options, callback);
             });
-        });
     }
     
 }

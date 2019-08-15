@@ -1,6 +1,6 @@
 {
   "name": "processout",
-  "version": "7.1.1",
+  "version": "7.2.0",
   "description": "ProcessOut API bindings.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/processout/processout-node#readme",
   "dependencies": {
     "promise": "^7.0.3",
-    "restler": "^3.3.0",
+    "request": "^2.88.0",
     "btoa": "^1.1.2",
     "zlib": "^1.0.0"
   },
