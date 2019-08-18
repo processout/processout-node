@@ -36,7 +36,7 @@ class Request {
             req.headers = {};
 
         req.headers['API-Version'] = '1.4.0.0';
-        req.headers['User-Agent'] = 'ProcessOut NodeJS-Bindings/7.2.1';
+        req.headers['User-Agent'] = 'ProcessOut NodeJS-Bindings/7.2.2';
 
         if (typeof options === 'undefined')
             return req;
@@ -92,10 +92,14 @@ class Request {
         for (var key in data) {
             out.push(key + '=' + encodeURIComponent(data[key]));
         }
+        var suffix = '';
+        if (out.length > 0) {
+            suffix = '?' + out.join('&');
+        }
 
         return rest(this.prepare({
             method: 'GET',
-            uri: this.client.getHost() + path + '?' + out.join('&')
+            uri: this.client.getHost() + path + suffix
         }, options), callback);
     }
 
@@ -146,10 +150,14 @@ class Request {
         for (var key in data) {
             out.push(key + '=' + encodeURIComponent(data[key]));
         }
+        var suffix = '';
+        if (out.length > 0) {
+            suffix = '?' + out.join('&');
+        }
 
         return rest(this.prepare({
             method: 'DELETE',
-            uri: this.client.getHost() + path + '?' + out.join('&')
+            uri: this.client.getHost() + path + suffix
         }, options), callback);
     }
 }

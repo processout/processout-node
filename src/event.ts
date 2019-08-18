@@ -263,7 +263,7 @@ class Event {
         return new Promise(function(resolve, reject) {
             var callback = function(err, resp, body) {
                 if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
                 }
 
                 var response = new Response(body, resp);
@@ -312,7 +312,7 @@ class Event {
         return new Promise(function(resolve, reject) {
             var callback = function(err, resp, body) {
                 if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
                 }
 
                 var response = new Response(body, resp);
@@ -361,7 +361,7 @@ class Event {
         return new Promise(function(resolve, reject) {
             var callback = function(err, resp, body) {
                 if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
                 }
 
                 var response = new Response(body, resp);
@@ -404,7 +404,7 @@ class Event {
         return new Promise(function(resolve, reject) {
             var callback = function(err, resp, body) {
                 if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err));
+                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
                 }
 
                 var response = new Response(body, resp);
