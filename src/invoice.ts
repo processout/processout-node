@@ -169,6 +169,12 @@ class Invoice {
     private webhookUrl: string = null;
 
     /**
+     * Define whether the invoice can be captured from the front-end or not
+     * @type {boolean}
+     */
+    private requireBackendCapture: boolean = null;
+
+    /**
      * Define whether or not the invoice is in sandbox environment
      * @type {boolean}
      */
@@ -782,6 +788,26 @@ class Invoice {
     }
 
     /**
+     * Get RequireBackendCapture
+     * Define whether the invoice can be captured from the front-end or not
+     * @return {boolean}
+     */
+    public getRequireBackendCapture(): boolean {
+        return this.requireBackendCapture;
+    }
+
+    /**
+     * Set RequireBackendCapture
+     * Define whether the invoice can be captured from the front-end or not
+     * @param {boolean} val
+     * @return {Invoice}
+     */
+    public setRequireBackendCapture(val: boolean): Invoice {
+        this.requireBackendCapture = val;
+        return this;
+    }
+
+    /**
      * Get Sandbox
      * Define whether or not the invoice is in sandbox environment
      * @return {boolean}
@@ -960,6 +986,8 @@ class Invoice {
             this.setCancelUrl(data["cancel_url"]);
         if (data["webhook_url"])
             this.setWebhookUrl(data["webhook_url"]);
+        if (data["require_backend_capture"])
+            this.setRequireBackendCapture(data["require_backend_capture"]);
         if (data["sandbox"])
             this.setSandbox(data["sandbox"]);
         if (data["created_at"])
