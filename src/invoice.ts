@@ -1394,7 +1394,8 @@ class Invoice {
 			'webhook_url': this.getWebhookUrl(), 
 			'risk': this.getRisk(), 
 			'shipping': this.getShipping(), 
-			'device': this.getDevice()
+			'device': this.getDevice(), 
+			'require_backend_capture': this.getRequireBackendCapture()
         };
 
         var cur = this;

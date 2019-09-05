@@ -36,7 +36,7 @@ class Request {
             req.headers = {};
 
         req.headers['API-Version'] = '1.4.0.0';
-        req.headers['User-Agent'] = 'ProcessOut NodeJS-Bindings/7.3.0';
+        req.headers['User-Agent'] = 'ProcessOut NodeJS-Bindings/7.3.2';
 
         if (typeof options === 'undefined')
             return req;
