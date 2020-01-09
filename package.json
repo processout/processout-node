@@ -1,0 +1,37 @@
+{
+  "name": "processout",
+  "version": "7.3.4",
+  "description": "ProcessOut API bindings.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/processout/processout-node.git"
+  },
+  "keywords": [
+    "ProcessOut",
+    "API",
+    "bindings"
+  ],
+  "author": "ProcessOut <hi@processout.com> (https://processout.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/processout/processout-node/issues"
+  },
+  "homepage": "https://github.com/processout/processout-node#readme",
+  "dependencies": {
+    "request": "^2.88.0",
+    "btoa": "^1.1.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^6.0.2"
+  },
+  "files": [
+    "lib/**/*",
+    "src/**/*"
+  ]
+}
