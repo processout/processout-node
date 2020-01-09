@@ -50,9 +50,12 @@ describe('Invoice', function() {
             handleError(done, function() {
                 expect(invoice.getId()).not.to.be.empty;
 
-                var gr = new processout.GatewayRequest('sandbox', 'POST', 'https://processout.com?token=test-valid',
+                var gr = new processout.GatewayRequest(
+                    'gway_conf_44ae90db0a62f819a404ef6a8ff994ca', 
+                    'POST', 'https://processout.com?token=test-valid',
                     {'Content-Type': 'application/json'}, 
-                    '{}');
+                    '{}'
+                );
                 invoice.capture(gr.toString()).then(function(transaction) {
                     handleError(done, function() {
                         expect(transaction.getStatus()).to.equal('completed');

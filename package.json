@@ -1,6 +1,6 @@
 {
   "name": "processout",
-  "version": "7.3.2",
+  "version": "7.3.3",
   "description": "ProcessOut API bindings.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -23,10 +23,8 @@
   },
   "homepage": "https://github.com/processout/processout-node#readme",
   "dependencies": {
-    "promise": "^7.0.3",
     "request": "^2.88.0",
-    "btoa": "^1.1.2",
-    "zlib": "^1.0.0"
+    "btoa": "^1.1.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",

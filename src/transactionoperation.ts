@@ -1,6 +1,5 @@
 // The content of this file was automatically generated
 
-import Promise    = require('promise');
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -53,6 +52,18 @@ class TransactionOperation {
      * @type {string}
      */
     private cardId: string = null;
+
+    /**
+     * Gateway configuration that was used to process the operation
+     * @type {p.GatewayConfiguration}
+     */
+    private gatewayConfiguration: p.GatewayConfiguration = null;
+
+    /**
+     * ID of the gateway configuration that was used to process the operation
+     * @type {string}
+     */
+    private gatewayConfigurationId: string = null;
 
     /**
      * Amount of the operation
@@ -314,6 +325,53 @@ class TransactionOperation {
      */
     public setCardId(val: string): TransactionOperation {
         this.cardId = val;
+        return this;
+    }
+
+    /**
+     * Get GatewayConfiguration
+     * Gateway configuration that was used to process the operation
+     * @return {p.GatewayConfiguration}
+     */
+    public getGatewayConfiguration(): p.GatewayConfiguration {
+        return this.gatewayConfiguration;
+    }
+
+    /**
+     * Set GatewayConfiguration
+     * Gateway configuration that was used to process the operation
+     * @param {p.GatewayConfiguration} val
+     * @return {TransactionOperation}
+     */
+    public setGatewayConfiguration(val: p.GatewayConfiguration): TransactionOperation {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newGatewayConfiguration().getProcessOutObjectClass())
+            this.gatewayConfiguration = val;
+        else {
+            var obj = this.client.newGatewayConfiguration();
+            obj.fillWithData(val);
+            this.gatewayConfiguration = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get GatewayConfigurationId
+     * ID of the gateway configuration that was used to process the operation
+     * @return {string}
+     */
+    public getGatewayConfigurationId(): string {
+        return this.gatewayConfigurationId;
+    }
+
+    /**
+     * Set GatewayConfigurationId
+     * ID of the gateway configuration that was used to process the operation
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    public setGatewayConfigurationId(val: string): TransactionOperation {
+        this.gatewayConfigurationId = val;
         return this;
     }
 
@@ -638,6 +696,10 @@ class TransactionOperation {
             this.setCard(data["card"]);
         if (data["card_id"])
             this.setCardId(data["card_id"]);
+        if (data["gateway_configuration"])
+            this.setGatewayConfiguration(data["gateway_configuration"]);
+        if (data["gateway_configuration_id"])
+            this.setGatewayConfigurationId(data["gateway_configuration_id"]);
         if (data["amount"])
             this.setAmount(data["amount"]);
         if (data["is_attempt"])

@@ -1,6 +1,5 @@
 // The content of this file was automatically generated
 
-import Promise    = require('promise');
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -149,6 +148,12 @@ class Invoice {
      * @type {any}
      */
     private metadata: any = null;
+
+    /**
+     * Additionnal context saved when processing the transaction on the specific PSP
+     * @type {any}
+     */
+    private gatewayData: any = null;
 
     /**
      * URL where the customer will be redirected upon payment
@@ -728,6 +733,26 @@ class Invoice {
     }
 
     /**
+     * Get GatewayData
+     * Additionnal context saved when processing the transaction on the specific PSP
+     * @return {any}
+     */
+    public getGatewayData(): any {
+        return this.gatewayData;
+    }
+
+    /**
+     * Set GatewayData
+     * Additionnal context saved when processing the transaction on the specific PSP
+     * @param {any} val
+     * @return {Invoice}
+     */
+    public setGatewayData(val: any): Invoice {
+        this.gatewayData = val;
+        return this;
+    }
+
+    /**
      * Get ReturnUrl
      * URL where the customer will be redirected upon payment
      * @return {string}
@@ -980,6 +1005,8 @@ class Invoice {
             this.setStatementDescriptorUrl(data["statement_descriptor_url"]);
         if (data["metadata"])
             this.setMetadata(data["metadata"]);
+        if (data["gateway_data"])
+            this.setGatewayData(data["gateway_data"]);
         if (data["return_url"])
             this.setReturnUrl(data["return_url"]);
         if (data["cancel_url"])
@@ -1381,6 +1408,7 @@ class Invoice {
 			'name': this.getName(), 
 			'amount': this.getAmount(), 
 			'currency': this.getCurrency(), 
+			'gateway_data': this.getGatewayData(), 
 			'metadata': this.getMetadata(), 
 			'details': this.getDetails(), 
 			'merchant_initiator_type': this.getMerchantInitiatorType(), 

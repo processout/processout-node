@@ -6,10 +6,8 @@ This package provides bindings to the ProcessOut API.
 Dependencies
 ------------
 
-* promise
 * restler
 * btoa
-* zlib
 
 Installation
 ------------

@@ -1,6 +1,5 @@
 // The content of this file was automatically generated
 
-import Promise    = require('promise');
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -375,7 +374,7 @@ class GatewayConfiguration {
         var path    = "/gateway-configurations";
 
         var data = {
-
+			'expand_merchant_accounts': (options['expand_merchant_accounts']) ? options['expand_merchant_accounts'] : null
         };
 
         var cur = this;

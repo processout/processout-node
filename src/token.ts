@@ -1,6 +1,5 @@
 // The content of this file was automatically generated
 
-import Promise    = require('promise');
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -71,6 +70,18 @@ class Token {
      * @type {boolean}
      */
     private isSubscriptionOnly: boolean = null;
+
+    /**
+     * URL where the customer will be redirected upon payment authentication (if required by tokenization method)
+     * @type {string}
+     */
+    private returnUrl: string = null;
+
+    /**
+     * URL where the customer will be redirected if the tokenization was canceled (if required by tokenization method)
+     * @type {string}
+     */
+    private cancelUrl: string = null;
 
     /**
      * True if the token it the default token of the customer, false otherwise
@@ -330,6 +341,46 @@ class Token {
     }
 
     /**
+     * Get ReturnUrl
+     * URL where the customer will be redirected upon payment authentication (if required by tokenization method)
+     * @return {string}
+     */
+    public getReturnUrl(): string {
+        return this.returnUrl;
+    }
+
+    /**
+     * Set ReturnUrl
+     * URL where the customer will be redirected upon payment authentication (if required by tokenization method)
+     * @param {string} val
+     * @return {Token}
+     */
+    public setReturnUrl(val: string): Token {
+        this.returnUrl = val;
+        return this;
+    }
+
+    /**
+     * Get CancelUrl
+     * URL where the customer will be redirected if the tokenization was canceled (if required by tokenization method)
+     * @return {string}
+     */
+    public getCancelUrl(): string {
+        return this.cancelUrl;
+    }
+
+    /**
+     * Set CancelUrl
+     * URL where the customer will be redirected if the tokenization was canceled (if required by tokenization method)
+     * @param {string} val
+     * @return {Token}
+     */
+    public setCancelUrl(val: string): Token {
+        this.cancelUrl = val;
+        return this;
+    }
+
+    /**
      * Get IsDefault
      * True if the token it the default token of the customer, false otherwise
      * @return {boolean}
@@ -415,6 +466,10 @@ class Token {
             this.setMetadata(data["metadata"]);
         if (data["is_subscription_only"])
             this.setIsSubscriptionOnly(data["is_subscription_only"]);
+        if (data["return_url"])
+            this.setReturnUrl(data["return_url"]);
+        if (data["cancel_url"])
+            this.setCancelUrl(data["cancel_url"]);
         if (data["is_default"])
             this.setIsDefault(data["is_default"]);
         if (data["is_chargeable"])
@@ -572,6 +627,8 @@ class Token {
 
         var data = {
 			'metadata': this.getMetadata(), 
+			'return_url': this.getReturnUrl(), 
+			'cancel_url': this.getCancelUrl(), 
 			'source': (options['source']) ? options['source'] : null, 
 			'settings': (options['settings']) ? options['settings'] : null, 
 			'target': (options['target']) ? options['target'] : null, 
