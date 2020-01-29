@@ -68,6 +68,11 @@ declare class APIVersion {
      * @return {APIVersion}
      */
     fillWithData(data: any): APIVersion;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = APIVersion;
 //# sourceMappingURL=apiversion.d.ts.map

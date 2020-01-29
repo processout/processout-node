@@ -122,6 +122,18 @@ class APIVersion {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "name": this.getName(),
+            "description": this.getDescription(),
+            "created_at": this.getCreatedAt(),
+        };
+    }
+
     
 }
 export = APIVersion;

@@ -916,6 +916,11 @@ declare class Transaction {
      */
     fillWithData(data: any): Transaction;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get the transaction's refunds.
 
      * @param {any} options

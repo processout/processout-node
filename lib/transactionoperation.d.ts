@@ -53,6 +53,11 @@ declare class TransactionOperation {
      */
     private amount;
     /**
+     * Currency of the operation
+     * @type {string}
+     */
+    private currency;
+    /**
      * True if the operation is an attempt, false otherwise
      * @type {boolean}
      */
@@ -77,6 +82,11 @@ declare class TransactionOperation {
      * @type {string}
      */
     private gatewayOperationId;
+    /**
+     * Acquirer Routing Number, can be used to track a payment or refund at the issuer
+     * @type {string}
+     */
+    private arn;
     /**
      * Error code returned when attempting the operation, if any
      * @type {string}
@@ -255,6 +265,19 @@ declare class TransactionOperation {
      */
     setAmount(val: string): TransactionOperation;
     /**
+     * Get Currency
+     * Currency of the operation
+     * @return {string}
+     */
+    getCurrency(): string;
+    /**
+     * Set Currency
+     * Currency of the operation
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    setCurrency(val: string): TransactionOperation;
+    /**
      * Get IsAttempt
      * True if the operation is an attempt, false otherwise
      * @return {boolean}
@@ -319,6 +342,19 @@ declare class TransactionOperation {
      * @return {TransactionOperation}
      */
     setGatewayOperationId(val: string): TransactionOperation;
+    /**
+     * Get Arn
+     * Acquirer Routing Number, can be used to track a payment or refund at the issuer
+     * @return {string}
+     */
+    getArn(): string;
+    /**
+     * Set Arn
+     * Acquirer Routing Number, can be used to track a payment or refund at the issuer
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    setArn(val: string): TransactionOperation;
     /**
      * Get ErrorCode
      * Error code returned when attempting the operation, if any
@@ -429,6 +465,11 @@ declare class TransactionOperation {
      * @return {TransactionOperation}
      */
     fillWithData(data: any): TransactionOperation;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = TransactionOperation;
 //# sourceMappingURL=transactionoperation.d.ts.map

@@ -458,6 +458,30 @@ class InvoiceDetail {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "name": this.getName(),
+            "type": this.getType(),
+            "amount": this.getAmount(),
+            "quantity": this.getQuantity(),
+            "metadata": this.getMetadata(),
+            "reference": this.getReference(),
+            "description": this.getDescription(),
+            "brand": this.getBrand(),
+            "model": this.getModel(),
+            "discount_amount": this.getDiscountAmount(),
+            "condition": this.getCondition(),
+            "marketplace_merchant": this.getMarketplaceMerchant(),
+            "marketplace_merchant_is_business": this.getMarketplaceMerchantIsBusiness(),
+            "marketplace_merchant_created_at": this.getMarketplaceMerchantCreatedAt(),
+            "category": this.getCategory(),
+        };
+    }
+
     
 }
 export = InvoiceDetail;

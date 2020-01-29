@@ -423,6 +423,28 @@ class PayoutItem {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "project": this.getProject(),
+            "project_id": this.getProjectId(),
+            "payout": this.getPayout(),
+            "payout_id": this.getPayoutId(),
+            "transaction": this.getTransaction(),
+            "transaction_id": this.getTransactionId(),
+            "type": this.getType(),
+            "gateway_resource_id": this.getGatewayResourceId(),
+            "amount": this.getAmount(),
+            "fees": this.getFees(),
+            "metadata": this.getMetadata(),
+            "created_at": this.getCreatedAt(),
+        };
+    }
+
     
 }
 export = PayoutItem;

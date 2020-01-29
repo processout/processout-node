@@ -196,6 +196,11 @@ declare class Refund {
      */
     fillWithData(data: any): Refund;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get the transaction's refunds.
      * @param string transactionId
      * @param {any} options

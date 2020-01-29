@@ -214,12 +214,10 @@ declare class Project {
      */
     fillWithData(data: any): Project;
     /**
-     * Regenerate the project private key. Make sure to store the new private key and use it in any future request.
-     *
-     * @param {any} options
-     * @return {this}
+     * Implements a JSON custom marshaller
+     * @return {any}
      */
-    regeneratePrivateKey(options: any): Promise<any>;
+    toJSON(): any;
     /**
      * Fetch the current project information.
 

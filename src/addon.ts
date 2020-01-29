@@ -452,6 +452,29 @@ class Addon {
     }
 
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "project": this.getProject(),
+            "project_id": this.getProjectId(),
+            "subscription": this.getSubscription(),
+            "subscription_id": this.getSubscriptionId(),
+            "plan": this.getPlan(),
+            "plan_id": this.getPlanId(),
+            "type": this.getType(),
+            "name": this.getName(),
+            "amount": this.getAmount(),
+            "quantity": this.getQuantity(),
+            "metadata": this.getMetadata(),
+            "sandbox": this.getSandbox(),
+            "created_at": this.getCreatedAt(),
+        };
+    }
+
+    /**
      * Get the addons applied to the subscription.
 	 * @param string subscriptionId
      * @param {any} options

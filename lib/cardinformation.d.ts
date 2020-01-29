@@ -141,6 +141,11 @@ declare class CardInformation {
      */
     fillWithData(data: any): CardInformation;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Fetch card information from the IIN.
      * @param string iin
      * @param {any} options

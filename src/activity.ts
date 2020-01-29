@@ -242,6 +242,22 @@ class Activity {
     }
 
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "project": this.getProject(),
+            "project_id": this.getProjectId(),
+            "title": this.getTitle(),
+            "content": this.getContent(),
+            "level": this.getLevel(),
+            "created_at": this.getCreatedAt(),
+        };
+    }
+
+    /**
      * Get all the project activities.
      * 
      * @param {any} options

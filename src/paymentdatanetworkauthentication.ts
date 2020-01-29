@@ -66,6 +66,16 @@ class PaymentDataNetworkAuthentication {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "cavv": this.getCavv(),
+        };
+    }
+
     
 }
 export = PaymentDataNetworkAuthentication;

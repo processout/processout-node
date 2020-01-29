@@ -606,6 +606,35 @@ class Payout {
     }
 
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "project": this.getProject(),
+            "project_id": this.getProjectId(),
+            "status": this.getStatus(),
+            "amount": this.getAmount(),
+            "currency": this.getCurrency(),
+            "metadata": this.getMetadata(),
+            "bank_name": this.getBankName(),
+            "bank_summary": this.getBankSummary(),
+            "sales_transactions": this.getSalesTransactions(),
+            "sales_volume": this.getSalesVolume(),
+            "refunds_transactions": this.getRefundsTransactions(),
+            "refunds_volume": this.getRefundsVolume(),
+            "chargebacks_transactions": this.getChargebacksTransactions(),
+            "chargebacks_volume": this.getChargebacksVolume(),
+            "fees": this.getFees(),
+            "adjustments": this.getAdjustments(),
+            "reserve": this.getReserve(),
+            "settled_at": this.getSettledAt(),
+            "created_at": this.getCreatedAt(),
+        };
+    }
+
+    /**
      * Get all the items linked to the payout.
 
      * @param {any} options

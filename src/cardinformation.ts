@@ -235,6 +235,22 @@ class CardInformation {
     }
 
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "iin": this.getIin(),
+            "scheme": this.getScheme(),
+            "type": this.getType(),
+            "bank_name": this.getBankName(),
+            "brand": this.getBrand(),
+            "category": this.getCategory(),
+            "country": this.getCountry(),
+        };
+    }
+
+    /**
      * Fetch card information from the IIN.
 	 * @param string iin
      * @param {any} options

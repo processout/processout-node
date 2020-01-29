@@ -376,6 +376,11 @@ declare class Payout {
      */
     fillWithData(data: any): Payout;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get all the items linked to the payout.
 
      * @param {any} options

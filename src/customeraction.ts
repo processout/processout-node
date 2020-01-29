@@ -94,6 +94,17 @@ class CustomerAction {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "type": this.getType(),
+            "value": this.getValue(),
+        };
+    }
+
     
 }
 export = CustomerAction;

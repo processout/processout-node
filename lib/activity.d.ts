@@ -142,6 +142,11 @@ declare class Activity {
      */
     fillWithData(data: any): Activity;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get all the project activities.
      *
      * @param {any} options

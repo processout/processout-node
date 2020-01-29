@@ -141,6 +141,11 @@ declare class WebhookEndpoint {
      * @return {WebhookEndpoint}
      */
     fillWithData(data: any): WebhookEndpoint;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = WebhookEndpoint;
 //# sourceMappingURL=webhookendpoint.d.ts.map

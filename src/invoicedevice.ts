@@ -94,6 +94,17 @@ class InvoiceDevice {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "channel": this.getChannel(),
+            "ip_address": this.getIpAddress(),
+        };
+    }
+
     
 }
 export = InvoiceDevice;

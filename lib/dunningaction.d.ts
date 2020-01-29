@@ -50,6 +50,11 @@ declare class DunningAction {
      * @return {DunningAction}
      */
     fillWithData(data: any): DunningAction;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = DunningAction;
 //# sourceMappingURL=dunningaction.d.ts.map

@@ -242,6 +242,22 @@ class Event {
     }
 
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "project": this.getProject(),
+            "project_id": this.getProjectId(),
+            "name": this.getName(),
+            "data": this.getData(),
+            "sandbox": this.getSandbox(),
+            "fired_at": this.getFiredAt(),
+        };
+    }
+
+    /**
      * Get all the webhooks of the event.
 
      * @param {any} options

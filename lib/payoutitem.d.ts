@@ -249,6 +249,11 @@ declare class PayoutItem {
      * @return {PayoutItem}
      */
     fillWithData(data: any): PayoutItem;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = PayoutItem;
 //# sourceMappingURL=payoutitem.d.ts.map

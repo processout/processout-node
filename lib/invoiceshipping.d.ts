@@ -230,6 +230,11 @@ declare class InvoiceShipping {
      * @return {InvoiceShipping}
      */
     fillWithData(data: any): InvoiceShipping;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = InvoiceShipping;
 //# sourceMappingURL=invoiceshipping.d.ts.map

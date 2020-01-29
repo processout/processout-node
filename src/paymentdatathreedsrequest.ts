@@ -150,6 +150,19 @@ class PaymentDataThreeDSRequest {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "acs_url": this.getAcsUrl(),
+            "pareq": this.getPareq(),
+            "md": this.getMd(),
+            "term_url": this.getTermUrl(),
+        };
+    }
+
     
 }
 export = PaymentDataThreeDSRequest;

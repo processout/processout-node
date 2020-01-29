@@ -142,6 +142,11 @@ declare class Event {
      */
     fillWithData(data: any): Event;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get all the webhooks of the event.
 
      * @param {any} options

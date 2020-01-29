@@ -268,6 +268,11 @@ declare class Plan {
      */
     fillWithData(data: any): Plan;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get all the plans.
      *
      * @param {any} options

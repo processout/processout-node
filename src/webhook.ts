@@ -444,6 +444,29 @@ class Webhook {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "project": this.getProject(),
+            "project_id": this.getProjectId(),
+            "event": this.getEvent(),
+            "event_id": this.getEventId(),
+            "request_url": this.getRequestUrl(),
+            "request_method": this.getRequestMethod(),
+            "response_body": this.getResponseBody(),
+            "response_code": this.getResponseCode(),
+            "response_headers": this.getResponseHeaders(),
+            "response_time_ms": this.getResponseTimeMs(),
+            "status": this.getStatus(),
+            "created_at": this.getCreatedAt(),
+            "release_at": this.getReleaseAt(),
+        };
+    }
+
     
 }
 export = Webhook;

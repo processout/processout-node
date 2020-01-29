@@ -94,6 +94,17 @@ class InvoiceRisk {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "score": this.getScore(),
+            "is_legit": this.getIsLegit(),
+        };
+    }
+
     
 }
 export = InvoiceRisk;

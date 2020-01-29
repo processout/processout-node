@@ -371,48 +371,25 @@ class Project {
     }
 
     /**
-     * Regenerate the project private key. Make sure to store the new private key and use it in any future request.
-     * 
-     * @param {any} options
-     * @return {this}
+     * Implements a JSON custom marshaller
+     * @return {any}
      */
-    public regeneratePrivateKey(options): Promise<any> {
-        if (!options) options = {};
-        this.fillWithData(options);
-
-        var request = new Request(this.client);
-        var path    = "/private-keys";
-
-        var data = {
-
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "supervisor_project": this.getSupervisorProject(),
+            "supervisor_project_id": this.getSupervisorProjectId(),
+            "api_version": this.getApiVersion(),
+            "name": this.getName(),
+            "logo_url": this.getLogoUrl(),
+            "email": this.getEmail(),
+            "default_currency": this.getDefaultCurrency(),
+            "private_key": this.getPrivateKey(),
+            "dunning_configuration": this.getDunningConfiguration(),
+            "created_at": this.getCreatedAt(),
         };
-
-        var cur = this;
-        return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
-
-                var response = new Response(body, resp);
-                var err      = response.check();
-                if (err != null)
-                    return reject(err);
-
-                var returnValues = [];
-
-                
-                var body = response.body;
-                body = body['project'];
-                        
-                returnValues.push(cur.fillWithData(body));
-
-                return resolve.apply(this, returnValues);
-            };
-
-            request.post(path, data, options, callback);
-            });
     }
+
     /**
      * Fetch the current project information.
 

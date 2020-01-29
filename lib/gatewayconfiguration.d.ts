@@ -214,6 +214,11 @@ declare class GatewayConfiguration {
      */
     fillWithData(data: any): GatewayConfiguration;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get all the gateway configurations.
      *
      * @param {any} options

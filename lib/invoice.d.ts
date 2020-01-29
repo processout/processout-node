@@ -118,7 +118,7 @@ declare class Invoice {
      */
     private metadata;
     /**
-     * Additionnal context saved when processing the transaction on the specific PSP
+     * Dictionary that transmit specific informations to gateways (key-value pair)
      * @type {any}
      */
     private gatewayData;
@@ -475,13 +475,13 @@ declare class Invoice {
     setMetadata(val: any): Invoice;
     /**
      * Get GatewayData
-     * Additionnal context saved when processing the transaction on the specific PSP
+     * Dictionary that transmit specific informations to gateways (key-value pair)
      * @return {any}
      */
     getGatewayData(): any;
     /**
      * Set GatewayData
-     * Additionnal context saved when processing the transaction on the specific PSP
+     * Dictionary that transmit specific informations to gateways (key-value pair)
      * @param {any} val
      * @return {Invoice}
      */
@@ -609,6 +609,11 @@ declare class Invoice {
      * @return {Invoice}
      */
     fillWithData(data: any): Invoice;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
     /**
      * Authorize the invoice using the given source (customer or token)
      * @param string source

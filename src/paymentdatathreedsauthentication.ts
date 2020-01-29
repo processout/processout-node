@@ -66,6 +66,16 @@ class PaymentDataThreeDSAuthentication {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "XID": this.getXID(),
+        };
+    }
+
     
 }
 export = PaymentDataThreeDSAuthentication;

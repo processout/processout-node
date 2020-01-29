@@ -646,6 +646,11 @@ declare class Subscription {
      */
     fillWithData(data: any): Subscription;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get the addons applied to the subscription.
 
      * @param {any} options

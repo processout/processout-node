@@ -502,19 +502,17 @@ declare class Customer {
      */
     fillWithData(data: any): Customer;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get the subscriptions belonging to the customer.
 
      * @param {any} options
      * @return {array}
      */
     fetchSubscriptions(options: any): Promise<any>;
-    /**
-     * Verify a customer token's card is valid.
-     * @param string tokenId
-     * @param {any} options
-     * @return {bool}
-     */
-    verifyToken(tokenId: any, options: any): Promise<any>;
     /**
      * Get the customer's tokens.
 

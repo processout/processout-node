@@ -232,6 +232,11 @@ declare class Product {
      */
     fillWithData(data: any): Product;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Create a new invoice from the product.
 
      * @param {any} options

@@ -94,6 +94,17 @@ class DunningAction {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "action": this.getAction(),
+            "delay_in_days": this.getDelayInDays(),
+        };
+    }
+
     
 }
 export = DunningAction;

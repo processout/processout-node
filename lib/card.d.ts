@@ -538,6 +538,11 @@ declare class Card {
      */
     fillWithData(data: any): Card;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get all the cards.
      *
      * @param {any} options

@@ -50,6 +50,11 @@ declare class InvoiceRisk {
      * @return {InvoiceRisk}
      */
     fillWithData(data: any): InvoiceRisk;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = InvoiceRisk;
 //# sourceMappingURL=invoicerisk.d.ts.map

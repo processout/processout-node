@@ -250,6 +250,11 @@ declare class Coupon {
      */
     fillWithData(data: any): Coupon;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get all the coupons.
      *
      * @param {any} options

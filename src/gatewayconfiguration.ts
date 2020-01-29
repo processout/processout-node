@@ -361,6 +361,26 @@ class GatewayConfiguration {
     }
 
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "project": this.getProject(),
+            "project_id": this.getProjectId(),
+            "gateway": this.getGateway(),
+            "gateway_id": this.getGatewayId(),
+            "name": this.getName(),
+            "default_currency": this.getDefaultCurrency(),
+            "enabled": this.getEnabled(),
+            "public_keys": this.getPublicKeys(),
+            "created_at": this.getCreatedAt(),
+            "enabled_at": this.getEnabledAt(),
+        };
+    }
+
+    /**
      * Get all the gateway configurations.
      * 
      * @param {any} options

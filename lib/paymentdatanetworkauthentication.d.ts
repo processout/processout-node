@@ -32,6 +32,11 @@ declare class PaymentDataNetworkAuthentication {
      * @return {PaymentDataNetworkAuthentication}
      */
     fillWithData(data: any): PaymentDataNetworkAuthentication;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = PaymentDataNetworkAuthentication;
 //# sourceMappingURL=paymentdatanetworkauthentication.d.ts.map

@@ -374,6 +374,27 @@ class InvoiceShipping {
         return this;
     }
 
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "amount": this.getAmount(),
+            "method": this.getMethod(),
+            "provider": this.getProvider(),
+            "delay": this.getDelay(),
+            "address1": this.getAddress1(),
+            "address2": this.getAddress2(),
+            "city": this.getCity(),
+            "state": this.getState(),
+            "country_code": this.getCountryCode(),
+            "zip": this.getZip(),
+            "phone_number": this.getPhoneNumber(),
+            "expects_shipping_at": this.getExpectsShippingAt(),
+        };
+    }
+
     
 }
 export = InvoiceShipping;

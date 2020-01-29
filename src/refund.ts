@@ -326,6 +326,25 @@ class Refund {
     }
 
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "transaction": this.getTransaction(),
+            "transaction_id": this.getTransactionId(),
+            "amount": this.getAmount(),
+            "reason": this.getReason(),
+            "information": this.getInformation(),
+            "has_failed": this.getHasFailed(),
+            "metadata": this.getMetadata(),
+            "sandbox": this.getSandbox(),
+            "created_at": this.getCreatedAt(),
+        };
+    }
+
+    /**
      * Get the transaction's refunds.
 	 * @param string transactionId
      * @param {any} options

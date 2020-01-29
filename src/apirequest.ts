@@ -445,6 +445,29 @@ class APIRequest {
     }
 
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "project": this.getProject(),
+            "api_version": this.getApiVersion(),
+            "idempotency_key": this.getIdempotencyKey(),
+            "url": this.getUrl(),
+            "method": this.getMethod(),
+            "headers": this.getHeaders(),
+            "body": this.getBody(),
+            "response_code": this.getResponseCode(),
+            "response_headers": this.getResponseHeaders(),
+            "response_body": this.getResponseBody(),
+            "response_ms": this.getResponseMs(),
+            "sandbox": this.getSandbox(),
+            "created_at": this.getCreatedAt(),
+        };
+    }
+
+    /**
      * Get all the API requests.
      * 
      * @param {any} options

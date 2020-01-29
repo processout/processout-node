@@ -50,6 +50,11 @@ declare class InvoiceDevice {
      * @return {InvoiceDevice}
      */
     fillWithData(data: any): InvoiceDevice;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = InvoiceDevice;
 //# sourceMappingURL=invoicedevice.d.ts.map

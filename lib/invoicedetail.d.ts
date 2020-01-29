@@ -284,6 +284,11 @@ declare class InvoiceDetail {
      * @return {InvoiceDetail}
      */
     fillWithData(data: any): InvoiceDetail;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = InvoiceDetail;
 //# sourceMappingURL=invoicedetail.d.ts.map

@@ -72,6 +72,12 @@ class TransactionOperation {
     private amount: string = null;
 
     /**
+     * Currency of the operation
+     * @type {string}
+     */
+    private currency: string = null;
+
+    /**
      * True if the operation is an attempt, false otherwise
      * @type {boolean}
      */
@@ -100,6 +106,12 @@ class TransactionOperation {
      * @type {string}
      */
     private gatewayOperationId: string = null;
+
+    /**
+     * Acquirer Routing Number, can be used to track a payment or refund at the issuer
+     * @type {string}
+     */
+    private arn: string = null;
 
     /**
      * Error code returned when attempting the operation, if any
@@ -396,6 +408,26 @@ class TransactionOperation {
     }
 
     /**
+     * Get Currency
+     * Currency of the operation
+     * @return {string}
+     */
+    public getCurrency(): string {
+        return this.currency;
+    }
+
+    /**
+     * Set Currency
+     * Currency of the operation
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    public setCurrency(val: string): TransactionOperation {
+        this.currency = val;
+        return this;
+    }
+
+    /**
      * Get IsAttempt
      * True if the operation is an attempt, false otherwise
      * @return {boolean}
@@ -492,6 +524,26 @@ class TransactionOperation {
      */
     public setGatewayOperationId(val: string): TransactionOperation {
         this.gatewayOperationId = val;
+        return this;
+    }
+
+    /**
+     * Get Arn
+     * Acquirer Routing Number, can be used to track a payment or refund at the issuer
+     * @return {string}
+     */
+    public getArn(): string {
+        return this.arn;
+    }
+
+    /**
+     * Set Arn
+     * Acquirer Routing Number, can be used to track a payment or refund at the issuer
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    public setArn(val: string): TransactionOperation {
+        this.arn = val;
         return this;
     }
 
@@ -702,6 +754,8 @@ class TransactionOperation {
             this.setGatewayConfigurationId(data["gateway_configuration_id"]);
         if (data["amount"])
             this.setAmount(data["amount"]);
+        if (data["currency"])
+            this.setCurrency(data["currency"]);
         if (data["is_attempt"])
             this.setIsAttempt(data["is_attempt"]);
         if (data["has_failed"])
@@ -712,6 +766,8 @@ class TransactionOperation {
             this.setType(data["type"]);
         if (data["gateway_operation_id"])
             this.setGatewayOperationId(data["gateway_operation_id"]);
+        if (data["arn"])
+            this.setArn(data["arn"]);
         if (data["error_code"])
             this.setErrorCode(data["error_code"]);
         if (data["gateway_data"])
@@ -729,6 +785,40 @@ class TransactionOperation {
         if (data["created_at"])
             this.setCreatedAt(data["created_at"]);
         return this;
+    }
+
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "transaction": this.getTransaction(),
+            "transaction_id": this.getTransactionId(),
+            "token": this.getToken(),
+            "token_id": this.getTokenId(),
+            "card": this.getCard(),
+            "card_id": this.getCardId(),
+            "gateway_configuration": this.getGatewayConfiguration(),
+            "gateway_configuration_id": this.getGatewayConfigurationId(),
+            "amount": this.getAmount(),
+            "currency": this.getCurrency(),
+            "is_attempt": this.getIsAttempt(),
+            "has_failed": this.getHasFailed(),
+            "is_accountable": this.getIsAccountable(),
+            "type": this.getType(),
+            "gateway_operation_id": this.getGatewayOperationId(),
+            "arn": this.getArn(),
+            "error_code": this.getErrorCode(),
+            "gateway_data": this.getGatewayData(),
+            "payment_data_three_d_s_request": this.getPaymentDataThreeDSRequest(),
+            "payment_data_three_d_s_authentication": this.getPaymentDataThreeDSAuthentication(),
+            "payment_data_network_authentication": this.getPaymentDataNetworkAuthentication(),
+            "metadata": this.getMetadata(),
+            "gateway_fee": this.getGatewayFee(),
+            "created_at": this.getCreatedAt(),
+        };
     }
 
     

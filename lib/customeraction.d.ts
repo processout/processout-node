@@ -50,6 +50,11 @@ declare class CustomerAction {
      * @return {CustomerAction}
      */
     fillWithData(data: any): CustomerAction;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = CustomerAction;
 //# sourceMappingURL=customeraction.d.ts.map

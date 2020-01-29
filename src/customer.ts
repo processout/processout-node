@@ -839,6 +839,42 @@ class Customer {
     }
 
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "project": this.getProject(),
+            "project_id": this.getProjectId(),
+            "default_token": this.getDefaultToken(),
+            "default_token_id": this.getDefaultTokenId(),
+            "tokens": this.getTokens(),
+            "subscriptions": this.getSubscriptions(),
+            "transactions": this.getTransactions(),
+            "balance": this.getBalance(),
+            "currency": this.getCurrency(),
+            "email": this.getEmail(),
+            "first_name": this.getFirstName(),
+            "last_name": this.getLastName(),
+            "address1": this.getAddress1(),
+            "address2": this.getAddress2(),
+            "city": this.getCity(),
+            "state": this.getState(),
+            "zip": this.getZip(),
+            "country_code": this.getCountryCode(),
+            "ip_address": this.getIpAddress(),
+            "phone_number": this.getPhoneNumber(),
+            "legal_document": this.getLegalDocument(),
+            "sex": this.getSex(),
+            "is_business": this.getIsBusiness(),
+            "metadata": this.getMetadata(),
+            "sandbox": this.getSandbox(),
+            "created_at": this.getCreatedAt(),
+        };
+    }
+
+    /**
      * Get the subscriptions belonging to the customer.
 
      * @param {any} options
@@ -885,46 +921,6 @@ class Customer {
             };
 
             request.get(path, data, options, callback);
-            });
-    }
-    /**
-     * Verify a customer token's card is valid.
-	 * @param string tokenId
-     * @param {any} options
-     * @return {bool}
-     */
-    public verifyToken(tokenId, options): Promise<any> {
-        if (!options) options = {};
-        this.fillWithData(options);
-
-        var request = new Request(this.client);
-        var path    = "/customers/" + encodeURI(this.getId()) + "/tokens/" + encodeURI(tokenId) + "/verify";
-
-        var data = {
-
-        };
-
-        var cur = this;
-        return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
-
-                var response = new Response(body, resp);
-                var err      = response.check();
-                if (err != null)
-                    return reject(err);
-
-                var returnValues = [];
-
-                
-                returnValues.push(response.isSuccess());
-
-                return resolve.apply(this, returnValues);
-            };
-
-            request.post(path, data, options, callback);
             });
     }
     /**

@@ -72,6 +72,12 @@ class Token {
     private isSubscriptionOnly: boolean = null;
 
     /**
+     * True if the token it the default token of the customer, false otherwise
+     * @type {boolean}
+     */
+    private isDefault: boolean = null;
+
+    /**
      * URL where the customer will be redirected upon payment authentication (if required by tokenization method)
      * @type {string}
      */
@@ -82,12 +88,6 @@ class Token {
      * @type {string}
      */
     private cancelUrl: string = null;
-
-    /**
-     * True if the token it the default token of the customer, false otherwise
-     * @type {boolean}
-     */
-    private isDefault: boolean = null;
 
     /**
      * True if the token is chargeable, false otherwise
@@ -341,6 +341,26 @@ class Token {
     }
 
     /**
+     * Get IsDefault
+     * True if the token it the default token of the customer, false otherwise
+     * @return {boolean}
+     */
+    public getIsDefault(): boolean {
+        return this.isDefault;
+    }
+
+    /**
+     * Set IsDefault
+     * True if the token it the default token of the customer, false otherwise
+     * @param {boolean} val
+     * @return {Token}
+     */
+    public setIsDefault(val: boolean): Token {
+        this.isDefault = val;
+        return this;
+    }
+
+    /**
      * Get ReturnUrl
      * URL where the customer will be redirected upon payment authentication (if required by tokenization method)
      * @return {string}
@@ -377,26 +397,6 @@ class Token {
      */
     public setCancelUrl(val: string): Token {
         this.cancelUrl = val;
-        return this;
-    }
-
-    /**
-     * Get IsDefault
-     * True if the token it the default token of the customer, false otherwise
-     * @return {boolean}
-     */
-    public getIsDefault(): boolean {
-        return this.isDefault;
-    }
-
-    /**
-     * Set IsDefault
-     * True if the token it the default token of the customer, false otherwise
-     * @param {boolean} val
-     * @return {Token}
-     */
-    public setIsDefault(val: boolean): Token {
-        this.isDefault = val;
         return this;
     }
 
@@ -466,12 +466,12 @@ class Token {
             this.setMetadata(data["metadata"]);
         if (data["is_subscription_only"])
             this.setIsSubscriptionOnly(data["is_subscription_only"]);
+        if (data["is_default"])
+            this.setIsDefault(data["is_default"]);
         if (data["return_url"])
             this.setReturnUrl(data["return_url"]);
         if (data["cancel_url"])
             this.setCancelUrl(data["cancel_url"]);
-        if (data["is_default"])
-            this.setIsDefault(data["is_default"]);
         if (data["is_chargeable"])
             this.setIsChargeable(data["is_chargeable"]);
         if (data["created_at"])
@@ -480,45 +480,29 @@ class Token {
     }
 
     /**
-     * Verify a customer token's card is valid.
-
-     * @param {any} options
-     * @return {bool}
+     * Implements a JSON custom marshaller
+     * @return {any}
      */
-    public verify(options): Promise<any> {
-        if (!options) options = {};
-        this.fillWithData(options);
-
-        var request = new Request(this.client);
-        var path    = "/customers/" + encodeURI(this.getCustomerId()) + "/tokens/" + encodeURI(this.getId()) + "/verify";
-
-        var data = {
-
+    public toJSON(): any {
+        return {
+            "id": this.getId(),
+            "customer": this.getCustomer(),
+            "customer_id": this.getCustomerId(),
+            "gateway_configuration": this.getGatewayConfiguration(),
+            "gateway_configuration_id": this.getGatewayConfigurationId(),
+            "card": this.getCard(),
+            "card_id": this.getCardId(),
+            "type": this.getType(),
+            "metadata": this.getMetadata(),
+            "is_subscription_only": this.getIsSubscriptionOnly(),
+            "is_default": this.getIsDefault(),
+            "return_url": this.getReturnUrl(),
+            "cancel_url": this.getCancelUrl(),
+            "is_chargeable": this.getIsChargeable(),
+            "created_at": this.getCreatedAt(),
         };
-
-        var cur = this;
-        return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
-
-                var response = new Response(body, resp);
-                var err      = response.check();
-                if (err != null)
-                    return reject(err);
-
-                var returnValues = [];
-
-                
-                returnValues.push(response.isSuccess());
-
-                return resolve.apply(this, returnValues);
-            };
-
-            request.post(path, data, options, callback);
-            });
     }
+
     /**
      * Get the customer's tokens.
 	 * @param string customerId
@@ -631,7 +615,7 @@ class Token {
 			'cancel_url': this.getCancelUrl(), 
 			'source': (options['source']) ? options['source'] : null, 
 			'settings': (options['settings']) ? options['settings'] : null, 
-			'target': (options['target']) ? options['target'] : null, 
+			'device': (options['device']) ? options['device'] : null, 
 			'verify': (options['verify']) ? options['verify'] : null, 
 			'verify_metadata': (options['verify_metadata']) ? options['verify_metadata'] : null, 
 			'set_default': (options['set_default']) ? options['set_default'] : null
@@ -677,7 +661,12 @@ class Token {
         var path    = "/customers/" + encodeURI(this.getCustomerId()) + "/tokens/" + encodeURI(this.getId()) + "";
 
         var data = {
-
+			'source': (options['source']) ? options['source'] : null, 
+			'settings': (options['settings']) ? options['settings'] : null, 
+			'device': (options['device']) ? options['device'] : null, 
+			'verify': (options['verify']) ? options['verify'] : null, 
+			'verify_metadata': (options['verify_metadata']) ? options['verify_metadata'] : null, 
+			'set_default': (options['set_default']) ? options['set_default'] : null
         };
 
         var cur = this;

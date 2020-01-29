@@ -53,6 +53,11 @@ declare class Token {
      */
     private isSubscriptionOnly;
     /**
+     * True if the token it the default token of the customer, false otherwise
+     * @type {boolean}
+     */
+    private isDefault;
+    /**
      * URL where the customer will be redirected upon payment authentication (if required by tokenization method)
      * @type {string}
      */
@@ -62,11 +67,6 @@ declare class Token {
      * @type {string}
      */
     private cancelUrl;
-    /**
-     * True if the token it the default token of the customer, false otherwise
-     * @type {boolean}
-     */
-    private isDefault;
     /**
      * True if the token is chargeable, false otherwise
      * @type {boolean}
@@ -215,6 +215,19 @@ declare class Token {
      */
     setIsSubscriptionOnly(val: boolean): Token;
     /**
+     * Get IsDefault
+     * True if the token it the default token of the customer, false otherwise
+     * @return {boolean}
+     */
+    getIsDefault(): boolean;
+    /**
+     * Set IsDefault
+     * True if the token it the default token of the customer, false otherwise
+     * @param {boolean} val
+     * @return {Token}
+     */
+    setIsDefault(val: boolean): Token;
+    /**
      * Get ReturnUrl
      * URL where the customer will be redirected upon payment authentication (if required by tokenization method)
      * @return {string}
@@ -240,19 +253,6 @@ declare class Token {
      * @return {Token}
      */
     setCancelUrl(val: string): Token;
-    /**
-     * Get IsDefault
-     * True if the token it the default token of the customer, false otherwise
-     * @return {boolean}
-     */
-    getIsDefault(): boolean;
-    /**
-     * Set IsDefault
-     * True if the token it the default token of the customer, false otherwise
-     * @param {boolean} val
-     * @return {Token}
-     */
-    setIsDefault(val: boolean): Token;
     /**
      * Get IsChargeable
      * True if the token is chargeable, false otherwise
@@ -286,12 +286,10 @@ declare class Token {
      */
     fillWithData(data: any): Token;
     /**
-     * Verify a customer token's card is valid.
-
-     * @param {any} options
-     * @return {bool}
+     * Implements a JSON custom marshaller
+     * @return {any}
      */
-    verify(options: any): Promise<any>;
+    toJSON(): any;
     /**
      * Get the customer's tokens.
      * @param string customerId

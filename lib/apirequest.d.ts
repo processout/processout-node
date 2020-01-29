@@ -268,6 +268,11 @@ declare class APIRequest {
      */
     fillWithData(data: any): APIRequest;
     /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
+    /**
      * Get all the API requests.
      *
      * @param {any} options

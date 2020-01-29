@@ -86,6 +86,11 @@ declare class PaymentDataThreeDSRequest {
      * @return {PaymentDataThreeDSRequest}
      */
     fillWithData(data: any): PaymentDataThreeDSRequest;
+    /**
+     * Implements a JSON custom marshaller
+     * @return {any}
+     */
+    toJSON(): any;
 }
 export = PaymentDataThreeDSRequest;
 //# sourceMappingURL=paymentdatathreedsrequest.d.ts.map
