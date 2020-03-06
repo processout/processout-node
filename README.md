@@ -6,7 +6,7 @@ This package provides bindings to the ProcessOut API.
 Dependencies
 ------------
 
-* restler
+* node-fetch
 * btoa
 
 Installation

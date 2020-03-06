@@ -222,37 +222,37 @@ declare class GatewayConfiguration {
      * Get all the gateway configurations.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Find a gateway configuration by its ID.
      * @param string configurationId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(configurationId: any, options: any): Promise<any>;
+    find(configurationId: string, options: any): Promise<any>;
     /**
      * Save the updated gateway configuration attributes and settings.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     save(options: any): Promise<any>;
     /**
      * Delete the gateway configuration.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    delete(options: any): Promise<any>;
+    delete(options: any): Promise<boolean>;
     /**
      * Create a new gateway configuration.
      * @param string gatewayName
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    create(gatewayName: any, options: any): Promise<any>;
+    create(gatewayName: string, options: any): Promise<any>;
 }
 export = GatewayConfiguration;
 //# sourceMappingURL=gatewayconfiguration.d.ts.map

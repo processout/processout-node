@@ -1,4 +1,4 @@
-import rest = require('request');
+import fetch = require('node-fetch');
 import ProcessOut = require('../processout');
 
 class Request {
@@ -14,10 +14,7 @@ class Request {
      * @return {object} req
      */
     public authenticate(req: any): any {
-        req.auth = {
-            user: this.client.getProjectID(),
-            pass: this.client.getProjectSecret()
-        };
+        req.headers['Authorization'] = 'Basic ' + Buffer.from(this.client.getProjectID() + ":" + this.client.getProjectSecret()).toString('base64');
         return req;
     }
 
@@ -28,15 +25,16 @@ class Request {
      * @return {object}
      */
     public prepare(req: any, options: any): any {
-        this.authenticate(req);
-        req.gzip = true;
-        req.json = true;
-
         if (! req.hasOwnProperty('headers'))
             req.headers = {};
 
-        req.headers['API-Version'] = '1.4.0.0';
-        req.headers['User-Agent'] = 'ProcessOut NodeJS-Bindings/8.0.0';
+        this.authenticate(req);
+        req.compress = true;
+
+        req.headers['API-Version']  = '1.4.0.0';
+        req.headers['User-Agent']   = 'ProcessOut NodeJS-Bindings/8.0.0';
+        req.headers['Content-Type'] = 'application/json';
+        req.headers['Accept']       = 'application/json';
 
         if (typeof options === 'undefined')
             return req;
@@ -82,10 +80,9 @@ class Request {
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
-     * @param  {callback} callback
-     * @return {restler}
+     * @return {Promise}
      */
-    public get(path: string, data: any, options: any, callback: any): any {
+    public get(path: string, data: any, options: any): Promise<fetch.Response> {
         data = this.getData(data, options);
 
         var out = new Array();
@@ -97,10 +94,12 @@ class Request {
             suffix = '?' + out.join('&');
         }
 
-        return rest(this.prepare({
-            method: 'GET',
-            uri: this.client.getHost() + path + suffix
-        }, options), callback);
+        return fetch(
+            this.client.getHost() + path + suffix, 
+            this.prepare({
+                method: 'GET'
+            }, options)
+        );
     }
 
     /**
@@ -108,15 +107,16 @@ class Request {
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
-     * @param  {callback} callback
-     * @return {restler}
+     * @return {Promise}
      */
-    public post(path: string, data: any, options: any, callback: any): any {
-        return rest(this.prepare({
-            method: 'POST',
-            uri: this.client.getHost() + path,
-            body: this.getData(data, options)
-        }, options), callback);
+    public post(path: string, data: any, options: any): Promise<fetch.Response> {
+        return fetch(
+            this.client.getHost() + path,
+            this.prepare({
+                method: 'POST',
+                body:   JSON.stringify(this.getData(data, options))
+            }, options)
+        );
     }
 
     /**
@@ -124,15 +124,16 @@ class Request {
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
-     * @param  {callback} callback
-     * @return {restler}
+     * @return {Promise}
      */
-    public put(path: string, data: any, options: any, callback: any): any {
-        return rest(this.prepare({
-            method: 'PUT',
-            uri: this.client.getHost() + path,
-            body: this.getData(data, options)
-        }, options), callback);
+    public put(path: string, data: any, options: any): Promise<fetch.Response> {
+        return fetch(
+            this.client.getHost() + path, 
+            this.prepare({
+                method: 'PUT',
+                body:   JSON.stringify(this.getData(data, options))
+            }, options)
+        );
     }
 
     /**
@@ -140,10 +141,9 @@ class Request {
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
-     * @param  {callback} callback
-     * @return {restler}
+     * @return {Promise}
      */
-    public delete(path: string, data: any, options: any, callback: any): any {
+    public delete(path: string, data: any, options: any): Promise<fetch.Response> {
         data = this.getData(data, options);
 
         var out = new Array();
@@ -155,10 +155,12 @@ class Request {
             suffix = '?' + out.join('&');
         }
 
-        return rest(this.prepare({
-            method: 'DELETE',
-            uri: this.client.getHost() + path + suffix
-        }, options), callback);
+        return fetch(
+            this.client.getHost() + path + suffix,
+            this.prepare({
+                method: 'DELETE'
+            }, options)
+        );
     }
 }
 export = Request;

@@ -68,6 +68,11 @@ declare class Token {
      */
     private cancelUrl;
     /**
+     * Summary of the customer token, such as a description of the card used or the email of a PayPal account
+     * @type {string}
+     */
+    private summary;
+    /**
      * True if the token is chargeable, false otherwise
      * @type {boolean}
      */
@@ -254,6 +259,19 @@ declare class Token {
      */
     setCancelUrl(val: string): Token;
     /**
+     * Get Summary
+     * Summary of the customer token, such as a description of the card used or the email of a PayPal account
+     * @return {string}
+     */
+    getSummary(): string;
+    /**
+     * Set Summary
+     * Summary of the customer token, such as a description of the card used or the email of a PayPal account
+     * @param {string} val
+     * @return {Token}
+     */
+    setSummary(val: string): Token;
+    /**
      * Get IsChargeable
      * True if the token is chargeable, false otherwise
      * @return {boolean}
@@ -294,38 +312,38 @@ declare class Token {
      * Get the customer's tokens.
      * @param string customerId
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
-    fetchCustomerTokens(customerId: any, options: any): Promise<any>;
+    fetchCustomerTokens(customerId: string, options: any): Promise<any>;
     /**
      * Find a customer's token by its ID.
      * @param string customerId
      * @param string tokenId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(customerId: any, tokenId: any, options: any): Promise<any>;
+    find(customerId: string, tokenId: string, options: any): Promise<any>;
     /**
      * Create a new token for the given customer ID.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     create(options: any): Promise<any>;
     /**
      * Save the updated customer attributes.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    save(options: any): Promise<any>;
+    save(options: any): Promise<boolean>;
     /**
      * Delete a customer token
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    delete(options: any): Promise<any>;
+    delete(options: any): Promise<boolean>;
 }
 export = Token;
 //# sourceMappingURL=token.d.ts.map

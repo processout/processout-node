@@ -276,14 +276,14 @@ declare class Addon {
      * Get the addons applied to the subscription.
      * @param string subscriptionId
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
-    fetchSubscriptionAddons(subscriptionId: any, options: any): Promise<any>;
+    fetchSubscriptionAddons(subscriptionId: string, options: any): Promise<any>;
     /**
      * Create a new addon to the given subscription ID.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     create(options: any): Promise<any>;
     /**
@@ -291,23 +291,23 @@ declare class Addon {
      * @param string subscriptionId
      * @param string addonId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(subscriptionId: any, addonId: any, options: any): Promise<any>;
+    find(subscriptionId: string, addonId: string, options: any): Promise<any>;
     /**
      * Save the updated addon attributes.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     save(options: any): Promise<any>;
     /**
      * Delete an addon applied to a subscription.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    delete(options: any): Promise<any>;
+    delete(options: any): Promise<boolean>;
 }
 export = Addon;
 //# sourceMappingURL=addon.d.ts.map

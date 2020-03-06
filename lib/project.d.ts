@@ -222,35 +222,35 @@ declare class Project {
      * Fetch the current project information.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     fetch(options: any): Promise<any>;
     /**
      * Save the updated project's attributes.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     save(options: any): Promise<any>;
     /**
      * Delete the project. Be careful! Executing this request will prevent any further interaction with the API that uses this project.
      *
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    delete(options: any): Promise<any>;
+    delete(options: any): Promise<boolean>;
     /**
      * Get all the supervised projects.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     fetchSupervised(options: any): Promise<any>;
     /**
      * Create a new supervised project.
      *
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     createSupervised(options: any): Promise<any>;
 }

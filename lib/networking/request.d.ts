@@ -1,3 +1,4 @@
+import fetch = require('node-fetch');
 import ProcessOut = require('../processout');
 declare class Request {
     private client;
@@ -27,37 +28,33 @@ declare class Request {
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
-     * @param  {callback} callback
-     * @return {restler}
+     * @return {Promise}
      */
-    get(path: string, data: any, options: any, callback: any): any;
+    get(path: string, data: any, options: any): Promise<fetch.Response>;
     /**
      * Generate a post request
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
-     * @param  {callback} callback
-     * @return {restler}
+     * @return {Promise}
      */
-    post(path: string, data: any, options: any, callback: any): any;
+    post(path: string, data: any, options: any): Promise<fetch.Response>;
     /**
      * Generate a post request
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
-     * @param  {callback} callback
-     * @return {restler}
+     * @return {Promise}
      */
-    put(path: string, data: any, options: any, callback: any): any;
+    put(path: string, data: any, options: any): Promise<fetch.Response>;
     /**
      * Generate a post request
      * @param  {string} path
      * @param  {object} data
      * @param  {object} options
-     * @param  {callback} callback
-     * @return {restler}
+     * @return {Promise}
      */
-    delete(path: string, data: any, options: any, callback: any): any;
+    delete(path: string, data: any, options: any): Promise<fetch.Response>;
 }
 export = Request;
 //# sourceMappingURL=request.d.ts.map

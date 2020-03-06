@@ -1,5 +1,7 @@
 // The content of this file was automatically generated
 
+import fetch = require('node-fetch');
+
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -348,9 +350,9 @@ class Refund {
      * Get the transaction's refunds.
 	 * @param string transactionId
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
-    public fetchTransactionRefunds(transactionId, options): Promise<any> {
+    public fetchTransactionRefunds(transactionId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -363,13 +365,14 @@ class Refund {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -377,7 +380,7 @@ class Refund {
 
                 
                 var a    = [];
-                var body = response.body['refunds'];
+                var body = respBody['refunds'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newRefund();
                     tmp.fillWithData(body[i]);
@@ -389,8 +392,11 @@ class Refund {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
@@ -398,9 +404,9 @@ class Refund {
 	 * @param string transactionId
 	 * @param string refundId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    public find(transactionId, refundId, options): Promise<any> {
+    public find(transactionId: string, refundId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -413,37 +419,41 @@ class Refund {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['refund'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Create a refund for a transaction.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    public create(options): Promise<any> {
+    public create(options): Promise<boolean> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -459,13 +469,14 @@ class Refund {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -476,8 +487,11 @@ class Refund {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.post(path, data, options, callback);
+            request.post(path, data, options).then(callback, callbackError);
             });
     }
     

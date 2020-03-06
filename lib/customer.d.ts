@@ -510,72 +510,72 @@ declare class Customer {
      * Get the subscriptions belonging to the customer.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     fetchSubscriptions(options: any): Promise<any>;
     /**
      * Get the customer's tokens.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     fetchTokens(options: any): Promise<any>;
     /**
      * Find a customer's token by its ID.
      * @param string tokenId
      * @param {any} options
-     * @return {Token}
+     * @return {Promise<p.Token>}
      */
-    findToken(tokenId: any, options: any): Promise<any>;
+    findToken(tokenId: string, options: any): Promise<p.Token>;
     /**
      * Delete a customer's token by its ID.
      * @param string tokenId
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    deleteToken(tokenId: any, options: any): Promise<any>;
+    deleteToken(tokenId: string, options: any): Promise<boolean>;
     /**
      * Get the transactions belonging to the customer.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     fetchTransactions(options: any): Promise<any>;
     /**
      * Get all the customers.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Create a new customer.
      *
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     create(options: any): Promise<any>;
     /**
      * Find a customer by its ID.
      * @param string customerId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(customerId: any, options: any): Promise<any>;
+    find(customerId: string, options: any): Promise<any>;
     /**
      * Save the updated customer attributes.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     save(options: any): Promise<any>;
     /**
      * Delete the customer.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    delete(options: any): Promise<any>;
+    delete(options: any): Promise<boolean>;
 }
 export = Customer;
 //# sourceMappingURL=customer.d.ts.map

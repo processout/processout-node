@@ -240,44 +240,44 @@ declare class Product {
      * Create a new invoice from the product.
 
      * @param {any} options
-     * @return {Invoice}
+     * @return {Promise<p.Invoice>}
      */
-    createInvoice(options: any): Promise<any>;
+    createInvoice(options: any): Promise<p.Invoice>;
     /**
      * Get all the products.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Create a new product.
      *
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     create(options: any): Promise<any>;
     /**
      * Find a product by its ID.
      * @param string productId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(productId: any, options: any): Promise<any>;
+    find(productId: string, options: any): Promise<any>;
     /**
      * Save the updated product attributes.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     save(options: any): Promise<any>;
     /**
      * Delete the product.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    delete(options: any): Promise<any>;
+    delete(options: any): Promise<boolean>;
 }
 export = Product;
 //# sourceMappingURL=product.d.ts.map

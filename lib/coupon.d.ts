@@ -258,37 +258,37 @@ declare class Coupon {
      * Get all the coupons.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Create a new coupon.
      *
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     create(options: any): Promise<any>;
     /**
      * Find a coupon by its ID.
      * @param string couponId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(couponId: any, options: any): Promise<any>;
+    find(couponId: string, options: any): Promise<any>;
     /**
      * Save the updated coupon attributes.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     save(options: any): Promise<any>;
     /**
      * Delete the coupon.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    delete(options: any): Promise<any>;
+    delete(options: any): Promise<boolean>;
 }
 export = Coupon;
 //# sourceMappingURL=coupon.d.ts.map

@@ -276,16 +276,16 @@ declare class APIRequest {
      * Get all the API requests.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Find an API request by its ID.
      * @param string apiRequestId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(apiRequestId: any, options: any): Promise<any>;
+    find(apiRequestId: string, options: any): Promise<any>;
 }
 export = APIRequest;
 //# sourceMappingURL=apirequest.d.ts.map

@@ -618,72 +618,72 @@ declare class Invoice {
      * Authorize the invoice using the given source (customer or token)
      * @param string source
      * @param {any} options
-     * @return {Transaction}
+     * @return {Promise<p.Transaction>}
      */
-    authorize(source: any, options: any): Promise<any>;
+    authorize(source: string, options: any): Promise<p.Transaction>;
     /**
      * Capture the invoice using the given source (customer or token)
      * @param string source
      * @param {any} options
-     * @return {Transaction}
+     * @return {Promise<p.Transaction>}
      */
-    capture(source: any, options: any): Promise<any>;
+    capture(source: string, options: any): Promise<p.Transaction>;
     /**
      * Get the customer linked to the invoice.
 
      * @param {any} options
-     * @return {Customer}
+     * @return {Promise<p.Customer>}
      */
-    fetchCustomer(options: any): Promise<any>;
+    fetchCustomer(options: any): Promise<p.Customer>;
     /**
      * Assign a customer to the invoice.
      * @param string customerId
      * @param {any} options
-     * @return {Customer}
+     * @return {Promise<p.Customer>}
      */
-    assignCustomer(customerId: any, options: any): Promise<any>;
+    assignCustomer(customerId: string, options: any): Promise<p.Customer>;
     /**
      * Initiate a 3-D Secure authentication
      * @param string source
      * @param {any} options
-     * @return {CustomerAction}
+     * @return {Promise<p.CustomerAction>}
      */
-    initiateThreeDS(source: any, options: any): Promise<any>;
+    initiateThreeDS(source: string, options: any): Promise<p.CustomerAction>;
     /**
      * Get the transaction of the invoice.
 
      * @param {any} options
-     * @return {Transaction}
+     * @return {Promise<p.Transaction>}
      */
-    fetchTransaction(options: any): Promise<any>;
+    fetchTransaction(options: any): Promise<p.Transaction>;
     /**
      * Void the invoice
 
      * @param {any} options
-     * @return {Transaction}
+     * @return {Promise<p.Transaction>}
      */
-    void(options: any): Promise<any>;
+    void(options: any): Promise<p.Transaction>;
     /**
      * Get all the invoices.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Create a new invoice.
      *
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     create(options: any): Promise<any>;
     /**
      * Find an invoice by its ID.
      * @param string invoiceId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(invoiceId: any, options: any): Promise<any>;
+    find(invoiceId: string, options: any): Promise<any>;
 }
 export = Invoice;
 //# sourceMappingURL=invoice.d.ts.map

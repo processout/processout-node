@@ -1,5 +1,7 @@
 // The content of this file was automatically generated
 
+import fetch = require('node-fetch');
+
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -878,7 +880,7 @@ class Customer {
      * Get the subscriptions belonging to the customer.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     public fetchSubscriptions(options): Promise<any> {
         if (!options) options = {};
@@ -893,13 +895,14 @@ class Customer {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -907,7 +910,7 @@ class Customer {
 
                 
                 var a    = [];
-                var body = response.body['subscriptions'];
+                var body = respBody['subscriptions'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newSubscription();
                     tmp.fillWithData(body[i]);
@@ -919,15 +922,18 @@ class Customer {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Get the customer's tokens.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     public fetchTokens(options): Promise<any> {
         if (!options) options = {};
@@ -942,13 +948,14 @@ class Customer {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -956,7 +963,7 @@ class Customer {
 
                 
                 var a    = [];
-                var body = response.body['tokens'];
+                var body = respBody['tokens'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newToken();
                     tmp.fillWithData(body[i]);
@@ -968,17 +975,20 @@ class Customer {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Find a customer's token by its ID.
 	 * @param string tokenId
      * @param {any} options
-     * @return {Token}
+     * @return {Promise<p.Token>}
      */
-    public findToken(tokenId, options): Promise<any> {
+    public findToken(tokenId: string, options): Promise<p.Token> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -991,37 +1001,41 @@ class Customer {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['token'];
                 var obj = cur.client.newToken();
                 returnValues.push(obj.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Delete a customer's token by its ID.
 	 * @param string tokenId
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    public deleteToken(tokenId, options): Promise<any> {
+    public deleteToken(tokenId: string, options): Promise<boolean> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -1034,13 +1048,14 @@ class Customer {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -1051,15 +1066,18 @@ class Customer {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.delete(path, data, options, callback);
+            request.delete(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Get the transactions belonging to the customer.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     public fetchTransactions(options): Promise<any> {
         if (!options) options = {};
@@ -1074,13 +1092,14 @@ class Customer {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -1088,7 +1107,7 @@ class Customer {
 
                 
                 var a    = [];
-                var body = response.body['transactions'];
+                var body = respBody['transactions'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newTransaction();
                     tmp.fillWithData(body[i]);
@@ -1100,15 +1119,18 @@ class Customer {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Get all the customers.
      * 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     public all(options): Promise<any> {
         if (!options) options = {};
@@ -1123,13 +1145,14 @@ class Customer {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -1137,7 +1160,7 @@ class Customer {
 
                 
                 var a    = [];
-                var body = response.body['customers'];
+                var body = respBody['customers'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newCustomer();
                     tmp.fillWithData(body[i]);
@@ -1149,15 +1172,18 @@ class Customer {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Create a new customer.
      * 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     public create(options): Promise<any> {
         if (!options) options = {};
@@ -1189,37 +1215,41 @@ class Customer {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['customer'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.post(path, data, options, callback);
+            request.post(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Find a customer by its ID.
 	 * @param string customerId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    public find(customerId, options): Promise<any> {
+    public find(customerId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -1232,35 +1262,39 @@ class Customer {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['customer'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Save the updated customer attributes.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     public save(options): Promise<any> {
         if (!options) options = {};
@@ -1291,37 +1325,41 @@ class Customer {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['customer'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.put(path, data, options, callback);
+            request.put(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Delete the customer.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    public delete(options): Promise<any> {
+    public delete(options): Promise<boolean> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -1334,13 +1372,14 @@ class Customer {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -1351,8 +1390,11 @@ class Customer {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.delete(path, data, options, callback);
+            request.delete(path, data, options).then(callback, callbackError);
             });
     }
     

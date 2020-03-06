@@ -546,16 +546,16 @@ declare class Card {
      * Get all the cards.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Find a card by its ID.
      * @param string cardId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(cardId: any, options: any): Promise<any>;
+    find(cardId: string, options: any): Promise<any>;
 }
 export = Card;
 //# sourceMappingURL=card.d.ts.map

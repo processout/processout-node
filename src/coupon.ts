@@ -1,5 +1,7 @@
 // The content of this file was automatically generated
 
+import fetch = require('node-fetch');
+
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -435,7 +437,7 @@ class Coupon {
      * Get all the coupons.
      * 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     public all(options): Promise<any> {
         if (!options) options = {};
@@ -450,13 +452,14 @@ class Coupon {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -464,7 +467,7 @@ class Coupon {
 
                 
                 var a    = [];
-                var body = response.body['coupons'];
+                var body = respBody['coupons'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newCoupon();
                     tmp.fillWithData(body[i]);
@@ -476,15 +479,18 @@ class Coupon {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Create a new coupon.
      * 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     public create(options): Promise<any> {
         if (!options) options = {};
@@ -506,37 +512,41 @@ class Coupon {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['coupon'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.post(path, data, options, callback);
+            request.post(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Find a coupon by its ID.
 	 * @param string couponId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    public find(couponId, options): Promise<any> {
+    public find(couponId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -549,35 +559,39 @@ class Coupon {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['coupon'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Save the updated coupon attributes.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     public save(options): Promise<any> {
         if (!options) options = {};
@@ -592,37 +606,41 @@ class Coupon {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['coupon'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.put(path, data, options, callback);
+            request.put(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Delete the coupon.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    public delete(options): Promise<any> {
+    public delete(options): Promise<boolean> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -635,13 +653,14 @@ class Coupon {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -652,8 +671,11 @@ class Coupon {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.delete(path, data, options, callback);
+            request.delete(path, data, options).then(callback, callbackError);
             });
     }
     

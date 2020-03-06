@@ -1,5 +1,7 @@
 // The content of this file was automatically generated
 
+import fetch = require('node-fetch');
+
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -464,7 +466,7 @@ class Plan {
      * Get all the plans.
      * 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     public all(options): Promise<any> {
         if (!options) options = {};
@@ -479,13 +481,14 @@ class Plan {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -493,7 +496,7 @@ class Plan {
 
                 
                 var a    = [];
-                var body = response.body['plans'];
+                var body = respBody['plans'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newPlan();
                     tmp.fillWithData(body[i]);
@@ -505,15 +508,18 @@ class Plan {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Create a new plan.
      * 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     public create(options): Promise<any> {
         if (!options) options = {};
@@ -536,37 +542,41 @@ class Plan {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['plan'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.post(path, data, options, callback);
+            request.post(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Find a plan by its ID.
 	 * @param string planId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    public find(planId, options): Promise<any> {
+    public find(planId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -579,35 +589,39 @@ class Plan {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['plan'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Save the updated plan attributes. This action won't affect subscriptions already linked to this plan.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     public save(options): Promise<any> {
         if (!options) options = {};
@@ -626,37 +640,41 @@ class Plan {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['plan'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.put(path, data, options, callback);
+            request.put(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Delete a plan. Subscriptions linked to this plan won't be affected.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    public end(options): Promise<any> {
+    public end(options): Promise<boolean> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -669,13 +687,14 @@ class Plan {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -686,8 +705,11 @@ class Plan {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.delete(path, data, options, callback);
+            request.delete(path, data, options).then(callback, callbackError);
             });
     }
     

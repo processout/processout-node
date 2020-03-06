@@ -149,9 +149,9 @@ declare class CardInformation {
      * Fetch card information from the IIN.
      * @param string iin
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    fetch(iin: any, options: any): Promise<any>;
+    fetch(iin: string, options: any): Promise<any>;
 }
 export = CardInformation;
 //# sourceMappingURL=cardinformation.d.ts.map

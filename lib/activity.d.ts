@@ -150,16 +150,16 @@ declare class Activity {
      * Get all the project activities.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Find a specific activity and fetch its data.
      * @param string activityId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(activityId: any, options: any): Promise<any>;
+    find(activityId: string, options: any): Promise<any>;
 }
 export = Activity;
 //# sourceMappingURL=activity.d.ts.map

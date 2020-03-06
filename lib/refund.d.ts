@@ -204,24 +204,24 @@ declare class Refund {
      * Get the transaction's refunds.
      * @param string transactionId
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
-    fetchTransactionRefunds(transactionId: any, options: any): Promise<any>;
+    fetchTransactionRefunds(transactionId: string, options: any): Promise<any>;
     /**
      * Find a transaction's refund by its ID.
      * @param string transactionId
      * @param string refundId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(transactionId: any, refundId: any, options: any): Promise<any>;
+    find(transactionId: string, refundId: string, options: any): Promise<any>;
     /**
      * Create a refund for a transaction.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    create(options: any): Promise<any>;
+    create(options: any): Promise<boolean>;
 }
 export = Refund;
 //# sourceMappingURL=refund.d.ts.map

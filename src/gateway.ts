@@ -1,5 +1,7 @@
 // The content of this file was automatically generated
 
+import fetch = require('node-fetch');
+
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -370,7 +372,7 @@ class Gateway {
      * Get all the gateway configurations of the gateway
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     public fetchGatewayConfigurations(options): Promise<any> {
         if (!options) options = {};
@@ -385,13 +387,14 @@ class Gateway {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -399,7 +402,7 @@ class Gateway {
 
                 
                 var a    = [];
-                var body = response.body['gateway_configurations'];
+                var body = respBody['gateway_configurations'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newGatewayConfiguration();
                     tmp.fillWithData(body[i]);
@@ -411,8 +414,11 @@ class Gateway {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     

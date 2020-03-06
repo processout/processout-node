@@ -276,37 +276,37 @@ declare class Plan {
      * Get all the plans.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Create a new plan.
      *
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     create(options: any): Promise<any>;
     /**
      * Find a plan by its ID.
      * @param string planId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(planId: any, options: any): Promise<any>;
+    find(planId: string, options: any): Promise<any>;
     /**
      * Save the updated plan attributes. This action won't affect subscriptions already linked to this plan.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     save(options: any): Promise<any>;
     /**
      * Delete a plan. Subscriptions linked to this plan won't be affected.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    end(options: any): Promise<any>;
+    end(options: any): Promise<boolean>;
 }
 export = Plan;
 //# sourceMappingURL=plan.d.ts.map

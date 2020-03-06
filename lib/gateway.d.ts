@@ -221,7 +221,7 @@ declare class Gateway {
      * Get all the gateway configurations of the gateway
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     fetchGatewayConfigurations(options: any): Promise<any>;
 }

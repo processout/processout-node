@@ -150,30 +150,30 @@ declare class Event {
      * Get all the webhooks of the event.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     fetchWebhooks(options: any): Promise<any>;
     /**
      * Get all the events.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Find an event by its ID.
      * @param string eventId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(eventId: any, options: any): Promise<any>;
+    find(eventId: string, options: any): Promise<any>;
     /**
      * Find an event by the Resource ID that generated it.
      * @param string resourceId
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
-    findByResourceId(resourceId: any, options: any): Promise<any>;
+    findByResourceId(resourceId: string, options: any): Promise<any>;
 }
 export = Event;
 //# sourceMappingURL=event.d.ts.map

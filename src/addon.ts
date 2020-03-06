@@ -1,5 +1,7 @@
 // The content of this file was automatically generated
 
+import fetch = require('node-fetch');
+
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -478,9 +480,9 @@ class Addon {
      * Get the addons applied to the subscription.
 	 * @param string subscriptionId
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
-    public fetchSubscriptionAddons(subscriptionId, options): Promise<any> {
+    public fetchSubscriptionAddons(subscriptionId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -493,13 +495,14 @@ class Addon {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -507,7 +510,7 @@ class Addon {
 
                 
                 var a    = [];
-                var body = response.body['addons'];
+                var body = respBody['addons'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newAddon();
                     tmp.fillWithData(body[i]);
@@ -519,15 +522,18 @@ class Addon {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Create a new addon to the given subscription ID.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     public create(options): Promise<any> {
         if (!options) options = {};
@@ -550,28 +556,32 @@ class Addon {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['addon'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.post(path, data, options, callback);
+            request.post(path, data, options).then(callback, callbackError);
             });
     }
     /**
@@ -579,9 +589,9 @@ class Addon {
 	 * @param string subscriptionId
 	 * @param string addonId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    public find(subscriptionId, addonId, options): Promise<any> {
+    public find(subscriptionId: string, addonId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -594,35 +604,39 @@ class Addon {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['addon'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Save the updated addon attributes.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     public save(options): Promise<any> {
         if (!options) options = {};
@@ -646,37 +660,41 @@ class Addon {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['addon'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.put(path, data, options, callback);
+            request.put(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Delete an addon applied to a subscription.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    public delete(options): Promise<any> {
+    public delete(options): Promise<boolean> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -691,13 +709,14 @@ class Addon {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -708,8 +727,11 @@ class Addon {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.delete(path, data, options, callback);
+            request.delete(path, data, options).then(callback, callbackError);
             });
     }
     

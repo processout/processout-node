@@ -1,9 +1,10 @@
+import fetch = require('node-fetch');
 declare class Response {
     /**
-     * Raw response (restler object)
-     * @type {restler}
+     * Raw response
+     * @type {fetch.Response}
      */
-    raw: any;
+    raw: fetch.Response;
     /**
      * Status code of the response
      * @type {int}
@@ -21,10 +22,10 @@ declare class Response {
     body: any;
     /**
      * Response constructor
-     * @param  {object}  result The result returned by parsing the response
-     * @param  {restler} resp Restler object
+     * @param {Response} resp The response object
+     * @param {Object}   result The result returned by parsing the response
      */
-    constructor(result: any, resp: any);
+    constructor(resp: fetch.Response, body: any);
     /**
      * Check if the response was successful
      * @return {Boolean}

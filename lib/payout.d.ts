@@ -384,23 +384,23 @@ declare class Payout {
      * Get all the items linked to the payout.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     fetchItems(options: any): Promise<any>;
     /**
      * Get all the payouts.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Find a payout by its ID.
      * @param string payoutId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(payoutId: any, options: any): Promise<any>;
+    find(payoutId: string, options: any): Promise<any>;
 }
 export = Payout;
 //# sourceMappingURL=payout.d.ts.map

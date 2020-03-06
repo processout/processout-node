@@ -1,3 +1,4 @@
+import fetch = require('node-fetch');
 import ProcessOutAuthenticationError = require('../errors/processoutauthenticationerror');
 import ProcessOutNotFoundError       = require('../errors/processoutnotfounderror');
 import ProcessOutValidationError     = require('../errors/processoutvalidationerror');
@@ -6,10 +7,10 @@ import ProcessOutError               = require('../errors/processouterror');
 
 class Response {
     /**
-     * Raw response (restler object)
-     * @type {restler}
+     * Raw response
+     * @type {fetch.Response}
      */
-    public raw: any = null;
+    public raw: fetch.Response = null;
 
     /**
      * Status code of the response
@@ -31,14 +32,14 @@ class Response {
 
     /**
      * Response constructor
-     * @param  {object}  result The result returned by parsing the response
-     * @param  {restler} resp Restler object
+     * @param {Response} resp The response object
+     * @param {Object}   result The result returned by parsing the response
      */
-    constructor(result: any, resp: any) {
+    constructor(resp: fetch.Response, body: any) {
         this.raw        = resp;
-        this.statusCode = resp.statusCode;
+        this.statusCode = resp.status;
         this.headers    = resp.headers;
-        this.body       = result;
+        this.body       = body;
     }
 
     /**

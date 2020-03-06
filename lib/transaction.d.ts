@@ -924,30 +924,30 @@ declare class Transaction {
      * Get the transaction's refunds.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     fetchRefunds(options: any): Promise<any>;
     /**
      * Find a transaction's refund by its ID.
      * @param string refundId
      * @param {any} options
-     * @return {Refund}
+     * @return {Promise<p.Refund>}
      */
-    findRefund(refundId: any, options: any): Promise<any>;
+    findRefund(refundId: string, options: any): Promise<p.Refund>;
     /**
      * Get all the transactions.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Find a transaction by its ID.
      * @param string transactionId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(transactionId: any, options: any): Promise<any>;
+    find(transactionId: string, options: any): Promise<any>;
 }
 export = Transaction;
 //# sourceMappingURL=transaction.d.ts.map

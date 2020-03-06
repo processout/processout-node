@@ -1,5 +1,7 @@
 // The content of this file was automatically generated
 
+import fetch = require('node-fetch');
+
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -88,6 +90,12 @@ class Token {
      * @type {string}
      */
     private cancelUrl: string = null;
+
+    /**
+     * Summary of the customer token, such as a description of the card used or the email of a PayPal account
+     * @type {string}
+     */
+    private summary: string = null;
 
     /**
      * True if the token is chargeable, false otherwise
@@ -401,6 +409,26 @@ class Token {
     }
 
     /**
+     * Get Summary
+     * Summary of the customer token, such as a description of the card used or the email of a PayPal account
+     * @return {string}
+     */
+    public getSummary(): string {
+        return this.summary;
+    }
+
+    /**
+     * Set Summary
+     * Summary of the customer token, such as a description of the card used or the email of a PayPal account
+     * @param {string} val
+     * @return {Token}
+     */
+    public setSummary(val: string): Token {
+        this.summary = val;
+        return this;
+    }
+
+    /**
      * Get IsChargeable
      * True if the token is chargeable, false otherwise
      * @return {boolean}
@@ -472,6 +500,8 @@ class Token {
             this.setReturnUrl(data["return_url"]);
         if (data["cancel_url"])
             this.setCancelUrl(data["cancel_url"]);
+        if (data["summary"])
+            this.setSummary(data["summary"]);
         if (data["is_chargeable"])
             this.setIsChargeable(data["is_chargeable"]);
         if (data["created_at"])
@@ -498,6 +528,7 @@ class Token {
             "is_default": this.getIsDefault(),
             "return_url": this.getReturnUrl(),
             "cancel_url": this.getCancelUrl(),
+            "summary": this.getSummary(),
             "is_chargeable": this.getIsChargeable(),
             "created_at": this.getCreatedAt(),
         };
@@ -507,9 +538,9 @@ class Token {
      * Get the customer's tokens.
 	 * @param string customerId
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
-    public fetchCustomerTokens(customerId, options): Promise<any> {
+    public fetchCustomerTokens(customerId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -522,13 +553,14 @@ class Token {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -536,7 +568,7 @@ class Token {
 
                 
                 var a    = [];
-                var body = response.body['tokens'];
+                var body = respBody['tokens'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newToken();
                     tmp.fillWithData(body[i]);
@@ -548,8 +580,11 @@ class Token {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
@@ -557,9 +592,9 @@ class Token {
 	 * @param string customerId
 	 * @param string tokenId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    public find(customerId, tokenId, options): Promise<any> {
+    public find(customerId: string, tokenId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -572,35 +607,39 @@ class Token {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['token'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Create a new token for the given customer ID.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     public create(options): Promise<any> {
         if (!options) options = {};
@@ -623,37 +662,41 @@ class Token {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['token'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.post(path, data, options, callback);
+            request.post(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Save the updated customer attributes.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    public save(options): Promise<any> {
+    public save(options): Promise<boolean> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -671,13 +714,14 @@ class Token {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -688,17 +732,20 @@ class Token {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.put(path, data, options, callback);
+            request.put(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Delete a customer token
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    public delete(options): Promise<any> {
+    public delete(options): Promise<boolean> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -711,13 +758,14 @@ class Token {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -728,8 +776,11 @@ class Token {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.delete(path, data, options, callback);
+            request.delete(path, data, options).then(callback, callbackError);
             });
     }
     

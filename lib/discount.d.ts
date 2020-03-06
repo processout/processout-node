@@ -276,14 +276,14 @@ declare class Discount {
      * Get the discounts applied to the subscription.
      * @param string subscriptionId
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
-    fetchSubscriptionDiscounts(subscriptionId: any, options: any): Promise<any>;
+    fetchSubscriptionDiscounts(subscriptionId: string, options: any): Promise<any>;
     /**
      * Create a new discount for the given subscription ID.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     create(options: any): Promise<any>;
     /**
@@ -291,16 +291,16 @@ declare class Discount {
      * @param string subscriptionId
      * @param string discountId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(subscriptionId: any, discountId: any, options: any): Promise<any>;
+    find(subscriptionId: string, discountId: string, options: any): Promise<any>;
     /**
      * Delete a discount applied to a subscription.
 
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    delete(options: any): Promise<any>;
+    delete(options: any): Promise<boolean>;
 }
 export = Discount;
 //# sourceMappingURL=discount.d.ts.map

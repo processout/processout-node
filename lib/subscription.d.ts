@@ -654,91 +654,91 @@ declare class Subscription {
      * Get the addons applied to the subscription.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     fetchAddons(options: any): Promise<any>;
     /**
      * Find a subscription's addon by its ID.
      * @param string addonId
      * @param {any} options
-     * @return {Addon}
+     * @return {Promise<p.Addon>}
      */
-    findAddon(addonId: any, options: any): Promise<any>;
+    findAddon(addonId: string, options: any): Promise<p.Addon>;
     /**
      * Delete an addon applied to a subscription.
      * @param string addonId
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    deleteAddon(addonId: any, options: any): Promise<any>;
+    deleteAddon(addonId: string, options: any): Promise<boolean>;
     /**
      * Get the customer owning the subscription.
 
      * @param {any} options
-     * @return {Customer}
+     * @return {Promise<p.Customer>}
      */
-    fetchCustomer(options: any): Promise<any>;
+    fetchCustomer(options: any): Promise<p.Customer>;
     /**
      * Get the discounts applied to the subscription.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     fetchDiscounts(options: any): Promise<any>;
     /**
      * Find a subscription's discount by its ID.
      * @param string discountId
      * @param {any} options
-     * @return {Discount}
+     * @return {Promise<p.Discount>}
      */
-    findDiscount(discountId: any, options: any): Promise<any>;
+    findDiscount(discountId: string, options: any): Promise<p.Discount>;
     /**
      * Delete a discount applied to a subscription.
      * @param string discountId
      * @param {any} options
-     * @return {bool}
+     * @return {Promise<boolean>}
      */
-    deleteDiscount(discountId: any, options: any): Promise<any>;
+    deleteDiscount(discountId: string, options: any): Promise<boolean>;
     /**
      * Get the subscriptions past transactions.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     fetchTransactions(options: any): Promise<any>;
     /**
      * Get all the subscriptions.
      *
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     all(options: any): Promise<any>;
     /**
      * Create a new subscription for the given customer.
      *
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     create(options: any): Promise<any>;
     /**
      * Find a subscription by its ID.
      * @param string subscriptionId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    find(subscriptionId: any, options: any): Promise<any>;
+    find(subscriptionId: string, options: any): Promise<any>;
     /**
      * Save the updated subscription attributes.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     save(options: any): Promise<any>;
     /**
      * Cancel a subscription. The reason may be provided as well.
 
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
     cancel(options: any): Promise<any>;
 }

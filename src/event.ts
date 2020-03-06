@@ -1,5 +1,7 @@
 // The content of this file was automatically generated
 
+import fetch = require('node-fetch');
+
 import ProcessOut = require('./processout');
 import Response   = require('./networking/response');
 import Request    = require('./networking/request');
@@ -261,7 +263,7 @@ class Event {
      * Get all the webhooks of the event.
 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     public fetchWebhooks(options): Promise<any> {
         if (!options) options = {};
@@ -276,13 +278,14 @@ class Event {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -290,7 +293,7 @@ class Event {
 
                 
                 var a    = [];
-                var body = response.body['webhooks'];
+                var body = respBody['webhooks'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newWebhook();
                     tmp.fillWithData(body[i]);
@@ -302,15 +305,18 @@ class Event {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Get all the events.
      * 
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
     public all(options): Promise<any> {
         if (!options) options = {};
@@ -325,13 +331,14 @@ class Event {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -339,7 +346,7 @@ class Event {
 
                 
                 var a    = [];
-                var body = response.body['events'];
+                var body = respBody['events'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newEvent();
                     tmp.fillWithData(body[i]);
@@ -351,17 +358,20 @@ class Event {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Find an event by its ID.
 	 * @param string eventId
      * @param {any} options
-     * @return {this}
+     * @return {Promise<any>}
      */
-    public find(eventId, options): Promise<any> {
+    public find(eventId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -374,37 +384,41 @@ class Event {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
                 var returnValues = [];
 
                 
-                var body = response.body;
+                var body = respBody;
                 body = body['event'];
                         
                 returnValues.push(cur.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     /**
      * Find an event by the Resource ID that generated it.
 	 * @param string resourceId
      * @param {any} options
-     * @return {array}
+     * @return {Promise<any>}
      */
-    public findByResourceId(resourceId, options): Promise<any> {
+    public findByResourceId(resourceId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -417,13 +431,14 @@ class Event {
 
         var cur = this;
         return new Promise(function(resolve, reject) {
-            var callback = function(err, resp, body) {
-                if (err != null) {
-                    return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-                }
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
 
-                var response = new Response(body, resp);
-                var err      = response.check();
+                var response = new Response(resp, respBody);
+                var err = response.check();
                 if (err != null)
                     return reject(err);
 
@@ -431,7 +446,7 @@ class Event {
 
                 
                 var a    = [];
-                var body = response.body['events'];
+                var body = respBody['events'];
                 for (var i = body.length; i--;) {
                     var tmp = cur.client.newEvent();
                     tmp.fillWithData(body[i]);
@@ -443,8 +458,11 @@ class Event {
 
                 return resolve.apply(this, returnValues);
             };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
 
-            request.get(path, data, options, callback);
+            request.get(path, data, options).then(callback, callbackError);
             });
     }
     
