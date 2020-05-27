@@ -1004,6 +1004,50 @@ class Card {
             request.get(path, data, options).then(callback, callbackError);
             });
     }
+    /**
+     * Anonymize the card.
+
+     * @param {any} options
+     * @return {Promise<boolean>}
+     */
+    public anonymize(options): Promise<boolean> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/cards/" + encodeURI(this.getId()) + "";
+
+        var data = {
+
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                returnValues.push(response.isSuccess());
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.delete(path, data, options).then(callback, callbackError);
+            });
+    }
     
 }
 export = Card;

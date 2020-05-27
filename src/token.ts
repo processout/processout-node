@@ -110,6 +110,12 @@ class Token {
     private createdAt: string = null;
 
     /**
+     * Description of the created token
+     * @type {string}
+     */
+    private description: string = null;
+
+    /**
      * Token constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -469,6 +475,26 @@ class Token {
     }
 
     /**
+     * Get Description
+     * Description of the created token
+     * @return {string}
+     */
+    public getDescription(): string {
+        return this.description;
+    }
+
+    /**
+     * Set Description
+     * Description of the created token
+     * @param {string} val
+     * @return {Token}
+     */
+    public setDescription(val: string): Token {
+        this.description = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Token}
@@ -506,6 +532,8 @@ class Token {
             this.setIsChargeable(data["is_chargeable"]);
         if (data["created_at"])
             this.setCreatedAt(data["created_at"]);
+        if (data["description"])
+            this.setDescription(data["description"]);
         return this;
     }
 
@@ -531,6 +559,7 @@ class Token {
             "summary": this.getSummary(),
             "is_chargeable": this.getIsChargeable(),
             "created_at": this.getCreatedAt(),
+            "description": this.getDescription(),
         };
     }
 
@@ -652,6 +681,7 @@ class Token {
 			'metadata': this.getMetadata(), 
 			'return_url': this.getReturnUrl(), 
 			'cancel_url': this.getCancelUrl(), 
+			'description': this.getDescription(), 
 			'source': (options['source']) ? options['source'] : null, 
 			'settings': (options['settings']) ? options['settings'] : null, 
 			'device': (options['device']) ? options['device'] : null, 
@@ -704,12 +734,7 @@ class Token {
         var path    = "/customers/" + encodeURI(this.getCustomerId()) + "/tokens/" + encodeURI(this.getId()) + "";
 
         var data = {
-			'source': (options['source']) ? options['source'] : null, 
-			'settings': (options['settings']) ? options['settings'] : null, 
-			'device': (options['device']) ? options['device'] : null, 
-			'verify': (options['verify']) ? options['verify'] : null, 
-			'verify_metadata': (options['verify_metadata']) ? options['verify_metadata'] : null, 
-			'set_default': (options['set_default']) ? options['set_default'] : null
+
         };
 
         var cur = this;
