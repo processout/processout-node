@@ -734,7 +734,12 @@ class Token {
         var path    = "/customers/" + encodeURI(this.getCustomerId()) + "/tokens/" + encodeURI(this.getId()) + "";
 
         var data = {
-
+			'source': (options['source']) ? options['source'] : null, 
+			'settings': (options['settings']) ? options['settings'] : null, 
+			'device': (options['device']) ? options['device'] : null, 
+			'verify': (options['verify']) ? options['verify'] : null, 
+			'verify_metadata': (options['verify_metadata']) ? options['verify_metadata'] : null, 
+			'set_default': (options['set_default']) ? options['set_default'] : null
         };
 
         var cur = this;
