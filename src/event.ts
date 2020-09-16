@@ -270,7 +270,7 @@ class Event {
         this.fillWithData(options);
 
         var request = new Request(this.client);
-        var path    = "/events/" + encodeURI(this.getId()) + "/webhooks";
+        var path    = "/events/ev_" + encodeURI(this.getId()) + "/webhooks";
 
         var data = {
 
@@ -376,7 +376,7 @@ class Event {
         this.fillWithData(options);
 
         var request = new Request(this.client);
-        var path    = "/events/" + encodeURI(eventId) + "";
+        var path    = "/events/ev_" + encodeURI(eventId) + "";
 
         var data = {
 

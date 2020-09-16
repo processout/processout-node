@@ -168,6 +168,11 @@ declare class Invoice {
      */
     private device;
     /**
+     * Contain objects that'll be forwarded to external fraud tools
+     * @type {p.InvoiceExternalFraudTools}
+     */
+    private externalFraudTools;
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -603,6 +608,19 @@ declare class Invoice {
      * @return {Invoice}
      */
     setDevice(val: p.InvoiceDevice): Invoice;
+    /**
+     * Get ExternalFraudTools
+     * Contain objects that'll be forwarded to external fraud tools
+     * @return {p.InvoiceExternalFraudTools}
+     */
+    getExternalFraudTools(): p.InvoiceExternalFraudTools;
+    /**
+     * Set ExternalFraudTools
+     * Contain objects that'll be forwarded to external fraud tools
+     * @param {p.InvoiceExternalFraudTools} val
+     * @return {Invoice}
+     */
+    setExternalFraudTools(val: p.InvoiceExternalFraudTools): Invoice;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

@@ -133,10 +133,15 @@ declare class Customer {
      */
     private sandbox;
     /**
-     * Date at which the customer was created
+     * Date at which the customer was created at ProcessOut
      * @type {string}
      */
     private createdAt;
+    /**
+     * Date at which the customer was registered on your platform
+     * @type {string}
+     */
+    private registeredAt;
     /**
      * Customer constructor
      * @param {ProcessOut} client
@@ -484,17 +489,30 @@ declare class Customer {
     setSandbox(val: boolean): Customer;
     /**
      * Get CreatedAt
-     * Date at which the customer was created
+     * Date at which the customer was created at ProcessOut
      * @return {string}
      */
     getCreatedAt(): string;
     /**
      * Set CreatedAt
-     * Date at which the customer was created
+     * Date at which the customer was created at ProcessOut
      * @param {string} val
      * @return {Customer}
      */
     setCreatedAt(val: string): Customer;
+    /**
+     * Get RegisteredAt
+     * Date at which the customer was registered on your platform
+     * @return {string}
+     */
+    getRegisteredAt(): string;
+    /**
+     * Set RegisteredAt
+     * Date at which the customer was registered on your platform
+     * @param {string} val
+     * @return {Customer}
+     */
+    setRegisteredAt(val: string): Customer;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

@@ -129,6 +129,12 @@ declare class ProcessOut {
      */
     newInvoice(prefill?: p.Invoice): p.Invoice;
     /**
+     * Create a new InvoiceExternalFraudTools instance
+     * @param {array} prefill
+     * @return {InvoiceExternalFraudTools}
+     */
+    newInvoiceExternalFraudTools(prefill?: p.InvoiceExternalFraudTools): p.InvoiceExternalFraudTools;
+    /**
      * Create a new InvoiceRisk instance
      * @param {array} prefill
      * @return {InvoiceRisk}

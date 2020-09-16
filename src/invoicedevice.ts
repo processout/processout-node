@@ -26,6 +26,12 @@ class InvoiceDevice {
     private ipAddress: string = null;
 
     /**
+     * ID of the device
+     * @type {string}
+     */
+    private id: string = null;
+
+    /**
      * InvoiceDevice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -84,6 +90,26 @@ class InvoiceDevice {
     }
 
     /**
+     * Get Id
+     * ID of the device
+     * @return {string}
+     */
+    public getId(): string {
+        return this.id;
+    }
+
+    /**
+     * Set Id
+     * ID of the device
+     * @param {string} val
+     * @return {InvoiceDevice}
+     */
+    public setId(val: string): InvoiceDevice {
+        this.id = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {InvoiceDevice}
@@ -93,6 +119,8 @@ class InvoiceDevice {
             this.setChannel(data["channel"]);
         if (data["ip_address"])
             this.setIpAddress(data["ip_address"]);
+        if (data["id"])
+            this.setId(data["id"]);
         return this;
     }
 
@@ -104,6 +132,7 @@ class InvoiceDevice {
         return {
             "channel": this.getChannel(),
             "ip_address": this.getIpAddress(),
+            "id": this.getId(),
         };
     }
 

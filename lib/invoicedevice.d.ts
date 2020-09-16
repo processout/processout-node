@@ -12,6 +12,11 @@ declare class InvoiceDevice {
      */
     private ipAddress;
     /**
+     * ID of the device
+     * @type {string}
+     */
+    private id;
+    /**
      * InvoiceDevice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -44,6 +49,19 @@ declare class InvoiceDevice {
      * @return {InvoiceDevice}
      */
     setIpAddress(val: string): InvoiceDevice;
+    /**
+     * Get Id
+     * ID of the device
+     * @return {string}
+     */
+    getId(): string;
+    /**
+     * Set Id
+     * ID of the device
+     * @param {string} val
+     * @return {InvoiceDevice}
+     */
+    setId(val: string): InvoiceDevice;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

@@ -170,10 +170,16 @@ class Customer {
     private sandbox: boolean = null;
 
     /**
-     * Date at which the customer was created
+     * Date at which the customer was created at ProcessOut
      * @type {string}
      */
     private createdAt: string = null;
+
+    /**
+     * Date at which the customer was registered on your platform
+     * @type {string}
+     */
+    private registeredAt: string = null;
 
     /**
      * Customer constructor
@@ -759,7 +765,7 @@ class Customer {
 
     /**
      * Get CreatedAt
-     * Date at which the customer was created
+     * Date at which the customer was created at ProcessOut
      * @return {string}
      */
     public getCreatedAt(): string {
@@ -768,12 +774,32 @@ class Customer {
 
     /**
      * Set CreatedAt
-     * Date at which the customer was created
+     * Date at which the customer was created at ProcessOut
      * @param {string} val
      * @return {Customer}
      */
     public setCreatedAt(val: string): Customer {
         this.createdAt = val;
+        return this;
+    }
+
+    /**
+     * Get RegisteredAt
+     * Date at which the customer was registered on your platform
+     * @return {string}
+     */
+    public getRegisteredAt(): string {
+        return this.registeredAt;
+    }
+
+    /**
+     * Set RegisteredAt
+     * Date at which the customer was registered on your platform
+     * @param {string} val
+     * @return {Customer}
+     */
+    public setRegisteredAt(val: string): Customer {
+        this.registeredAt = val;
         return this;
     }
 
@@ -837,6 +863,8 @@ class Customer {
             this.setSandbox(data["sandbox"]);
         if (data["created_at"])
             this.setCreatedAt(data["created_at"]);
+        if (data["registered_at"])
+            this.setRegisteredAt(data["registered_at"]);
         return this;
     }
 
@@ -873,6 +901,7 @@ class Customer {
             "metadata": this.getMetadata(),
             "sandbox": this.getSandbox(),
             "created_at": this.getCreatedAt(),
+            "registered_at": this.getRegisteredAt(),
         };
     }
 
@@ -1210,7 +1239,8 @@ class Customer {
 			'is_business': this.getIsBusiness(), 
 			'sex': this.getSex(), 
 			'metadata': this.getMetadata(), 
-			'id': this.getId()
+			'id': this.getId(), 
+			'registered_at': this.getRegisteredAt()
         };
 
         var cur = this;
@@ -1320,7 +1350,8 @@ class Customer {
 			'legal_document': this.getLegalDocument(), 
 			'is_business': this.getIsBusiness(), 
 			'sex': this.getSex(), 
-			'metadata': this.getMetadata()
+			'metadata': this.getMetadata(), 
+			'registered_at': this.getRegisteredAt()
         };
 
         var cur = this;

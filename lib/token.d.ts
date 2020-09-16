@@ -88,6 +88,16 @@ declare class Token {
      */
     private description;
     /**
+     * Invoice used to verify this token, if any
+     * @type {p.Invoice}
+     */
+    private invoice;
+    /**
+     * ID of the invoice used to verify that token
+     * @type {string}
+     */
+    private invoiceId;
+    /**
      * Token constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -315,6 +325,32 @@ declare class Token {
      * @return {Token}
      */
     setDescription(val: string): Token;
+    /**
+     * Get Invoice
+     * Invoice used to verify this token, if any
+     * @return {p.Invoice}
+     */
+    getInvoice(): p.Invoice;
+    /**
+     * Set Invoice
+     * Invoice used to verify this token, if any
+     * @param {p.Invoice} val
+     * @return {Token}
+     */
+    setInvoice(val: p.Invoice): Token;
+    /**
+     * Get InvoiceId
+     * ID of the invoice used to verify that token
+     * @return {string}
+     */
+    getInvoiceId(): string;
+    /**
+     * Set InvoiceId
+     * ID of the invoice used to verify that token
+     * @param {string} val
+     * @return {Token}
+     */
+    setInvoiceId(val: string): Token;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

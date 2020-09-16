@@ -212,6 +212,12 @@ class Invoice {
     private device: p.InvoiceDevice = null;
 
     /**
+     * Contain objects that'll be forwarded to external fraud tools
+     * @type {p.InvoiceExternalFraudTools}
+     */
+    private externalFraudTools: p.InvoiceExternalFraudTools = null;
+
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -956,6 +962,33 @@ class Invoice {
     }
 
     /**
+     * Get ExternalFraudTools
+     * Contain objects that'll be forwarded to external fraud tools
+     * @return {p.InvoiceExternalFraudTools}
+     */
+    public getExternalFraudTools(): p.InvoiceExternalFraudTools {
+        return this.externalFraudTools;
+    }
+
+    /**
+     * Set ExternalFraudTools
+     * Contain objects that'll be forwarded to external fraud tools
+     * @param {p.InvoiceExternalFraudTools} val
+     * @return {Invoice}
+     */
+    public setExternalFraudTools(val: p.InvoiceExternalFraudTools): Invoice {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newInvoiceExternalFraudTools().getProcessOutObjectClass())
+            this.externalFraudTools = val;
+        else {
+            var obj = this.client.newInvoiceExternalFraudTools();
+            obj.fillWithData(val);
+            this.externalFraudTools = obj;
+        }
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Invoice}
@@ -1027,6 +1060,8 @@ class Invoice {
             this.setShipping(data["shipping"]);
         if (data["device"])
             this.setDevice(data["device"]);
+        if (data["external_fraud_tools"])
+            this.setExternalFraudTools(data["external_fraud_tools"]);
         return this;
     }
 
@@ -1069,6 +1104,7 @@ class Invoice {
             "risk": this.getRisk(),
             "shipping": this.getShipping(),
             "device": this.getDevice(),
+            "external_fraud_tools": this.getExternalFraudTools(),
         };
     }
 
@@ -1501,7 +1537,8 @@ class Invoice {
 			'risk': this.getRisk(), 
 			'shipping': this.getShipping(), 
 			'device': this.getDevice(), 
-			'require_backend_capture': this.getRequireBackendCapture()
+			'require_backend_capture': this.getRequireBackendCapture(), 
+			'external_fraud_tools': this.getExternalFraudTools()
         };
 
         var cur = this;

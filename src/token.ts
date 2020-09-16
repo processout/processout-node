@@ -116,6 +116,18 @@ class Token {
     private description: string = null;
 
     /**
+     * Invoice used to verify this token, if any
+     * @type {p.Invoice}
+     */
+    private invoice: p.Invoice = null;
+
+    /**
+     * ID of the invoice used to verify that token
+     * @type {string}
+     */
+    private invoiceId: string = null;
+
+    /**
      * Token constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -495,6 +507,53 @@ class Token {
     }
 
     /**
+     * Get Invoice
+     * Invoice used to verify this token, if any
+     * @return {p.Invoice}
+     */
+    public getInvoice(): p.Invoice {
+        return this.invoice;
+    }
+
+    /**
+     * Set Invoice
+     * Invoice used to verify this token, if any
+     * @param {p.Invoice} val
+     * @return {Token}
+     */
+    public setInvoice(val: p.Invoice): Token {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newInvoice().getProcessOutObjectClass())
+            this.invoice = val;
+        else {
+            var obj = this.client.newInvoice();
+            obj.fillWithData(val);
+            this.invoice = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get InvoiceId
+     * ID of the invoice used to verify that token
+     * @return {string}
+     */
+    public getInvoiceId(): string {
+        return this.invoiceId;
+    }
+
+    /**
+     * Set InvoiceId
+     * ID of the invoice used to verify that token
+     * @param {string} val
+     * @return {Token}
+     */
+    public setInvoiceId(val: string): Token {
+        this.invoiceId = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Token}
@@ -534,6 +593,10 @@ class Token {
             this.setCreatedAt(data["created_at"]);
         if (data["description"])
             this.setDescription(data["description"]);
+        if (data["invoice"])
+            this.setInvoice(data["invoice"]);
+        if (data["invoice_id"])
+            this.setInvoiceId(data["invoice_id"]);
         return this;
     }
 
@@ -560,6 +623,8 @@ class Token {
             "is_chargeable": this.getIsChargeable(),
             "created_at": this.getCreatedAt(),
             "description": this.getDescription(),
+            "invoice": this.getInvoice(),
+            "invoice_id": this.getInvoiceId(),
         };
     }
 
