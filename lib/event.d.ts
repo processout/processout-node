@@ -167,13 +167,6 @@ declare class Event {
      * @return {Promise<any>}
      */
     find(eventId: string, options: any): Promise<any>;
-    /**
-     * Find an event by the Resource ID that generated it.
-     * @param string resourceId
-     * @param {any} options
-     * @return {Promise<any>}
-     */
-    findByResourceId(resourceId: string, options: any): Promise<any>;
 }
 export = Event;
 //# sourceMappingURL=event.d.ts.map

@@ -270,7 +270,7 @@ class Event {
         this.fillWithData(options);
 
         var request = new Request(this.client);
-        var path    = "/events/ev_" + encodeURI(this.getId()) + "/webhooks";
+        var path    = "/events/" + encodeURI(this.getId()) + "/webhooks";
 
         var data = {
 
@@ -376,7 +376,7 @@ class Event {
         this.fillWithData(options);
 
         var request = new Request(this.client);
-        var path    = "/events/ev_" + encodeURI(eventId) + "";
+        var path    = "/events/" + encodeURI(eventId) + "";
 
         var data = {
 
@@ -402,59 +402,6 @@ class Event {
                 body = body['event'];
                         
                 returnValues.push(cur.fillWithData(body));
-
-                return resolve.apply(this, returnValues);
-            };
-            var callbackError = function(err) {
-                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-            };
-
-            request.get(path, data, options).then(callback, callbackError);
-            });
-    }
-    /**
-     * Find an event by the Resource ID that generated it.
-	 * @param string resourceId
-     * @param {any} options
-     * @return {Promise<any>}
-     */
-    public findByResourceId(resourceId: string, options): Promise<any> {
-        if (!options) options = {};
-        this.fillWithData(options);
-
-        var request = new Request(this.client);
-        var path    = "/events/by_resource_id/" + encodeURI(resourceId) + "";
-
-        var data = {
-
-        };
-
-        var cur = this;
-        return new Promise(function(resolve, reject) {
-            var callback = async function(resp: fetch.Response) {
-                var respBody = {};
-                try {
-                    respBody = await resp.json();
-                } catch(err) {}
-
-                var response = new Response(resp, respBody);
-                var err = response.check();
-                if (err != null)
-                    return reject(err);
-
-                var returnValues = [];
-
-                
-                var a    = [];
-                var body = respBody['events'];
-                for (var i = body.length; i--;) {
-                    var tmp = cur.client.newEvent();
-                    tmp.fillWithData(body[i]);
-                    a.push(tmp);
-                }
-
-                returnValues.push(a);
-                    
 
                 return resolve.apply(this, returnValues);
             };
