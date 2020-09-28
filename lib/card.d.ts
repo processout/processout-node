@@ -128,6 +128,11 @@ declare class Card {
      */
     private fingerprint;
     /**
+     * This field defines if the card was tokenized with a 3rd party tokenization method such as applepay
+     * @type {string}
+     */
+    private tokenType;
+    /**
      * Metadata related to the card, in the form of a dictionary (key-value pair)
      * @type {any}
      */
@@ -479,6 +484,19 @@ declare class Card {
      * @return {Card}
      */
     setFingerprint(val: string): Card;
+    /**
+     * Get TokenType
+     * This field defines if the card was tokenized with a 3rd party tokenization method such as applepay
+     * @return {string}
+     */
+    getTokenType(): string;
+    /**
+     * Set TokenType
+     * This field defines if the card was tokenized with a 3rd party tokenization method such as applepay
+     * @param {string} val
+     * @return {Card}
+     */
+    setTokenType(val: string): Card;
     /**
      * Get Metadata
      * Metadata related to the card, in the form of a dictionary (key-value pair)

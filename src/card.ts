@@ -164,6 +164,12 @@ class Card {
     private fingerprint: string = null;
 
     /**
+     * This field defines if the card was tokenized with a 3rd party tokenization method such as applepay
+     * @type {string}
+     */
+    private tokenType: string = null;
+
+    /**
      * Metadata related to the card, in the form of a dictionary (key-value pair)
      * @type {any}
      */
@@ -720,6 +726,26 @@ class Card {
     }
 
     /**
+     * Get TokenType
+     * This field defines if the card was tokenized with a 3rd party tokenization method such as applepay
+     * @return {string}
+     */
+    public getTokenType(): string {
+        return this.tokenType;
+    }
+
+    /**
+     * Set TokenType
+     * This field defines if the card was tokenized with a 3rd party tokenization method such as applepay
+     * @param {string} val
+     * @return {Card}
+     */
+    public setTokenType(val: string): Card {
+        this.tokenType = val;
+        return this;
+    }
+
+    /**
      * Get Metadata
      * Metadata related to the card, in the form of a dictionary (key-value pair)
      * @return {any}
@@ -855,6 +881,8 @@ class Card {
             this.setIpAddress(data["ip_address"]);
         if (data["fingerprint"])
             this.setFingerprint(data["fingerprint"]);
+        if (data["token_type"])
+            this.setTokenType(data["token_type"]);
         if (data["metadata"])
             this.setMetadata(data["metadata"]);
         if (data["expires_soon"])
@@ -897,6 +925,7 @@ class Card {
             "country_code": this.getCountryCode(),
             "ip_address": this.getIpAddress(),
             "fingerprint": this.getFingerprint(),
+            "token_type": this.getTokenType(),
             "metadata": this.getMetadata(),
             "expires_soon": this.getExpiresSoon(),
             "sandbox": this.getSandbox(),
