@@ -1,5 +1,6 @@
 // The content of this file was automatically generated
 
+import type fetch from 'node-fetch';
 import * as p from '.';
 
 class ProcessOut {
@@ -22,15 +23,24 @@ class ProcessOut {
     protected projectSecret: string = '';
 
     /**
+     * Custom fetch client used for requests
+     * @type {fetch}
+     */
+    public fetch: fetch = null;
+
+    /**
      * ProcessOut is the main component of the ProcessOut library. It contains
      * the API credentials of the project.
      * @param {string} projectID
      * @param {string} projectSecret
+     * @param {object} options
+     * @param {fetch} options.fetch
      * @class {ProcessOut}
      */
-    constructor(projectID: string, projectSecret: string) {
+    constructor(projectID: string, projectSecret: string, options?: { fetch?: fetch }) {
         this.projectID     = projectID;
         this.projectSecret = projectSecret;
+        this.fetch         = fetch;
     }
 
     /**
