@@ -329,6 +329,15 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new ThreeDS instance
+     * @param {array} prefill
+     * @return {ThreeDS}
+     */
+	public newThreeDS(prefill?: p.ThreeDS): p.ThreeDS {
+        return new p.ThreeDS(this, prefill);
+    }
+	
+    /**
      * Create a new PaymentDataThreeDSRequest instance
      * @param {array} prefill
      * @return {PaymentDataThreeDSRequest}

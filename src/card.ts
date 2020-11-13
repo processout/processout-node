@@ -74,6 +74,12 @@ class Card {
     private brand: string = null;
 
     /**
+     * Category of the card (consumer, commercial, ...)
+     * @type {string}
+     */
+    private category: string = null;
+
+    /**
      * First 6 digits of the card
      * @type {string}
      */
@@ -422,6 +428,26 @@ class Card {
      */
     public setBrand(val: string): Card {
         this.brand = val;
+        return this;
+    }
+
+    /**
+     * Get Category
+     * Category of the card (consumer, commercial, ...)
+     * @return {string}
+     */
+    public getCategory(): string {
+        return this.category;
+    }
+
+    /**
+     * Set Category
+     * Category of the card (consumer, commercial, ...)
+     * @param {string} val
+     * @return {Card}
+     */
+    public setCategory(val: string): Card {
+        this.category = val;
         return this;
     }
 
@@ -851,6 +877,8 @@ class Card {
             this.setBankName(data["bank_name"]);
         if (data["brand"])
             this.setBrand(data["brand"]);
+        if (data["category"])
+            this.setCategory(data["category"]);
         if (data["iin"])
             this.setIin(data["iin"]);
         if (data["last_4_digits"])
@@ -910,6 +938,7 @@ class Card {
             "type": this.getType(),
             "bank_name": this.getBankName(),
             "brand": this.getBrand(),
+            "category": this.getCategory(),
             "iin": this.getIin(),
             "last_4_digits": this.getLast4Digits(),
             "exp_month": this.getExpMonth(),

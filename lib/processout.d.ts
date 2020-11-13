@@ -219,6 +219,12 @@ declare class ProcessOut {
      */
     newTransaction(prefill?: p.Transaction): p.Transaction;
     /**
+     * Create a new ThreeDS instance
+     * @param {array} prefill
+     * @return {ThreeDS}
+     */
+    newThreeDS(prefill?: p.ThreeDS): p.ThreeDS;
+    /**
      * Create a new PaymentDataThreeDSRequest instance
      * @param {array} prefill
      * @return {PaymentDataThreeDSRequest}

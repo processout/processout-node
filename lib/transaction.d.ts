@@ -153,6 +153,11 @@ declare class Transaction {
      */
     private errorCode;
     /**
+     * Error message of the transaction, when the payment has failed
+     * @type {string}
+     */
+    private errorMessage;
+    /**
      * Name of the last gateway the transaction was attempted on (successfully or not). Use the operations list to get the full transaction's history
      * @type {string}
      */
@@ -252,6 +257,11 @@ declare class Transaction {
      * @type {string}
      */
     private refundedAt;
+    /**
+     * 3DS data of a transaction if it was authenticated
+     * @type {p.ThreeDS}
+     */
+    private threeDS;
     /**
      * Transaction constructor
      * @param {ProcessOut} client
@@ -650,6 +660,19 @@ declare class Transaction {
      */
     setErrorCode(val: string): Transaction;
     /**
+     * Get ErrorMessage
+     * Error message of the transaction, when the payment has failed
+     * @return {string}
+     */
+    getErrorMessage(): string;
+    /**
+     * Set ErrorMessage
+     * Error message of the transaction, when the payment has failed
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setErrorMessage(val: string): Transaction;
+    /**
      * Get GatewayName
      * Name of the last gateway the transaction was attempted on (successfully or not). Use the operations list to get the full transaction's history
      * @return {string}
@@ -909,6 +932,19 @@ declare class Transaction {
      * @return {Transaction}
      */
     setRefundedAt(val: string): Transaction;
+    /**
+     * Get ThreeDS
+     * 3DS data of a transaction if it was authenticated
+     * @return {p.ThreeDS}
+     */
+    getThreeDS(): p.ThreeDS;
+    /**
+     * Set ThreeDS
+     * 3DS data of a transaction if it was authenticated
+     * @param {p.ThreeDS} val
+     * @return {Transaction}
+     */
+    setThreeDS(val: p.ThreeDS): Transaction;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

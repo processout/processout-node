@@ -194,6 +194,12 @@ class Transaction {
     private errorCode: string = null;
 
     /**
+     * Error message of the transaction, when the payment has failed
+     * @type {string}
+     */
+    private errorMessage: string = null;
+
+    /**
      * Name of the last gateway the transaction was attempted on (successfully or not). Use the operations list to get the full transaction's history
      * @type {string}
      */
@@ -312,6 +318,12 @@ class Transaction {
      * @type {string}
      */
     private refundedAt: string = null;
+
+    /**
+     * 3DS data of a transaction if it was authenticated
+     * @type {p.ThreeDS}
+     */
+    private threeDS: p.ThreeDS = null;
 
     /**
      * Transaction constructor
@@ -1001,6 +1013,26 @@ class Transaction {
     }
 
     /**
+     * Get ErrorMessage
+     * Error message of the transaction, when the payment has failed
+     * @return {string}
+     */
+    public getErrorMessage(): string {
+        return this.errorMessage;
+    }
+
+    /**
+     * Set ErrorMessage
+     * Error message of the transaction, when the payment has failed
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setErrorMessage(val: string): Transaction {
+        this.errorMessage = val;
+        return this;
+    }
+
+    /**
      * Get GatewayName
      * Name of the last gateway the transaction was attempted on (successfully or not). Use the operations list to get the full transaction's history
      * @return {string}
@@ -1401,6 +1433,33 @@ class Transaction {
     }
 
     /**
+     * Get ThreeDS
+     * 3DS data of a transaction if it was authenticated
+     * @return {p.ThreeDS}
+     */
+    public getThreeDS(): p.ThreeDS {
+        return this.threeDS;
+    }
+
+    /**
+     * Set ThreeDS
+     * 3DS data of a transaction if it was authenticated
+     * @param {p.ThreeDS} val
+     * @return {Transaction}
+     */
+    public setThreeDS(val: p.ThreeDS): Transaction {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newThreeDS().getProcessOutObjectClass())
+            this.threeDS = val;
+        else {
+            var obj = this.client.newThreeDS();
+            obj.fillWithData(val);
+            this.threeDS = obj;
+        }
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Transaction}
@@ -1466,6 +1525,8 @@ class Transaction {
             this.setCurrency(data["currency"]);
         if (data["error_code"])
             this.setErrorCode(data["error_code"]);
+        if (data["error_message"])
+            this.setErrorMessage(data["error_message"]);
         if (data["gateway_name"])
             this.setGatewayName(data["gateway_name"]);
         if (data["three_d_s_status"])
@@ -1506,6 +1567,8 @@ class Transaction {
             this.setChargedbackAt(data["chargedback_at"]);
         if (data["refunded_at"])
             this.setRefundedAt(data["refunded_at"]);
+        if (data["three_d_s"])
+            this.setThreeDS(data["three_d_s"]);
         return this;
     }
 
@@ -1545,6 +1608,7 @@ class Transaction {
             "available_amount_local": this.getAvailableAmountLocal(),
             "currency": this.getCurrency(),
             "error_code": this.getErrorCode(),
+            "error_message": this.getErrorMessage(),
             "gateway_name": this.getGatewayName(),
             "three_d_s_status": this.getThreeDSStatus(),
             "status": this.getStatus(),
@@ -1565,6 +1629,7 @@ class Transaction {
             "created_at": this.getCreatedAt(),
             "chargedback_at": this.getChargedbackAt(),
             "refunded_at": this.getRefundedAt(),
+            "three_d_s": this.getThreeDS(),
         };
     }
 

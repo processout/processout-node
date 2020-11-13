@@ -53,6 +53,11 @@ declare class Card {
      */
     private brand;
     /**
+     * Category of the card (consumer, commercial, ...)
+     * @type {string}
+     */
+    private category;
+    /**
      * First 6 digits of the card
      * @type {string}
      */
@@ -289,6 +294,19 @@ declare class Card {
      * @return {Card}
      */
     setBrand(val: string): Card;
+    /**
+     * Get Category
+     * Category of the card (consumer, commercial, ...)
+     * @return {string}
+     */
+    getCategory(): string;
+    /**
+     * Set Category
+     * Category of the card (consumer, commercial, ...)
+     * @param {string} val
+     * @return {Card}
+     */
+    setCategory(val: string): Card;
     /**
      * Get Iin
      * First 6 digits of the card
