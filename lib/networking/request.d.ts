@@ -2,6 +2,7 @@ import fetch = require('node-fetch');
 import ProcessOut = require('../processout');
 declare class Request {
     private client;
+    private fetch;
     constructor(client: ProcessOut);
     /**
      * Authenticate the request

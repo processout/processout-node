@@ -3,9 +3,11 @@ import ProcessOut = require('../processout');
 
 class Request {
     private client: ProcessOut;
+    private fetch: fetch;
     
     constructor(client: ProcessOut) {
         this.client = client;
+        this.fetch = client.fetch || fetch;
     }
 
     /**
@@ -94,7 +96,7 @@ class Request {
             suffix = '?' + out.join('&');
         }
 
-        return fetch(
+        return this.fetch(
             this.client.getHost() + path + suffix, 
             this.prepare({
                 method: 'GET'
@@ -110,7 +112,7 @@ class Request {
      * @return {Promise}
      */
     public post(path: string, data: any, options: any): Promise<fetch.Response> {
-        return fetch(
+        return this.fetch(
             this.client.getHost() + path,
             this.prepare({
                 method: 'POST',
@@ -127,7 +129,7 @@ class Request {
      * @return {Promise}
      */
     public put(path: string, data: any, options: any): Promise<fetch.Response> {
-        return fetch(
+        return this.fetch(
             this.client.getHost() + path, 
             this.prepare({
                 method: 'PUT',
@@ -155,7 +157,7 @@ class Request {
             suffix = '?' + out.join('&');
         }
 
-        return fetch(
+        return this.fetch(
             this.client.getHost() + path + suffix,
             this.prepare({
                 method: 'DELETE'

@@ -182,6 +182,12 @@ class Customer {
     private registeredAt: string = null;
 
     /**
+     * Date of birth of the customer
+     * @type {string}
+     */
+    private dateOfBirth: string = null;
+
+    /**
      * Customer constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -804,6 +810,26 @@ class Customer {
     }
 
     /**
+     * Get DateOfBirth
+     * Date of birth of the customer
+     * @return {string}
+     */
+    public getDateOfBirth(): string {
+        return this.dateOfBirth;
+    }
+
+    /**
+     * Set DateOfBirth
+     * Date of birth of the customer
+     * @param {string} val
+     * @return {Customer}
+     */
+    public setDateOfBirth(val: string): Customer {
+        this.dateOfBirth = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Customer}
@@ -865,6 +891,8 @@ class Customer {
             this.setCreatedAt(data["created_at"]);
         if (data["registered_at"])
             this.setRegisteredAt(data["registered_at"]);
+        if (data["date_of_birth"])
+            this.setDateOfBirth(data["date_of_birth"]);
         return this;
     }
 
@@ -902,6 +930,7 @@ class Customer {
             "sandbox": this.getSandbox(),
             "created_at": this.getCreatedAt(),
             "registered_at": this.getRegisteredAt(),
+            "date_of_birth": this.getDateOfBirth(),
         };
     }
 
@@ -1236,6 +1265,7 @@ class Customer {
 			'ip_address': this.getIpAddress(), 
 			'phone_number': this.getPhoneNumber(), 
 			'legal_document': this.getLegalDocument(), 
+			'date_of_birth': this.getDateOfBirth(), 
 			'is_business': this.getIsBusiness(), 
 			'sex': this.getSex(), 
 			'metadata': this.getMetadata(), 
@@ -1348,6 +1378,7 @@ class Customer {
 			'ip_address': this.getIpAddress(), 
 			'phone_number': this.getPhoneNumber(), 
 			'legal_document': this.getLegalDocument(), 
+			'date_of_birth': this.getDateOfBirth(), 
 			'is_business': this.getIsBusiness(), 
 			'sex': this.getSex(), 
 			'metadata': this.getMetadata(), 
