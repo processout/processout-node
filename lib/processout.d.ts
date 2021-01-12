@@ -20,7 +20,7 @@ declare class ProcessOut {
      * Custom fetch client used for requests
      * @type {fetch}
      */
-    fetch: fetch;
+    fetch: typeof fetch;
     /**
      * ProcessOut is the main component of the ProcessOut library. It contains
      * the API credentials of the project.
@@ -31,7 +31,7 @@ declare class ProcessOut {
      * @class {ProcessOut}
      */
     constructor(projectID: string, projectSecret: string, options?: {
-        fetch?: fetch;
+        fetch?: typeof fetch;
     });
     /**
      * Get the library host URL
