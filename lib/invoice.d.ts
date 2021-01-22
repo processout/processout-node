@@ -173,11 +173,6 @@ declare class Invoice {
      */
     private externalFraudTools;
     /**
-     * Reason provided to request 3DS2 exemption
-     * @type {string}
-     */
-    private exemptionReason3ds2;
-    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -626,19 +621,6 @@ declare class Invoice {
      * @return {Invoice}
      */
     setExternalFraudTools(val: p.InvoiceExternalFraudTools): Invoice;
-    /**
-     * Get ExemptionReason3ds2
-     * Reason provided to request 3DS2 exemption
-     * @return {string}
-     */
-    getExemptionReason3ds2(): string;
-    /**
-     * Set ExemptionReason3ds2
-     * Reason provided to request 3DS2 exemption
-     * @param {string} val
-     * @return {Invoice}
-     */
-    setExemptionReason3ds2(val: string): Invoice;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

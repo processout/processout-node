@@ -218,12 +218,6 @@ class Invoice {
     private externalFraudTools: p.InvoiceExternalFraudTools = null;
 
     /**
-     * Reason provided to request 3DS2 exemption
-     * @type {string}
-     */
-    private exemptionReason3ds2: string = null;
-
-    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -995,26 +989,6 @@ class Invoice {
     }
 
     /**
-     * Get ExemptionReason3ds2
-     * Reason provided to request 3DS2 exemption
-     * @return {string}
-     */
-    public getExemptionReason3ds2(): string {
-        return this.exemptionReason3ds2;
-    }
-
-    /**
-     * Set ExemptionReason3ds2
-     * Reason provided to request 3DS2 exemption
-     * @param {string} val
-     * @return {Invoice}
-     */
-    public setExemptionReason3ds2(val: string): Invoice {
-        this.exemptionReason3ds2 = val;
-        return this;
-    }
-
-    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Invoice}
@@ -1088,8 +1062,6 @@ class Invoice {
             this.setDevice(data["device"]);
         if (data["external_fraud_tools"])
             this.setExternalFraudTools(data["external_fraud_tools"]);
-        if (data["exemption_reason_3ds2"])
-            this.setExemptionReason3ds2(data["exemption_reason_3ds2"]);
         return this;
     }
 
@@ -1133,7 +1105,6 @@ class Invoice {
             "shipping": this.getShipping(),
             "device": this.getDevice(),
             "external_fraud_tools": this.getExternalFraudTools(),
-            "exemption_reason_3ds2": this.getExemptionReason3ds2(),
         };
     }
 
@@ -1553,7 +1524,6 @@ class Invoice {
 			'currency': this.getCurrency(), 
 			'metadata': this.getMetadata(), 
 			'details': this.getDetails(), 
-			'exemption_reason_3ds2': this.getExemptionReason3ds2(), 
 			'gateway_data': this.getGatewayData(), 
 			'merchant_initiator_type': this.getMerchantInitiatorType(), 
 			'statement_descriptor': this.getStatementDescriptor(), 

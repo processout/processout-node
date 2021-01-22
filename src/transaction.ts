@@ -326,18 +326,6 @@ class Transaction {
     private threeDS: p.ThreeDS = null;
 
     /**
-     * CVC check done during the transaction
-     * @type {string}
-     */
-    private cvcCheck: string = null;
-
-    /**
-     * AVS check done during the transaction
-     * @type {string}
-     */
-    private avsCheck: string = null;
-
-    /**
      * Transaction constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -1472,46 +1460,6 @@ class Transaction {
     }
 
     /**
-     * Get CvcCheck
-     * CVC check done during the transaction
-     * @return {string}
-     */
-    public getCvcCheck(): string {
-        return this.cvcCheck;
-    }
-
-    /**
-     * Set CvcCheck
-     * CVC check done during the transaction
-     * @param {string} val
-     * @return {Transaction}
-     */
-    public setCvcCheck(val: string): Transaction {
-        this.cvcCheck = val;
-        return this;
-    }
-
-    /**
-     * Get AvsCheck
-     * AVS check done during the transaction
-     * @return {string}
-     */
-    public getAvsCheck(): string {
-        return this.avsCheck;
-    }
-
-    /**
-     * Set AvsCheck
-     * AVS check done during the transaction
-     * @param {string} val
-     * @return {Transaction}
-     */
-    public setAvsCheck(val: string): Transaction {
-        this.avsCheck = val;
-        return this;
-    }
-
-    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Transaction}
@@ -1621,10 +1569,6 @@ class Transaction {
             this.setRefundedAt(data["refunded_at"]);
         if (data["three_d_s"])
             this.setThreeDS(data["three_d_s"]);
-        if (data["cvc_check"])
-            this.setCvcCheck(data["cvc_check"]);
-        if (data["avs_check"])
-            this.setAvsCheck(data["avs_check"]);
         return this;
     }
 
@@ -1686,8 +1630,6 @@ class Transaction {
             "chargedback_at": this.getChargedbackAt(),
             "refunded_at": this.getRefundedAt(),
             "three_d_s": this.getThreeDS(),
-            "cvc_check": this.getCvcCheck(),
-            "avs_check": this.getAvsCheck(),
         };
     }
 

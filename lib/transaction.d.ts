@@ -263,16 +263,6 @@ declare class Transaction {
      */
     private threeDS;
     /**
-     * CVC check done during the transaction
-     * @type {string}
-     */
-    private cvcCheck;
-    /**
-     * AVS check done during the transaction
-     * @type {string}
-     */
-    private avsCheck;
-    /**
      * Transaction constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -955,32 +945,6 @@ declare class Transaction {
      * @return {Transaction}
      */
     setThreeDS(val: p.ThreeDS): Transaction;
-    /**
-     * Get CvcCheck
-     * CVC check done during the transaction
-     * @return {string}
-     */
-    getCvcCheck(): string;
-    /**
-     * Set CvcCheck
-     * CVC check done during the transaction
-     * @param {string} val
-     * @return {Transaction}
-     */
-    setCvcCheck(val: string): Transaction;
-    /**
-     * Get AvsCheck
-     * AVS check done during the transaction
-     * @return {string}
-     */
-    getAvsCheck(): string;
-    /**
-     * Set AvsCheck
-     * AVS check done during the transaction
-     * @param {string} val
-     * @return {Transaction}
-     */
-    setAvsCheck(val: string): Transaction;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

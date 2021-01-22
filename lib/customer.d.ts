@@ -143,11 +143,6 @@ declare class Customer {
      */
     private registeredAt;
     /**
-     * Date of birth of the customer
-     * @type {string}
-     */
-    private dateOfBirth;
-    /**
      * Customer constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -518,19 +513,6 @@ declare class Customer {
      * @return {Customer}
      */
     setRegisteredAt(val: string): Customer;
-    /**
-     * Get DateOfBirth
-     * Date of birth of the customer
-     * @return {string}
-     */
-    getDateOfBirth(): string;
-    /**
-     * Set DateOfBirth
-     * Date of birth of the customer
-     * @param {string} val
-     * @return {Customer}
-     */
-    setDateOfBirth(val: string): Customer;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
