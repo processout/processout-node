@@ -40,7 +40,7 @@ class ProcessOut {
     constructor(projectID: string, projectSecret: string, options?: { fetch?: fetch }) {
         this.projectID     = projectID;
         this.projectSecret = projectSecret;
-        this.fetch         = options && options.fetch;
+        this.fetch         = fetch;
     }
 
     /**
