@@ -218,10 +218,34 @@ class Invoice {
     private externalFraudTools: p.InvoiceExternalFraudTools = null;
 
     /**
-     * Reason provided to request 3DS2 exemption
+     * (Deprecated - use sca_exemption_reason) Reason provided to request 3DS2 exemption
      * @type {string}
      */
     private exemptionReason3ds2: string = null;
+
+    /**
+     * Reason provided to request SCA exemption
+     * @type {string}
+     */
+    private scaExemptionReason: string = null;
+
+    /**
+     * Challenge indicator when requesting 3DS2
+     * @type {string}
+     */
+    private challengeIndicator: string = null;
+
+    /**
+     * A boolean to indicate if an invoice can have incremental authorizations created for it.
+     * @type {boolean}
+     */
+    private incremental: boolean = null;
+
+    /**
+     * Tax for an invoice
+     * @type {p.InvoiceTax}
+     */
+    private tax: p.InvoiceTax = null;
 
     /**
      * Invoice constructor
@@ -996,7 +1020,7 @@ class Invoice {
 
     /**
      * Get ExemptionReason3ds2
-     * Reason provided to request 3DS2 exemption
+     * (Deprecated - use sca_exemption_reason) Reason provided to request 3DS2 exemption
      * @return {string}
      */
     public getExemptionReason3ds2(): string {
@@ -1005,12 +1029,99 @@ class Invoice {
 
     /**
      * Set ExemptionReason3ds2
-     * Reason provided to request 3DS2 exemption
+     * (Deprecated - use sca_exemption_reason) Reason provided to request 3DS2 exemption
      * @param {string} val
      * @return {Invoice}
      */
     public setExemptionReason3ds2(val: string): Invoice {
         this.exemptionReason3ds2 = val;
+        return this;
+    }
+
+    /**
+     * Get ScaExemptionReason
+     * Reason provided to request SCA exemption
+     * @return {string}
+     */
+    public getScaExemptionReason(): string {
+        return this.scaExemptionReason;
+    }
+
+    /**
+     * Set ScaExemptionReason
+     * Reason provided to request SCA exemption
+     * @param {string} val
+     * @return {Invoice}
+     */
+    public setScaExemptionReason(val: string): Invoice {
+        this.scaExemptionReason = val;
+        return this;
+    }
+
+    /**
+     * Get ChallengeIndicator
+     * Challenge indicator when requesting 3DS2
+     * @return {string}
+     */
+    public getChallengeIndicator(): string {
+        return this.challengeIndicator;
+    }
+
+    /**
+     * Set ChallengeIndicator
+     * Challenge indicator when requesting 3DS2
+     * @param {string} val
+     * @return {Invoice}
+     */
+    public setChallengeIndicator(val: string): Invoice {
+        this.challengeIndicator = val;
+        return this;
+    }
+
+    /**
+     * Get Incremental
+     * A boolean to indicate if an invoice can have incremental authorizations created for it.
+     * @return {boolean}
+     */
+    public getIncremental(): boolean {
+        return this.incremental;
+    }
+
+    /**
+     * Set Incremental
+     * A boolean to indicate if an invoice can have incremental authorizations created for it.
+     * @param {boolean} val
+     * @return {Invoice}
+     */
+    public setIncremental(val: boolean): Invoice {
+        this.incremental = val;
+        return this;
+    }
+
+    /**
+     * Get Tax
+     * Tax for an invoice
+     * @return {p.InvoiceTax}
+     */
+    public getTax(): p.InvoiceTax {
+        return this.tax;
+    }
+
+    /**
+     * Set Tax
+     * Tax for an invoice
+     * @param {p.InvoiceTax} val
+     * @return {Invoice}
+     */
+    public setTax(val: p.InvoiceTax): Invoice {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newInvoiceTax().getProcessOutObjectClass())
+            this.tax = val;
+        else {
+            var obj = this.client.newInvoiceTax();
+            obj.fillWithData(val);
+            this.tax = obj;
+        }
         return this;
     }
 
@@ -1090,6 +1201,14 @@ class Invoice {
             this.setExternalFraudTools(data["external_fraud_tools"]);
         if (data["exemption_reason_3ds2"])
             this.setExemptionReason3ds2(data["exemption_reason_3ds2"]);
+        if (data["sca_exemption_reason"])
+            this.setScaExemptionReason(data["sca_exemption_reason"]);
+        if (data["challenge_indicator"])
+            this.setChallengeIndicator(data["challenge_indicator"]);
+        if (data["incremental"])
+            this.setIncremental(data["incremental"]);
+        if (data["tax"])
+            this.setTax(data["tax"]);
         return this;
     }
 
@@ -1134,9 +1253,60 @@ class Invoice {
             "device": this.getDevice(),
             "external_fraud_tools": this.getExternalFraudTools(),
             "exemption_reason_3ds2": this.getExemptionReason3ds2(),
+            "sca_exemption_reason": this.getScaExemptionReason(),
+            "challenge_indicator": this.getChallengeIndicator(),
+            "incremental": this.getIncremental(),
+            "tax": this.getTax(),
         };
     }
 
+    /**
+     * Create an incremental authorization
+	 * @param string amount
+     * @param {any} options
+     * @return {Promise<p.Transaction>}
+     */
+    public incrementAuthorization(amount: string, options): Promise<p.Transaction> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/invoices/" + encodeURI(this.getId()) + "/increment_authorization";
+
+        var data = {
+			'amount': amount
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var body = respBody;
+                body = body['transaction'];
+                var obj = cur.client.newTransaction();
+                returnValues.push(obj.fillWithData(body));
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.post(path, data, options).then(callback, callbackError);
+            });
+    }
     /**
      * Authorize the invoice using the given source (customer or token)
 	 * @param string source
@@ -1152,6 +1322,7 @@ class Invoice {
 
         var data = {
 			'device': this.getDevice(), 
+			'incremental': this.getIncremental(), 
 			'synchronous': (options['synchronous']) ? options['synchronous'] : null, 
 			'retry_drop_liability_shift': (options['retry_drop_liability_shift']) ? options['retry_drop_liability_shift'] : null, 
 			'capture_amount': (options['capture_amount']) ? options['capture_amount'] : null, 
@@ -1205,6 +1376,7 @@ class Invoice {
 
         var data = {
 			'device': this.getDevice(), 
+			'incremental': this.getIncremental(), 
 			'authorize_only': (options['authorize_only']) ? options['authorize_only'] : null, 
 			'synchronous': (options['synchronous']) ? options['synchronous'] : null, 
 			'retry_drop_liability_shift': (options['retry_drop_liability_shift']) ? options['retry_drop_liability_shift'] : null, 
@@ -1554,6 +1726,8 @@ class Invoice {
 			'metadata': this.getMetadata(), 
 			'details': this.getDetails(), 
 			'exemption_reason_3ds2': this.getExemptionReason3ds2(), 
+			'sca_exemption_reason': this.getScaExemptionReason(), 
+			'challenge_indicator': this.getChallengeIndicator(), 
 			'gateway_data': this.getGatewayData(), 
 			'merchant_initiator_type': this.getMerchantInitiatorType(), 
 			'statement_descriptor': this.getStatementDescriptor(), 
@@ -1568,7 +1742,8 @@ class Invoice {
 			'shipping': this.getShipping(), 
 			'device': this.getDevice(), 
 			'require_backend_capture': this.getRequireBackendCapture(), 
-			'external_fraud_tools': this.getExternalFraudTools()
+			'external_fraud_tools': this.getExternalFraudTools(), 
+			'tax': this.getTax()
         };
 
         var cur = this;

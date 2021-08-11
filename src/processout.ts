@@ -204,6 +204,15 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new InvoiceTax instance
+     * @param {array} prefill
+     * @return {InvoiceTax}
+     */
+	public newInvoiceTax(prefill?: p.InvoiceTax): p.InvoiceTax {
+        return new p.InvoiceTax(this, prefill);
+    }
+	
+    /**
      * Create a new InvoiceExternalFraudTools instance
      * @param {array} prefill
      * @return {InvoiceExternalFraudTools}
