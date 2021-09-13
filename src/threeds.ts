@@ -38,6 +38,36 @@ class ThreeDS {
     private challenged: boolean = null;
 
     /**
+     * Ares transaction status
+     * @type {string}
+     */
+    private aresTransStatus: string = null;
+
+    /**
+     * Cres transaction status
+     * @type {string}
+     */
+    private cresTransStatus: string = null;
+
+    /**
+     * Universally unique transaction identifier assigned by the DS to identify a single transaction
+     * @type {string}
+     */
+    private dsTransId: string = null;
+
+    /**
+     * Indicates whether the 3DS fingerprint successfully completed
+     * @type {string}
+     */
+    private fingerprintCompletionIndicator: string = null;
+
+    /**
+     * Universally unique transaction identifier assigned by the 3DS Server to identify a single transaction
+     * @type {string}
+     */
+    private serverTransId: string = null;
+
+    /**
      * ThreeDS constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -136,19 +166,129 @@ class ThreeDS {
     }
 
     /**
+     * Get AresTransStatus
+     * Ares transaction status
+     * @return {string}
+     */
+    public getAresTransStatus(): string {
+        return this.aresTransStatus;
+    }
+
+    /**
+     * Set AresTransStatus
+     * Ares transaction status
+     * @param {string} val
+     * @return {ThreeDS}
+     */
+    public setAresTransStatus(val: string): ThreeDS {
+        this.aresTransStatus = val;
+        return this;
+    }
+
+    /**
+     * Get CresTransStatus
+     * Cres transaction status
+     * @return {string}
+     */
+    public getCresTransStatus(): string {
+        return this.cresTransStatus;
+    }
+
+    /**
+     * Set CresTransStatus
+     * Cres transaction status
+     * @param {string} val
+     * @return {ThreeDS}
+     */
+    public setCresTransStatus(val: string): ThreeDS {
+        this.cresTransStatus = val;
+        return this;
+    }
+
+    /**
+     * Get DsTransId
+     * Universally unique transaction identifier assigned by the DS to identify a single transaction
+     * @return {string}
+     */
+    public getDsTransId(): string {
+        return this.dsTransId;
+    }
+
+    /**
+     * Set DsTransId
+     * Universally unique transaction identifier assigned by the DS to identify a single transaction
+     * @param {string} val
+     * @return {ThreeDS}
+     */
+    public setDsTransId(val: string): ThreeDS {
+        this.dsTransId = val;
+        return this;
+    }
+
+    /**
+     * Get FingerprintCompletionIndicator
+     * Indicates whether the 3DS fingerprint successfully completed
+     * @return {string}
+     */
+    public getFingerprintCompletionIndicator(): string {
+        return this.fingerprintCompletionIndicator;
+    }
+
+    /**
+     * Set FingerprintCompletionIndicator
+     * Indicates whether the 3DS fingerprint successfully completed
+     * @param {string} val
+     * @return {ThreeDS}
+     */
+    public setFingerprintCompletionIndicator(val: string): ThreeDS {
+        this.fingerprintCompletionIndicator = val;
+        return this;
+    }
+
+    /**
+     * Get ServerTransId
+     * Universally unique transaction identifier assigned by the 3DS Server to identify a single transaction
+     * @return {string}
+     */
+    public getServerTransId(): string {
+        return this.serverTransId;
+    }
+
+    /**
+     * Set ServerTransId
+     * Universally unique transaction identifier assigned by the 3DS Server to identify a single transaction
+     * @param {string} val
+     * @return {ThreeDS}
+     */
+    public setServerTransId(val: string): ThreeDS {
+        this.serverTransId = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {ThreeDS}
      */
     public fillWithData(data: any): ThreeDS {
-        if (data["Version"])
-            this.setVersion(data["Version"]);
-        if (data["Status"])
-            this.setStatus(data["Status"]);
+        if (data["version"])
+            this.setVersion(data["version"]);
+        if (data["status"])
+            this.setStatus(data["status"]);
         if (data["fingerprinted"])
             this.setFingerprinted(data["fingerprinted"]);
         if (data["challenged"])
             this.setChallenged(data["challenged"]);
+        if (data["ares_trans_status"])
+            this.setAresTransStatus(data["ares_trans_status"]);
+        if (data["cres_trans_status"])
+            this.setCresTransStatus(data["cres_trans_status"]);
+        if (data["ds_trans_id"])
+            this.setDsTransId(data["ds_trans_id"]);
+        if (data["fingerprint_completion_indicator"])
+            this.setFingerprintCompletionIndicator(data["fingerprint_completion_indicator"]);
+        if (data["server_trans_id"])
+            this.setServerTransId(data["server_trans_id"]);
         return this;
     }
 
@@ -158,10 +298,15 @@ class ThreeDS {
      */
     public toJSON(): any {
         return {
-            "Version": this.getVersion(),
-            "Status": this.getStatus(),
+            "version": this.getVersion(),
+            "status": this.getStatus(),
             "fingerprinted": this.getFingerprinted(),
             "challenged": this.getChallenged(),
+            "ares_trans_status": this.getAresTransStatus(),
+            "cres_trans_status": this.getCresTransStatus(),
+            "ds_trans_id": this.getDsTransId(),
+            "fingerprint_completion_indicator": this.getFingerprintCompletionIndicator(),
+            "server_trans_id": this.getServerTransId(),
         };
     }
 
