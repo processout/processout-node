@@ -248,6 +248,12 @@ class Invoice {
     private tax: p.InvoiceTax = null;
 
     /**
+     * Define whether or not the invoice represents card verification.
+     * @type {boolean}
+     */
+    private cardVerification: boolean = null;
+
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -1126,6 +1132,26 @@ class Invoice {
     }
 
     /**
+     * Get CardVerification
+     * Define whether or not the invoice represents card verification.
+     * @return {boolean}
+     */
+     public getCardVerification(): boolean {
+        return this.cardVerification;
+    }
+
+    /**
+     * Set CardVerification
+     * Define whether or not the invoice represents card verification.
+     * @param {boolean} val
+     * @return {Invoice}
+     */
+    public setCardVerification(val: boolean): Invoice {
+        this.cardVerification = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Invoice}
@@ -1209,6 +1235,8 @@ class Invoice {
             this.setIncremental(data["incremental"]);
         if (data["tax"])
             this.setTax(data["tax"]);
+        if (data["card_verification"])
+            this.setCardVerification(data["card_verification"]);
         return this;
     }
 
@@ -1257,6 +1285,7 @@ class Invoice {
             "challenge_indicator": this.getChallengeIndicator(),
             "incremental": this.getIncremental(),
             "tax": this.getTax(),
+            "card_verification": this.getCardVerification(),
         };
     }
 
