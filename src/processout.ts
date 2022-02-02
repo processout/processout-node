@@ -114,6 +114,24 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new Balances instance
+     * @param {array} prefill
+     * @return {Balances}
+     */
+	public newBalances(prefill?: p.Balances): p.Balances {
+        return new p.Balances(this, prefill);
+    }
+	
+    /**
+     * Create a new Balance instance
+     * @param {array} prefill
+     * @return {Balance}
+     */
+	public newBalance(prefill?: p.Balance): p.Balance {
+        return new p.Balance(this, prefill);
+    }
+	
+    /**
      * Create a new Card instance
      * @param {array} prefill
      * @return {Card}

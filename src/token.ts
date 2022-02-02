@@ -128,6 +128,12 @@ class Token {
     private invoiceId: string = null;
 
     /**
+     * Allow to refund or void the invoice manually
+     * @type {boolean}
+     */
+    private manualInvoiceCancellation: boolean = null;
+
+    /**
      * Token constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -554,6 +560,26 @@ class Token {
     }
 
     /**
+     * Get ManualInvoiceCancellation
+     * Allow to refund or void the invoice manually
+     * @return {boolean}
+     */
+    public getManualInvoiceCancellation(): boolean {
+        return this.manualInvoiceCancellation;
+    }
+
+    /**
+     * Set ManualInvoiceCancellation
+     * Allow to refund or void the invoice manually
+     * @param {boolean} val
+     * @return {Token}
+     */
+    public setManualInvoiceCancellation(val: boolean): Token {
+        this.manualInvoiceCancellation = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Token}
@@ -597,6 +623,8 @@ class Token {
             this.setInvoice(data["invoice"]);
         if (data["invoice_id"])
             this.setInvoiceId(data["invoice_id"]);
+        if (data["manual_invoice_cancellation"])
+            this.setManualInvoiceCancellation(data["manual_invoice_cancellation"]);
         return this;
     }
 
@@ -625,6 +653,7 @@ class Token {
             "description": this.getDescription(),
             "invoice": this.getInvoice(),
             "invoice_id": this.getInvoiceId(),
+            "manual_invoice_cancellation": this.getManualInvoiceCancellation(),
         };
     }
 
@@ -747,6 +776,8 @@ class Token {
 			'return_url': this.getReturnUrl(), 
 			'cancel_url': this.getCancelUrl(), 
 			'description': this.getDescription(), 
+			'invoice_id': this.getInvoiceId(), 
+			'manual_invoice_cancellation': this.getManualInvoiceCancellation(), 
 			'source': (options['source']) ? options['source'] : null, 
 			'settings': (options['settings']) ? options['settings'] : null, 
 			'device': (options['device']) ? options['device'] : null, 

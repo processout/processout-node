@@ -98,6 +98,11 @@ declare class Token {
      */
     private invoiceId;
     /**
+     * Allow to refund or void the invoice manually
+     * @type {boolean}
+     */
+    private manualInvoiceCancellation;
+    /**
      * Token constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -351,6 +356,19 @@ declare class Token {
      * @return {Token}
      */
     setInvoiceId(val: string): Token;
+    /**
+     * Get ManualInvoiceCancellation
+     * Allow to refund or void the invoice manually
+     * @return {boolean}
+     */
+    getManualInvoiceCancellation(): boolean;
+    /**
+     * Set ManualInvoiceCancellation
+     * Allow to refund or void the invoice manually
+     * @param {boolean} val
+     * @return {Token}
+     */
+    setManualInvoiceCancellation(val: boolean): Token;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

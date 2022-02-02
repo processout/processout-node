@@ -79,6 +79,18 @@ declare class ProcessOut {
      */
     newAPIVersion(prefill?: p.APIVersion): p.APIVersion;
     /**
+     * Create a new Balances instance
+     * @param {array} prefill
+     * @return {Balances}
+     */
+    newBalances(prefill?: p.Balances): p.Balances;
+    /**
+     * Create a new Balance instance
+     * @param {array} prefill
+     * @return {Balance}
+     */
+    newBalance(prefill?: p.Balance): p.Balance;
+    /**
      * Create a new Card instance
      * @param {array} prefill
      * @return {Card}
