@@ -98,10 +98,15 @@ declare class Token {
      */
     private invoiceId;
     /**
-     * Allow to refund or void the invoice manually
+     * If true, allows to refund or void the invoice manually following the token verification process
      * @type {boolean}
      */
     private manualInvoiceCancellation;
+    /**
+     * If true, the balance can be retrieved from the balances endpoint
+     * @type {boolean}
+     */
+    private canGetBalance;
     /**
      * Token constructor
      * @param {ProcessOut} client
@@ -358,17 +363,30 @@ declare class Token {
     setInvoiceId(val: string): Token;
     /**
      * Get ManualInvoiceCancellation
-     * Allow to refund or void the invoice manually
+     * If true, allows to refund or void the invoice manually following the token verification process
      * @return {boolean}
      */
     getManualInvoiceCancellation(): boolean;
     /**
      * Set ManualInvoiceCancellation
-     * Allow to refund or void the invoice manually
+     * If true, allows to refund or void the invoice manually following the token verification process
      * @param {boolean} val
      * @return {Token}
      */
     setManualInvoiceCancellation(val: boolean): Token;
+    /**
+     * Get CanGetBalance
+     * If true, the balance can be retrieved from the balances endpoint
+     * @return {boolean}
+     */
+    getCanGetBalance(): boolean;
+    /**
+     * Set CanGetBalance
+     * If true, the balance can be retrieved from the balances endpoint
+     * @param {boolean} val
+     * @return {Token}
+     */
+    setCanGetBalance(val: boolean): Token;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

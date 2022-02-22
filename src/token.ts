@@ -128,10 +128,16 @@ class Token {
     private invoiceId: string = null;
 
     /**
-     * Allow to refund or void the invoice manually
+     * If true, allows to refund or void the invoice manually following the token verification process
      * @type {boolean}
      */
     private manualInvoiceCancellation: boolean = null;
+
+    /**
+     * If true, the balance can be retrieved from the balances endpoint
+     * @type {boolean}
+     */
+    private canGetBalance: boolean = null;
 
     /**
      * Token constructor
@@ -561,7 +567,7 @@ class Token {
 
     /**
      * Get ManualInvoiceCancellation
-     * Allow to refund or void the invoice manually
+     * If true, allows to refund or void the invoice manually following the token verification process
      * @return {boolean}
      */
     public getManualInvoiceCancellation(): boolean {
@@ -570,12 +576,32 @@ class Token {
 
     /**
      * Set ManualInvoiceCancellation
-     * Allow to refund or void the invoice manually
+     * If true, allows to refund or void the invoice manually following the token verification process
      * @param {boolean} val
      * @return {Token}
      */
     public setManualInvoiceCancellation(val: boolean): Token {
         this.manualInvoiceCancellation = val;
+        return this;
+    }
+
+    /**
+     * Get CanGetBalance
+     * If true, the balance can be retrieved from the balances endpoint
+     * @return {boolean}
+     */
+    public getCanGetBalance(): boolean {
+        return this.canGetBalance;
+    }
+
+    /**
+     * Set CanGetBalance
+     * If true, the balance can be retrieved from the balances endpoint
+     * @param {boolean} val
+     * @return {Token}
+     */
+    public setCanGetBalance(val: boolean): Token {
+        this.canGetBalance = val;
         return this;
     }
 
@@ -625,6 +651,8 @@ class Token {
             this.setInvoiceId(data["invoice_id"]);
         if (data["manual_invoice_cancellation"])
             this.setManualInvoiceCancellation(data["manual_invoice_cancellation"]);
+        if (data["can_get_balance"])
+            this.setCanGetBalance(data["can_get_balance"]);
         return this;
     }
 
@@ -654,6 +682,7 @@ class Token {
             "invoice": this.getInvoice(),
             "invoice_id": this.getInvoiceId(),
             "manual_invoice_cancellation": this.getManualInvoiceCancellation(),
+            "can_get_balance": this.getCanGetBalance(),
         };
     }
 
