@@ -103,6 +103,11 @@ declare class Token {
      */
     private manualInvoiceCancellation;
     /**
+     * When a token has been requested to be verified, the status will be displayed using this field. The status can have the following values: `success`, `pending`, `failed`, `not-requested` and `unknown`
+     * @type {string}
+     */
+    private verificationStatus;
+    /**
      * If true, the balance can be retrieved from the balances endpoint
      * @type {boolean}
      */
@@ -374,6 +379,19 @@ declare class Token {
      * @return {Token}
      */
     setManualInvoiceCancellation(val: boolean): Token;
+    /**
+     * Get VerificationStatus
+     * When a token has been requested to be verified, the status will be displayed using this field. The status can have the following values: `success`, `pending`, `failed`, `not-requested` and `unknown`
+     * @return {string}
+     */
+    getVerificationStatus(): string;
+    /**
+     * Set VerificationStatus
+     * When a token has been requested to be verified, the status will be displayed using this field. The status can have the following values: `success`, `pending`, `failed`, `not-requested` and `unknown`
+     * @param {string} val
+     * @return {Token}
+     */
+    setVerificationStatus(val: string): Token;
     /**
      * Get CanGetBalance
      * If true, the balance can be retrieved from the balances endpoint

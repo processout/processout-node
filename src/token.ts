@@ -134,6 +134,12 @@ class Token {
     private manualInvoiceCancellation: boolean = null;
 
     /**
+     * When a token has been requested to be verified, the status will be displayed using this field. The status can have the following values: `success`, `pending`, `failed`, `not-requested` and `unknown`
+     * @type {string}
+     */
+    private verificationStatus: string = null;
+
+    /**
      * If true, the balance can be retrieved from the balances endpoint
      * @type {boolean}
      */
@@ -586,6 +592,26 @@ class Token {
     }
 
     /**
+     * Get VerificationStatus
+     * When a token has been requested to be verified, the status will be displayed using this field. The status can have the following values: `success`, `pending`, `failed`, `not-requested` and `unknown`
+     * @return {string}
+     */
+    public getVerificationStatus(): string {
+        return this.verificationStatus;
+    }
+
+    /**
+     * Set VerificationStatus
+     * When a token has been requested to be verified, the status will be displayed using this field. The status can have the following values: `success`, `pending`, `failed`, `not-requested` and `unknown`
+     * @param {string} val
+     * @return {Token}
+     */
+    public setVerificationStatus(val: string): Token {
+        this.verificationStatus = val;
+        return this;
+    }
+
+    /**
      * Get CanGetBalance
      * If true, the balance can be retrieved from the balances endpoint
      * @return {boolean}
@@ -651,6 +677,8 @@ class Token {
             this.setInvoiceId(data["invoice_id"]);
         if (data["manual_invoice_cancellation"])
             this.setManualInvoiceCancellation(data["manual_invoice_cancellation"]);
+        if (data["verification_status"])
+            this.setVerificationStatus(data["verification_status"]);
         if (data["can_get_balance"])
             this.setCanGetBalance(data["can_get_balance"]);
         return this;
@@ -682,6 +710,7 @@ class Token {
             "invoice": this.getInvoice(),
             "invoice_id": this.getInvoiceId(),
             "manual_invoice_cancellation": this.getManualInvoiceCancellation(),
+            "verification_status": this.getVerificationStatus(),
             "can_get_balance": this.getCanGetBalance(),
         };
     }
