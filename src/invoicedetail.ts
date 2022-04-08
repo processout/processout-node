@@ -14,6 +14,12 @@ class InvoiceDetail {
     private client: ProcessOut = null;
 
     /**
+     * ID of the invoice detail
+     * @type {string}
+     */
+    private id: string = null;
+
+    /**
      * Name of the invoice detail
      * @type {string}
      */
@@ -119,6 +125,26 @@ class InvoiceDetail {
 
     public getProcessOutObjectClass(): string {
         return "InvoiceDetail";
+    }
+
+    /**
+     * Get Id
+     * ID of the invoice detail
+     * @return {string}
+     */
+    public getId(): string {
+        return this.id;
+    }
+
+    /**
+     * Set Id
+     * ID of the invoice detail
+     * @param {string} val
+     * @return {InvoiceDetail}
+     */
+    public setId(val: string): InvoiceDetail {
+        this.id = val;
+        return this;
     }
 
     /**
@@ -427,6 +453,8 @@ class InvoiceDetail {
      * @return {InvoiceDetail}
      */
     public fillWithData(data: any): InvoiceDetail {
+        if (data["id"])
+            this.setId(data["id"]);
         if (data["name"])
             this.setName(data["name"]);
         if (data["type"])
@@ -466,6 +494,7 @@ class InvoiceDetail {
      */
     public toJSON(): any {
         return {
+            "id": this.getId(),
             "name": this.getName(),
             "type": this.getType(),
             "amount": this.getAmount(),

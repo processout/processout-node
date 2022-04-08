@@ -114,6 +114,24 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new ApplePayAlternativeMerchantCertificates instance
+     * @param {array} prefill
+     * @return {ApplePayAlternativeMerchantCertificates}
+     */
+	public newApplePayAlternativeMerchantCertificates(prefill?: p.ApplePayAlternativeMerchantCertificates): p.ApplePayAlternativeMerchantCertificates {
+        return new p.ApplePayAlternativeMerchantCertificates(this, prefill);
+    }
+	
+    /**
+     * Create a new AlternativeMerchantCertificate instance
+     * @param {array} prefill
+     * @return {AlternativeMerchantCertificate}
+     */
+	public newAlternativeMerchantCertificate(prefill?: p.AlternativeMerchantCertificate): p.AlternativeMerchantCertificate {
+        return new p.AlternativeMerchantCertificate(this, prefill);
+    }
+	
+    /**
      * Create a new Balances instance
      * @param {array} prefill
      * @return {Balances}

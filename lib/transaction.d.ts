@@ -158,6 +158,11 @@ declare class Transaction {
      */
     private errorMessage;
     /**
+     * Name of the merchant acquirer
+     * @type {string}
+     */
+    private acquirerName;
+    /**
      * Name of the last gateway the transaction was attempted on (successfully or not). Use the operations list to get the full transaction's history
      * @type {string}
      */
@@ -682,6 +687,19 @@ declare class Transaction {
      * @return {Transaction}
      */
     setErrorMessage(val: string): Transaction;
+    /**
+     * Get AcquirerName
+     * Name of the merchant acquirer
+     * @return {string}
+     */
+    getAcquirerName(): string;
+    /**
+     * Set AcquirerName
+     * Name of the merchant acquirer
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setAcquirerName(val: string): Transaction;
     /**
      * Get GatewayName
      * Name of the last gateway the transaction was attempted on (successfully or not). Use the operations list to get the full transaction's history

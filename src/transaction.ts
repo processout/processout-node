@@ -200,6 +200,12 @@ class Transaction {
     private errorMessage: string = null;
 
     /**
+     * Name of the merchant acquirer
+     * @type {string}
+     */
+    private acquirerName: string = null;
+
+    /**
      * Name of the last gateway the transaction was attempted on (successfully or not). Use the operations list to get the full transaction's history
      * @type {string}
      */
@@ -1045,6 +1051,26 @@ class Transaction {
     }
 
     /**
+     * Get AcquirerName
+     * Name of the merchant acquirer
+     * @return {string}
+     */
+    public getAcquirerName(): string {
+        return this.acquirerName;
+    }
+
+    /**
+     * Set AcquirerName
+     * Name of the merchant acquirer
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setAcquirerName(val: string): Transaction {
+        this.acquirerName = val;
+        return this;
+    }
+
+    /**
      * Get GatewayName
      * Name of the last gateway the transaction was attempted on (successfully or not). Use the operations list to get the full transaction's history
      * @return {string}
@@ -1579,6 +1605,8 @@ class Transaction {
             this.setErrorCode(data["error_code"]);
         if (data["error_message"])
             this.setErrorMessage(data["error_message"]);
+        if (data["acquirer_name"])
+            this.setAcquirerName(data["acquirer_name"]);
         if (data["gateway_name"])
             this.setGatewayName(data["gateway_name"]);
         if (data["three_d_s_status"])
@@ -1665,6 +1693,7 @@ class Transaction {
             "currency": this.getCurrency(),
             "error_code": this.getErrorCode(),
             "error_message": this.getErrorMessage(),
+            "acquirer_name": this.getAcquirerName(),
             "gateway_name": this.getGatewayName(),
             "three_d_s_status": this.getThreeDSStatus(),
             "status": this.getStatus(),

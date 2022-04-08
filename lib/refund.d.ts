@@ -53,6 +53,11 @@ declare class Refund {
      */
     private createdAt;
     /**
+     * List of invoice details ids to refund
+     * @type {any}
+     */
+    private invoiceDetailIds;
+    /**
      * Refund constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -189,6 +194,19 @@ declare class Refund {
      * @return {Refund}
      */
     setCreatedAt(val: string): Refund;
+    /**
+     * Get InvoiceDetailIds
+     * List of invoice details ids to refund
+     * @return {any}
+     */
+    getInvoiceDetailIds(): any;
+    /**
+     * Set InvoiceDetailIds
+     * List of invoice details ids to refund
+     * @param {any} val
+     * @return {Refund}
+     */
+    setInvoiceDetailIds(val: any): Refund;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

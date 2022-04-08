@@ -2,6 +2,11 @@ import ProcessOut = require('./processout');
 declare class InvoiceDetail {
     private client;
     /**
+     * ID of the invoice detail
+     * @type {string}
+     */
+    private id;
+    /**
      * Name of the invoice detail
      * @type {string}
      */
@@ -83,6 +88,19 @@ declare class InvoiceDetail {
      */
     constructor(client: ProcessOut, prefill: InvoiceDetail);
     getProcessOutObjectClass(): string;
+    /**
+     * Get Id
+     * ID of the invoice detail
+     * @return {string}
+     */
+    getId(): string;
+    /**
+     * Set Id
+     * ID of the invoice detail
+     * @param {string} val
+     * @return {InvoiceDetail}
+     */
+    setId(val: string): InvoiceDetail;
     /**
      * Get Name
      * Name of the invoice detail

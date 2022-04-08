@@ -79,6 +79,18 @@ declare class ProcessOut {
      */
     newAPIVersion(prefill?: p.APIVersion): p.APIVersion;
     /**
+     * Create a new ApplePayAlternativeMerchantCertificates instance
+     * @param {array} prefill
+     * @return {ApplePayAlternativeMerchantCertificates}
+     */
+    newApplePayAlternativeMerchantCertificates(prefill?: p.ApplePayAlternativeMerchantCertificates): p.ApplePayAlternativeMerchantCertificates;
+    /**
+     * Create a new AlternativeMerchantCertificate instance
+     * @param {array} prefill
+     * @return {AlternativeMerchantCertificate}
+     */
+    newAlternativeMerchantCertificate(prefill?: p.AlternativeMerchantCertificate): p.AlternativeMerchantCertificate;
+    /**
      * Create a new Balances instance
      * @param {array} prefill
      * @return {Balances}

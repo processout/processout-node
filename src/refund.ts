@@ -74,6 +74,12 @@ class Refund {
     private createdAt: string = null;
 
     /**
+     * List of invoice details ids to refund
+     * @type {any}
+     */
+    private invoiceDetailIds: any = null;
+
+    /**
      * Refund constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -299,6 +305,26 @@ class Refund {
     }
 
     /**
+     * Get InvoiceDetailIds
+     * List of invoice details ids to refund
+     * @return {any}
+     */
+    public getInvoiceDetailIds(): any {
+        return this.invoiceDetailIds;
+    }
+
+    /**
+     * Set InvoiceDetailIds
+     * List of invoice details ids to refund
+     * @param {any} val
+     * @return {Refund}
+     */
+    public setInvoiceDetailIds(val: any): Refund {
+        this.invoiceDetailIds = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Refund}
@@ -324,6 +350,8 @@ class Refund {
             this.setSandbox(data["sandbox"]);
         if (data["created_at"])
             this.setCreatedAt(data["created_at"]);
+        if (data["invoice_detail_ids"])
+            this.setInvoiceDetailIds(data["invoice_detail_ids"]);
         return this;
     }
 
@@ -343,6 +371,7 @@ class Refund {
             "metadata": this.getMetadata(),
             "sandbox": this.getSandbox(),
             "created_at": this.getCreatedAt(),
+            "invoice_detail_ids": this.getInvoiceDetailIds(),
         };
     }
 
@@ -464,7 +493,8 @@ class Refund {
 			'amount': this.getAmount(), 
 			'metadata': this.getMetadata(), 
 			'reason': this.getReason(), 
-			'information': this.getInformation()
+			'information': this.getInformation(), 
+			'invoice_detail_ids': this.getInvoiceDetailIds()
         };
 
         var cur = this;
