@@ -125,6 +125,50 @@ class AlternativeMerchantCertificate {
             request.post(path, data, options).then(callback, callbackError);
             });
     }
+    /**
+     * Delete a given alternative merchant certificate
+
+     * @param {any} options
+     * @return {Promise<boolean>}
+     */
+    public delete(options): Promise<boolean> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/projects/applepay/alternative-merchant-certificates/" + encodeURI(this.getId()) + "";
+
+        var data = {
+
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                returnValues.push(response.isSuccess());
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.delete(path, data, options).then(callback, callbackError);
+            });
+    }
     
 }
 export = AlternativeMerchantCertificate;

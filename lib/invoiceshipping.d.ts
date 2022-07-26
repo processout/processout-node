@@ -62,6 +62,11 @@ declare class InvoiceShipping {
      */
     private expectsShippingAt;
     /**
+     * Relay store name
+     * @type {string}
+     */
+    private relayStoreName;
+    /**
      * InvoiceShipping constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -224,6 +229,19 @@ declare class InvoiceShipping {
      * @return {InvoiceShipping}
      */
     setExpectsShippingAt(val: string): InvoiceShipping;
+    /**
+     * Get RelayStoreName
+     * Relay store name
+     * @return {string}
+     */
+    getRelayStoreName(): string;
+    /**
+     * Set RelayStoreName
+     * Relay store name
+     * @param {string} val
+     * @return {InvoiceShipping}
+     */
+    setRelayStoreName(val: string): InvoiceShipping;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

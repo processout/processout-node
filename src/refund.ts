@@ -491,10 +491,10 @@ class Refund {
 
         var data = {
 			'amount': this.getAmount(), 
-			'metadata': this.getMetadata(), 
 			'reason': this.getReason(), 
 			'information': this.getInformation(), 
-			'invoice_detail_ids': this.getInvoiceDetailIds()
+			'invoice_detail_ids': this.getInvoiceDetailIds(), 
+			'metadata': (options['metadata']) ? options['metadata'] : null
         };
 
         var cur = this;

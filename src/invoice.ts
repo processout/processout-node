@@ -248,6 +248,12 @@ class Invoice {
     private tax: p.InvoiceTax = null;
 
     /**
+     * Payment type
+     * @type {string}
+     */
+    private paymentType: string = null;
+
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -1126,6 +1132,26 @@ class Invoice {
     }
 
     /**
+     * Get PaymentType
+     * Payment type
+     * @return {string}
+     */
+    public getPaymentType(): string {
+        return this.paymentType;
+    }
+
+    /**
+     * Set PaymentType
+     * Payment type
+     * @param {string} val
+     * @return {Invoice}
+     */
+    public setPaymentType(val: string): Invoice {
+        this.paymentType = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Invoice}
@@ -1209,6 +1235,8 @@ class Invoice {
             this.setIncremental(data["incremental"]);
         if (data["tax"])
             this.setTax(data["tax"]);
+        if (data["payment_type"])
+            this.setPaymentType(data["payment_type"]);
         return this;
     }
 
@@ -1257,6 +1285,7 @@ class Invoice {
             "challenge_indicator": this.getChallengeIndicator(),
             "incremental": this.getIncremental(),
             "tax": this.getTax(),
+            "payment_type": this.getPaymentType(),
         };
     }
 
@@ -1274,6 +1303,7 @@ class Invoice {
         var path    = "/invoices/" + encodeURI(this.getId()) + "/increment_authorization";
 
         var data = {
+			'metadata': (options['metadata']) ? options['metadata'] : null, 
 			'amount': amount
         };
 
@@ -1328,6 +1358,7 @@ class Invoice {
 			'capture_amount': (options['capture_amount']) ? options['capture_amount'] : null, 
 			'enable_three_d_s_2': (options['enable_three_d_s_2']) ? options['enable_three_d_s_2'] : null, 
 			'auto_capture_at': (options['auto_capture_at']) ? options['auto_capture_at'] : null, 
+			'metadata': (options['metadata']) ? options['metadata'] : null, 
 			'source': source
         };
 
@@ -1383,6 +1414,7 @@ class Invoice {
 			'capture_amount': (options['capture_amount']) ? options['capture_amount'] : null, 
 			'auto_capture_at': (options['auto_capture_at']) ? options['auto_capture_at'] : null, 
 			'enable_three_d_s_2': (options['enable_three_d_s_2']) ? options['enable_three_d_s_2'] : null, 
+			'metadata': (options['metadata']) ? options['metadata'] : null, 
 			'source': source
         };
 
@@ -1619,7 +1651,7 @@ class Invoice {
         var path    = "/invoices/" + encodeURI(this.getId()) + "/void";
 
         var data = {
-
+			'metadata': (options['metadata']) ? options['metadata'] : null
         };
 
         var cur = this;
@@ -1743,7 +1775,8 @@ class Invoice {
 			'device': this.getDevice(), 
 			'require_backend_capture': this.getRequireBackendCapture(), 
 			'external_fraud_tools': this.getExternalFraudTools(), 
-			'tax': this.getTax()
+			'tax': this.getTax(), 
+			'payment_type': this.getPaymentType()
         };
 
         var cur = this;

@@ -86,6 +86,12 @@ class InvoiceShipping {
     private expectsShippingAt: string = null;
 
     /**
+     * Relay store name
+     * @type {string}
+     */
+    private relayStoreName: string = null;
+
+    /**
      * InvoiceShipping constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -344,6 +350,26 @@ class InvoiceShipping {
     }
 
     /**
+     * Get RelayStoreName
+     * Relay store name
+     * @return {string}
+     */
+    public getRelayStoreName(): string {
+        return this.relayStoreName;
+    }
+
+    /**
+     * Set RelayStoreName
+     * Relay store name
+     * @param {string} val
+     * @return {InvoiceShipping}
+     */
+    public setRelayStoreName(val: string): InvoiceShipping {
+        this.relayStoreName = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {InvoiceShipping}
@@ -373,6 +399,8 @@ class InvoiceShipping {
             this.setPhoneNumber(data["phone_number"]);
         if (data["expects_shipping_at"])
             this.setExpectsShippingAt(data["expects_shipping_at"]);
+        if (data["relay_store_name"])
+            this.setRelayStoreName(data["relay_store_name"]);
         return this;
     }
 
@@ -394,6 +422,7 @@ class InvoiceShipping {
             "zip": this.getZip(),
             "phone_number": this.getPhoneNumber(),
             "expects_shipping_at": this.getExpectsShippingAt(),
+            "relay_store_name": this.getRelayStoreName(),
         };
     }
 

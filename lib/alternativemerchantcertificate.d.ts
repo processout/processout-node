@@ -45,6 +45,13 @@ declare class AlternativeMerchantCertificate {
      * @return {Promise<p.AlternativeMerchantCertificate>}
      */
     save(options: any): Promise<p.AlternativeMerchantCertificate>;
+    /**
+     * Delete a given alternative merchant certificate
+
+     * @param {any} options
+     * @return {Promise<boolean>}
+     */
+    delete(options: any): Promise<boolean>;
 }
 export = AlternativeMerchantCertificate;
 //# sourceMappingURL=alternativemerchantcertificate.d.ts.map

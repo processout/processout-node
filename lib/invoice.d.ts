@@ -198,6 +198,11 @@ declare class Invoice {
      */
     private tax;
     /**
+     * Payment type
+     * @type {string}
+     */
+    private paymentType;
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -711,6 +716,19 @@ declare class Invoice {
      * @return {Invoice}
      */
     setTax(val: p.InvoiceTax): Invoice;
+    /**
+     * Get PaymentType
+     * Payment type
+     * @return {string}
+     */
+    getPaymentType(): string;
+    /**
+     * Set PaymentType
+     * Payment type
+     * @param {string} val
+     * @return {Invoice}
+     */
+    setPaymentType(val: string): Invoice;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

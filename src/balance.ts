@@ -26,6 +26,12 @@ class Balance {
     private currency: string = null;
 
     /**
+     * Expiry time of the voucher
+     * @type {string}
+     */
+    private expiry: string = null;
+
+    /**
      * Balance constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -84,6 +90,26 @@ class Balance {
     }
 
     /**
+     * Get Expiry
+     * Expiry time of the voucher
+     * @return {string}
+     */
+    public getExpiry(): string {
+        return this.expiry;
+    }
+
+    /**
+     * Set Expiry
+     * Expiry time of the voucher
+     * @param {string} val
+     * @return {Balance}
+     */
+    public setExpiry(val: string): Balance {
+        this.expiry = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Balance}
@@ -93,6 +119,8 @@ class Balance {
             this.setAmount(data["amount"]);
         if (data["currency"])
             this.setCurrency(data["currency"]);
+        if (data["expiry"])
+            this.setExpiry(data["expiry"]);
         return this;
     }
 
@@ -104,6 +132,7 @@ class Balance {
         return {
             "amount": this.getAmount(),
             "currency": this.getCurrency(),
+            "expiry": this.getExpiry(),
         };
     }
 

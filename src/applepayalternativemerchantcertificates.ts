@@ -14,6 +14,12 @@ class ApplePayAlternativeMerchantCertificates {
     private client: ProcessOut = null;
 
     /**
+     * number of alternative merchant certificate
+     * @type {string}
+     */
+    private count: string = null;
+
+    /**
      * Alternative merchant certificates available
      * @type {any}
      */
@@ -35,6 +41,26 @@ class ApplePayAlternativeMerchantCertificates {
 
     public getProcessOutObjectClass(): string {
         return "ApplePayAlternativeMerchantCertificates";
+    }
+
+    /**
+     * Get Count
+     * number of alternative merchant certificate
+     * @return {string}
+     */
+    public getCount(): string {
+        return this.count;
+    }
+
+    /**
+     * Set Count
+     * number of alternative merchant certificate
+     * @param {string} val
+     * @return {ApplePayAlternativeMerchantCertificates}
+     */
+    public setCount(val: string): ApplePayAlternativeMerchantCertificates {
+        this.count = val;
+        return this;
     }
 
     /**
@@ -73,6 +99,8 @@ class ApplePayAlternativeMerchantCertificates {
      * @return {ApplePayAlternativeMerchantCertificates}
      */
     public fillWithData(data: any): ApplePayAlternativeMerchantCertificates {
+        if (data["count"])
+            this.setCount(data["count"]);
         if (data["alternative_merchant_certificates"])
             this.setAlternativeMerchantCertificates(data["alternative_merchant_certificates"]);
         return this;
@@ -84,6 +112,7 @@ class ApplePayAlternativeMerchantCertificates {
      */
     public toJSON(): any {
         return {
+            "count": this.getCount(),
             "alternative_merchant_certificates": this.getAlternativeMerchantCertificates(),
         };
     }

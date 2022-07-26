@@ -3,6 +3,11 @@ import * as p from '.';
 declare class ApplePayAlternativeMerchantCertificates {
     private client;
     /**
+     * number of alternative merchant certificate
+     * @type {string}
+     */
+    private count;
+    /**
      * Alternative merchant certificates available
      * @type {any}
      */
@@ -14,6 +19,19 @@ declare class ApplePayAlternativeMerchantCertificates {
      */
     constructor(client: ProcessOut, prefill: ApplePayAlternativeMerchantCertificates);
     getProcessOutObjectClass(): string;
+    /**
+     * Get Count
+     * number of alternative merchant certificate
+     * @return {string}
+     */
+    getCount(): string;
+    /**
+     * Set Count
+     * number of alternative merchant certificate
+     * @param {string} val
+     * @return {ApplePayAlternativeMerchantCertificates}
+     */
+    setCount(val: string): ApplePayAlternativeMerchantCertificates;
     /**
      * Get AlternativeMerchantCertificates
      * Alternative merchant certificates available

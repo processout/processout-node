@@ -12,6 +12,11 @@ declare class Balance {
      */
     private currency;
     /**
+     * Expiry time of the voucher
+     * @type {string}
+     */
+    private expiry;
+    /**
      * Balance constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -44,6 +49,19 @@ declare class Balance {
      * @return {Balance}
      */
     setCurrency(val: string): Balance;
+    /**
+     * Get Expiry
+     * Expiry time of the voucher
+     * @return {string}
+     */
+    getExpiry(): string;
+    /**
+     * Set Expiry
+     * Expiry time of the voucher
+     * @param {string} val
+     * @return {Balance}
+     */
+    setExpiry(val: string): Balance;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
