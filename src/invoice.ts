@@ -254,6 +254,18 @@ class Invoice {
     private paymentType: string = null;
 
     /**
+     * Initiation type of invoice
+     * @type {string}
+     */
+    private initiationType: string = null;
+
+    /**
+     * Payment intent of invoice
+     * @type {string}
+     */
+    private paymentIntent: string = null;
+
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -1152,6 +1164,46 @@ class Invoice {
     }
 
     /**
+     * Get InitiationType
+     * Initiation type of invoice
+     * @return {string}
+     */
+    public getInitiationType(): string {
+        return this.initiationType;
+    }
+
+    /**
+     * Set InitiationType
+     * Initiation type of invoice
+     * @param {string} val
+     * @return {Invoice}
+     */
+    public setInitiationType(val: string): Invoice {
+        this.initiationType = val;
+        return this;
+    }
+
+    /**
+     * Get PaymentIntent
+     * Payment intent of invoice
+     * @return {string}
+     */
+    public getPaymentIntent(): string {
+        return this.paymentIntent;
+    }
+
+    /**
+     * Set PaymentIntent
+     * Payment intent of invoice
+     * @param {string} val
+     * @return {Invoice}
+     */
+    public setPaymentIntent(val: string): Invoice {
+        this.paymentIntent = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Invoice}
@@ -1237,6 +1289,10 @@ class Invoice {
             this.setTax(data["tax"]);
         if (data["payment_type"])
             this.setPaymentType(data["payment_type"]);
+        if (data["initiation_type"])
+            this.setInitiationType(data["initiation_type"]);
+        if (data["payment_intent"])
+            this.setPaymentIntent(data["payment_intent"]);
         return this;
     }
 
@@ -1286,6 +1342,8 @@ class Invoice {
             "incremental": this.getIncremental(),
             "tax": this.getTax(),
             "payment_type": this.getPaymentType(),
+            "initiation_type": this.getInitiationType(),
+            "payment_intent": this.getPaymentIntent(),
         };
     }
 
@@ -1762,6 +1820,8 @@ class Invoice {
 			'challenge_indicator': this.getChallengeIndicator(), 
 			'gateway_data': this.getGatewayData(), 
 			'merchant_initiator_type': this.getMerchantInitiatorType(), 
+			'initiation_type': this.getInitiationType(), 
+			'payment_intent': this.getPaymentIntent(), 
 			'statement_descriptor': this.getStatementDescriptor(), 
 			'statement_descriptor_phone': this.getStatementDescriptorPhone(), 
 			'statement_descriptor_city': this.getStatementDescriptorCity(), 

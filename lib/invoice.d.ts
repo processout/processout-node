@@ -203,6 +203,16 @@ declare class Invoice {
      */
     private paymentType;
     /**
+     * Initiation type of invoice
+     * @type {string}
+     */
+    private initiationType;
+    /**
+     * Payment intent of invoice
+     * @type {string}
+     */
+    private paymentIntent;
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -729,6 +739,32 @@ declare class Invoice {
      * @return {Invoice}
      */
     setPaymentType(val: string): Invoice;
+    /**
+     * Get InitiationType
+     * Initiation type of invoice
+     * @return {string}
+     */
+    getInitiationType(): string;
+    /**
+     * Set InitiationType
+     * Initiation type of invoice
+     * @param {string} val
+     * @return {Invoice}
+     */
+    setInitiationType(val: string): Invoice;
+    /**
+     * Get PaymentIntent
+     * Payment intent of invoice
+     * @return {string}
+     */
+    getPaymentIntent(): string;
+    /**
+     * Set PaymentIntent
+     * Payment intent of invoice
+     * @param {string} val
+     * @return {Invoice}
+     */
+    setPaymentIntent(val: string): Invoice;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
