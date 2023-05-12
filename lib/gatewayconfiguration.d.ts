@@ -58,6 +58,11 @@ declare class GatewayConfiguration {
      */
     private enabledAt;
     /**
+     * Gateway's processing region (EEA, EEA-UK, UK etc)
+     * @type {string}
+     */
+    private processingRegion;
+    /**
      * GatewayConfiguration constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -207,6 +212,19 @@ declare class GatewayConfiguration {
      * @return {GatewayConfiguration}
      */
     setEnabledAt(val: string): GatewayConfiguration;
+    /**
+     * Get ProcessingRegion
+     * Gateway's processing region (EEA, EEA-UK, UK etc)
+     * @return {string}
+     */
+    getProcessingRegion(): string;
+    /**
+     * Set ProcessingRegion
+     * Gateway's processing region (EEA, EEA-UK, UK etc)
+     * @param {string} val
+     * @return {GatewayConfiguration}
+     */
+    setProcessingRegion(val: string): GatewayConfiguration;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

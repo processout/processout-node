@@ -98,6 +98,12 @@ class Transaction {
     private gatewayConfiguration: p.GatewayConfiguration = null;
 
     /**
+     * External ThreeDS Gateway Configuration is the gateway configuration that was used to authenticate the payment, if configured
+     * @type {p.GatewayConfiguration}
+     */
+    private externalThreeDSGatewayConfiguration: p.GatewayConfiguration = null;
+
+    /**
      * ID of the last gateway configuration that was used to process the payment, if any
      * @type {string}
      */
@@ -342,6 +348,24 @@ class Transaction {
      * @type {string}
      */
     private avsCheck: string = null;
+
+    /**
+     * Initial scheme ID that was referenced in the request
+     * @type {string}
+     */
+    private initialSchemeTransactionId: string = null;
+
+    /**
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @type {string}
+     */
+    private schemeId: string = null;
+
+    /**
+     * Payment type of the transaction
+     * @type {string}
+     */
+    private paymentType: string = null;
 
     /**
      * Transaction constructor
@@ -686,6 +710,33 @@ class Transaction {
             var obj = this.client.newGatewayConfiguration();
             obj.fillWithData(val);
             this.gatewayConfiguration = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get ExternalThreeDSGatewayConfiguration
+     * External ThreeDS Gateway Configuration is the gateway configuration that was used to authenticate the payment, if configured
+     * @return {p.GatewayConfiguration}
+     */
+    public getExternalThreeDSGatewayConfiguration(): p.GatewayConfiguration {
+        return this.externalThreeDSGatewayConfiguration;
+    }
+
+    /**
+     * Set ExternalThreeDSGatewayConfiguration
+     * External ThreeDS Gateway Configuration is the gateway configuration that was used to authenticate the payment, if configured
+     * @param {p.GatewayConfiguration} val
+     * @return {Transaction}
+     */
+    public setExternalThreeDSGatewayConfiguration(val: p.GatewayConfiguration): Transaction {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newGatewayConfiguration().getProcessOutObjectClass())
+            this.externalThreeDSGatewayConfiguration = val;
+        else {
+            var obj = this.client.newGatewayConfiguration();
+            obj.fillWithData(val);
+            this.externalThreeDSGatewayConfiguration = obj;
         }
         return this;
     }
@@ -1538,6 +1589,66 @@ class Transaction {
     }
 
     /**
+     * Get InitialSchemeTransactionId
+     * Initial scheme ID that was referenced in the request
+     * @return {string}
+     */
+    public getInitialSchemeTransactionId(): string {
+        return this.initialSchemeTransactionId;
+    }
+
+    /**
+     * Set InitialSchemeTransactionId
+     * Initial scheme ID that was referenced in the request
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setInitialSchemeTransactionId(val: string): Transaction {
+        this.initialSchemeTransactionId = val;
+        return this;
+    }
+
+    /**
+     * Get SchemeId
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @return {string}
+     */
+    public getSchemeId(): string {
+        return this.schemeId;
+    }
+
+    /**
+     * Set SchemeId
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setSchemeId(val: string): Transaction {
+        this.schemeId = val;
+        return this;
+    }
+
+    /**
+     * Get PaymentType
+     * Payment type of the transaction
+     * @return {string}
+     */
+    public getPaymentType(): string {
+        return this.paymentType;
+    }
+
+    /**
+     * Set PaymentType
+     * Payment type of the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setPaymentType(val: string): Transaction {
+        this.paymentType = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Transaction}
@@ -1571,6 +1682,8 @@ class Transaction {
             this.setCardId(data["card_id"]);
         if (data["gateway_configuration"])
             this.setGatewayConfiguration(data["gateway_configuration"]);
+        if (data["external_three_d_s_gateway_configuration"])
+            this.setExternalThreeDSGatewayConfiguration(data["external_three_d_s_gateway_configuration"]);
         if (data["gateway_configuration_id"])
             this.setGatewayConfigurationId(data["gateway_configuration_id"]);
         if (data["operations"])
@@ -1653,6 +1766,12 @@ class Transaction {
             this.setCvcCheck(data["cvc_check"]);
         if (data["avs_check"])
             this.setAvsCheck(data["avs_check"]);
+        if (data["initial_scheme_transaction_id"])
+            this.setInitialSchemeTransactionId(data["initial_scheme_transaction_id"]);
+        if (data["scheme_id"])
+            this.setSchemeId(data["scheme_id"]);
+        if (data["payment_type"])
+            this.setPaymentType(data["payment_type"]);
         return this;
     }
 
@@ -1676,6 +1795,7 @@ class Transaction {
             "card": this.getCard(),
             "card_id": this.getCardId(),
             "gateway_configuration": this.getGatewayConfiguration(),
+            "external_three_d_s_gateway_configuration": this.getExternalThreeDSGatewayConfiguration(),
             "gateway_configuration_id": this.getGatewayConfigurationId(),
             "operations": this.getOperations(),
             "refunds": this.getRefunds(),
@@ -1717,6 +1837,9 @@ class Transaction {
             "three_d_s": this.getThreeDS(),
             "cvc_check": this.getCvcCheck(),
             "avs_check": this.getAvsCheck(),
+            "initial_scheme_transaction_id": this.getInitialSchemeTransactionId(),
+            "scheme_id": this.getSchemeId(),
+            "payment_type": this.getPaymentType(),
         };
     }
 

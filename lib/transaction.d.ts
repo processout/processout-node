@@ -73,6 +73,11 @@ declare class Transaction {
      */
     private gatewayConfiguration;
     /**
+     * External ThreeDS Gateway Configuration is the gateway configuration that was used to authenticate the payment, if configured
+     * @type {p.GatewayConfiguration}
+     */
+    private externalThreeDSGatewayConfiguration;
+    /**
      * ID of the last gateway configuration that was used to process the payment, if any
      * @type {string}
      */
@@ -278,6 +283,21 @@ declare class Transaction {
      */
     private avsCheck;
     /**
+     * Initial scheme ID that was referenced in the request
+     * @type {string}
+     */
+    private initialSchemeTransactionId;
+    /**
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @type {string}
+     */
+    private schemeId;
+    /**
+     * Payment type of the transaction
+     * @type {string}
+     */
+    private paymentType;
+    /**
      * Transaction constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -466,6 +486,19 @@ declare class Transaction {
      * @return {Transaction}
      */
     setGatewayConfiguration(val: p.GatewayConfiguration): Transaction;
+    /**
+     * Get ExternalThreeDSGatewayConfiguration
+     * External ThreeDS Gateway Configuration is the gateway configuration that was used to authenticate the payment, if configured
+     * @return {p.GatewayConfiguration}
+     */
+    getExternalThreeDSGatewayConfiguration(): p.GatewayConfiguration;
+    /**
+     * Set ExternalThreeDSGatewayConfiguration
+     * External ThreeDS Gateway Configuration is the gateway configuration that was used to authenticate the payment, if configured
+     * @param {p.GatewayConfiguration} val
+     * @return {Transaction}
+     */
+    setExternalThreeDSGatewayConfiguration(val: p.GatewayConfiguration): Transaction;
     /**
      * Get GatewayConfigurationId
      * ID of the last gateway configuration that was used to process the payment, if any
@@ -999,6 +1032,45 @@ declare class Transaction {
      * @return {Transaction}
      */
     setAvsCheck(val: string): Transaction;
+    /**
+     * Get InitialSchemeTransactionId
+     * Initial scheme ID that was referenced in the request
+     * @return {string}
+     */
+    getInitialSchemeTransactionId(): string;
+    /**
+     * Set InitialSchemeTransactionId
+     * Initial scheme ID that was referenced in the request
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setInitialSchemeTransactionId(val: string): Transaction;
+    /**
+     * Get SchemeId
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @return {string}
+     */
+    getSchemeId(): string;
+    /**
+     * Set SchemeId
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setSchemeId(val: string): Transaction;
+    /**
+     * Get PaymentType
+     * Payment type of the transaction
+     * @return {string}
+     */
+    getPaymentType(): string;
+    /**
+     * Set PaymentType
+     * Payment type of the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setPaymentType(val: string): Transaction;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

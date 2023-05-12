@@ -146,6 +146,24 @@ class TransactionOperation {
     private paymentDataNetworkAuthentication: p.PaymentDataNetworkAuthentication = null;
 
     /**
+     * Initial scheme ID that was referenced in the request
+     * @type {string}
+     */
+    private initialSchemeTransactionId: string = null;
+
+    /**
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @type {string}
+     */
+    private schemeId: string = null;
+
+    /**
+     * Payment type of the transaction
+     * @type {string}
+     */
+    private paymentType: string = null;
+
+    /**
      * Metadata related to the operation, in the form of a dictionary (key-value pair)
      * @type {any}
      */
@@ -671,6 +689,66 @@ class TransactionOperation {
     }
 
     /**
+     * Get InitialSchemeTransactionId
+     * Initial scheme ID that was referenced in the request
+     * @return {string}
+     */
+    public getInitialSchemeTransactionId(): string {
+        return this.initialSchemeTransactionId;
+    }
+
+    /**
+     * Set InitialSchemeTransactionId
+     * Initial scheme ID that was referenced in the request
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    public setInitialSchemeTransactionId(val: string): TransactionOperation {
+        this.initialSchemeTransactionId = val;
+        return this;
+    }
+
+    /**
+     * Get SchemeId
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @return {string}
+     */
+    public getSchemeId(): string {
+        return this.schemeId;
+    }
+
+    /**
+     * Set SchemeId
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    public setSchemeId(val: string): TransactionOperation {
+        this.schemeId = val;
+        return this;
+    }
+
+    /**
+     * Get PaymentType
+     * Payment type of the transaction
+     * @return {string}
+     */
+    public getPaymentType(): string {
+        return this.paymentType;
+    }
+
+    /**
+     * Set PaymentType
+     * Payment type of the transaction
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    public setPaymentType(val: string): TransactionOperation {
+        this.paymentType = val;
+        return this;
+    }
+
+    /**
      * Get Metadata
      * Metadata related to the operation, in the form of a dictionary (key-value pair)
      * @return {any}
@@ -780,6 +858,12 @@ class TransactionOperation {
             this.setPaymentDataThreeDSAuthentication(data["payment_data_three_d_s_authentication"]);
         if (data["payment_data_network_authentication"])
             this.setPaymentDataNetworkAuthentication(data["payment_data_network_authentication"]);
+        if (data["initial_scheme_transaction_id"])
+            this.setInitialSchemeTransactionId(data["initial_scheme_transaction_id"]);
+        if (data["scheme_id"])
+            this.setSchemeId(data["scheme_id"]);
+        if (data["payment_type"])
+            this.setPaymentType(data["payment_type"]);
         if (data["metadata"])
             this.setMetadata(data["metadata"]);
         if (data["gateway_fee"])
@@ -817,6 +901,9 @@ class TransactionOperation {
             "payment_data_three_d_s_request": this.getPaymentDataThreeDSRequest(),
             "payment_data_three_d_s_authentication": this.getPaymentDataThreeDSAuthentication(),
             "payment_data_network_authentication": this.getPaymentDataNetworkAuthentication(),
+            "initial_scheme_transaction_id": this.getInitialSchemeTransactionId(),
+            "scheme_id": this.getSchemeId(),
+            "payment_type": this.getPaymentType(),
             "metadata": this.getMetadata(),
             "gateway_fee": this.getGatewayFee(),
             "created_at": this.getCreatedAt(),

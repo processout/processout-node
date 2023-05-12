@@ -213,6 +213,11 @@ declare class Invoice {
      */
     private paymentIntent;
     /**
+     * Billing information
+     * @type {p.InvoiceBilling}
+     */
+    private billing;
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -765,6 +770,19 @@ declare class Invoice {
      * @return {Invoice}
      */
     setPaymentIntent(val: string): Invoice;
+    /**
+     * Get Billing
+     * Billing information
+     * @return {p.InvoiceBilling}
+     */
+    getBilling(): p.InvoiceBilling;
+    /**
+     * Set Billing
+     * Billing information
+     * @param {p.InvoiceBilling} val
+     * @return {Invoice}
+     */
+    setBilling(val: p.InvoiceBilling): Invoice;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

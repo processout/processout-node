@@ -12,6 +12,11 @@ declare class CustomerAction {
      */
     private value;
     /**
+     * Metadata related to the customer action, in the form of a dictionary (key-value pair)
+     * @type {any}
+     */
+    private metadata;
+    /**
      * CustomerAction constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -44,6 +49,19 @@ declare class CustomerAction {
      * @return {CustomerAction}
      */
     setValue(val: string): CustomerAction;
+    /**
+     * Get Metadata
+     * Metadata related to the customer action, in the form of a dictionary (key-value pair)
+     * @return {any}
+     */
+    getMetadata(): any;
+    /**
+     * Set Metadata
+     * Metadata related to the customer action, in the form of a dictionary (key-value pair)
+     * @param {any} val
+     * @return {CustomerAction}
+     */
+    setMetadata(val: any): CustomerAction;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

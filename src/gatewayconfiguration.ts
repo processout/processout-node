@@ -80,6 +80,12 @@ class GatewayConfiguration {
     private enabledAt: string = null;
 
     /**
+     * Gateway's processing region (EEA, EEA-UK, UK etc)
+     * @type {string}
+     */
+    private processingRegion: string = null;
+
+    /**
      * GatewayConfiguration constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -332,6 +338,26 @@ class GatewayConfiguration {
     }
 
     /**
+     * Get ProcessingRegion
+     * Gateway's processing region (EEA, EEA-UK, UK etc)
+     * @return {string}
+     */
+    public getProcessingRegion(): string {
+        return this.processingRegion;
+    }
+
+    /**
+     * Set ProcessingRegion
+     * Gateway's processing region (EEA, EEA-UK, UK etc)
+     * @param {string} val
+     * @return {GatewayConfiguration}
+     */
+    public setProcessingRegion(val: string): GatewayConfiguration {
+        this.processingRegion = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {GatewayConfiguration}
@@ -359,6 +385,8 @@ class GatewayConfiguration {
             this.setCreatedAt(data["created_at"]);
         if (data["enabled_at"])
             this.setEnabledAt(data["enabled_at"]);
+        if (data["processing_region"])
+            this.setProcessingRegion(data["processing_region"]);
         return this;
     }
 
@@ -379,6 +407,7 @@ class GatewayConfiguration {
             "public_keys": this.getPublicKeys(),
             "created_at": this.getCreatedAt(),
             "enabled_at": this.getEnabledAt(),
+            "processing_region": this.getProcessingRegion(),
         };
     }
 
@@ -500,6 +529,7 @@ class GatewayConfiguration {
 			'name': this.getName(), 
 			'enabled': this.getEnabled(), 
 			'default_currency': this.getDefaultCurrency(), 
+			'processing_region': this.getProcessingRegion(), 
 			'settings': (options['settings']) ? options['settings'] : null, 
 			'sub_accounts_enabled': (options['sub_accounts_enabled']) ? options['sub_accounts_enabled'] : null
         };
@@ -596,6 +626,7 @@ class GatewayConfiguration {
 			'name': this.getName(), 
 			'enabled': this.getEnabled(), 
 			'default_currency': this.getDefaultCurrency(), 
+			'processing_region': this.getProcessingRegion(), 
 			'settings': (options['settings']) ? options['settings'] : null, 
 			'sub_accounts_enabled': (options['sub_accounts_enabled']) ? options['sub_accounts_enabled'] : null
         };

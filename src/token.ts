@@ -841,7 +841,9 @@ class Token {
 			'device': (options['device']) ? options['device'] : null, 
 			'verify': (options['verify']) ? options['verify'] : null, 
 			'verify_metadata': (options['verify_metadata']) ? options['verify_metadata'] : null, 
-			'set_default': (options['set_default']) ? options['set_default'] : null
+			'set_default': (options['set_default']) ? options['set_default'] : null, 
+			'verify_statement_descriptor': (options['verify_statement_descriptor']) ? options['verify_statement_descriptor'] : null, 
+			'invoice_return_url': (options['invoice_return_url']) ? options['invoice_return_url'] : null
         };
 
         var cur = this;
@@ -893,7 +895,9 @@ class Token {
 			'device': (options['device']) ? options['device'] : null, 
 			'verify': (options['verify']) ? options['verify'] : null, 
 			'verify_metadata': (options['verify_metadata']) ? options['verify_metadata'] : null, 
-			'set_default': (options['set_default']) ? options['set_default'] : null
+			'set_default': (options['set_default']) ? options['set_default'] : null, 
+			'verify_statement_descriptor': (options['verify_statement_descriptor']) ? options['verify_statement_descriptor'] : null, 
+			'invoice_return_url': (options['invoice_return_url']) ? options['invoice_return_url'] : null
         };
 
         var cur = this;

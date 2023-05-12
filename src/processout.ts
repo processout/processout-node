@@ -285,6 +285,15 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new InvoiceBilling instance
+     * @param {array} prefill
+     * @return {InvoiceBilling}
+     */
+	public newInvoiceBilling(prefill?: p.InvoiceBilling): p.InvoiceBilling {
+        return new p.InvoiceBilling(this, prefill);
+    }
+	
+    /**
      * Create a new InvoiceDetail instance
      * @param {array} prefill
      * @return {InvoiceDetail}

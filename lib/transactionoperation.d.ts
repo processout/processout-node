@@ -113,6 +113,21 @@ declare class TransactionOperation {
      */
     private paymentDataNetworkAuthentication;
     /**
+     * Initial scheme ID that was referenced in the request
+     * @type {string}
+     */
+    private initialSchemeTransactionId;
+    /**
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @type {string}
+     */
+    private schemeId;
+    /**
+     * Payment type of the transaction
+     * @type {string}
+     */
+    private paymentType;
+    /**
      * Metadata related to the operation, in the form of a dictionary (key-value pair)
      * @type {any}
      */
@@ -420,6 +435,45 @@ declare class TransactionOperation {
      * @return {TransactionOperation}
      */
     setPaymentDataNetworkAuthentication(val: p.PaymentDataNetworkAuthentication): TransactionOperation;
+    /**
+     * Get InitialSchemeTransactionId
+     * Initial scheme ID that was referenced in the request
+     * @return {string}
+     */
+    getInitialSchemeTransactionId(): string;
+    /**
+     * Set InitialSchemeTransactionId
+     * Initial scheme ID that was referenced in the request
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    setInitialSchemeTransactionId(val: string): TransactionOperation;
+    /**
+     * Get SchemeId
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @return {string}
+     */
+    getSchemeId(): string;
+    /**
+     * Set SchemeId
+     * The ID assigned to the transaction by the scheme in the last successful authorization
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    setSchemeId(val: string): TransactionOperation;
+    /**
+     * Get PaymentType
+     * Payment type of the transaction
+     * @return {string}
+     */
+    getPaymentType(): string;
+    /**
+     * Set PaymentType
+     * Payment type of the transaction
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    setPaymentType(val: string): TransactionOperation;
     /**
      * Get Metadata
      * Metadata related to the operation, in the form of a dictionary (key-value pair)

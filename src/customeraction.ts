@@ -26,6 +26,12 @@ class CustomerAction {
     private value: string = null;
 
     /**
+     * Metadata related to the customer action, in the form of a dictionary (key-value pair)
+     * @type {any}
+     */
+    private metadata: any = null;
+
+    /**
      * CustomerAction constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -84,6 +90,26 @@ class CustomerAction {
     }
 
     /**
+     * Get Metadata
+     * Metadata related to the customer action, in the form of a dictionary (key-value pair)
+     * @return {any}
+     */
+    public getMetadata(): any {
+        return this.metadata;
+    }
+
+    /**
+     * Set Metadata
+     * Metadata related to the customer action, in the form of a dictionary (key-value pair)
+     * @param {any} val
+     * @return {CustomerAction}
+     */
+    public setMetadata(val: any): CustomerAction {
+        this.metadata = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {CustomerAction}
@@ -93,6 +119,8 @@ class CustomerAction {
             this.setType(data["type"]);
         if (data["value"])
             this.setValue(data["value"]);
+        if (data["metadata"])
+            this.setMetadata(data["metadata"]);
         return this;
     }
 
@@ -104,6 +132,7 @@ class CustomerAction {
         return {
             "type": this.getType(),
             "value": this.getValue(),
+            "metadata": this.getMetadata(),
         };
     }
 

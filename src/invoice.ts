@@ -266,6 +266,12 @@ class Invoice {
     private paymentIntent: string = null;
 
     /**
+     * Billing information
+     * @type {p.InvoiceBilling}
+     */
+    private billing: p.InvoiceBilling = null;
+
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -1204,6 +1210,33 @@ class Invoice {
     }
 
     /**
+     * Get Billing
+     * Billing information
+     * @return {p.InvoiceBilling}
+     */
+    public getBilling(): p.InvoiceBilling {
+        return this.billing;
+    }
+
+    /**
+     * Set Billing
+     * Billing information
+     * @param {p.InvoiceBilling} val
+     * @return {Invoice}
+     */
+    public setBilling(val: p.InvoiceBilling): Invoice {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newInvoiceBilling().getProcessOutObjectClass())
+            this.billing = val;
+        else {
+            var obj = this.client.newInvoiceBilling();
+            obj.fillWithData(val);
+            this.billing = obj;
+        }
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Invoice}
@@ -1293,6 +1326,8 @@ class Invoice {
             this.setInitiationType(data["initiation_type"]);
         if (data["payment_intent"])
             this.setPaymentIntent(data["payment_intent"]);
+        if (data["billing"])
+            this.setBilling(data["billing"]);
         return this;
     }
 
@@ -1344,6 +1379,7 @@ class Invoice {
             "payment_type": this.getPaymentType(),
             "initiation_type": this.getInitiationType(),
             "payment_intent": this.getPaymentIntent(),
+            "billing": this.getBilling(),
         };
     }
 
@@ -1418,6 +1454,7 @@ class Invoice {
 			'allow_fallback_to_sale': (options['allow_fallback_to_sale']) ? options['allow_fallback_to_sale'] : null, 
 			'auto_capture_at': (options['auto_capture_at']) ? options['auto_capture_at'] : null, 
 			'metadata': (options['metadata']) ? options['metadata'] : null, 
+			'override_mac_blocking': (options['override_mac_blocking']) ? options['override_mac_blocking'] : null, 
 			'source': source
         };
 
@@ -1475,6 +1512,7 @@ class Invoice {
 			'enable_three_d_s_2': (options['enable_three_d_s_2']) ? options['enable_three_d_s_2'] : null, 
 			'metadata': (options['metadata']) ? options['metadata'] : null, 
 			'capture_statement_descriptor': (options['capture_statement_descriptor']) ? options['capture_statement_descriptor'] : null, 
+			'override_mac_blocking': (options['override_mac_blocking']) ? options['override_mac_blocking'] : null, 
 			'source': source
         };
 
@@ -1838,7 +1876,8 @@ class Invoice {
 			'require_backend_capture': this.getRequireBackendCapture(), 
 			'external_fraud_tools': this.getExternalFraudTools(), 
 			'tax': this.getTax(), 
-			'payment_type': this.getPaymentType()
+			'payment_type': this.getPaymentType(), 
+			'billing': this.getBilling()
         };
 
         var cur = this;

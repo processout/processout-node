@@ -193,6 +193,12 @@ declare class ProcessOut {
      */
     newInvoiceShipping(prefill?: p.InvoiceShipping): p.InvoiceShipping;
     /**
+     * Create a new InvoiceBilling instance
+     * @param {array} prefill
+     * @return {InvoiceBilling}
+     */
+    newInvoiceBilling(prefill?: p.InvoiceBilling): p.InvoiceBilling;
+    /**
      * Create a new InvoiceDetail instance
      * @param {array} prefill
      * @return {InvoiceDetail}

@@ -7,6 +7,11 @@ declare class InvoiceExternalFraudTools {
      */
     private forter;
     /**
+     * Signifyd
+     * @type {string}
+     */
+    private signifyd;
+    /**
      * InvoiceExternalFraudTools constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -26,6 +31,19 @@ declare class InvoiceExternalFraudTools {
      * @return {InvoiceExternalFraudTools}
      */
     setForter(val: string): InvoiceExternalFraudTools;
+    /**
+     * Get Signifyd
+     * Signifyd
+     * @return {string}
+     */
+    getSignifyd(): string;
+    /**
+     * Set Signifyd
+     * Signifyd
+     * @param {string} val
+     * @return {InvoiceExternalFraudTools}
+     */
+    setSignifyd(val: string): InvoiceExternalFraudTools;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
