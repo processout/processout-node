@@ -148,6 +148,16 @@ declare class Transaction {
      */
     private availableAmountLocal;
     /**
+     * Amount that was voided on the transaction
+     * @type {string}
+     */
+    private voidedAmount;
+    /**
+     * Amount that was voided on the transaction, in the currency of the project
+     * @type {string}
+     */
+    private voidedAmountLocal;
+    /**
      * Currency of the transaction
      * @type {string}
      */
@@ -681,6 +691,32 @@ declare class Transaction {
      * @return {Transaction}
      */
     setAvailableAmountLocal(val: string): Transaction;
+    /**
+     * Get VoidedAmount
+     * Amount that was voided on the transaction
+     * @return {string}
+     */
+    getVoidedAmount(): string;
+    /**
+     * Set VoidedAmount
+     * Amount that was voided on the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setVoidedAmount(val: string): Transaction;
+    /**
+     * Get VoidedAmountLocal
+     * Amount that was voided on the transaction, in the currency of the project
+     * @return {string}
+     */
+    getVoidedAmountLocal(): string;
+    /**
+     * Set VoidedAmountLocal
+     * Amount that was voided on the transaction, in the currency of the project
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setVoidedAmountLocal(val: string): Transaction;
     /**
      * Get Currency
      * Currency of the transaction

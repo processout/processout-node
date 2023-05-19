@@ -1749,7 +1749,8 @@ class Invoice {
         var path    = "/invoices/" + encodeURI(this.getId()) + "/void";
 
         var data = {
-			'metadata': (options['metadata']) ? options['metadata'] : null
+			'metadata': (options['metadata']) ? options['metadata'] : null, 
+			'amount': (options['amount']) ? options['amount'] : null
         };
 
         var cur = this;

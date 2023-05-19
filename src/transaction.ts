@@ -188,6 +188,18 @@ class Transaction {
     private availableAmountLocal: string = null;
 
     /**
+     * Amount that was voided on the transaction
+     * @type {string}
+     */
+    private voidedAmount: string = null;
+
+    /**
+     * Amount that was voided on the transaction, in the currency of the project
+     * @type {string}
+     */
+    private voidedAmountLocal: string = null;
+
+    /**
      * Currency of the transaction
      * @type {string}
      */
@@ -1042,6 +1054,46 @@ class Transaction {
     }
 
     /**
+     * Get VoidedAmount
+     * Amount that was voided on the transaction
+     * @return {string}
+     */
+    public getVoidedAmount(): string {
+        return this.voidedAmount;
+    }
+
+    /**
+     * Set VoidedAmount
+     * Amount that was voided on the transaction
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setVoidedAmount(val: string): Transaction {
+        this.voidedAmount = val;
+        return this;
+    }
+
+    /**
+     * Get VoidedAmountLocal
+     * Amount that was voided on the transaction, in the currency of the project
+     * @return {string}
+     */
+    public getVoidedAmountLocal(): string {
+        return this.voidedAmountLocal;
+    }
+
+    /**
+     * Set VoidedAmountLocal
+     * Amount that was voided on the transaction, in the currency of the project
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setVoidedAmountLocal(val: string): Transaction {
+        this.voidedAmountLocal = val;
+        return this;
+    }
+
+    /**
      * Get Currency
      * Currency of the transaction
      * @return {string}
@@ -1712,6 +1764,10 @@ class Transaction {
             this.setAvailableAmount(data["available_amount"]);
         if (data["available_amount_local"])
             this.setAvailableAmountLocal(data["available_amount_local"]);
+        if (data["voided_amount"])
+            this.setVoidedAmount(data["voided_amount"]);
+        if (data["voided_amount_local"])
+            this.setVoidedAmountLocal(data["voided_amount_local"]);
         if (data["currency"])
             this.setCurrency(data["currency"]);
         if (data["error_code"])
@@ -1810,6 +1866,8 @@ class Transaction {
             "refunded_amount_local": this.getRefundedAmountLocal(),
             "available_amount": this.getAvailableAmount(),
             "available_amount_local": this.getAvailableAmountLocal(),
+            "voided_amount": this.getVoidedAmount(),
+            "voided_amount_local": this.getVoidedAmountLocal(),
             "currency": this.getCurrency(),
             "error_code": this.getErrorCode(),
             "error_message": this.getErrorMessage(),
