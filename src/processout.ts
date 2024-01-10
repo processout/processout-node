@@ -186,6 +186,15 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new CustomerPhone instance
+     * @param {array} prefill
+     * @return {CustomerPhone}
+     */
+	public newCustomerPhone(prefill?: p.CustomerPhone): p.CustomerPhone {
+        return new p.CustomerPhone(this, prefill);
+    }
+	
+    /**
      * Create a new Token instance
      * @param {array} prefill
      * @return {Token}
@@ -240,6 +249,24 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new NativeAPMRequest instance
+     * @param {array} prefill
+     * @return {NativeAPMRequest}
+     */
+	public newNativeAPMRequest(prefill?: p.NativeAPMRequest): p.NativeAPMRequest {
+        return new p.NativeAPMRequest(this, prefill);
+    }
+	
+    /**
+     * Create a new NativeAPMParameterValue instance
+     * @param {array} prefill
+     * @return {NativeAPMParameterValue}
+     */
+	public newNativeAPMParameterValue(prefill?: p.NativeAPMParameterValue): p.NativeAPMParameterValue {
+        return new p.NativeAPMParameterValue(this, prefill);
+    }
+	
+    /**
      * Create a new InvoiceTax instance
      * @param {array} prefill
      * @return {InvoiceTax}
@@ -285,12 +312,30 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new InvoiceShippingPhone instance
+     * @param {array} prefill
+     * @return {InvoiceShippingPhone}
+     */
+	public newInvoiceShippingPhone(prefill?: p.InvoiceShippingPhone): p.InvoiceShippingPhone {
+        return new p.InvoiceShippingPhone(this, prefill);
+    }
+	
+    /**
      * Create a new InvoiceBilling instance
      * @param {array} prefill
      * @return {InvoiceBilling}
      */
 	public newInvoiceBilling(prefill?: p.InvoiceBilling): p.InvoiceBilling {
         return new p.InvoiceBilling(this, prefill);
+    }
+	
+    /**
+     * Create a new UnsupportedFeatureBypass instance
+     * @param {array} prefill
+     * @return {UnsupportedFeatureBypass}
+     */
+	public newUnsupportedFeatureBypass(prefill?: p.UnsupportedFeatureBypass): p.UnsupportedFeatureBypass {
+        return new p.UnsupportedFeatureBypass(this, prefill);
     }
 	
     /**
@@ -366,6 +411,15 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new ProjectSFTPSettings instance
+     * @param {array} prefill
+     * @return {ProjectSFTPSettings}
+     */
+	public newProjectSFTPSettings(prefill?: p.ProjectSFTPSettings): p.ProjectSFTPSettings {
+        return new p.ProjectSFTPSettings(this, prefill);
+    }
+	
+    /**
      * Create a new Refund instance
      * @param {array} prefill
      * @return {Refund}
@@ -390,6 +444,33 @@ class ProcessOut {
      */
 	public newTransaction(prefill?: p.Transaction): p.Transaction {
         return new p.Transaction(this, prefill);
+    }
+	
+    /**
+     * Create a new NativeAPMResponse instance
+     * @param {array} prefill
+     * @return {NativeAPMResponse}
+     */
+	public newNativeAPMResponse(prefill?: p.NativeAPMResponse): p.NativeAPMResponse {
+        return new p.NativeAPMResponse(this, prefill);
+    }
+	
+    /**
+     * Create a new NativeAPMParameterDefinition instance
+     * @param {array} prefill
+     * @return {NativeAPMParameterDefinition}
+     */
+	public newNativeAPMParameterDefinition(prefill?: p.NativeAPMParameterDefinition): p.NativeAPMParameterDefinition {
+        return new p.NativeAPMParameterDefinition(this, prefill);
+    }
+	
+    /**
+     * Create a new NativeAPMParameterValueDefinition instance
+     * @param {array} prefill
+     * @return {NativeAPMParameterValueDefinition}
+     */
+	public newNativeAPMParameterValueDefinition(prefill?: p.NativeAPMParameterValueDefinition): p.NativeAPMParameterValueDefinition {
+        return new p.NativeAPMParameterValueDefinition(this, prefill);
     }
 	
     /**
@@ -453,6 +534,60 @@ class ProcessOut {
      */
 	public newWebhookEndpoint(prefill?: p.WebhookEndpoint): p.WebhookEndpoint {
         return new p.WebhookEndpoint(this, prefill);
+    }
+	
+    /**
+     * Create a new ErrorCodes instance
+     * @param {array} prefill
+     * @return {ErrorCodes}
+     */
+	public newErrorCodes(prefill?: p.ErrorCodes): p.ErrorCodes {
+        return new p.ErrorCodes(this, prefill);
+    }
+	
+    /**
+     * Create a new CategoryErrorCodes instance
+     * @param {array} prefill
+     * @return {CategoryErrorCodes}
+     */
+	public newCategoryErrorCodes(prefill?: p.CategoryErrorCodes): p.CategoryErrorCodes {
+        return new p.CategoryErrorCodes(this, prefill);
+    }
+	
+    /**
+     * Create a new NativeAPMTransactionDetailsGateway instance
+     * @param {array} prefill
+     * @return {NativeAPMTransactionDetailsGateway}
+     */
+	public newNativeAPMTransactionDetailsGateway(prefill?: p.NativeAPMTransactionDetailsGateway): p.NativeAPMTransactionDetailsGateway {
+        return new p.NativeAPMTransactionDetailsGateway(this, prefill);
+    }
+	
+    /**
+     * Create a new NativeAPMTransactionDetailsInvoice instance
+     * @param {array} prefill
+     * @return {NativeAPMTransactionDetailsInvoice}
+     */
+	public newNativeAPMTransactionDetailsInvoice(prefill?: p.NativeAPMTransactionDetailsInvoice): p.NativeAPMTransactionDetailsInvoice {
+        return new p.NativeAPMTransactionDetailsInvoice(this, prefill);
+    }
+	
+    /**
+     * Create a new NativeAPMTransactionDetails instance
+     * @param {array} prefill
+     * @return {NativeAPMTransactionDetails}
+     */
+	public newNativeAPMTransactionDetails(prefill?: p.NativeAPMTransactionDetails): p.NativeAPMTransactionDetails {
+        return new p.NativeAPMTransactionDetails(this, prefill);
+    }
+	
+    /**
+     * Create a new InvoicesProcessNativePaymentResponse instance
+     * @param {array} prefill
+     * @return {InvoicesProcessNativePaymentResponse}
+     */
+	public newInvoicesProcessNativePaymentResponse(prefill?: p.InvoicesProcessNativePaymentResponse): p.InvoicesProcessNativePaymentResponse {
+        return new p.InvoicesProcessNativePaymentResponse(this, prefill);
     }
 	
 

@@ -138,6 +138,16 @@ declare class Card {
      */
     private tokenType;
     /**
+     * Contains true if the card was used to create a customer token or a direct transaction, false otherwise
+     * @type {boolean}
+     */
+    private used;
+    /**
+     * Contains true if the card was successfully authorized, false otherwise
+     * @type {boolean}
+     */
+    private hasBeenAuthorized;
+    /**
      * Metadata related to the card, in the form of a dictionary (key-value pair)
      * @type {any}
      */
@@ -515,6 +525,32 @@ declare class Card {
      * @return {Card}
      */
     setTokenType(val: string): Card;
+    /**
+     * Get Used
+     * Contains true if the card was used to create a customer token or a direct transaction, false otherwise
+     * @return {boolean}
+     */
+    getUsed(): boolean;
+    /**
+     * Set Used
+     * Contains true if the card was used to create a customer token or a direct transaction, false otherwise
+     * @param {boolean} val
+     * @return {Card}
+     */
+    setUsed(val: boolean): Card;
+    /**
+     * Get HasBeenAuthorized
+     * Contains true if the card was successfully authorized, false otherwise
+     * @return {boolean}
+     */
+    getHasBeenAuthorized(): boolean;
+    /**
+     * Set HasBeenAuthorized
+     * Contains true if the card was successfully authorized, false otherwise
+     * @param {boolean} val
+     * @return {Card}
+     */
+    setHasBeenAuthorized(val: boolean): Card;
     /**
      * Get Metadata
      * Metadata related to the card, in the form of a dictionary (key-value pair)

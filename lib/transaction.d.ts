@@ -308,6 +308,16 @@ declare class Transaction {
      */
     private paymentType;
     /**
+     * Native APM response data
+     * @type {p.NativeAPMResponse}
+     */
+    private nativeApm;
+    /**
+     * Additional data about the transaction, originating from a PSP, for example customer shipping address
+     * @type {any}
+     */
+    private externalDetails;
+    /**
      * Transaction constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -1107,6 +1117,32 @@ declare class Transaction {
      * @return {Transaction}
      */
     setPaymentType(val: string): Transaction;
+    /**
+     * Get NativeApm
+     * Native APM response data
+     * @return {p.NativeAPMResponse}
+     */
+    getNativeApm(): p.NativeAPMResponse;
+    /**
+     * Set NativeApm
+     * Native APM response data
+     * @param {p.NativeAPMResponse} val
+     * @return {Transaction}
+     */
+    setNativeApm(val: p.NativeAPMResponse): Transaction;
+    /**
+     * Get ExternalDetails
+     * Additional data about the transaction, originating from a PSP, for example customer shipping address
+     * @return {any}
+     */
+    getExternalDetails(): any;
+    /**
+     * Set ExternalDetails
+     * Additional data about the transaction, originating from a PSP, for example customer shipping address
+     * @param {any} val
+     * @return {Transaction}
+     */
+    setExternalDetails(val: any): Transaction;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

@@ -254,6 +254,12 @@ class Invoice {
     private paymentType: string = null;
 
     /**
+     * Native APM data
+     * @type {p.NativeAPMRequest}
+     */
+    private nativeApm: p.NativeAPMRequest = null;
+
+    /**
      * Initiation type of invoice
      * @type {string}
      */
@@ -270,6 +276,12 @@ class Invoice {
      * @type {p.InvoiceBilling}
      */
     private billing: p.InvoiceBilling = null;
+
+    /**
+     * Flags to bypass unsupported features
+     * @type {p.UnsupportedFeatureBypass}
+     */
+    private unsupportedFeatureBypass: p.UnsupportedFeatureBypass = null;
 
     /**
      * Invoice constructor
@@ -1170,6 +1182,33 @@ class Invoice {
     }
 
     /**
+     * Get NativeApm
+     * Native APM data
+     * @return {p.NativeAPMRequest}
+     */
+    public getNativeApm(): p.NativeAPMRequest {
+        return this.nativeApm;
+    }
+
+    /**
+     * Set NativeApm
+     * Native APM data
+     * @param {p.NativeAPMRequest} val
+     * @return {Invoice}
+     */
+    public setNativeApm(val: p.NativeAPMRequest): Invoice {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newNativeAPMRequest().getProcessOutObjectClass())
+            this.nativeApm = val;
+        else {
+            var obj = this.client.newNativeAPMRequest();
+            obj.fillWithData(val);
+            this.nativeApm = obj;
+        }
+        return this;
+    }
+
+    /**
      * Get InitiationType
      * Initiation type of invoice
      * @return {string}
@@ -1232,6 +1271,33 @@ class Invoice {
             var obj = this.client.newInvoiceBilling();
             obj.fillWithData(val);
             this.billing = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get UnsupportedFeatureBypass
+     * Flags to bypass unsupported features
+     * @return {p.UnsupportedFeatureBypass}
+     */
+    public getUnsupportedFeatureBypass(): p.UnsupportedFeatureBypass {
+        return this.unsupportedFeatureBypass;
+    }
+
+    /**
+     * Set UnsupportedFeatureBypass
+     * Flags to bypass unsupported features
+     * @param {p.UnsupportedFeatureBypass} val
+     * @return {Invoice}
+     */
+    public setUnsupportedFeatureBypass(val: p.UnsupportedFeatureBypass): Invoice {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newUnsupportedFeatureBypass().getProcessOutObjectClass())
+            this.unsupportedFeatureBypass = val;
+        else {
+            var obj = this.client.newUnsupportedFeatureBypass();
+            obj.fillWithData(val);
+            this.unsupportedFeatureBypass = obj;
         }
         return this;
     }
@@ -1322,12 +1388,16 @@ class Invoice {
             this.setTax(data["tax"]);
         if (data["payment_type"])
             this.setPaymentType(data["payment_type"]);
+        if (data["native_apm"])
+            this.setNativeApm(data["native_apm"]);
         if (data["initiation_type"])
             this.setInitiationType(data["initiation_type"]);
         if (data["payment_intent"])
             this.setPaymentIntent(data["payment_intent"]);
         if (data["billing"])
             this.setBilling(data["billing"]);
+        if (data["unsupported_feature_bypass"])
+            this.setUnsupportedFeatureBypass(data["unsupported_feature_bypass"]);
         return this;
     }
 
@@ -1377,9 +1447,11 @@ class Invoice {
             "incremental": this.getIncremental(),
             "tax": this.getTax(),
             "payment_type": this.getPaymentType(),
+            "native_apm": this.getNativeApm(),
             "initiation_type": this.getInitiationType(),
             "payment_intent": this.getPaymentIntent(),
             "billing": this.getBilling(),
+            "unsupported_feature_bypass": this.getUnsupportedFeatureBypass(),
         };
     }
 
@@ -1641,6 +1713,151 @@ class Invoice {
             });
     }
     /**
+     * Process the payout invoice using the given source (customer or token)
+	 * @param string gatewayConfigurationId
+	 * @param string source
+     * @param {any} options
+     * @return {Promise<p.Transaction>}
+     */
+    public payout(gatewayConfigurationId: string, source: string, options): Promise<p.Transaction> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/invoices/" + encodeURI(this.getId()) + "/payout";
+
+        var data = {
+			'force_gateway_configuration_id': (options['force_gateway_configuration_id']) ? options['force_gateway_configuration_id'] : null, 
+			'gateway_configuration_id': gatewayConfigurationId, 
+			'source': source
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var body = respBody;
+                body = body['transaction'];
+                var obj = cur.client.newTransaction();
+                returnValues.push(obj.fillWithData(body));
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.post(path, data, options).then(callback, callbackError);
+            });
+    }
+    /**
+     * Fetches the Native APM payment
+	 * @param string invoiceId
+	 * @param string gatewayConfigurationId
+     * @param {any} options
+     * @return {Promise<p.NativeAPMTransactionDetails>}
+     */
+    public showNativePaymentTransaction(invoiceId: string, gatewayConfigurationId: string, options): Promise<p.NativeAPMTransactionDetails> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/invoices/" + encodeURI(invoiceId) + "/native-payment/" + encodeURI(gatewayConfigurationId) + "";
+
+        var data = {
+
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var body = respBody;
+                body = body['native_apm'];
+                var obj = cur.client.newNativeAPMTransactionDetails();
+                returnValues.push(obj.fillWithData(body));
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.get(path, data, options).then(callback, callbackError);
+            });
+    }
+    /**
+     * Process the Native APM payment flow
+	 * @param string invoiceId
+     * @param {any} options
+     * @return {Promise<p.InvoicesProcessNativePaymentResponse>}
+     */
+    public processNativePayment(invoiceId: string, options): Promise<p.InvoicesProcessNativePaymentResponse> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/invoices/" + encodeURI(invoiceId) + "/native-payment";
+
+        var data = {
+			'gateway_configuration_id': (options['gateway_configuration_id']) ? options['gateway_configuration_id'] : null, 
+			'native_apm': (options['native_apm']) ? options['native_apm'] : null
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var body = respBody;
+                var obj = cur.client.newInvoicesProcessNativePaymentResponse();
+                returnValues.push(obj.fillWithData(body));
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.post(path, data, options).then(callback, callbackError);
+            });
+    }
+    /**
      * Initiate a 3-D Secure authentication
 	 * @param string source
      * @param {any} options
@@ -1878,7 +2095,8 @@ class Invoice {
 			'external_fraud_tools': this.getExternalFraudTools(), 
 			'tax': this.getTax(), 
 			'payment_type': this.getPaymentType(), 
-			'billing': this.getBilling()
+			'billing': this.getBilling(), 
+			'unsupported_feature_bypass': this.getUnsupportedFeatureBypass()
         };
 
         var cur = this;

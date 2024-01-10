@@ -380,6 +380,18 @@ class Transaction {
     private paymentType: string = null;
 
     /**
+     * Native APM response data
+     * @type {p.NativeAPMResponse}
+     */
+    private nativeApm: p.NativeAPMResponse = null;
+
+    /**
+     * Additional data about the transaction, originating from a PSP, for example customer shipping address
+     * @type {any}
+     */
+    private externalDetails: any = null;
+
+    /**
      * Transaction constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -1701,6 +1713,53 @@ class Transaction {
     }
 
     /**
+     * Get NativeApm
+     * Native APM response data
+     * @return {p.NativeAPMResponse}
+     */
+    public getNativeApm(): p.NativeAPMResponse {
+        return this.nativeApm;
+    }
+
+    /**
+     * Set NativeApm
+     * Native APM response data
+     * @param {p.NativeAPMResponse} val
+     * @return {Transaction}
+     */
+    public setNativeApm(val: p.NativeAPMResponse): Transaction {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newNativeAPMResponse().getProcessOutObjectClass())
+            this.nativeApm = val;
+        else {
+            var obj = this.client.newNativeAPMResponse();
+            obj.fillWithData(val);
+            this.nativeApm = obj;
+        }
+        return this;
+    }
+
+    /**
+     * Get ExternalDetails
+     * Additional data about the transaction, originating from a PSP, for example customer shipping address
+     * @return {any}
+     */
+    public getExternalDetails(): any {
+        return this.externalDetails;
+    }
+
+    /**
+     * Set ExternalDetails
+     * Additional data about the transaction, originating from a PSP, for example customer shipping address
+     * @param {any} val
+     * @return {Transaction}
+     */
+    public setExternalDetails(val: any): Transaction {
+        this.externalDetails = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Transaction}
@@ -1828,6 +1887,10 @@ class Transaction {
             this.setSchemeId(data["scheme_id"]);
         if (data["payment_type"])
             this.setPaymentType(data["payment_type"]);
+        if (data["native_apm"])
+            this.setNativeApm(data["native_apm"]);
+        if (data["external_details"])
+            this.setExternalDetails(data["external_details"]);
         return this;
     }
 
@@ -1898,6 +1961,8 @@ class Transaction {
             "initial_scheme_transaction_id": this.getInitialSchemeTransactionId(),
             "scheme_id": this.getSchemeId(),
             "payment_type": this.getPaymentType(),
+            "native_apm": this.getNativeApm(),
+            "external_details": this.getExternalDetails(),
         };
     }
 

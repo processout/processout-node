@@ -63,6 +63,11 @@ declare class GatewayConfiguration {
      */
     private processingRegion;
     /**
+     * Metadata related to the gateway configuration, in the form of a dictionary (key-value pair)
+     * @type {any}
+     */
+    private metadata;
+    /**
      * GatewayConfiguration constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -225,6 +230,19 @@ declare class GatewayConfiguration {
      * @return {GatewayConfiguration}
      */
     setProcessingRegion(val: string): GatewayConfiguration;
+    /**
+     * Get Metadata
+     * Metadata related to the gateway configuration, in the form of a dictionary (key-value pair)
+     * @return {any}
+     */
+    getMetadata(): any;
+    /**
+     * Set Metadata
+     * Metadata related to the gateway configuration, in the form of a dictionary (key-value pair)
+     * @param {any} val
+     * @return {GatewayConfiguration}
+     */
+    setMetadata(val: any): GatewayConfiguration;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
