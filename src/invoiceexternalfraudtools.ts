@@ -20,6 +20,12 @@ class InvoiceExternalFraudTools {
     private forter: string = null;
 
     /**
+     * Ravelin
+     * @type {string}
+     */
+    private ravelin: string = null;
+
+    /**
      * Signifyd
      * @type {string}
      */
@@ -64,6 +70,26 @@ class InvoiceExternalFraudTools {
     }
 
     /**
+     * Get Ravelin
+     * Ravelin
+     * @return {string}
+     */
+    public getRavelin(): string {
+        return this.ravelin;
+    }
+
+    /**
+     * Set Ravelin
+     * Ravelin
+     * @param {string} val
+     * @return {InvoiceExternalFraudTools}
+     */
+    public setRavelin(val: string): InvoiceExternalFraudTools {
+        this.ravelin = val;
+        return this;
+    }
+
+    /**
      * Get Signifyd
      * Signifyd
      * @return {string}
@@ -91,6 +117,8 @@ class InvoiceExternalFraudTools {
     public fillWithData(data: any): InvoiceExternalFraudTools {
         if (data["forter"])
             this.setForter(data["forter"]);
+        if (data["ravelin"])
+            this.setRavelin(data["ravelin"]);
         if (data["signifyd"])
             this.setSignifyd(data["signifyd"]);
         return this;
@@ -103,6 +131,7 @@ class InvoiceExternalFraudTools {
     public toJSON(): any {
         return {
             "forter": this.getForter(),
+            "ravelin": this.getRavelin(),
             "signifyd": this.getSignifyd(),
         };
     }

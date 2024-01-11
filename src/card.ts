@@ -176,6 +176,18 @@ class Card {
     private tokenType: string = null;
 
     /**
+     * Contains true if the card was used to create a customer token or a direct transaction, false otherwise
+     * @type {boolean}
+     */
+    private used: boolean = null;
+
+    /**
+     * Contains true if the card was successfully authorized, false otherwise
+     * @type {boolean}
+     */
+    private hasBeenAuthorized: boolean = null;
+
+    /**
      * Metadata related to the card, in the form of a dictionary (key-value pair)
      * @type {any}
      */
@@ -772,6 +784,46 @@ class Card {
     }
 
     /**
+     * Get Used
+     * Contains true if the card was used to create a customer token or a direct transaction, false otherwise
+     * @return {boolean}
+     */
+    public getUsed(): boolean {
+        return this.used;
+    }
+
+    /**
+     * Set Used
+     * Contains true if the card was used to create a customer token or a direct transaction, false otherwise
+     * @param {boolean} val
+     * @return {Card}
+     */
+    public setUsed(val: boolean): Card {
+        this.used = val;
+        return this;
+    }
+
+    /**
+     * Get HasBeenAuthorized
+     * Contains true if the card was successfully authorized, false otherwise
+     * @return {boolean}
+     */
+    public getHasBeenAuthorized(): boolean {
+        return this.hasBeenAuthorized;
+    }
+
+    /**
+     * Set HasBeenAuthorized
+     * Contains true if the card was successfully authorized, false otherwise
+     * @param {boolean} val
+     * @return {Card}
+     */
+    public setHasBeenAuthorized(val: boolean): Card {
+        this.hasBeenAuthorized = val;
+        return this;
+    }
+
+    /**
      * Get Metadata
      * Metadata related to the card, in the form of a dictionary (key-value pair)
      * @return {any}
@@ -911,6 +963,10 @@ class Card {
             this.setFingerprint(data["fingerprint"]);
         if (data["token_type"])
             this.setTokenType(data["token_type"]);
+        if (data["used"])
+            this.setUsed(data["used"]);
+        if (data["has_been_authorized"])
+            this.setHasBeenAuthorized(data["has_been_authorized"]);
         if (data["metadata"])
             this.setMetadata(data["metadata"]);
         if (data["expires_soon"])
@@ -955,6 +1011,8 @@ class Card {
             "ip_address": this.getIpAddress(),
             "fingerprint": this.getFingerprint(),
             "token_type": this.getTokenType(),
+            "used": this.getUsed(),
+            "has_been_authorized": this.getHasBeenAuthorized(),
             "metadata": this.getMetadata(),
             "expires_soon": this.getExpiresSoon(),
             "sandbox": this.getSandbox(),

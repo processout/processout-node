@@ -74,10 +74,16 @@ class InvoiceShipping {
     private zip: string = null;
 
     /**
-     * Phone number for the shipment
+     * Shipment full phone number, consisting of a combined dialing code and phone number
      * @type {string}
      */
     private phoneNumber: string = null;
+
+    /**
+     * Phone number for the shipment
+     * @type {p.InvoiceShippingPhone}
+     */
+    private phone: p.InvoiceShippingPhone = null;
 
     /**
      * Date at which the shipment is expected to be sent
@@ -311,7 +317,7 @@ class InvoiceShipping {
 
     /**
      * Get PhoneNumber
-     * Phone number for the shipment
+     * Shipment full phone number, consisting of a combined dialing code and phone number
      * @return {string}
      */
     public getPhoneNumber(): string {
@@ -320,12 +326,39 @@ class InvoiceShipping {
 
     /**
      * Set PhoneNumber
-     * Phone number for the shipment
+     * Shipment full phone number, consisting of a combined dialing code and phone number
      * @param {string} val
      * @return {InvoiceShipping}
      */
     public setPhoneNumber(val: string): InvoiceShipping {
         this.phoneNumber = val;
+        return this;
+    }
+
+    /**
+     * Get Phone
+     * Phone number for the shipment
+     * @return {p.InvoiceShippingPhone}
+     */
+    public getPhone(): p.InvoiceShippingPhone {
+        return this.phone;
+    }
+
+    /**
+     * Set Phone
+     * Phone number for the shipment
+     * @param {p.InvoiceShippingPhone} val
+     * @return {InvoiceShipping}
+     */
+    public setPhone(val: p.InvoiceShippingPhone): InvoiceShipping {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newInvoiceShippingPhone().getProcessOutObjectClass())
+            this.phone = val;
+        else {
+            var obj = this.client.newInvoiceShippingPhone();
+            obj.fillWithData(val);
+            this.phone = obj;
+        }
         return this;
     }
 
@@ -397,6 +430,8 @@ class InvoiceShipping {
             this.setZip(data["zip"]);
         if (data["phone_number"])
             this.setPhoneNumber(data["phone_number"]);
+        if (data["phone"])
+            this.setPhone(data["phone"]);
         if (data["expects_shipping_at"])
             this.setExpectsShippingAt(data["expects_shipping_at"]);
         if (data["relay_store_name"])
@@ -421,6 +456,7 @@ class InvoiceShipping {
             "country_code": this.getCountryCode(),
             "zip": this.getZip(),
             "phone_number": this.getPhoneNumber(),
+            "phone": this.getPhone(),
             "expects_shipping_at": this.getExpectsShippingAt(),
             "relay_store_name": this.getRelayStoreName(),
         };

@@ -7,6 +7,11 @@ declare class InvoiceExternalFraudTools {
      */
     private forter;
     /**
+     * Ravelin
+     * @type {string}
+     */
+    private ravelin;
+    /**
      * Signifyd
      * @type {string}
      */
@@ -31,6 +36,19 @@ declare class InvoiceExternalFraudTools {
      * @return {InvoiceExternalFraudTools}
      */
     setForter(val: string): InvoiceExternalFraudTools;
+    /**
+     * Get Ravelin
+     * Ravelin
+     * @return {string}
+     */
+    getRavelin(): string;
+    /**
+     * Set Ravelin
+     * Ravelin
+     * @param {string} val
+     * @return {InvoiceExternalFraudTools}
+     */
+    setRavelin(val: string): InvoiceExternalFraudTools;
     /**
      * Get Signifyd
      * Signifyd

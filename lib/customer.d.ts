@@ -103,10 +103,15 @@ declare class Customer {
      */
     private ipAddress;
     /**
-     * Phone number of the customer
+     * Customer full phone number, consisting of a combined dialing code and phone number
      * @type {string}
      */
     private phoneNumber;
+    /**
+     * Customer phone number
+     * @type {p.CustomerPhone}
+     */
+    private phone;
     /**
      * Legal document number
      * @type {string}
@@ -416,17 +421,30 @@ declare class Customer {
     setIpAddress(val: string): Customer;
     /**
      * Get PhoneNumber
-     * Phone number of the customer
+     * Customer full phone number, consisting of a combined dialing code and phone number
      * @return {string}
      */
     getPhoneNumber(): string;
     /**
      * Set PhoneNumber
-     * Phone number of the customer
+     * Customer full phone number, consisting of a combined dialing code and phone number
      * @param {string} val
      * @return {Customer}
      */
     setPhoneNumber(val: string): Customer;
+    /**
+     * Get Phone
+     * Customer phone number
+     * @return {p.CustomerPhone}
+     */
+    getPhone(): p.CustomerPhone;
+    /**
+     * Set Phone
+     * Customer phone number
+     * @param {p.CustomerPhone} val
+     * @return {Customer}
+     */
+    setPhone(val: p.CustomerPhone): Customer;
     /**
      * Get LegalDocument
      * Legal document number

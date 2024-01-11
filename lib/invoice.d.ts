@@ -203,6 +203,11 @@ declare class Invoice {
      */
     private paymentType;
     /**
+     * Native APM data
+     * @type {p.NativeAPMRequest}
+     */
+    private nativeApm;
+    /**
      * Initiation type of invoice
      * @type {string}
      */
@@ -217,6 +222,11 @@ declare class Invoice {
      * @type {p.InvoiceBilling}
      */
     private billing;
+    /**
+     * Flags to bypass unsupported features
+     * @type {p.UnsupportedFeatureBypass}
+     */
+    private unsupportedFeatureBypass;
     /**
      * Invoice constructor
      * @param {ProcessOut} client
@@ -745,6 +755,19 @@ declare class Invoice {
      */
     setPaymentType(val: string): Invoice;
     /**
+     * Get NativeApm
+     * Native APM data
+     * @return {p.NativeAPMRequest}
+     */
+    getNativeApm(): p.NativeAPMRequest;
+    /**
+     * Set NativeApm
+     * Native APM data
+     * @param {p.NativeAPMRequest} val
+     * @return {Invoice}
+     */
+    setNativeApm(val: p.NativeAPMRequest): Invoice;
+    /**
      * Get InitiationType
      * Initiation type of invoice
      * @return {string}
@@ -783,6 +806,19 @@ declare class Invoice {
      * @return {Invoice}
      */
     setBilling(val: p.InvoiceBilling): Invoice;
+    /**
+     * Get UnsupportedFeatureBypass
+     * Flags to bypass unsupported features
+     * @return {p.UnsupportedFeatureBypass}
+     */
+    getUnsupportedFeatureBypass(): p.UnsupportedFeatureBypass;
+    /**
+     * Set UnsupportedFeatureBypass
+     * Flags to bypass unsupported features
+     * @param {p.UnsupportedFeatureBypass} val
+     * @return {Invoice}
+     */
+    setUnsupportedFeatureBypass(val: p.UnsupportedFeatureBypass): Invoice;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
@@ -829,6 +865,29 @@ declare class Invoice {
      * @return {Promise<p.Customer>}
      */
     assignCustomer(customerId: string, options: any): Promise<p.Customer>;
+    /**
+     * Process the payout invoice using the given source (customer or token)
+     * @param string gatewayConfigurationId
+     * @param string source
+     * @param {any} options
+     * @return {Promise<p.Transaction>}
+     */
+    payout(gatewayConfigurationId: string, source: string, options: any): Promise<p.Transaction>;
+    /**
+     * Fetches the Native APM payment
+     * @param string invoiceId
+     * @param string gatewayConfigurationId
+     * @param {any} options
+     * @return {Promise<p.NativeAPMTransactionDetails>}
+     */
+    showNativePaymentTransaction(invoiceId: string, gatewayConfigurationId: string, options: any): Promise<p.NativeAPMTransactionDetails>;
+    /**
+     * Process the Native APM payment flow
+     * @param string invoiceId
+     * @param {any} options
+     * @return {Promise<p.InvoicesProcessNativePaymentResponse>}
+     */
+    processNativePayment(invoiceId: string, options: any): Promise<p.InvoicesProcessNativePaymentResponse>;
     /**
      * Initiate a 3-D Secure authentication
      * @param string source

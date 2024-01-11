@@ -1,4 +1,5 @@
 import ProcessOut = require('./processout');
+import * as p from '.';
 declare class InvoiceShipping {
     private client;
     /**
@@ -52,10 +53,15 @@ declare class InvoiceShipping {
      */
     private zip;
     /**
-     * Phone number for the shipment
+     * Shipment full phone number, consisting of a combined dialing code and phone number
      * @type {string}
      */
     private phoneNumber;
+    /**
+     * Phone number for the shipment
+     * @type {p.InvoiceShippingPhone}
+     */
+    private phone;
     /**
      * Date at which the shipment is expected to be sent
      * @type {string}
@@ -205,17 +211,30 @@ declare class InvoiceShipping {
     setZip(val: string): InvoiceShipping;
     /**
      * Get PhoneNumber
-     * Phone number for the shipment
+     * Shipment full phone number, consisting of a combined dialing code and phone number
      * @return {string}
      */
     getPhoneNumber(): string;
     /**
      * Set PhoneNumber
-     * Phone number for the shipment
+     * Shipment full phone number, consisting of a combined dialing code and phone number
      * @param {string} val
      * @return {InvoiceShipping}
      */
     setPhoneNumber(val: string): InvoiceShipping;
+    /**
+     * Get Phone
+     * Phone number for the shipment
+     * @return {p.InvoiceShippingPhone}
+     */
+    getPhone(): p.InvoiceShippingPhone;
+    /**
+     * Set Phone
+     * Phone number for the shipment
+     * @param {p.InvoiceShippingPhone} val
+     * @return {InvoiceShipping}
+     */
+    setPhone(val: p.InvoiceShippingPhone): InvoiceShipping;
     /**
      * Get ExpectsShippingAt
      * Date at which the shipment is expected to be sent

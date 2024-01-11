@@ -134,10 +134,16 @@ class Customer {
     private ipAddress: string = null;
 
     /**
-     * Phone number of the customer
+     * Customer full phone number, consisting of a combined dialing code and phone number
      * @type {string}
      */
     private phoneNumber: string = null;
+
+    /**
+     * Customer phone number
+     * @type {p.CustomerPhone}
+     */
+    private phone: p.CustomerPhone = null;
 
     /**
      * Legal document number
@@ -651,7 +657,7 @@ class Customer {
 
     /**
      * Get PhoneNumber
-     * Phone number of the customer
+     * Customer full phone number, consisting of a combined dialing code and phone number
      * @return {string}
      */
     public getPhoneNumber(): string {
@@ -660,12 +666,39 @@ class Customer {
 
     /**
      * Set PhoneNumber
-     * Phone number of the customer
+     * Customer full phone number, consisting of a combined dialing code and phone number
      * @param {string} val
      * @return {Customer}
      */
     public setPhoneNumber(val: string): Customer {
         this.phoneNumber = val;
+        return this;
+    }
+
+    /**
+     * Get Phone
+     * Customer phone number
+     * @return {p.CustomerPhone}
+     */
+    public getPhone(): p.CustomerPhone {
+        return this.phone;
+    }
+
+    /**
+     * Set Phone
+     * Customer phone number
+     * @param {p.CustomerPhone} val
+     * @return {Customer}
+     */
+    public setPhone(val: p.CustomerPhone): Customer {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newCustomerPhone().getProcessOutObjectClass())
+            this.phone = val;
+        else {
+            var obj = this.client.newCustomerPhone();
+            obj.fillWithData(val);
+            this.phone = obj;
+        }
         return this;
     }
 
@@ -877,6 +910,8 @@ class Customer {
             this.setIpAddress(data["ip_address"]);
         if (data["phone_number"])
             this.setPhoneNumber(data["phone_number"]);
+        if (data["phone"])
+            this.setPhone(data["phone"]);
         if (data["legal_document"])
             this.setLegalDocument(data["legal_document"]);
         if (data["sex"])
@@ -923,6 +958,7 @@ class Customer {
             "country_code": this.getCountryCode(),
             "ip_address": this.getIpAddress(),
             "phone_number": this.getPhoneNumber(),
+            "phone": this.getPhone(),
             "legal_document": this.getLegalDocument(),
             "sex": this.getSex(),
             "is_business": this.getIsBusiness(),
@@ -1263,14 +1299,15 @@ class Customer {
 			'zip': this.getZip(), 
 			'country_code': this.getCountryCode(), 
 			'ip_address': this.getIpAddress(), 
-			'phone_number': this.getPhoneNumber(), 
+			'phone': this.getPhone(), 
 			'legal_document': this.getLegalDocument(), 
 			'date_of_birth': this.getDateOfBirth(), 
 			'is_business': this.getIsBusiness(), 
 			'sex': this.getSex(), 
 			'metadata': this.getMetadata(), 
 			'id': this.getId(), 
-			'registered_at': this.getRegisteredAt()
+			'registered_at': this.getRegisteredAt(), 
+			'phone_number': this.getPhoneNumber()
         };
 
         var cur = this;
@@ -1376,13 +1413,14 @@ class Customer {
 			'zip': this.getZip(), 
 			'country_code': this.getCountryCode(), 
 			'ip_address': this.getIpAddress(), 
-			'phone_number': this.getPhoneNumber(), 
+			'phone': this.getPhone(), 
 			'legal_document': this.getLegalDocument(), 
 			'date_of_birth': this.getDateOfBirth(), 
 			'is_business': this.getIsBusiness(), 
 			'sex': this.getSex(), 
 			'metadata': this.getMetadata(), 
-			'registered_at': this.getRegisteredAt()
+			'registered_at': this.getRegisteredAt(), 
+			'phone_number': this.getPhoneNumber()
         };
 
         var cur = this;

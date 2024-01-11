@@ -219,6 +219,13 @@ declare class Refund {
      */
     toJSON(): any;
     /**
+     * Create a refund for an invoice.
+     * @param string invoiceId
+     * @param {any} options
+     * @return {Promise<boolean>}
+     */
+    createForInvoice(invoiceId: string, options: any): Promise<boolean>;
+    /**
      * Get the transaction's refunds.
      * @param string transactionId
      * @param {any} options

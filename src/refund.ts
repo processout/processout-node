@@ -376,6 +376,54 @@ class Refund {
     }
 
     /**
+     * Create a refund for an invoice.
+	 * @param string invoiceId
+     * @param {any} options
+     * @return {Promise<boolean>}
+     */
+    public createForInvoice(invoiceId: string, options): Promise<boolean> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/invoices/" + encodeURI(invoiceId) + "/refunds";
+
+        var data = {
+			'amount': this.getAmount(), 
+			'reason': this.getReason(), 
+			'information': this.getInformation(), 
+			'invoice_detail_ids': this.getInvoiceDetailIds(), 
+			'metadata': (options['metadata']) ? options['metadata'] : null
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                returnValues.push(response.isSuccess());
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.post(path, data, options).then(callback, callbackError);
+            });
+    }
+    /**
      * Get the transaction's refunds.
 	 * @param string transactionId
      * @param {any} options
