@@ -12,6 +12,11 @@ declare class InvoiceRisk {
      */
     private isLegit;
     /**
+     * Skip payment gateway fraud engine rules (on compatible gateways only.)
+     * @type {boolean}
+     */
+    private skipGatewayRules;
+    /**
      * InvoiceRisk constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -44,6 +49,19 @@ declare class InvoiceRisk {
      * @return {InvoiceRisk}
      */
     setIsLegit(val: boolean): InvoiceRisk;
+    /**
+     * Get SkipGatewayRules
+     * Skip payment gateway fraud engine rules (on compatible gateways only.)
+     * @return {boolean}
+     */
+    getSkipGatewayRules(): boolean;
+    /**
+     * Set SkipGatewayRules
+     * Skip payment gateway fraud engine rules (on compatible gateways only.)
+     * @param {boolean} val
+     * @return {InvoiceRisk}
+     */
+    setSkipGatewayRules(val: boolean): InvoiceRisk;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
