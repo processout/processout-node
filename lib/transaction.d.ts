@@ -308,6 +308,11 @@ declare class Transaction {
      */
     private paymentType;
     /**
+     * The Electronic Commerce Indicator
+     * @type {string}
+     */
+    private eci;
+    /**
      * Native APM response data
      * @type {p.NativeAPMResponse}
      */
@@ -1117,6 +1122,19 @@ declare class Transaction {
      * @return {Transaction}
      */
     setPaymentType(val: string): Transaction;
+    /**
+     * Get Eci
+     * The Electronic Commerce Indicator
+     * @return {string}
+     */
+    getEci(): string;
+    /**
+     * Set Eci
+     * The Electronic Commerce Indicator
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setEci(val: string): Transaction;
     /**
      * Get NativeApm
      * Native APM response data

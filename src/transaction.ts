@@ -380,6 +380,12 @@ class Transaction {
     private paymentType: string = null;
 
     /**
+     * The Electronic Commerce Indicator
+     * @type {string}
+     */
+    private eci: string = null;
+
+    /**
      * Native APM response data
      * @type {p.NativeAPMResponse}
      */
@@ -1713,6 +1719,26 @@ class Transaction {
     }
 
     /**
+     * Get Eci
+     * The Electronic Commerce Indicator
+     * @return {string}
+     */
+    public getEci(): string {
+        return this.eci;
+    }
+
+    /**
+     * Set Eci
+     * The Electronic Commerce Indicator
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setEci(val: string): Transaction {
+        this.eci = val;
+        return this;
+    }
+
+    /**
      * Get NativeApm
      * Native APM response data
      * @return {p.NativeAPMResponse}
@@ -1887,6 +1913,8 @@ class Transaction {
             this.setSchemeId(data["scheme_id"]);
         if (data["payment_type"])
             this.setPaymentType(data["payment_type"]);
+        if (data["eci"])
+            this.setEci(data["eci"]);
         if (data["native_apm"])
             this.setNativeApm(data["native_apm"]);
         if (data["external_details"])
@@ -1961,6 +1989,7 @@ class Transaction {
             "initial_scheme_transaction_id": this.getInitialSchemeTransactionId(),
             "scheme_id": this.getSchemeId(),
             "payment_type": this.getPaymentType(),
+            "eci": this.getEci(),
             "native_apm": this.getNativeApm(),
             "external_details": this.getExternalDetails(),
         };

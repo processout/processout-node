@@ -26,6 +26,12 @@ class InvoiceRisk {
     private isLegit: boolean = null;
 
     /**
+     * Skip payment gateway fraud engine rules (on compatible gateways only.)
+     * @type {boolean}
+     */
+    private skipGatewayRules: boolean = null;
+
+    /**
      * InvoiceRisk constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -84,6 +90,26 @@ class InvoiceRisk {
     }
 
     /**
+     * Get SkipGatewayRules
+     * Skip payment gateway fraud engine rules (on compatible gateways only.)
+     * @return {boolean}
+     */
+    public getSkipGatewayRules(): boolean {
+        return this.skipGatewayRules;
+    }
+
+    /**
+     * Set SkipGatewayRules
+     * Skip payment gateway fraud engine rules (on compatible gateways only.)
+     * @param {boolean} val
+     * @return {InvoiceRisk}
+     */
+    public setSkipGatewayRules(val: boolean): InvoiceRisk {
+        this.skipGatewayRules = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {InvoiceRisk}
@@ -93,6 +119,8 @@ class InvoiceRisk {
             this.setScore(data["score"]);
         if (data["is_legit"])
             this.setIsLegit(data["is_legit"]);
+        if (data["skip_gateway_rules"])
+            this.setSkipGatewayRules(data["skip_gateway_rules"]);
         return this;
     }
 
@@ -104,6 +132,7 @@ class InvoiceRisk {
         return {
             "score": this.getScore(),
             "is_legit": this.getIsLegit(),
+            "skip_gateway_rules": this.getSkipGatewayRules(),
         };
     }
 
