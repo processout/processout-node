@@ -73,6 +73,11 @@ declare class Invoice {
      */
     private name;
     /**
+     * ID of the order for this transaction in merchant's system
+     * @type {string}
+     */
+    private orderId;
+    /**
      * Amount to be paid
      * @type {string}
      */
@@ -227,6 +232,11 @@ declare class Invoice {
      * @type {p.UnsupportedFeatureBypass}
      */
     private unsupportedFeatureBypass;
+    /**
+     * A boolean to indicate if an invoice is a verification invoice. This is used to manually create a verification invoice.
+     * @type {boolean}
+     */
+    private verification;
     /**
      * Invoice constructor
      * @param {ProcessOut} client
@@ -416,6 +426,19 @@ declare class Invoice {
      * @return {Invoice}
      */
     setName(val: string): Invoice;
+    /**
+     * Get OrderId
+     * ID of the order for this transaction in merchant's system
+     * @return {string}
+     */
+    getOrderId(): string;
+    /**
+     * Set OrderId
+     * ID of the order for this transaction in merchant's system
+     * @param {string} val
+     * @return {Invoice}
+     */
+    setOrderId(val: string): Invoice;
     /**
      * Get Amount
      * Amount to be paid
@@ -819,6 +842,19 @@ declare class Invoice {
      * @return {Invoice}
      */
     setUnsupportedFeatureBypass(val: p.UnsupportedFeatureBypass): Invoice;
+    /**
+     * Get Verification
+     * A boolean to indicate if an invoice is a verification invoice. This is used to manually create a verification invoice.
+     * @return {boolean}
+     */
+    getVerification(): boolean;
+    /**
+     * Set Verification
+     * A boolean to indicate if an invoice is a verification invoice. This is used to manually create a verification invoice.
+     * @param {boolean} val
+     * @return {Invoice}
+     */
+    setVerification(val: boolean): Invoice;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

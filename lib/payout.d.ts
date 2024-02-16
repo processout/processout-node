@@ -401,6 +401,13 @@ declare class Payout {
      * @return {Promise<any>}
      */
     find(payoutId: string, options: any): Promise<any>;
+    /**
+     * Delete the payout along with its payout items
+     * @param string payoutId
+     * @param {any} options
+     * @return {Promise<boolean>}
+     */
+    delete(payoutId: string, options: any): Promise<boolean>;
 }
 export = Payout;
 //# sourceMappingURL=payout.d.ts.map

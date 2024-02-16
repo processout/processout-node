@@ -98,6 +98,12 @@ class Invoice {
     private name: string = null;
 
     /**
+     * ID of the order for this transaction in merchant's system
+     * @type {string}
+     */
+    private orderId: string = null;
+
+    /**
      * Amount to be paid
      * @type {string}
      */
@@ -282,6 +288,12 @@ class Invoice {
      * @type {p.UnsupportedFeatureBypass}
      */
     private unsupportedFeatureBypass: p.UnsupportedFeatureBypass = null;
+
+    /**
+     * A boolean to indicate if an invoice is a verification invoice. This is used to manually create a verification invoice.
+     * @type {boolean}
+     */
+    private verification: boolean = null;
 
     /**
      * Invoice constructor
@@ -623,6 +635,26 @@ class Invoice {
      */
     public setName(val: string): Invoice {
         this.name = val;
+        return this;
+    }
+
+    /**
+     * Get OrderId
+     * ID of the order for this transaction in merchant's system
+     * @return {string}
+     */
+    public getOrderId(): string {
+        return this.orderId;
+    }
+
+    /**
+     * Set OrderId
+     * ID of the order for this transaction in merchant's system
+     * @param {string} val
+     * @return {Invoice}
+     */
+    public setOrderId(val: string): Invoice {
+        this.orderId = val;
         return this;
     }
 
@@ -1303,6 +1335,26 @@ class Invoice {
     }
 
     /**
+     * Get Verification
+     * A boolean to indicate if an invoice is a verification invoice. This is used to manually create a verification invoice.
+     * @return {boolean}
+     */
+    public getVerification(): boolean {
+        return this.verification;
+    }
+
+    /**
+     * Set Verification
+     * A boolean to indicate if an invoice is a verification invoice. This is used to manually create a verification invoice.
+     * @param {boolean} val
+     * @return {Invoice}
+     */
+    public setVerification(val: boolean): Invoice {
+        this.verification = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Invoice}
@@ -1336,6 +1388,8 @@ class Invoice {
             this.setUrl(data["url"]);
         if (data["name"])
             this.setName(data["name"]);
+        if (data["order_id"])
+            this.setOrderId(data["order_id"]);
         if (data["amount"])
             this.setAmount(data["amount"]);
         if (data["currency"])
@@ -1398,6 +1452,8 @@ class Invoice {
             this.setBilling(data["billing"]);
         if (data["unsupported_feature_bypass"])
             this.setUnsupportedFeatureBypass(data["unsupported_feature_bypass"]);
+        if (data["verification"])
+            this.setVerification(data["verification"]);
         return this;
     }
 
@@ -1421,6 +1477,7 @@ class Invoice {
             "details": this.getDetails(),
             "url": this.getUrl(),
             "name": this.getName(),
+            "order_id": this.getOrderId(),
             "amount": this.getAmount(),
             "currency": this.getCurrency(),
             "merchant_initiator_type": this.getMerchantInitiatorType(),
@@ -1452,6 +1509,7 @@ class Invoice {
             "payment_intent": this.getPaymentIntent(),
             "billing": this.getBilling(),
             "unsupported_feature_bypass": this.getUnsupportedFeatureBypass(),
+            "verification": this.getVerification(),
         };
     }
 
@@ -2069,6 +2127,7 @@ class Invoice {
         var data = {
 			'customer_id': this.getCustomerId(), 
 			'name': this.getName(), 
+			'order_id': this.getOrderId(), 
 			'amount': this.getAmount(), 
 			'currency': this.getCurrency(), 
 			'metadata': this.getMetadata(), 
@@ -2096,7 +2155,8 @@ class Invoice {
 			'tax': this.getTax(), 
 			'payment_type': this.getPaymentType(), 
 			'billing': this.getBilling(), 
-			'unsupported_feature_bypass': this.getUnsupportedFeatureBypass()
+			'unsupported_feature_bypass': this.getUnsupportedFeatureBypass(), 
+			'verification': this.getVerification()
         };
 
         var cur = this;

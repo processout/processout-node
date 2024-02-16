@@ -4,7 +4,6 @@ import ProcessOut = require('./processout');
 
 import Activity = require('./activity');
 import Addon = require('./addon');
-import APIRequest = require('./apirequest');
 import APIVersion = require('./apiversion');
 import ApplePayAlternativeMerchantCertificates = require('./applepayalternativemerchantcertificates');
 import AlternativeMerchantCertificate = require('./alternativemerchantcertificate');
@@ -71,7 +70,6 @@ import ProcessOutValidationError = require('./errors/processoutvalidationerror')
 export {ProcessOut};
 export {Activity};
 export {Addon};
-export {APIRequest};
 export {APIVersion};
 export {ApplePayAlternativeMerchantCertificates};
 export {AlternativeMerchantCertificate};

@@ -60,4 +60,5 @@ jspm_packages
 .node_repl_history
 
 deploy.sh
+package.sh
 publish.sh

@@ -96,15 +96,6 @@ class ProcessOut {
     }
 	
     /**
-     * Create a new APIRequest instance
-     * @param {array} prefill
-     * @return {APIRequest}
-     */
-	public newAPIRequest(prefill?: p.APIRequest): p.APIRequest {
-        return new p.APIRequest(this, prefill);
-    }
-	
-    /**
      * Create a new APIVersion instance
      * @param {array} prefill
      * @return {APIVersion}
