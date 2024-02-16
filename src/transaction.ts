@@ -344,6 +344,24 @@ class Transaction {
     private refundedAt: string = null;
 
     /**
+     * Date at which the transaction was authorized
+     * @type {string}
+     */
+    private authorizedAt: string = null;
+
+    /**
+     * Date at which the transaction was captured
+     * @type {string}
+     */
+    private capturedAt: string = null;
+
+    /**
+     * Date at which the transaction was voided
+     * @type {string}
+     */
+    private voidedAt: string = null;
+
+    /**
      * 3DS data of a transaction if it was authenticated
      * @type {p.ThreeDS}
      */
@@ -1592,6 +1610,66 @@ class Transaction {
     }
 
     /**
+     * Get AuthorizedAt
+     * Date at which the transaction was authorized
+     * @return {string}
+     */
+    public getAuthorizedAt(): string {
+        return this.authorizedAt;
+    }
+
+    /**
+     * Set AuthorizedAt
+     * Date at which the transaction was authorized
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setAuthorizedAt(val: string): Transaction {
+        this.authorizedAt = val;
+        return this;
+    }
+
+    /**
+     * Get CapturedAt
+     * Date at which the transaction was captured
+     * @return {string}
+     */
+    public getCapturedAt(): string {
+        return this.capturedAt;
+    }
+
+    /**
+     * Set CapturedAt
+     * Date at which the transaction was captured
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setCapturedAt(val: string): Transaction {
+        this.capturedAt = val;
+        return this;
+    }
+
+    /**
+     * Get VoidedAt
+     * Date at which the transaction was voided
+     * @return {string}
+     */
+    public getVoidedAt(): string {
+        return this.voidedAt;
+    }
+
+    /**
+     * Set VoidedAt
+     * Date at which the transaction was voided
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setVoidedAt(val: string): Transaction {
+        this.voidedAt = val;
+        return this;
+    }
+
+    /**
      * Get ThreeDS
      * 3DS data of a transaction if it was authenticated
      * @return {p.ThreeDS}
@@ -1901,6 +1979,12 @@ class Transaction {
             this.setChargedbackAt(data["chargedback_at"]);
         if (data["refunded_at"])
             this.setRefundedAt(data["refunded_at"]);
+        if (data["authorized_at"])
+            this.setAuthorizedAt(data["authorized_at"]);
+        if (data["captured_at"])
+            this.setCapturedAt(data["captured_at"]);
+        if (data["voided_at"])
+            this.setVoidedAt(data["voided_at"]);
         if (data["three_d_s"])
             this.setThreeDS(data["three_d_s"]);
         if (data["cvc_check"])
@@ -1983,6 +2067,9 @@ class Transaction {
             "created_at": this.getCreatedAt(),
             "chargedback_at": this.getChargedbackAt(),
             "refunded_at": this.getRefundedAt(),
+            "authorized_at": this.getAuthorizedAt(),
+            "captured_at": this.getCapturedAt(),
+            "voided_at": this.getVoidedAt(),
             "three_d_s": this.getThreeDS(),
             "cvc_check": this.getCvcCheck(),
             "avs_check": this.getAvsCheck(),

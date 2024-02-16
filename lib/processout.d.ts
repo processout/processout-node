@@ -67,12 +67,6 @@ declare class ProcessOut {
      */
     newAddon(prefill?: p.Addon): p.Addon;
     /**
-     * Create a new APIRequest instance
-     * @param {array} prefill
-     * @return {APIRequest}
-     */
-    newAPIRequest(prefill?: p.APIRequest): p.APIRequest;
-    /**
      * Create a new APIVersion instance
      * @param {array} prefill
      * @return {APIVersion}

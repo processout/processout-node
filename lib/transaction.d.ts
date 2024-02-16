@@ -278,6 +278,21 @@ declare class Transaction {
      */
     private refundedAt;
     /**
+     * Date at which the transaction was authorized
+     * @type {string}
+     */
+    private authorizedAt;
+    /**
+     * Date at which the transaction was captured
+     * @type {string}
+     */
+    private capturedAt;
+    /**
+     * Date at which the transaction was voided
+     * @type {string}
+     */
+    private voidedAt;
+    /**
      * 3DS data of a transaction if it was authenticated
      * @type {p.ThreeDS}
      */
@@ -1044,6 +1059,45 @@ declare class Transaction {
      * @return {Transaction}
      */
     setRefundedAt(val: string): Transaction;
+    /**
+     * Get AuthorizedAt
+     * Date at which the transaction was authorized
+     * @return {string}
+     */
+    getAuthorizedAt(): string;
+    /**
+     * Set AuthorizedAt
+     * Date at which the transaction was authorized
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setAuthorizedAt(val: string): Transaction;
+    /**
+     * Get CapturedAt
+     * Date at which the transaction was captured
+     * @return {string}
+     */
+    getCapturedAt(): string;
+    /**
+     * Set CapturedAt
+     * Date at which the transaction was captured
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setCapturedAt(val: string): Transaction;
+    /**
+     * Get VoidedAt
+     * Date at which the transaction was voided
+     * @return {string}
+     */
+    getVoidedAt(): string;
+    /**
+     * Set VoidedAt
+     * Date at which the transaction was voided
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setVoidedAt(val: string): Transaction;
     /**
      * Get ThreeDS
      * 3DS data of a transaction if it was authenticated
