@@ -159,6 +159,15 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new Phone instance
+     * @param {array} prefill
+     * @return {Phone}
+     */
+	public newPhone(prefill?: p.Phone): p.Phone {
+        return new p.Phone(this, prefill);
+    }
+	
+    /**
      * Create a new Coupon instance
      * @param {array} prefill
      * @return {Coupon}
@@ -375,6 +384,15 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new PayoutItemAmountBreakdowns instance
+     * @param {array} prefill
+     * @return {PayoutItemAmountBreakdowns}
+     */
+	public newPayoutItemAmountBreakdowns(prefill?: p.PayoutItemAmountBreakdowns): p.PayoutItemAmountBreakdowns {
+        return new p.PayoutItemAmountBreakdowns(this, prefill);
+    }
+	
+    /**
      * Create a new Plan instance
      * @param {array} prefill
      * @return {Plan}
@@ -525,6 +543,51 @@ class ProcessOut {
      */
 	public newWebhookEndpoint(prefill?: p.WebhookEndpoint): p.WebhookEndpoint {
         return new p.WebhookEndpoint(this, prefill);
+    }
+	
+    /**
+     * Create a new CardCreateRequest instance
+     * @param {array} prefill
+     * @return {CardCreateRequest}
+     */
+	public newCardCreateRequest(prefill?: p.CardCreateRequest): p.CardCreateRequest {
+        return new p.CardCreateRequest(this, prefill);
+    }
+	
+    /**
+     * Create a new Device instance
+     * @param {array} prefill
+     * @return {Device}
+     */
+	public newDevice(prefill?: p.Device): p.Device {
+        return new p.Device(this, prefill);
+    }
+	
+    /**
+     * Create a new CardContact instance
+     * @param {array} prefill
+     * @return {CardContact}
+     */
+	public newCardContact(prefill?: p.CardContact): p.CardContact {
+        return new p.CardContact(this, prefill);
+    }
+	
+    /**
+     * Create a new CardShipping instance
+     * @param {array} prefill
+     * @return {CardShipping}
+     */
+	public newCardShipping(prefill?: p.CardShipping): p.CardShipping {
+        return new p.CardShipping(this, prefill);
+    }
+	
+    /**
+     * Create a new CardUpdateRequest instance
+     * @param {array} prefill
+     * @return {CardUpdateRequest}
+     */
+	public newCardUpdateRequest(prefill?: p.CardUpdateRequest): p.CardUpdateRequest {
+        return new p.CardUpdateRequest(this, prefill);
     }
 	
     /**

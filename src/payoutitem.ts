@@ -92,6 +92,12 @@ class PayoutItem {
     private createdAt: string = null;
 
     /**
+     * breakdown of amount for the item
+     * @type {p.PayoutItemAmountBreakdowns}
+     */
+    private breakdown: p.PayoutItemAmountBreakdowns = null;
+
+    /**
      * PayoutItem constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -391,6 +397,33 @@ class PayoutItem {
     }
 
     /**
+     * Get Breakdown
+     * breakdown of amount for the item
+     * @return {p.PayoutItemAmountBreakdowns}
+     */
+    public getBreakdown(): p.PayoutItemAmountBreakdowns {
+        return this.breakdown;
+    }
+
+    /**
+     * Set Breakdown
+     * breakdown of amount for the item
+     * @param {p.PayoutItemAmountBreakdowns} val
+     * @return {PayoutItem}
+     */
+    public setBreakdown(val: p.PayoutItemAmountBreakdowns): PayoutItem {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newPayoutItemAmountBreakdowns().getProcessOutObjectClass())
+            this.breakdown = val;
+        else {
+            var obj = this.client.newPayoutItemAmountBreakdowns();
+            obj.fillWithData(val);
+            this.breakdown = obj;
+        }
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {PayoutItem}
@@ -422,6 +455,8 @@ class PayoutItem {
             this.setMetadata(data["metadata"]);
         if (data["created_at"])
             this.setCreatedAt(data["created_at"]);
+        if (data["breakdown"])
+            this.setBreakdown(data["breakdown"]);
         return this;
     }
 
@@ -444,6 +479,7 @@ class PayoutItem {
             "fees": this.getFees(),
             "metadata": this.getMetadata(),
             "created_at": this.getCreatedAt(),
+            "breakdown": this.getBreakdown(),
         };
     }
 
