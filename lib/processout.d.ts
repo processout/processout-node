@@ -109,6 +109,12 @@ declare class ProcessOut {
      */
     newCardInformation(prefill?: p.CardInformation): p.CardInformation;
     /**
+     * Create a new Phone instance
+     * @param {array} prefill
+     * @return {Phone}
+     */
+    newPhone(prefill?: p.Phone): p.Phone;
+    /**
      * Create a new Coupon instance
      * @param {array} prefill
      * @return {Coupon}
@@ -253,6 +259,12 @@ declare class ProcessOut {
      */
     newPayoutItem(prefill?: p.PayoutItem): p.PayoutItem;
     /**
+     * Create a new PayoutItemAmountBreakdowns instance
+     * @param {array} prefill
+     * @return {PayoutItemAmountBreakdowns}
+     */
+    newPayoutItemAmountBreakdowns(prefill?: p.PayoutItemAmountBreakdowns): p.PayoutItemAmountBreakdowns;
+    /**
      * Create a new Plan instance
      * @param {array} prefill
      * @return {Plan}
@@ -354,6 +366,36 @@ declare class ProcessOut {
      * @return {WebhookEndpoint}
      */
     newWebhookEndpoint(prefill?: p.WebhookEndpoint): p.WebhookEndpoint;
+    /**
+     * Create a new CardCreateRequest instance
+     * @param {array} prefill
+     * @return {CardCreateRequest}
+     */
+    newCardCreateRequest(prefill?: p.CardCreateRequest): p.CardCreateRequest;
+    /**
+     * Create a new Device instance
+     * @param {array} prefill
+     * @return {Device}
+     */
+    newDevice(prefill?: p.Device): p.Device;
+    /**
+     * Create a new CardContact instance
+     * @param {array} prefill
+     * @return {CardContact}
+     */
+    newCardContact(prefill?: p.CardContact): p.CardContact;
+    /**
+     * Create a new CardShipping instance
+     * @param {array} prefill
+     * @return {CardShipping}
+     */
+    newCardShipping(prefill?: p.CardShipping): p.CardShipping;
+    /**
+     * Create a new CardUpdateRequest instance
+     * @param {array} prefill
+     * @return {CardUpdateRequest}
+     */
+    newCardUpdateRequest(prefill?: p.CardUpdateRequest): p.CardUpdateRequest;
     /**
      * Create a new ErrorCodes instance
      * @param {array} prefill

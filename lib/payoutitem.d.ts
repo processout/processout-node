@@ -68,6 +68,11 @@ declare class PayoutItem {
      */
     private createdAt;
     /**
+     * breakdown of amount for the item
+     * @type {p.PayoutItemAmountBreakdowns}
+     */
+    private breakdown;
+    /**
      * PayoutItem constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -243,6 +248,19 @@ declare class PayoutItem {
      * @return {PayoutItem}
      */
     setCreatedAt(val: string): PayoutItem;
+    /**
+     * Get Breakdown
+     * breakdown of amount for the item
+     * @return {p.PayoutItemAmountBreakdowns}
+     */
+    getBreakdown(): p.PayoutItemAmountBreakdowns;
+    /**
+     * Set Breakdown
+     * breakdown of amount for the item
+     * @param {p.PayoutItemAmountBreakdowns} val
+     * @return {PayoutItem}
+     */
+    setBreakdown(val: p.PayoutItemAmountBreakdowns): PayoutItem;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
