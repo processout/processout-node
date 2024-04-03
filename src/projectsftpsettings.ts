@@ -14,7 +14,7 @@ class ProjectSFTPSettings {
     private client: ProcessOut = null;
 
     /**
-     * SFTP server endpoint, port is required.
+     * SFTP server endpoint, port is required
      * @type {string}
      */
     private endpoint: string = null;
@@ -57,7 +57,7 @@ class ProjectSFTPSettings {
 
     /**
      * Get Endpoint
-     * SFTP server endpoint, port is required.
+     * SFTP server endpoint, port is required
      * @return {string}
      */
     public getEndpoint(): string {
@@ -66,7 +66,7 @@ class ProjectSFTPSettings {
 
     /**
      * Set Endpoint
-     * SFTP server endpoint, port is required.
+     * SFTP server endpoint, port is required
      * @param {string} val
      * @return {ProjectSFTPSettings}
      */

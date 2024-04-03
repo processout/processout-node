@@ -2,7 +2,7 @@ import ProcessOut = require('./processout');
 declare class ProjectSFTPSettings {
     private client;
     /**
-     * SFTP server endpoint, port is required.
+     * SFTP server endpoint, port is required
      * @type {string}
      */
     private endpoint;
@@ -30,13 +30,13 @@ declare class ProjectSFTPSettings {
     getProcessOutObjectClass(): string;
     /**
      * Get Endpoint
-     * SFTP server endpoint, port is required.
+     * SFTP server endpoint, port is required
      * @return {string}
      */
     getEndpoint(): string;
     /**
      * Set Endpoint
-     * SFTP server endpoint, port is required.
+     * SFTP server endpoint, port is required
      * @param {string} val
      * @return {ProjectSFTPSettings}
      */

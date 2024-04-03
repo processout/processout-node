@@ -289,6 +289,12 @@ declare class ProcessOut {
      */
     newProjectSFTPSettings(prefill?: p.ProjectSFTPSettings): p.ProjectSFTPSettings;
     /**
+     * Create a new ProjectSFTPSettingsPublic instance
+     * @param {array} prefill
+     * @return {ProjectSFTPSettingsPublic}
+     */
+    newProjectSFTPSettingsPublic(prefill?: p.ProjectSFTPSettingsPublic): p.ProjectSFTPSettingsPublic;
+    /**
      * Create a new Refund instance
      * @param {array} prefill
      * @return {Refund}
