@@ -150,7 +150,9 @@ class CardUpdateRequest {
         var path    = "/cards/" + encodeURI(cardId) + "";
 
         var data = {
-
+			'update_type': this.getUpdateType(), 
+			'update_reason': this.getUpdateReason(), 
+			'preferred_scheme': this.getPreferredScheme()
         };
 
         var cur = this;
