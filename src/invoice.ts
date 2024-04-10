@@ -296,6 +296,12 @@ class Invoice {
     private verification: boolean = null;
 
     /**
+     * A timestamp to indicate when an auto capture should take place following an authorization. This takes priority over the value sent in the authorization request.
+     * @type {string}
+     */
+    private autoCaptureAt: string = null;
+
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -1355,6 +1361,26 @@ class Invoice {
     }
 
     /**
+     * Get AutoCaptureAt
+     * A timestamp to indicate when an auto capture should take place following an authorization. This takes priority over the value sent in the authorization request.
+     * @return {string}
+     */
+    public getAutoCaptureAt(): string {
+        return this.autoCaptureAt;
+    }
+
+    /**
+     * Set AutoCaptureAt
+     * A timestamp to indicate when an auto capture should take place following an authorization. This takes priority over the value sent in the authorization request.
+     * @param {string} val
+     * @return {Invoice}
+     */
+    public setAutoCaptureAt(val: string): Invoice {
+        this.autoCaptureAt = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Invoice}
@@ -1454,6 +1480,8 @@ class Invoice {
             this.setUnsupportedFeatureBypass(data["unsupported_feature_bypass"]);
         if (data["verification"])
             this.setVerification(data["verification"]);
+        if (data["auto_capture_at"])
+            this.setAutoCaptureAt(data["auto_capture_at"]);
         return this;
     }
 
@@ -1510,6 +1538,7 @@ class Invoice {
             "billing": this.getBilling(),
             "unsupported_feature_bypass": this.getUnsupportedFeatureBypass(),
             "verification": this.getVerification(),
+            "auto_capture_at": this.getAutoCaptureAt(),
         };
     }
 
@@ -2156,7 +2185,8 @@ class Invoice {
 			'payment_type': this.getPaymentType(), 
 			'billing': this.getBilling(), 
 			'unsupported_feature_bypass': this.getUnsupportedFeatureBypass(), 
-			'verification': this.getVerification()
+			'verification': this.getVerification(), 
+			'auto_capture_at': this.getAutoCaptureAt()
         };
 
         var cur = this;
