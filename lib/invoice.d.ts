@@ -238,6 +238,11 @@ declare class Invoice {
      */
     private verification;
     /**
+     * A timestamp to indicate when an auto capture should take place following an authorization. This takes priority over the value sent in the authorization request.
+     * @type {string}
+     */
+    private autoCaptureAt;
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -855,6 +860,19 @@ declare class Invoice {
      * @return {Invoice}
      */
     setVerification(val: boolean): Invoice;
+    /**
+     * Get AutoCaptureAt
+     * A timestamp to indicate when an auto capture should take place following an authorization. This takes priority over the value sent in the authorization request.
+     * @return {string}
+     */
+    getAutoCaptureAt(): string;
+    /**
+     * Set AutoCaptureAt
+     * A timestamp to indicate when an auto capture should take place following an authorization. This takes priority over the value sent in the authorization request.
+     * @param {string} val
+     * @return {Invoice}
+     */
+    setAutoCaptureAt(val: string): Invoice;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
