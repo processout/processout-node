@@ -68,6 +68,11 @@ declare class Invoice {
      */
     private url;
     /**
+     * base64-encoded QR code for the invoice URL
+     * @type {string}
+     */
+    private urlQrcode;
+    /**
      * Name of the invoice
      * @type {string}
      */
@@ -157,6 +162,11 @@ declare class Invoice {
      * @type {string}
      */
     private createdAt;
+    /**
+     * Date at which the invoice will expire
+     * @type {string}
+     */
+    private expiresAt;
     /**
      * Risk information
      * @type {p.InvoiceRisk}
@@ -419,6 +429,19 @@ declare class Invoice {
      */
     setUrl(val: string): Invoice;
     /**
+     * Get UrlQrcode
+     * base64-encoded QR code for the invoice URL
+     * @return {string}
+     */
+    getUrlQrcode(): string;
+    /**
+     * Set UrlQrcode
+     * base64-encoded QR code for the invoice URL
+     * @param {string} val
+     * @return {Invoice}
+     */
+    setUrlQrcode(val: string): Invoice;
+    /**
      * Get Name
      * Name of the invoice
      * @return {string}
@@ -652,6 +675,19 @@ declare class Invoice {
      * @return {Invoice}
      */
     setCreatedAt(val: string): Invoice;
+    /**
+     * Get ExpiresAt
+     * Date at which the invoice will expire
+     * @return {string}
+     */
+    getExpiresAt(): string;
+    /**
+     * Set ExpiresAt
+     * Date at which the invoice will expire
+     * @param {string} val
+     * @return {Invoice}
+     */
+    setExpiresAt(val: string): Invoice;
     /**
      * Get Risk
      * Risk information
@@ -895,16 +931,16 @@ declare class Invoice {
      * Authorize the invoice using the given source (customer or token)
      * @param string source
      * @param {any} options
-     * @return {Promise<p.Transaction>}
+     * @return {Promise<p.InvoicesAuthorizeResponse>}
      */
-    authorize(source: string, options: any): Promise<p.Transaction>;
+    authorize(source: string, options: any): Promise<p.InvoicesAuthorizeResponse>;
     /**
      * Capture the invoice using the given source (customer or token)
      * @param string source
      * @param {any} options
-     * @return {Promise<p.Transaction>}
+     * @return {Promise<p.InvoicesCaptureResponse>}
      */
-    capture(source: string, options: any): Promise<p.Transaction>;
+    capture(source: string, options: any): Promise<p.InvoicesCaptureResponse>;
     /**
      * Get the customer linked to the invoice.
 
@@ -984,6 +1020,13 @@ declare class Invoice {
      * @return {Promise<any>}
      */
     find(invoiceId: string, options: any): Promise<any>;
+    /**
+     * Delete an invoice by its ID. Only invoices that have not been used yet can be deleted.
+     * @param string invoiceId
+     * @param {any} options
+     * @return {Promise<boolean>}
+     */
+    delete(invoiceId: string, options: any): Promise<boolean>;
 }
 export = Invoice;
 //# sourceMappingURL=invoice.d.ts.map

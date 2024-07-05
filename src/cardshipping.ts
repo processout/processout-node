@@ -56,6 +56,24 @@ class CardShipping {
     private phone: p.Phone = null;
 
     /**
+     * First name of the card shipping
+     * @type {string}
+     */
+    private firstName: string = null;
+
+    /**
+     * Last name of the card shipping
+     * @type {string}
+     */
+    private lastName: string = null;
+
+    /**
+     * Email of the card shipping
+     * @type {string}
+     */
+    private email: string = null;
+
+    /**
      * CardShipping constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -221,6 +239,66 @@ class CardShipping {
     }
 
     /**
+     * Get FirstName
+     * First name of the card shipping
+     * @return {string}
+     */
+    public getFirstName(): string {
+        return this.firstName;
+    }
+
+    /**
+     * Set FirstName
+     * First name of the card shipping
+     * @param {string} val
+     * @return {CardShipping}
+     */
+    public setFirstName(val: string): CardShipping {
+        this.firstName = val;
+        return this;
+    }
+
+    /**
+     * Get LastName
+     * Last name of the card shipping
+     * @return {string}
+     */
+    public getLastName(): string {
+        return this.lastName;
+    }
+
+    /**
+     * Set LastName
+     * Last name of the card shipping
+     * @param {string} val
+     * @return {CardShipping}
+     */
+    public setLastName(val: string): CardShipping {
+        this.lastName = val;
+        return this;
+    }
+
+    /**
+     * Get Email
+     * Email of the card shipping
+     * @return {string}
+     */
+    public getEmail(): string {
+        return this.email;
+    }
+
+    /**
+     * Set Email
+     * Email of the card shipping
+     * @param {string} val
+     * @return {CardShipping}
+     */
+    public setEmail(val: string): CardShipping {
+        this.email = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {CardShipping}
@@ -240,6 +318,12 @@ class CardShipping {
             this.setZip(data["zip"]);
         if (data["phone"])
             this.setPhone(data["phone"]);
+        if (data["first_name"])
+            this.setFirstName(data["first_name"]);
+        if (data["last_name"])
+            this.setLastName(data["last_name"]);
+        if (data["email"])
+            this.setEmail(data["email"]);
         return this;
     }
 
@@ -256,6 +340,9 @@ class CardShipping {
             "country_code": this.getCountryCode(),
             "zip": this.getZip(),
             "phone": this.getPhone(),
+            "first_name": this.getFirstName(),
+            "last_name": this.getLastName(),
+            "email": this.getEmail(),
         };
     }
 

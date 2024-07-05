@@ -618,21 +618,21 @@ class ProcessOut {
     }
 	
     /**
-     * Create a new NativeAPMTransactionDetailsGateway instance
+     * Create a new InvoicesAuthorizeResponse instance
      * @param {array} prefill
-     * @return {NativeAPMTransactionDetailsGateway}
+     * @return {InvoicesAuthorizeResponse}
      */
-	public newNativeAPMTransactionDetailsGateway(prefill?: p.NativeAPMTransactionDetailsGateway): p.NativeAPMTransactionDetailsGateway {
-        return new p.NativeAPMTransactionDetailsGateway(this, prefill);
+	public newInvoicesAuthorizeResponse(prefill?: p.InvoicesAuthorizeResponse): p.InvoicesAuthorizeResponse {
+        return new p.InvoicesAuthorizeResponse(this, prefill);
     }
 	
     /**
-     * Create a new NativeAPMTransactionDetailsInvoice instance
+     * Create a new InvoicesCaptureResponse instance
      * @param {array} prefill
-     * @return {NativeAPMTransactionDetailsInvoice}
+     * @return {InvoicesCaptureResponse}
      */
-	public newNativeAPMTransactionDetailsInvoice(prefill?: p.NativeAPMTransactionDetailsInvoice): p.NativeAPMTransactionDetailsInvoice {
-        return new p.NativeAPMTransactionDetailsInvoice(this, prefill);
+	public newInvoicesCaptureResponse(prefill?: p.InvoicesCaptureResponse): p.InvoicesCaptureResponse {
+        return new p.InvoicesCaptureResponse(this, prefill);
     }
 	
     /**
@@ -651,6 +651,24 @@ class ProcessOut {
      */
 	public newInvoicesProcessNativePaymentResponse(prefill?: p.InvoicesProcessNativePaymentResponse): p.InvoicesProcessNativePaymentResponse {
         return new p.InvoicesProcessNativePaymentResponse(this, prefill);
+    }
+	
+    /**
+     * Create a new NativeAPMTransactionDetailsGateway instance
+     * @param {array} prefill
+     * @return {NativeAPMTransactionDetailsGateway}
+     */
+	public newNativeAPMTransactionDetailsGateway(prefill?: p.NativeAPMTransactionDetailsGateway): p.NativeAPMTransactionDetailsGateway {
+        return new p.NativeAPMTransactionDetailsGateway(this, prefill);
+    }
+	
+    /**
+     * Create a new NativeAPMTransactionDetailsInvoice instance
+     * @param {array} prefill
+     * @return {NativeAPMTransactionDetailsInvoice}
+     */
+	public newNativeAPMTransactionDetailsInvoice(prefill?: p.NativeAPMTransactionDetailsInvoice): p.NativeAPMTransactionDetailsInvoice {
+        return new p.NativeAPMTransactionDetailsInvoice(this, prefill);
     }
 	
 

@@ -1248,6 +1248,13 @@ declare class Transaction {
      */
     all(options: any): Promise<any>;
     /**
+     * Get full transactions data for specified list of ids.
+     *
+     * @param {any} options
+     * @return {Promise<any>}
+     */
+    list(options: any): Promise<any>;
+    /**
      * Find a transaction by its ID.
      * @param string transactionId
      * @param {any} options

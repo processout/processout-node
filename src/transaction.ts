@@ -2236,6 +2236,59 @@ class Transaction {
             });
     }
     /**
+     * Get full transactions data for specified list of ids.
+     * 
+     * @param {any} options
+     * @return {Promise<any>}
+     */
+    public list(options): Promise<any> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/transactions";
+
+        var data = {
+
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var a    = [];
+                var body = respBody['transactions'];
+                for (var i = body.length; i--;) {
+                    var tmp = cur.client.newTransaction();
+                    tmp.fillWithData(body[i]);
+                    a.push(tmp);
+                }
+
+                returnValues.push(a);
+                    
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.post(path, data, options).then(callback, callbackError);
+            });
+    }
+    /**
      * Find a transaction by its ID.
 	 * @param string transactionId
      * @param {any} options

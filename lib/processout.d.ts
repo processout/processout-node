@@ -415,17 +415,17 @@ declare class ProcessOut {
      */
     newCategoryErrorCodes(prefill?: p.CategoryErrorCodes): p.CategoryErrorCodes;
     /**
-     * Create a new NativeAPMTransactionDetailsGateway instance
+     * Create a new InvoicesAuthorizeResponse instance
      * @param {array} prefill
-     * @return {NativeAPMTransactionDetailsGateway}
+     * @return {InvoicesAuthorizeResponse}
      */
-    newNativeAPMTransactionDetailsGateway(prefill?: p.NativeAPMTransactionDetailsGateway): p.NativeAPMTransactionDetailsGateway;
+    newInvoicesAuthorizeResponse(prefill?: p.InvoicesAuthorizeResponse): p.InvoicesAuthorizeResponse;
     /**
-     * Create a new NativeAPMTransactionDetailsInvoice instance
+     * Create a new InvoicesCaptureResponse instance
      * @param {array} prefill
-     * @return {NativeAPMTransactionDetailsInvoice}
+     * @return {InvoicesCaptureResponse}
      */
-    newNativeAPMTransactionDetailsInvoice(prefill?: p.NativeAPMTransactionDetailsInvoice): p.NativeAPMTransactionDetailsInvoice;
+    newInvoicesCaptureResponse(prefill?: p.InvoicesCaptureResponse): p.InvoicesCaptureResponse;
     /**
      * Create a new NativeAPMTransactionDetails instance
      * @param {array} prefill
@@ -438,6 +438,18 @@ declare class ProcessOut {
      * @return {InvoicesProcessNativePaymentResponse}
      */
     newInvoicesProcessNativePaymentResponse(prefill?: p.InvoicesProcessNativePaymentResponse): p.InvoicesProcessNativePaymentResponse;
+    /**
+     * Create a new NativeAPMTransactionDetailsGateway instance
+     * @param {array} prefill
+     * @return {NativeAPMTransactionDetailsGateway}
+     */
+    newNativeAPMTransactionDetailsGateway(prefill?: p.NativeAPMTransactionDetailsGateway): p.NativeAPMTransactionDetailsGateway;
+    /**
+     * Create a new NativeAPMTransactionDetailsInvoice instance
+     * @param {array} prefill
+     * @return {NativeAPMTransactionDetailsInvoice}
+     */
+    newNativeAPMTransactionDetailsInvoice(prefill?: p.NativeAPMTransactionDetailsInvoice): p.NativeAPMTransactionDetailsInvoice;
 }
 export = ProcessOut;
 //# sourceMappingURL=processout.d.ts.map

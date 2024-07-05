@@ -98,6 +98,24 @@ class InvoiceShipping {
     private relayStoreName: string = null;
 
     /**
+     * First name for the shipment
+     * @type {string}
+     */
+    private firstName: string = null;
+
+    /**
+     * Last name for the shipment
+     * @type {string}
+     */
+    private lastName: string = null;
+
+    /**
+     * Email for the shipment
+     * @type {string}
+     */
+    private email: string = null;
+
+    /**
      * InvoiceShipping constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -403,6 +421,66 @@ class InvoiceShipping {
     }
 
     /**
+     * Get FirstName
+     * First name for the shipment
+     * @return {string}
+     */
+    public getFirstName(): string {
+        return this.firstName;
+    }
+
+    /**
+     * Set FirstName
+     * First name for the shipment
+     * @param {string} val
+     * @return {InvoiceShipping}
+     */
+    public setFirstName(val: string): InvoiceShipping {
+        this.firstName = val;
+        return this;
+    }
+
+    /**
+     * Get LastName
+     * Last name for the shipment
+     * @return {string}
+     */
+    public getLastName(): string {
+        return this.lastName;
+    }
+
+    /**
+     * Set LastName
+     * Last name for the shipment
+     * @param {string} val
+     * @return {InvoiceShipping}
+     */
+    public setLastName(val: string): InvoiceShipping {
+        this.lastName = val;
+        return this;
+    }
+
+    /**
+     * Get Email
+     * Email for the shipment
+     * @return {string}
+     */
+    public getEmail(): string {
+        return this.email;
+    }
+
+    /**
+     * Set Email
+     * Email for the shipment
+     * @param {string} val
+     * @return {InvoiceShipping}
+     */
+    public setEmail(val: string): InvoiceShipping {
+        this.email = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {InvoiceShipping}
@@ -436,6 +514,12 @@ class InvoiceShipping {
             this.setExpectsShippingAt(data["expects_shipping_at"]);
         if (data["relay_store_name"])
             this.setRelayStoreName(data["relay_store_name"]);
+        if (data["first_name"])
+            this.setFirstName(data["first_name"]);
+        if (data["last_name"])
+            this.setLastName(data["last_name"]);
+        if (data["email"])
+            this.setEmail(data["email"]);
         return this;
     }
 
@@ -459,6 +543,9 @@ class InvoiceShipping {
             "phone": this.getPhone(),
             "expects_shipping_at": this.getExpectsShippingAt(),
             "relay_store_name": this.getRelayStoreName(),
+            "first_name": this.getFirstName(),
+            "last_name": this.getLastName(),
+            "email": this.getEmail(),
         };
     }
 
