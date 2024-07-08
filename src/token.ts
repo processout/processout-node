@@ -843,7 +843,8 @@ class Token {
 			'verify_metadata': (options['verify_metadata']) ? options['verify_metadata'] : null, 
 			'set_default': (options['set_default']) ? options['set_default'] : null, 
 			'verify_statement_descriptor': (options['verify_statement_descriptor']) ? options['verify_statement_descriptor'] : null, 
-			'invoice_return_url': (options['invoice_return_url']) ? options['invoice_return_url'] : null
+			'invoice_return_url': (options['invoice_return_url']) ? options['invoice_return_url'] : null, 
+			'summary': (options['summary']) ? options['summary'] : null
         };
 
         var cur = this;

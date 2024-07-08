@@ -601,7 +601,8 @@ class Project {
 			'name': this.getName(), 
 			'default_currency': this.getDefaultCurrency(), 
 			'dunning_configuration': this.getDunningConfiguration(), 
-			'applepay_settings': (options['applepay_settings']) ? options['applepay_settings'] : null
+			'applepay_settings': (options['applepay_settings']) ? options['applepay_settings'] : null, 
+			'public_metadata': (options['public_metadata']) ? options['public_metadata'] : null
         };
 
         var cur = this;

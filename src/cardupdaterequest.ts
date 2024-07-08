@@ -14,19 +14,7 @@ class CardUpdateRequest {
     private client: ProcessOut = null;
 
     /**
-     * Card update type. Possible values: "new-cvc2" or "other"
-     * @type {string}
-     */
-    private updateType: string = null;
-
-    /**
-     * Card update reason.
-     * @type {string}
-     */
-    private updateReason: string = null;
-
-    /**
-     * Customer preferred scheme, such as carte bancaire vs visa
+     * Customer preferred scheme, such as carte bancaire vs visa. Can be set to none to clear the previous value
      * @type {string}
      */
     private preferredScheme: string = null;
@@ -50,48 +38,8 @@ class CardUpdateRequest {
     }
 
     /**
-     * Get UpdateType
-     * Card update type. Possible values: "new-cvc2" or "other"
-     * @return {string}
-     */
-    public getUpdateType(): string {
-        return this.updateType;
-    }
-
-    /**
-     * Set UpdateType
-     * Card update type. Possible values: "new-cvc2" or "other"
-     * @param {string} val
-     * @return {CardUpdateRequest}
-     */
-    public setUpdateType(val: string): CardUpdateRequest {
-        this.updateType = val;
-        return this;
-    }
-
-    /**
-     * Get UpdateReason
-     * Card update reason.
-     * @return {string}
-     */
-    public getUpdateReason(): string {
-        return this.updateReason;
-    }
-
-    /**
-     * Set UpdateReason
-     * Card update reason.
-     * @param {string} val
-     * @return {CardUpdateRequest}
-     */
-    public setUpdateReason(val: string): CardUpdateRequest {
-        this.updateReason = val;
-        return this;
-    }
-
-    /**
      * Get PreferredScheme
-     * Customer preferred scheme, such as carte bancaire vs visa
+     * Customer preferred scheme, such as carte bancaire vs visa. Can be set to none to clear the previous value
      * @return {string}
      */
     public getPreferredScheme(): string {
@@ -100,7 +48,7 @@ class CardUpdateRequest {
 
     /**
      * Set PreferredScheme
-     * Customer preferred scheme, such as carte bancaire vs visa
+     * Customer preferred scheme, such as carte bancaire vs visa. Can be set to none to clear the previous value
      * @param {string} val
      * @return {CardUpdateRequest}
      */
@@ -115,10 +63,6 @@ class CardUpdateRequest {
      * @return {CardUpdateRequest}
      */
     public fillWithData(data: any): CardUpdateRequest {
-        if (data["update_type"])
-            this.setUpdateType(data["update_type"]);
-        if (data["update_reason"])
-            this.setUpdateReason(data["update_reason"]);
         if (data["preferred_scheme"])
             this.setPreferredScheme(data["preferred_scheme"]);
         return this;
@@ -130,8 +74,6 @@ class CardUpdateRequest {
      */
     public toJSON(): any {
         return {
-            "update_type": this.getUpdateType(),
-            "update_reason": this.getUpdateReason(),
             "preferred_scheme": this.getPreferredScheme(),
         };
     }
@@ -150,8 +92,6 @@ class CardUpdateRequest {
         var path    = "/cards/" + encodeURI(cardId) + "";
 
         var data = {
-			'update_type': this.getUpdateType(), 
-			'update_reason': this.getUpdateReason(), 
 			'preferred_scheme': this.getPreferredScheme()
         };
 

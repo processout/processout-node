@@ -92,6 +92,12 @@ class Invoice {
     private url: string = null;
 
     /**
+     * base64-encoded QR code for the invoice URL
+     * @type {string}
+     */
+    private urlQrcode: string = null;
+
+    /**
      * Name of the invoice
      * @type {string}
      */
@@ -198,6 +204,12 @@ class Invoice {
      * @type {string}
      */
     private createdAt: string = null;
+
+    /**
+     * Date at which the invoice will expire
+     * @type {string}
+     */
+    private expiresAt: string = null;
 
     /**
      * Risk information
@@ -625,6 +637,26 @@ class Invoice {
     }
 
     /**
+     * Get UrlQrcode
+     * base64-encoded QR code for the invoice URL
+     * @return {string}
+     */
+    public getUrlQrcode(): string {
+        return this.urlQrcode;
+    }
+
+    /**
+     * Set UrlQrcode
+     * base64-encoded QR code for the invoice URL
+     * @param {string} val
+     * @return {Invoice}
+     */
+    public setUrlQrcode(val: string): Invoice {
+        this.urlQrcode = val;
+        return this;
+    }
+
+    /**
      * Get Name
      * Name of the invoice
      * @return {string}
@@ -981,6 +1013,26 @@ class Invoice {
      */
     public setCreatedAt(val: string): Invoice {
         this.createdAt = val;
+        return this;
+    }
+
+    /**
+     * Get ExpiresAt
+     * Date at which the invoice will expire
+     * @return {string}
+     */
+    public getExpiresAt(): string {
+        return this.expiresAt;
+    }
+
+    /**
+     * Set ExpiresAt
+     * Date at which the invoice will expire
+     * @param {string} val
+     * @return {Invoice}
+     */
+    public setExpiresAt(val: string): Invoice {
+        this.expiresAt = val;
         return this;
     }
 
@@ -1412,6 +1464,8 @@ class Invoice {
             this.setDetails(data["details"]);
         if (data["url"])
             this.setUrl(data["url"]);
+        if (data["url_qrcode"])
+            this.setUrlQrcode(data["url_qrcode"]);
         if (data["name"])
             this.setName(data["name"]);
         if (data["order_id"])
@@ -1448,6 +1502,8 @@ class Invoice {
             this.setSandbox(data["sandbox"]);
         if (data["created_at"])
             this.setCreatedAt(data["created_at"]);
+        if (data["expires_at"])
+            this.setExpiresAt(data["expires_at"]);
         if (data["risk"])
             this.setRisk(data["risk"]);
         if (data["shipping"])
@@ -1504,6 +1560,7 @@ class Invoice {
             "token_id": this.getTokenId(),
             "details": this.getDetails(),
             "url": this.getUrl(),
+            "url_qrcode": this.getUrlQrcode(),
             "name": this.getName(),
             "order_id": this.getOrderId(),
             "amount": this.getAmount(),
@@ -1522,6 +1579,7 @@ class Invoice {
             "require_backend_capture": this.getRequireBackendCapture(),
             "sandbox": this.getSandbox(),
             "created_at": this.getCreatedAt(),
+            "expires_at": this.getExpiresAt(),
             "risk": this.getRisk(),
             "shipping": this.getShipping(),
             "device": this.getDevice(),
@@ -1578,8 +1636,8 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj = cur.client.newTransaction();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newTransaction();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -1594,9 +1652,9 @@ class Invoice {
      * Authorize the invoice using the given source (customer or token)
 	 * @param string source
      * @param {any} options
-     * @return {Promise<p.Transaction>}
+     * @return {Promise<any[]>}
      */
-    public authorize(source: string, options): Promise<p.Transaction> {
+    public authorize(source: string, options): Promise<any[]> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -1635,8 +1693,12 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj = cur.client.newTransaction();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newTransaction();
+                returnValues.push(obj0.fillWithData(body));
+                var body = respBody;
+                body = body['customer_action'];
+                var obj1 = cur.client.newCustomerAction();
+                returnValues.push(obj1.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -1651,9 +1713,9 @@ class Invoice {
      * Capture the invoice using the given source (customer or token)
 	 * @param string source
      * @param {any} options
-     * @return {Promise<p.Transaction>}
+     * @return {Promise<any[]>}
      */
-    public capture(source: string, options): Promise<p.Transaction> {
+    public capture(source: string, options): Promise<any[]> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -1693,8 +1755,12 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj = cur.client.newTransaction();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newTransaction();
+                returnValues.push(obj0.fillWithData(body));
+                var body = respBody;
+                body = body['customer_action'];
+                var obj1 = cur.client.newCustomerAction();
+                returnValues.push(obj1.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -1740,8 +1806,8 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['customer'];
-                var obj = cur.client.newCustomer();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newCustomer();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -1787,8 +1853,8 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['customer'];
-                var obj = cur.client.newCustomer();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newCustomer();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -1837,8 +1903,8 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj = cur.client.newTransaction();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newTransaction();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -1885,8 +1951,8 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['native_apm'];
-                var obj = cur.client.newNativeAPMTransactionDetails();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newNativeAPMTransactionDetails();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -1901,9 +1967,9 @@ class Invoice {
      * Process the Native APM payment flow
 	 * @param string invoiceId
      * @param {any} options
-     * @return {Promise<p.InvoicesProcessNativePaymentResponse>}
+     * @return {Promise<any[]>}
      */
-    public processNativePayment(invoiceId: string, options): Promise<p.InvoicesProcessNativePaymentResponse> {
+    public processNativePayment(invoiceId: string, options): Promise<any[]> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -1932,8 +1998,13 @@ class Invoice {
 
                 
                 var body = respBody;
-                var obj = cur.client.newInvoicesProcessNativePaymentResponse();
-                returnValues.push(obj.fillWithData(body));
+                body = body['transaction'];
+                var obj0 = cur.client.newTransaction();
+                returnValues.push(obj0.fillWithData(body));
+                var body = respBody;
+                body = body['native_apm'];
+                var obj1 = cur.client.newNativeAPMResponse();
+                returnValues.push(obj1.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -1980,8 +2051,8 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['customer_action'];
-                var obj = cur.client.newCustomerAction();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newCustomerAction();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -2027,8 +2098,8 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj = cur.client.newTransaction();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newTransaction();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -2075,8 +2146,8 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj = cur.client.newTransaction();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newTransaction();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -2186,7 +2257,8 @@ class Invoice {
 			'billing': this.getBilling(), 
 			'unsupported_feature_bypass': this.getUnsupportedFeatureBypass(), 
 			'verification': this.getVerification(), 
-			'auto_capture_at': this.getAutoCaptureAt()
+			'auto_capture_at': this.getAutoCaptureAt(), 
+			'expires_at': this.getExpiresAt()
         };
 
         var cur = this;
@@ -2264,6 +2336,50 @@ class Invoice {
             };
 
             request.get(path, data, options).then(callback, callbackError);
+            });
+    }
+    /**
+     * Delete an invoice by its ID. Only invoices that have not been used yet can be deleted.
+	 * @param string invoiceId
+     * @param {any} options
+     * @return {Promise<boolean>}
+     */
+    public delete(invoiceId: string, options): Promise<boolean> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/invoices/" + encodeURI(invoiceId) + "";
+
+        var data = {
+
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                returnValues.push(response.isSuccess());
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.delete(path, data, options).then(callback, callbackError);
             });
     }
     

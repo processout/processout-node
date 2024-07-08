@@ -113,8 +113,8 @@ class AlternativeMerchantCertificate {
                 
                 var body = respBody;
                 body = body['alternative_merchant_certificate'];
-                var obj = cur.client.newAlternativeMerchantCertificate();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newAlternativeMerchantCertificate();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };

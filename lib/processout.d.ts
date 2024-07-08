@@ -432,12 +432,6 @@ declare class ProcessOut {
      * @return {NativeAPMTransactionDetails}
      */
     newNativeAPMTransactionDetails(prefill?: p.NativeAPMTransactionDetails): p.NativeAPMTransactionDetails;
-    /**
-     * Create a new InvoicesProcessNativePaymentResponse instance
-     * @param {array} prefill
-     * @return {InvoicesProcessNativePaymentResponse}
-     */
-    newInvoicesProcessNativePaymentResponse(prefill?: p.InvoicesProcessNativePaymentResponse): p.InvoicesProcessNativePaymentResponse;
 }
 export = ProcessOut;
 //# sourceMappingURL=processout.d.ts.map

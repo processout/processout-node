@@ -644,15 +644,6 @@ class ProcessOut {
         return new p.NativeAPMTransactionDetails(this, prefill);
     }
 	
-    /**
-     * Create a new InvoicesProcessNativePaymentResponse instance
-     * @param {array} prefill
-     * @return {InvoicesProcessNativePaymentResponse}
-     */
-	public newInvoicesProcessNativePaymentResponse(prefill?: p.InvoicesProcessNativePaymentResponse): p.InvoicesProcessNativePaymentResponse {
-        return new p.InvoicesProcessNativePaymentResponse(this, prefill);
-    }
-	
 
 }
 export = ProcessOut;

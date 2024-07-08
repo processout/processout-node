@@ -439,8 +439,8 @@ class Product {
                 
                 var body = respBody;
                 body = body['invoice'];
-                var obj = cur.client.newInvoice();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newInvoice();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };

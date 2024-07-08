@@ -3,17 +3,17 @@ declare class InvoiceExternalFraudTools {
     private client;
     /**
      * Forter
-     * @type {string}
+     * @type {any}
      */
     private forter;
     /**
      * Ravelin
-     * @type {string}
+     * @type {any}
      */
     private ravelin;
     /**
      * Signifyd
-     * @type {string}
+     * @type {any}
      */
     private signifyd;
     /**
@@ -26,42 +26,42 @@ declare class InvoiceExternalFraudTools {
     /**
      * Get Forter
      * Forter
-     * @return {string}
+     * @return {any}
      */
-    getForter(): string;
+    getForter(): any;
     /**
      * Set Forter
      * Forter
-     * @param {string} val
+     * @param {any} val
      * @return {InvoiceExternalFraudTools}
      */
-    setForter(val: string): InvoiceExternalFraudTools;
+    setForter(val: any): InvoiceExternalFraudTools;
     /**
      * Get Ravelin
      * Ravelin
-     * @return {string}
+     * @return {any}
      */
-    getRavelin(): string;
+    getRavelin(): any;
     /**
      * Set Ravelin
      * Ravelin
-     * @param {string} val
+     * @param {any} val
      * @return {InvoiceExternalFraudTools}
      */
-    setRavelin(val: string): InvoiceExternalFraudTools;
+    setRavelin(val: any): InvoiceExternalFraudTools;
     /**
      * Get Signifyd
      * Signifyd
-     * @return {string}
+     * @return {any}
      */
-    getSignifyd(): string;
+    getSignifyd(): any;
     /**
      * Set Signifyd
      * Signifyd
-     * @param {string} val
+     * @param {any} val
      * @return {InvoiceExternalFraudTools}
      */
-    setSignifyd(val: string): InvoiceExternalFraudTools;
+    setSignifyd(val: any): InvoiceExternalFraudTools;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

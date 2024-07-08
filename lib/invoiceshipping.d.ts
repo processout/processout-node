@@ -73,6 +73,21 @@ declare class InvoiceShipping {
      */
     private relayStoreName;
     /**
+     * First name for the shipment
+     * @type {string}
+     */
+    private firstName;
+    /**
+     * Last name for the shipment
+     * @type {string}
+     */
+    private lastName;
+    /**
+     * Email for the shipment
+     * @type {string}
+     */
+    private email;
+    /**
      * InvoiceShipping constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -261,6 +276,45 @@ declare class InvoiceShipping {
      * @return {InvoiceShipping}
      */
     setRelayStoreName(val: string): InvoiceShipping;
+    /**
+     * Get FirstName
+     * First name for the shipment
+     * @return {string}
+     */
+    getFirstName(): string;
+    /**
+     * Set FirstName
+     * First name for the shipment
+     * @param {string} val
+     * @return {InvoiceShipping}
+     */
+    setFirstName(val: string): InvoiceShipping;
+    /**
+     * Get LastName
+     * Last name for the shipment
+     * @return {string}
+     */
+    getLastName(): string;
+    /**
+     * Set LastName
+     * Last name for the shipment
+     * @param {string} val
+     * @return {InvoiceShipping}
+     */
+    setLastName(val: string): InvoiceShipping;
+    /**
+     * Get Email
+     * Email for the shipment
+     * @return {string}
+     */
+    getEmail(): string;
+    /**
+     * Set Email
+     * Email for the shipment
+     * @param {string} val
+     * @return {InvoiceShipping}
+     */
+    setEmail(val: string): InvoiceShipping;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
