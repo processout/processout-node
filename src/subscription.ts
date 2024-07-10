@@ -1210,8 +1210,8 @@ class Subscription {
                 
                 var body = respBody;
                 body = body['addon'];
-                var obj = cur.client.newAddon();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newAddon();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -1303,8 +1303,8 @@ class Subscription {
                 
                 var body = respBody;
                 body = body['customer'];
-                var obj = cur.client.newCustomer();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newCustomer();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
@@ -1403,8 +1403,8 @@ class Subscription {
                 
                 var body = respBody;
                 body = body['discount'];
-                var obj = cur.client.newDiscount();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newDiscount();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };

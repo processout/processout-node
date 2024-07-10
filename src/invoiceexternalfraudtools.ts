@@ -15,21 +15,21 @@ class InvoiceExternalFraudTools {
 
     /**
      * Forter
-     * @type {string}
+     * @type {any}
      */
-    private forter: string = null;
+    private forter: any = null;
 
     /**
      * Ravelin
-     * @type {string}
+     * @type {any}
      */
-    private ravelin: string = null;
+    private ravelin: any = null;
 
     /**
      * Signifyd
-     * @type {string}
+     * @type {any}
      */
-    private signifyd: string = null;
+    private signifyd: any = null;
 
     /**
      * InvoiceExternalFraudTools constructor
@@ -52,19 +52,19 @@ class InvoiceExternalFraudTools {
     /**
      * Get Forter
      * Forter
-     * @return {string}
+     * @return {any}
      */
-    public getForter(): string {
+    public getForter(): any {
         return this.forter;
     }
 
     /**
      * Set Forter
      * Forter
-     * @param {string} val
+     * @param {any} val
      * @return {InvoiceExternalFraudTools}
      */
-    public setForter(val: string): InvoiceExternalFraudTools {
+    public setForter(val: any): InvoiceExternalFraudTools {
         this.forter = val;
         return this;
     }
@@ -72,19 +72,19 @@ class InvoiceExternalFraudTools {
     /**
      * Get Ravelin
      * Ravelin
-     * @return {string}
+     * @return {any}
      */
-    public getRavelin(): string {
+    public getRavelin(): any {
         return this.ravelin;
     }
 
     /**
      * Set Ravelin
      * Ravelin
-     * @param {string} val
+     * @param {any} val
      * @return {InvoiceExternalFraudTools}
      */
-    public setRavelin(val: string): InvoiceExternalFraudTools {
+    public setRavelin(val: any): InvoiceExternalFraudTools {
         this.ravelin = val;
         return this;
     }
@@ -92,19 +92,19 @@ class InvoiceExternalFraudTools {
     /**
      * Get Signifyd
      * Signifyd
-     * @return {string}
+     * @return {any}
      */
-    public getSignifyd(): string {
+    public getSignifyd(): any {
         return this.signifyd;
     }
 
     /**
      * Set Signifyd
      * Signifyd
-     * @param {string} val
+     * @param {any} val
      * @return {InvoiceExternalFraudTools}
      */
-    public setSignifyd(val: string): InvoiceExternalFraudTools {
+    public setSignifyd(val: any): InvoiceExternalFraudTools {
         this.signifyd = val;
         return this;
     }

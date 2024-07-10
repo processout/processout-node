@@ -2,17 +2,7 @@ import ProcessOut = require('./processout');
 declare class CardUpdateRequest {
     private client;
     /**
-     * Card update type. Possible values: "new-cvc2" or "other"
-     * @type {string}
-     */
-    private updateType;
-    /**
-     * Card update reason.
-     * @type {string}
-     */
-    private updateReason;
-    /**
-     * Customer preferred scheme, such as carte bancaire vs visa
+     * Customer preferred scheme, such as carte bancaire vs visa. Can be set to none to clear the previous value
      * @type {string}
      */
     private preferredScheme;
@@ -24,40 +14,14 @@ declare class CardUpdateRequest {
     constructor(client: ProcessOut, prefill: CardUpdateRequest);
     getProcessOutObjectClass(): string;
     /**
-     * Get UpdateType
-     * Card update type. Possible values: "new-cvc2" or "other"
-     * @return {string}
-     */
-    getUpdateType(): string;
-    /**
-     * Set UpdateType
-     * Card update type. Possible values: "new-cvc2" or "other"
-     * @param {string} val
-     * @return {CardUpdateRequest}
-     */
-    setUpdateType(val: string): CardUpdateRequest;
-    /**
-     * Get UpdateReason
-     * Card update reason.
-     * @return {string}
-     */
-    getUpdateReason(): string;
-    /**
-     * Set UpdateReason
-     * Card update reason.
-     * @param {string} val
-     * @return {CardUpdateRequest}
-     */
-    setUpdateReason(val: string): CardUpdateRequest;
-    /**
      * Get PreferredScheme
-     * Customer preferred scheme, such as carte bancaire vs visa
+     * Customer preferred scheme, such as carte bancaire vs visa. Can be set to none to clear the previous value
      * @return {string}
      */
     getPreferredScheme(): string;
     /**
      * Set PreferredScheme
-     * Customer preferred scheme, such as carte bancaire vs visa
+     * Customer preferred scheme, such as carte bancaire vs visa. Can be set to none to clear the previous value
      * @param {string} val
      * @return {CardUpdateRequest}
      */

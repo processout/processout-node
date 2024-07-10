@@ -123,8 +123,8 @@ class Balances {
                 
                 var body = respBody;
                 body = body['balances'];
-                var obj = cur.client.newBalances();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newBalances();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };

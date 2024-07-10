@@ -1111,8 +1111,8 @@ class Customer {
                 
                 var body = respBody;
                 body = body['token'];
-                var obj = cur.client.newToken();
-                returnValues.push(obj.fillWithData(body));
+                var obj0 = cur.client.newToken();
+                returnValues.push(obj0.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };

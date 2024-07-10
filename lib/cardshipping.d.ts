@@ -38,6 +38,21 @@ declare class CardShipping {
      */
     private phone;
     /**
+     * First name of the card shipping
+     * @type {string}
+     */
+    private firstName;
+    /**
+     * Last name of the card shipping
+     * @type {string}
+     */
+    private lastName;
+    /**
+     * Email of the card shipping
+     * @type {string}
+     */
+    private email;
+    /**
      * CardShipping constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -135,6 +150,45 @@ declare class CardShipping {
      * @return {CardShipping}
      */
     setPhone(val: p.Phone): CardShipping;
+    /**
+     * Get FirstName
+     * First name of the card shipping
+     * @return {string}
+     */
+    getFirstName(): string;
+    /**
+     * Set FirstName
+     * First name of the card shipping
+     * @param {string} val
+     * @return {CardShipping}
+     */
+    setFirstName(val: string): CardShipping;
+    /**
+     * Get LastName
+     * Last name of the card shipping
+     * @return {string}
+     */
+    getLastName(): string;
+    /**
+     * Set LastName
+     * Last name of the card shipping
+     * @param {string} val
+     * @return {CardShipping}
+     */
+    setLastName(val: string): CardShipping;
+    /**
+     * Get Email
+     * Email of the card shipping
+     * @return {string}
+     */
+    getEmail(): string;
+    /**
+     * Set Email
+     * Email of the card shipping
+     * @param {string} val
+     * @return {CardShipping}
+     */
+    setEmail(val: string): CardShipping;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

@@ -65,7 +65,6 @@ import CategoryErrorCodes = require('./categoryerrorcodes');
 import NativeAPMTransactionDetailsGateway = require('./nativeapmtransactiondetailsgateway');
 import NativeAPMTransactionDetailsInvoice = require('./nativeapmtransactiondetailsinvoice');
 import NativeAPMTransactionDetails = require('./nativeapmtransactiondetails');
-import InvoicesProcessNativePaymentResponse = require('./invoicesprocessnativepaymentresponse');
 
 import GatewayRequest = require('./gatewayrequest');
 import ProcessOutError = require('./errors/processouterror');
@@ -139,7 +138,6 @@ export {CategoryErrorCodes};
 export {NativeAPMTransactionDetailsGateway};
 export {NativeAPMTransactionDetailsInvoice};
 export {NativeAPMTransactionDetails};
-export {InvoicesProcessNativePaymentResponse};
 
 export {GatewayRequest};
 export {ProcessOutError};
