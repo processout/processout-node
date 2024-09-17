@@ -820,9 +820,9 @@ class Token {
      * Create a new token for the given customer ID.
 
      * @param {any} options
-     * @return {Promise<any>}
+     * @return {Promise<any[]>}
      */
-    public create(options): Promise<any> {
+    public create(options): Promise<any[]> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -867,6 +867,10 @@ class Token {
                 body = body['token'];
                         
                 returnValues.push(cur.fillWithData(body));
+                var body = respBody;
+                body = body['customer_action'];
+                var obj1 = cur.client.newCustomerAction();
+                returnValues.push(obj1.fillWithData(body));
 
                 return resolve.apply(this, returnValues);
             };
