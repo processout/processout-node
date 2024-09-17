@@ -222,6 +222,78 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new ExportLayout instance
+     * @param {array} prefill
+     * @return {ExportLayout}
+     */
+	public newExportLayout(prefill?: p.ExportLayout): p.ExportLayout {
+        return new p.ExportLayout(this, prefill);
+    }
+	
+    /**
+     * Create a new ExportLayoutConfiguration instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfiguration}
+     */
+	public newExportLayoutConfiguration(prefill?: p.ExportLayoutConfiguration): p.ExportLayoutConfiguration {
+        return new p.ExportLayoutConfiguration(this, prefill);
+    }
+	
+    /**
+     * Create a new ExportLayoutConfigurationColumn instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationColumn}
+     */
+	public newExportLayoutConfigurationColumn(prefill?: p.ExportLayoutConfigurationColumn): p.ExportLayoutConfigurationColumn {
+        return new p.ExportLayoutConfigurationColumn(this, prefill);
+    }
+	
+    /**
+     * Create a new ExportLayoutConfigurationTime instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationTime}
+     */
+	public newExportLayoutConfigurationTime(prefill?: p.ExportLayoutConfigurationTime): p.ExportLayoutConfigurationTime {
+        return new p.ExportLayoutConfigurationTime(this, prefill);
+    }
+	
+    /**
+     * Create a new ExportLayoutConfigurationAmount instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationAmount}
+     */
+	public newExportLayoutConfigurationAmount(prefill?: p.ExportLayoutConfigurationAmount): p.ExportLayoutConfigurationAmount {
+        return new p.ExportLayoutConfigurationAmount(this, prefill);
+    }
+	
+    /**
+     * Create a new ExportLayoutConfigurationOptions instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationOptions}
+     */
+	public newExportLayoutConfigurationOptions(prefill?: p.ExportLayoutConfigurationOptions): p.ExportLayoutConfigurationOptions {
+        return new p.ExportLayoutConfigurationOptions(this, prefill);
+    }
+	
+    /**
+     * Create a new ExportLayoutConfigurationConfigurationOptionsTime instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationConfigurationOptionsTime}
+     */
+	public newExportLayoutConfigurationConfigurationOptionsTime(prefill?: p.ExportLayoutConfigurationConfigurationOptionsTime): p.ExportLayoutConfigurationConfigurationOptionsTime {
+        return new p.ExportLayoutConfigurationConfigurationOptionsTime(this, prefill);
+    }
+	
+    /**
+     * Create a new ExportLayoutConfigurationConfigurationOptionsAmount instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationConfigurationOptionsAmount}
+     */
+	public newExportLayoutConfigurationConfigurationOptionsAmount(prefill?: p.ExportLayoutConfigurationConfigurationOptionsAmount): p.ExportLayoutConfigurationConfigurationOptionsAmount {
+        return new p.ExportLayoutConfigurationConfigurationOptionsAmount(this, prefill);
+    }
+	
+    /**
      * Create a new Gateway instance
      * @param {array} prefill
      * @return {Gateway}
@@ -618,6 +690,24 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new ExternalThreeDS instance
+     * @param {array} prefill
+     * @return {ExternalThreeDS}
+     */
+	public newExternalThreeDS(prefill?: p.ExternalThreeDS): p.ExternalThreeDS {
+        return new p.ExternalThreeDS(this, prefill);
+    }
+	
+    /**
+     * Create a new NativeAPMTransactionDetails instance
+     * @param {array} prefill
+     * @return {NativeAPMTransactionDetails}
+     */
+	public newNativeAPMTransactionDetails(prefill?: p.NativeAPMTransactionDetails): p.NativeAPMTransactionDetails {
+        return new p.NativeAPMTransactionDetails(this, prefill);
+    }
+	
+    /**
      * Create a new NativeAPMTransactionDetailsGateway instance
      * @param {array} prefill
      * @return {NativeAPMTransactionDetailsGateway}
@@ -633,15 +723,6 @@ class ProcessOut {
      */
 	public newNativeAPMTransactionDetailsInvoice(prefill?: p.NativeAPMTransactionDetailsInvoice): p.NativeAPMTransactionDetailsInvoice {
         return new p.NativeAPMTransactionDetailsInvoice(this, prefill);
-    }
-	
-    /**
-     * Create a new NativeAPMTransactionDetails instance
-     * @param {array} prefill
-     * @return {NativeAPMTransactionDetails}
-     */
-	public newNativeAPMTransactionDetails(prefill?: p.NativeAPMTransactionDetails): p.NativeAPMTransactionDetails {
-        return new p.NativeAPMTransactionDetails(this, prefill);
     }
 	
 

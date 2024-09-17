@@ -1672,6 +1672,8 @@ class Invoice {
 			'auto_capture_at': (options['auto_capture_at']) ? options['auto_capture_at'] : null, 
 			'metadata': (options['metadata']) ? options['metadata'] : null, 
 			'override_mac_blocking': (options['override_mac_blocking']) ? options['override_mac_blocking'] : null, 
+			'external_three_d_s': (options['external_three_d_s']) ? options['external_three_d_s'] : null, 
+			'save_source': (options['save_source']) ? options['save_source'] : null, 
 			'source': source
         };
 
@@ -1734,6 +1736,8 @@ class Invoice {
 			'metadata': (options['metadata']) ? options['metadata'] : null, 
 			'capture_statement_descriptor': (options['capture_statement_descriptor']) ? options['capture_statement_descriptor'] : null, 
 			'override_mac_blocking': (options['override_mac_blocking']) ? options['override_mac_blocking'] : null, 
+			'external_three_d_s': (options['external_three_d_s']) ? options['external_three_d_s'] : null, 
+			'save_source': (options['save_source']) ? options['save_source'] : null, 
 			'source': source
         };
 
