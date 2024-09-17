@@ -151,6 +151,54 @@ declare class ProcessOut {
      */
     newEvent(prefill?: p.Event): p.Event;
     /**
+     * Create a new ExportLayout instance
+     * @param {array} prefill
+     * @return {ExportLayout}
+     */
+    newExportLayout(prefill?: p.ExportLayout): p.ExportLayout;
+    /**
+     * Create a new ExportLayoutConfiguration instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfiguration}
+     */
+    newExportLayoutConfiguration(prefill?: p.ExportLayoutConfiguration): p.ExportLayoutConfiguration;
+    /**
+     * Create a new ExportLayoutConfigurationColumn instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationColumn}
+     */
+    newExportLayoutConfigurationColumn(prefill?: p.ExportLayoutConfigurationColumn): p.ExportLayoutConfigurationColumn;
+    /**
+     * Create a new ExportLayoutConfigurationTime instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationTime}
+     */
+    newExportLayoutConfigurationTime(prefill?: p.ExportLayoutConfigurationTime): p.ExportLayoutConfigurationTime;
+    /**
+     * Create a new ExportLayoutConfigurationAmount instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationAmount}
+     */
+    newExportLayoutConfigurationAmount(prefill?: p.ExportLayoutConfigurationAmount): p.ExportLayoutConfigurationAmount;
+    /**
+     * Create a new ExportLayoutConfigurationOptions instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationOptions}
+     */
+    newExportLayoutConfigurationOptions(prefill?: p.ExportLayoutConfigurationOptions): p.ExportLayoutConfigurationOptions;
+    /**
+     * Create a new ExportLayoutConfigurationConfigurationOptionsTime instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationConfigurationOptionsTime}
+     */
+    newExportLayoutConfigurationConfigurationOptionsTime(prefill?: p.ExportLayoutConfigurationConfigurationOptionsTime): p.ExportLayoutConfigurationConfigurationOptionsTime;
+    /**
+     * Create a new ExportLayoutConfigurationConfigurationOptionsAmount instance
+     * @param {array} prefill
+     * @return {ExportLayoutConfigurationConfigurationOptionsAmount}
+     */
+    newExportLayoutConfigurationConfigurationOptionsAmount(prefill?: p.ExportLayoutConfigurationConfigurationOptionsAmount): p.ExportLayoutConfigurationConfigurationOptionsAmount;
+    /**
      * Create a new Gateway instance
      * @param {array} prefill
      * @return {Gateway}
@@ -415,6 +463,18 @@ declare class ProcessOut {
      */
     newCategoryErrorCodes(prefill?: p.CategoryErrorCodes): p.CategoryErrorCodes;
     /**
+     * Create a new ExternalThreeDS instance
+     * @param {array} prefill
+     * @return {ExternalThreeDS}
+     */
+    newExternalThreeDS(prefill?: p.ExternalThreeDS): p.ExternalThreeDS;
+    /**
+     * Create a new NativeAPMTransactionDetails instance
+     * @param {array} prefill
+     * @return {NativeAPMTransactionDetails}
+     */
+    newNativeAPMTransactionDetails(prefill?: p.NativeAPMTransactionDetails): p.NativeAPMTransactionDetails;
+    /**
      * Create a new NativeAPMTransactionDetailsGateway instance
      * @param {array} prefill
      * @return {NativeAPMTransactionDetailsGateway}
@@ -426,12 +486,6 @@ declare class ProcessOut {
      * @return {NativeAPMTransactionDetailsInvoice}
      */
     newNativeAPMTransactionDetailsInvoice(prefill?: p.NativeAPMTransactionDetailsInvoice): p.NativeAPMTransactionDetailsInvoice;
-    /**
-     * Create a new NativeAPMTransactionDetails instance
-     * @param {array} prefill
-     * @return {NativeAPMTransactionDetails}
-     */
-    newNativeAPMTransactionDetails(prefill?: p.NativeAPMTransactionDetails): p.NativeAPMTransactionDetails;
 }
 export = ProcessOut;
 //# sourceMappingURL=processout.d.ts.map

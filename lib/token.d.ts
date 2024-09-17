@@ -435,9 +435,9 @@ declare class Token {
      * Create a new token for the given customer ID.
 
      * @param {any} options
-     * @return {Promise<any>}
+     * @return {Promise<any[]>}
      */
-    create(options: any): Promise<any>;
+    create(options: any): Promise<any[]>;
     /**
      * Save the updated customer attributes.
 
