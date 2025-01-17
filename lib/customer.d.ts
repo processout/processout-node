@@ -68,6 +68,11 @@ declare class Customer {
      */
     private lastName;
     /**
+     * Company name of the customer (for business customers only)
+     * @type {string}
+     */
+    private companyName;
+    /**
      * Address of the customer
      * @type {string}
      */
@@ -328,6 +333,19 @@ declare class Customer {
      * @return {Customer}
      */
     setLastName(val: string): Customer;
+    /**
+     * Get CompanyName
+     * Company name of the customer (for business customers only)
+     * @return {string}
+     */
+    getCompanyName(): string;
+    /**
+     * Set CompanyName
+     * Company name of the customer (for business customers only)
+     * @param {string} val
+     * @return {Customer}
+     */
+    setCompanyName(val: string): Customer;
     /**
      * Get Address1
      * Address of the customer

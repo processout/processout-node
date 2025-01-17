@@ -699,15 +699,6 @@ class ProcessOut {
     }
 	
     /**
-     * Create a new NativeAPMTransactionDetails instance
-     * @param {array} prefill
-     * @return {NativeAPMTransactionDetails}
-     */
-	public newNativeAPMTransactionDetails(prefill?: p.NativeAPMTransactionDetails): p.NativeAPMTransactionDetails {
-        return new p.NativeAPMTransactionDetails(this, prefill);
-    }
-	
-    /**
      * Create a new NativeAPMTransactionDetailsGateway instance
      * @param {array} prefill
      * @return {NativeAPMTransactionDetailsGateway}
@@ -723,6 +714,15 @@ class ProcessOut {
      */
 	public newNativeAPMTransactionDetailsInvoice(prefill?: p.NativeAPMTransactionDetailsInvoice): p.NativeAPMTransactionDetailsInvoice {
         return new p.NativeAPMTransactionDetailsInvoice(this, prefill);
+    }
+	
+    /**
+     * Create a new NativeAPMTransactionDetails instance
+     * @param {array} prefill
+     * @return {NativeAPMTransactionDetails}
+     */
+	public newNativeAPMTransactionDetails(prefill?: p.NativeAPMTransactionDetails): p.NativeAPMTransactionDetails {
+        return new p.NativeAPMTransactionDetails(this, prefill);
     }
 	
 

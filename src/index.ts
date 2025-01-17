@@ -71,9 +71,9 @@ import CardUpdateRequest = require('./cardupdaterequest');
 import ErrorCodes = require('./errorcodes');
 import CategoryErrorCodes = require('./categoryerrorcodes');
 import ExternalThreeDS = require('./externalthreeds');
-import NativeAPMTransactionDetails = require('./nativeapmtransactiondetails');
 import NativeAPMTransactionDetailsGateway = require('./nativeapmtransactiondetailsgateway');
 import NativeAPMTransactionDetailsInvoice = require('./nativeapmtransactiondetailsinvoice');
+import NativeAPMTransactionDetails = require('./nativeapmtransactiondetails');
 
 import GatewayRequest = require('./gatewayrequest');
 import ProcessOutError = require('./errors/processouterror');
@@ -153,9 +153,9 @@ export {CardUpdateRequest};
 export {ErrorCodes};
 export {CategoryErrorCodes};
 export {ExternalThreeDS};
-export {NativeAPMTransactionDetails};
 export {NativeAPMTransactionDetailsGateway};
 export {NativeAPMTransactionDetailsInvoice};
+export {NativeAPMTransactionDetails};
 
 export {GatewayRequest};
 export {ProcessOutError};

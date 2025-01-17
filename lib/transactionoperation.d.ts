@@ -93,6 +93,11 @@ declare class TransactionOperation {
      */
     private errorCode;
     /**
+     * Error message returned when attempting the operation, if any
+     * @type {string}
+     */
+    private errorMessage;
+    /**
      * Additionnal context saved when processing the transaction on the specific PSP
      * @type {any}
      */
@@ -122,6 +127,11 @@ declare class TransactionOperation {
      * @type {string}
      */
     private schemeId;
+    /**
+     * Indicates whether the transaction was processed with a network token instead of raw card details
+     * @type {boolean}
+     */
+    private processedWithNetworkToken;
     /**
      * Payment type of the transaction
      * @type {string}
@@ -384,6 +394,19 @@ declare class TransactionOperation {
      */
     setErrorCode(val: string): TransactionOperation;
     /**
+     * Get ErrorMessage
+     * Error message returned when attempting the operation, if any
+     * @return {string}
+     */
+    getErrorMessage(): string;
+    /**
+     * Set ErrorMessage
+     * Error message returned when attempting the operation, if any
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    setErrorMessage(val: string): TransactionOperation;
+    /**
      * Get GatewayData
      * Additionnal context saved when processing the transaction on the specific PSP
      * @return {any}
@@ -461,6 +484,19 @@ declare class TransactionOperation {
      * @return {TransactionOperation}
      */
     setSchemeId(val: string): TransactionOperation;
+    /**
+     * Get ProcessedWithNetworkToken
+     * Indicates whether the transaction was processed with a network token instead of raw card details
+     * @return {boolean}
+     */
+    getProcessedWithNetworkToken(): boolean;
+    /**
+     * Set ProcessedWithNetworkToken
+     * Indicates whether the transaction was processed with a network token instead of raw card details
+     * @param {boolean} val
+     * @return {TransactionOperation}
+     */
+    setProcessedWithNetworkToken(val: boolean): TransactionOperation;
     /**
      * Get PaymentType
      * Payment type of the transaction
