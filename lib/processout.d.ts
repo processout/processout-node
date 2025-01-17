@@ -469,12 +469,6 @@ declare class ProcessOut {
      */
     newExternalThreeDS(prefill?: p.ExternalThreeDS): p.ExternalThreeDS;
     /**
-     * Create a new NativeAPMTransactionDetails instance
-     * @param {array} prefill
-     * @return {NativeAPMTransactionDetails}
-     */
-    newNativeAPMTransactionDetails(prefill?: p.NativeAPMTransactionDetails): p.NativeAPMTransactionDetails;
-    /**
      * Create a new NativeAPMTransactionDetailsGateway instance
      * @param {array} prefill
      * @return {NativeAPMTransactionDetailsGateway}
@@ -486,6 +480,12 @@ declare class ProcessOut {
      * @return {NativeAPMTransactionDetailsInvoice}
      */
     newNativeAPMTransactionDetailsInvoice(prefill?: p.NativeAPMTransactionDetailsInvoice): p.NativeAPMTransactionDetailsInvoice;
+    /**
+     * Create a new NativeAPMTransactionDetails instance
+     * @param {array} prefill
+     * @return {NativeAPMTransactionDetails}
+     */
+    newNativeAPMTransactionDetails(prefill?: p.NativeAPMTransactionDetails): p.NativeAPMTransactionDetails;
 }
 export = ProcessOut;
 //# sourceMappingURL=processout.d.ts.map

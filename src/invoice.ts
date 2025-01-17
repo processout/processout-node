@@ -2386,6 +2386,103 @@ class Invoice {
             request.delete(path, data, options).then(callback, callbackError);
             });
     }
+    /**
+     * Refresh invoice by its ID with PSP.
+	 * @param string invoiceId
+     * @param {any} options
+     * @return {Promise<any>}
+     */
+    public syncWithPsp(invoiceId: string, options): Promise<any> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/invoices/" + encodeURI(invoiceId) + "/sync-with-psp";
+
+        var data = {
+
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var body = respBody;
+                body = body['invoice'];
+                        
+                returnValues.push(cur.fillWithData(body));
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.put(path, data, options).then(callback, callbackError);
+            });
+    }
+    /**
+     * Update invoice by its ID.
+	 * @param string invoiceId
+     * @param {any} options
+     * @return {Promise<any>}
+     */
+    public update(invoiceId: string, options): Promise<any> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/invoices/" + encodeURI(invoiceId) + "";
+
+        var data = {
+			'amount': this.getAmount(), 
+			'tax': this.getTax(), 
+			'details': this.getDetails(), 
+			'shipping': this.getShipping()
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var body = respBody;
+                body = body['invoice'];
+                        
+                returnValues.push(cur.fillWithData(body));
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.put(path, data, options).then(callback, callbackError);
+            });
+    }
     
 }
 export = Invoice;

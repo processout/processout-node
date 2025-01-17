@@ -92,6 +92,12 @@ class Customer {
     private lastName: string = null;
 
     /**
+     * Company name of the customer (for business customers only)
+     * @type {string}
+     */
+    private companyName: string = null;
+
+    /**
      * Address of the customer
      * @type {string}
      */
@@ -516,6 +522,26 @@ class Customer {
     }
 
     /**
+     * Get CompanyName
+     * Company name of the customer (for business customers only)
+     * @return {string}
+     */
+    public getCompanyName(): string {
+        return this.companyName;
+    }
+
+    /**
+     * Set CompanyName
+     * Company name of the customer (for business customers only)
+     * @param {string} val
+     * @return {Customer}
+     */
+    public setCompanyName(val: string): Customer {
+        this.companyName = val;
+        return this;
+    }
+
+    /**
      * Get Address1
      * Address of the customer
      * @return {string}
@@ -894,6 +920,8 @@ class Customer {
             this.setFirstName(data["first_name"]);
         if (data["last_name"])
             this.setLastName(data["last_name"]);
+        if (data["company_name"])
+            this.setCompanyName(data["company_name"]);
         if (data["address1"])
             this.setAddress1(data["address1"]);
         if (data["address2"])
@@ -950,6 +978,7 @@ class Customer {
             "email": this.getEmail(),
             "first_name": this.getFirstName(),
             "last_name": this.getLastName(),
+            "company_name": this.getCompanyName(),
             "address1": this.getAddress1(),
             "address2": this.getAddress2(),
             "city": this.getCity(),
@@ -1292,6 +1321,7 @@ class Customer {
 			'email': this.getEmail(), 
 			'first_name': this.getFirstName(), 
 			'last_name': this.getLastName(), 
+			'company_name': this.getCompanyName(), 
 			'address1': this.getAddress1(), 
 			'address2': this.getAddress2(), 
 			'city': this.getCity(), 
@@ -1406,6 +1436,7 @@ class Customer {
 			'email': this.getEmail(), 
 			'first_name': this.getFirstName(), 
 			'last_name': this.getLastName(), 
+			'company_name': this.getCompanyName(), 
 			'address1': this.getAddress1(), 
 			'address2': this.getAddress2(), 
 			'city': this.getCity(), 

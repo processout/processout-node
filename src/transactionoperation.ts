@@ -122,6 +122,12 @@ class TransactionOperation {
     private errorCode: string = null;
 
     /**
+     * Error message returned when attempting the operation, if any
+     * @type {string}
+     */
+    private errorMessage: string = null;
+
+    /**
      * Additionnal context saved when processing the transaction on the specific PSP
      * @type {any}
      */
@@ -156,6 +162,12 @@ class TransactionOperation {
      * @type {string}
      */
     private schemeId: string = null;
+
+    /**
+     * Indicates whether the transaction was processed with a network token instead of raw card details
+     * @type {boolean}
+     */
+    private processedWithNetworkToken: boolean = null;
 
     /**
      * Payment type of the transaction
@@ -588,6 +600,26 @@ class TransactionOperation {
     }
 
     /**
+     * Get ErrorMessage
+     * Error message returned when attempting the operation, if any
+     * @return {string}
+     */
+    public getErrorMessage(): string {
+        return this.errorMessage;
+    }
+
+    /**
+     * Set ErrorMessage
+     * Error message returned when attempting the operation, if any
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    public setErrorMessage(val: string): TransactionOperation {
+        this.errorMessage = val;
+        return this;
+    }
+
+    /**
      * Get GatewayData
      * Additionnal context saved when processing the transaction on the specific PSP
      * @return {any}
@@ -729,6 +761,26 @@ class TransactionOperation {
     }
 
     /**
+     * Get ProcessedWithNetworkToken
+     * Indicates whether the transaction was processed with a network token instead of raw card details
+     * @return {boolean}
+     */
+    public getProcessedWithNetworkToken(): boolean {
+        return this.processedWithNetworkToken;
+    }
+
+    /**
+     * Set ProcessedWithNetworkToken
+     * Indicates whether the transaction was processed with a network token instead of raw card details
+     * @param {boolean} val
+     * @return {TransactionOperation}
+     */
+    public setProcessedWithNetworkToken(val: boolean): TransactionOperation {
+        this.processedWithNetworkToken = val;
+        return this;
+    }
+
+    /**
      * Get PaymentType
      * Payment type of the transaction
      * @return {string}
@@ -850,6 +902,8 @@ class TransactionOperation {
             this.setArn(data["arn"]);
         if (data["error_code"])
             this.setErrorCode(data["error_code"]);
+        if (data["error_message"])
+            this.setErrorMessage(data["error_message"]);
         if (data["gateway_data"])
             this.setGatewayData(data["gateway_data"]);
         if (data["payment_data_three_d_s_request"])
@@ -862,6 +916,8 @@ class TransactionOperation {
             this.setInitialSchemeTransactionId(data["initial_scheme_transaction_id"]);
         if (data["scheme_id"])
             this.setSchemeId(data["scheme_id"]);
+        if (data["processed_with_network_token"])
+            this.setProcessedWithNetworkToken(data["processed_with_network_token"]);
         if (data["payment_type"])
             this.setPaymentType(data["payment_type"]);
         if (data["metadata"])
@@ -897,12 +953,14 @@ class TransactionOperation {
             "gateway_operation_id": this.getGatewayOperationId(),
             "arn": this.getArn(),
             "error_code": this.getErrorCode(),
+            "error_message": this.getErrorMessage(),
             "gateway_data": this.getGatewayData(),
             "payment_data_three_d_s_request": this.getPaymentDataThreeDSRequest(),
             "payment_data_three_d_s_authentication": this.getPaymentDataThreeDSAuthentication(),
             "payment_data_network_authentication": this.getPaymentDataNetworkAuthentication(),
             "initial_scheme_transaction_id": this.getInitialSchemeTransactionId(),
             "scheme_id": this.getSchemeId(),
+            "processed_with_network_token": this.getProcessedWithNetworkToken(),
             "payment_type": this.getPaymentType(),
             "metadata": this.getMetadata(),
             "gateway_fee": this.getGatewayFee(),

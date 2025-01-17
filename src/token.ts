@@ -56,7 +56,7 @@ class Token {
     private cardId: string = null;
 
     /**
-     * Type of the token. Can be card or gateway_token
+     * Type of the token. Can be card, bank_account or gateway_token
      * @type {string}
      */
     private type: string = null;
@@ -92,7 +92,7 @@ class Token {
     private cancelUrl: string = null;
 
     /**
-     * Summary of the customer token, such as a description of the card used or the email of a PayPal account
+     * Summary of the customer token, such as a description of the card used or bank account or the email of a PayPal account
      * @type {string}
      */
     private summary: string = null;
@@ -326,7 +326,7 @@ class Token {
 
     /**
      * Get Type
-     * Type of the token. Can be card or gateway_token
+     * Type of the token. Can be card, bank_account or gateway_token
      * @return {string}
      */
     public getType(): string {
@@ -335,7 +335,7 @@ class Token {
 
     /**
      * Set Type
-     * Type of the token. Can be card or gateway_token
+     * Type of the token. Can be card, bank_account or gateway_token
      * @param {string} val
      * @return {Token}
      */
@@ -446,7 +446,7 @@ class Token {
 
     /**
      * Get Summary
-     * Summary of the customer token, such as a description of the card used or the email of a PayPal account
+     * Summary of the customer token, such as a description of the card used or bank account or the email of a PayPal account
      * @return {string}
      */
     public getSummary(): string {
@@ -455,7 +455,7 @@ class Token {
 
     /**
      * Set Summary
-     * Summary of the customer token, such as a description of the card used or the email of a PayPal account
+     * Summary of the customer token, such as a description of the card used or bank account or the email of a PayPal account
      * @param {string} val
      * @return {Token}
      */

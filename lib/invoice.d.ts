@@ -1027,6 +1027,20 @@ declare class Invoice {
      * @return {Promise<boolean>}
      */
     delete(invoiceId: string, options: any): Promise<boolean>;
+    /**
+     * Refresh invoice by its ID with PSP.
+     * @param string invoiceId
+     * @param {any} options
+     * @return {Promise<any>}
+     */
+    syncWithPsp(invoiceId: string, options: any): Promise<any>;
+    /**
+     * Update invoice by its ID.
+     * @param string invoiceId
+     * @param {any} options
+     * @return {Promise<any>}
+     */
+    update(invoiceId: string, options: any): Promise<any>;
 }
 export = Invoice;
 //# sourceMappingURL=invoice.d.ts.map
