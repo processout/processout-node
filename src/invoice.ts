@@ -1652,9 +1652,9 @@ class Invoice {
      * Authorize the invoice using the given source (customer or token)
 	 * @param string source
      * @param {any} options
-     * @return {Promise<any[]>}
+     * @return {Promise<any>}
      */
-    public authorize(source: string, options): Promise<any[]> {
+    public authorize(source: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -1699,8 +1699,11 @@ class Invoice {
                 returnValues.push(obj0.fillWithData(body));
                 var body = respBody;
                 body = body['customer_action'];
-                var obj1 = cur.client.newCustomerAction();
-                returnValues.push(obj1.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj1 = cur.client.newCustomerAction();
+                    var obj1Filled = obj1.fillWithData(body);
+                    returnValues[0].customerAction = obj1Filled;
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -1715,9 +1718,9 @@ class Invoice {
      * Capture the invoice using the given source (customer or token)
 	 * @param string source
      * @param {any} options
-     * @return {Promise<any[]>}
+     * @return {Promise<any>}
      */
-    public capture(source: string, options): Promise<any[]> {
+    public capture(source: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -1763,8 +1766,11 @@ class Invoice {
                 returnValues.push(obj0.fillWithData(body));
                 var body = respBody;
                 body = body['customer_action'];
-                var obj1 = cur.client.newCustomerAction();
-                returnValues.push(obj1.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj1 = cur.client.newCustomerAction();
+                    var obj1Filled = obj1.fillWithData(body);
+                    returnValues[0].customerAction = obj1Filled;
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -1971,9 +1977,9 @@ class Invoice {
      * Process the Native APM payment flow
 	 * @param string invoiceId
      * @param {any} options
-     * @return {Promise<any[]>}
+     * @return {Promise<any>}
      */
-    public processNativePayment(invoiceId: string, options): Promise<any[]> {
+    public processNativePayment(invoiceId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -2007,8 +2013,11 @@ class Invoice {
                 returnValues.push(obj0.fillWithData(body));
                 var body = respBody;
                 body = body['native_apm'];
-                var obj1 = cur.client.newNativeAPMResponse();
-                returnValues.push(obj1.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj1 = cur.client.newNativeAPMResponse();
+                    var obj1Filled = obj1.fillWithData(body);
+                    returnValues[0].nativeApm = obj1Filled;
+                }
 
                 return resolve.apply(this, returnValues);
             };
