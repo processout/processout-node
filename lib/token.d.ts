@@ -113,6 +113,11 @@ declare class Token {
      */
     private canGetBalance;
     /**
+     * Custom webhook URL where updates about this specific customer token will be sent, on top of your project-wide URLs
+     * @type {string}
+     */
+    private webhookUrl;
+    /**
      * Token constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -406,6 +411,19 @@ declare class Token {
      */
     setCanGetBalance(val: boolean): Token;
     /**
+     * Get WebhookUrl
+     * Custom webhook URL where updates about this specific customer token will be sent, on top of your project-wide URLs
+     * @return {string}
+     */
+    getWebhookUrl(): string;
+    /**
+     * Set WebhookUrl
+     * Custom webhook URL where updates about this specific customer token will be sent, on top of your project-wide URLs
+     * @param {string} val
+     * @return {Token}
+     */
+    setWebhookUrl(val: string): Token;
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Token}
@@ -435,9 +453,9 @@ declare class Token {
      * Create a new token for the given customer ID.
 
      * @param {any} options
-     * @return {Promise<any[]>}
+     * @return {Promise<any>}
      */
-    create(options: any): Promise<any[]>;
+    create(options: any): Promise<any>;
     /**
      * Save the updated customer attributes.
 

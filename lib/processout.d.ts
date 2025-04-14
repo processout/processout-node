@@ -283,6 +283,24 @@ declare class ProcessOut {
      */
     newInvoiceDetail(prefill?: p.InvoiceDetail): p.InvoiceDetail;
     /**
+     * Create a new InvoiceSubmerchant instance
+     * @param {array} prefill
+     * @return {InvoiceSubmerchant}
+     */
+    newInvoiceSubmerchant(prefill?: p.InvoiceSubmerchant): p.InvoiceSubmerchant;
+    /**
+     * Create a new SubmerchantPhoneNumber instance
+     * @param {array} prefill
+     * @return {SubmerchantPhoneNumber}
+     */
+    newSubmerchantPhoneNumber(prefill?: p.SubmerchantPhoneNumber): p.SubmerchantPhoneNumber;
+    /**
+     * Create a new SubmerchantAddress instance
+     * @param {array} prefill
+     * @return {SubmerchantAddress}
+     */
+    newSubmerchantAddress(prefill?: p.SubmerchantAddress): p.SubmerchantAddress;
+    /**
      * Create a new CustomerAction instance
      * @param {array} prefill
      * @return {CustomerAction}

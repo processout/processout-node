@@ -38,7 +38,7 @@ class Refund {
     private amount: string = null;
 
     /**
-     * Reason for the refund. Either customer_request, duplicate or fraud
+     * Reason for the refund. Either customer_request, duplicate, fraud or other
      * @type {string}
      */
     private reason: string = null;
@@ -186,7 +186,7 @@ class Refund {
 
     /**
      * Get Reason
-     * Reason for the refund. Either customer_request, duplicate or fraud
+     * Reason for the refund. Either customer_request, duplicate, fraud or other
      * @return {string}
      */
     public getReason(): string {
@@ -195,7 +195,7 @@ class Refund {
 
     /**
      * Set Reason
-     * Reason for the refund. Either customer_request, duplicate or fraud
+     * Reason for the refund. Either customer_request, duplicate, fraud or other
      * @param {string} val
      * @return {Refund}
      */

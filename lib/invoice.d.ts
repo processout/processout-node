@@ -63,6 +63,11 @@ declare class Invoice {
      */
     private details;
     /**
+     * Submerchant data of the invoice
+     * @type {p.InvoiceSubmerchant}
+     */
+    private submerchant;
+    /**
      * URL to which you may redirect your customer to proceed with the payment
      * @type {string}
      */
@@ -415,6 +420,19 @@ declare class Invoice {
      * @return {Invoice}
      */
     setDetails(val: any): Invoice;
+    /**
+     * Get Submerchant
+     * Submerchant data of the invoice
+     * @return {p.InvoiceSubmerchant}
+     */
+    getSubmerchant(): p.InvoiceSubmerchant;
+    /**
+     * Set Submerchant
+     * Submerchant data of the invoice
+     * @param {p.InvoiceSubmerchant} val
+     * @return {Invoice}
+     */
+    setSubmerchant(val: p.InvoiceSubmerchant): Invoice;
     /**
      * Get Url
      * URL to which you may redirect your customer to proceed with the payment
@@ -931,16 +949,16 @@ declare class Invoice {
      * Authorize the invoice using the given source (customer or token)
      * @param string source
      * @param {any} options
-     * @return {Promise<any[]>}
+     * @return {Promise<any>}
      */
-    authorize(source: string, options: any): Promise<any[]>;
+    authorize(source: string, options: any): Promise<any>;
     /**
      * Capture the invoice using the given source (customer or token)
      * @param string source
      * @param {any} options
-     * @return {Promise<any[]>}
+     * @return {Promise<any>}
      */
-    capture(source: string, options: any): Promise<any[]>;
+    capture(source: string, options: any): Promise<any>;
     /**
      * Get the customer linked to the invoice.
 
@@ -975,9 +993,9 @@ declare class Invoice {
      * Process the Native APM payment flow
      * @param string invoiceId
      * @param {any} options
-     * @return {Promise<any[]>}
+     * @return {Promise<any>}
      */
-    processNativePayment(invoiceId: string, options: any): Promise<any[]>;
+    processNativePayment(invoiceId: string, options: any): Promise<any>;
     /**
      * Initiate a 3-D Secure authentication
      * @param string source
