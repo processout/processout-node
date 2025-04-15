@@ -23,7 +23,7 @@ declare class Refund {
      */
     private amount;
     /**
-     * Reason for the refund. Either customer_request, duplicate or fraud
+     * Reason for the refund. Either customer_request, duplicate, fraud or other
      * @type {string}
      */
     private reason;
@@ -118,13 +118,13 @@ declare class Refund {
     setAmount(val: string): Refund;
     /**
      * Get Reason
-     * Reason for the refund. Either customer_request, duplicate or fraud
+     * Reason for the refund. Either customer_request, duplicate, fraud or other
      * @return {string}
      */
     getReason(): string;
     /**
      * Set Reason
-     * Reason for the refund. Either customer_request, duplicate or fraud
+     * Reason for the refund. Either customer_request, duplicate, fraud or other
      * @param {string} val
      * @return {Refund}
      */

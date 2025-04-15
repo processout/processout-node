@@ -146,6 +146,12 @@ class Token {
     private canGetBalance: boolean = null;
 
     /**
+     * Custom webhook URL where updates about this specific customer token will be sent, on top of your project-wide URLs
+     * @type {string}
+     */
+    private webhookUrl: string = null;
+
+    /**
      * Token constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -632,6 +638,26 @@ class Token {
     }
 
     /**
+     * Get WebhookUrl
+     * Custom webhook URL where updates about this specific customer token will be sent, on top of your project-wide URLs
+     * @return {string}
+     */
+    public getWebhookUrl(): string {
+        return this.webhookUrl;
+    }
+
+    /**
+     * Set WebhookUrl
+     * Custom webhook URL where updates about this specific customer token will be sent, on top of your project-wide URLs
+     * @param {string} val
+     * @return {Token}
+     */
+    public setWebhookUrl(val: string): Token {
+        this.webhookUrl = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Token}
@@ -681,6 +707,8 @@ class Token {
             this.setVerificationStatus(data["verification_status"]);
         if (data["can_get_balance"])
             this.setCanGetBalance(data["can_get_balance"]);
+        if (data["webhook_url"])
+            this.setWebhookUrl(data["webhook_url"]);
         return this;
     }
 
@@ -712,6 +740,7 @@ class Token {
             "manual_invoice_cancellation": this.getManualInvoiceCancellation(),
             "verification_status": this.getVerificationStatus(),
             "can_get_balance": this.getCanGetBalance(),
+            "webhook_url": this.getWebhookUrl(),
         };
     }
 
@@ -820,9 +849,9 @@ class Token {
      * Create a new token for the given customer ID.
 
      * @param {any} options
-     * @return {Promise<any[]>}
+     * @return {Promise<any>}
      */
-    public create(options): Promise<any[]> {
+    public create(options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -836,6 +865,7 @@ class Token {
 			'description': this.getDescription(), 
 			'invoice_id': this.getInvoiceId(), 
 			'manual_invoice_cancellation': this.getManualInvoiceCancellation(), 
+			'webhook_url': this.getWebhookUrl(), 
 			'source': (options['source']) ? options['source'] : null, 
 			'settings': (options['settings']) ? options['settings'] : null, 
 			'device': (options['device']) ? options['device'] : null, 
@@ -869,8 +899,11 @@ class Token {
                 returnValues.push(cur.fillWithData(body));
                 var body = respBody;
                 body = body['customer_action'];
-                var obj1 = cur.client.newCustomerAction();
-                returnValues.push(obj1.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj1 = cur.client.newCustomerAction();
+                    var obj1Filled = obj1.fillWithData(body);
+                    returnValues[0].customerAction = obj1Filled;
+                }
 
                 return resolve.apply(this, returnValues);
             };

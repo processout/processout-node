@@ -86,6 +86,12 @@ class Invoice {
     private details: any = null;
 
     /**
+     * Submerchant data of the invoice
+     * @type {p.InvoiceSubmerchant}
+     */
+    private submerchant: p.InvoiceSubmerchant = null;
+
+    /**
      * URL to which you may redirect your customer to proceed with the payment
      * @type {string}
      */
@@ -612,6 +618,33 @@ class Invoice {
                 a.push(obj);
             }
             this.details = a;
+        }
+        return this;
+    }
+
+    /**
+     * Get Submerchant
+     * Submerchant data of the invoice
+     * @return {p.InvoiceSubmerchant}
+     */
+    public getSubmerchant(): p.InvoiceSubmerchant {
+        return this.submerchant;
+    }
+
+    /**
+     * Set Submerchant
+     * Submerchant data of the invoice
+     * @param {p.InvoiceSubmerchant} val
+     * @return {Invoice}
+     */
+    public setSubmerchant(val: p.InvoiceSubmerchant): Invoice {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newInvoiceSubmerchant().getProcessOutObjectClass())
+            this.submerchant = val;
+        else {
+            var obj = this.client.newInvoiceSubmerchant();
+            obj.fillWithData(val);
+            this.submerchant = obj;
         }
         return this;
     }
@@ -1462,6 +1495,8 @@ class Invoice {
             this.setTokenId(data["token_id"]);
         if (data["details"])
             this.setDetails(data["details"]);
+        if (data["submerchant"])
+            this.setSubmerchant(data["submerchant"]);
         if (data["url"])
             this.setUrl(data["url"]);
         if (data["url_qrcode"])
@@ -1559,6 +1594,7 @@ class Invoice {
             "token": this.getToken(),
             "token_id": this.getTokenId(),
             "details": this.getDetails(),
+            "submerchant": this.getSubmerchant(),
             "url": this.getUrl(),
             "url_qrcode": this.getUrlQrcode(),
             "name": this.getName(),
@@ -1652,9 +1688,9 @@ class Invoice {
      * Authorize the invoice using the given source (customer or token)
 	 * @param string source
      * @param {any} options
-     * @return {Promise<any[]>}
+     * @return {Promise<any>}
      */
-    public authorize(source: string, options): Promise<any[]> {
+    public authorize(source: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -1699,8 +1735,11 @@ class Invoice {
                 returnValues.push(obj0.fillWithData(body));
                 var body = respBody;
                 body = body['customer_action'];
-                var obj1 = cur.client.newCustomerAction();
-                returnValues.push(obj1.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj1 = cur.client.newCustomerAction();
+                    var obj1Filled = obj1.fillWithData(body);
+                    returnValues[0].customerAction = obj1Filled;
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -1715,9 +1754,9 @@ class Invoice {
      * Capture the invoice using the given source (customer or token)
 	 * @param string source
      * @param {any} options
-     * @return {Promise<any[]>}
+     * @return {Promise<any>}
      */
-    public capture(source: string, options): Promise<any[]> {
+    public capture(source: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -1763,8 +1802,11 @@ class Invoice {
                 returnValues.push(obj0.fillWithData(body));
                 var body = respBody;
                 body = body['customer_action'];
-                var obj1 = cur.client.newCustomerAction();
-                returnValues.push(obj1.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj1 = cur.client.newCustomerAction();
+                    var obj1Filled = obj1.fillWithData(body);
+                    returnValues[0].customerAction = obj1Filled;
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -1971,9 +2013,9 @@ class Invoice {
      * Process the Native APM payment flow
 	 * @param string invoiceId
      * @param {any} options
-     * @return {Promise<any[]>}
+     * @return {Promise<any>}
      */
-    public processNativePayment(invoiceId: string, options): Promise<any[]> {
+    public processNativePayment(invoiceId: string, options): Promise<any> {
         if (!options) options = {};
         this.fillWithData(options);
 
@@ -2007,8 +2049,11 @@ class Invoice {
                 returnValues.push(obj0.fillWithData(body));
                 var body = respBody;
                 body = body['native_apm'];
-                var obj1 = cur.client.newNativeAPMResponse();
-                returnValues.push(obj1.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj1 = cur.client.newNativeAPMResponse();
+                    var obj1Filled = obj1.fillWithData(body);
+                    returnValues[0].nativeApm = obj1Filled;
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -2236,6 +2281,7 @@ class Invoice {
 			'currency': this.getCurrency(), 
 			'metadata': this.getMetadata(), 
 			'details': this.getDetails(), 
+			'submerchant': this.getSubmerchant(), 
 			'exemption_reason_3ds2': this.getExemptionReason3ds2(), 
 			'sca_exemption_reason': this.getScaExemptionReason(), 
 			'challenge_indicator': this.getChallengeIndicator(), 
