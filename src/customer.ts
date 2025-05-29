@@ -200,6 +200,12 @@ class Customer {
     private dateOfBirth: string = null;
 
     /**
+     * Merchant reference ID, custom ID for this Customer provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @type {string}
+     */
+    private referenceId: string = null;
+
+    /**
      * Customer constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -889,6 +895,26 @@ class Customer {
     }
 
     /**
+     * Get ReferenceId
+     * Merchant reference ID, custom ID for this Customer provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @return {string}
+     */
+    public getReferenceId(): string {
+        return this.referenceId;
+    }
+
+    /**
+     * Set ReferenceId
+     * Merchant reference ID, custom ID for this Customer provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @param {string} val
+     * @return {Customer}
+     */
+    public setReferenceId(val: string): Customer {
+        this.referenceId = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Customer}
@@ -956,6 +982,8 @@ class Customer {
             this.setRegisteredAt(data["registered_at"]);
         if (data["date_of_birth"])
             this.setDateOfBirth(data["date_of_birth"]);
+        if (data["reference_id"])
+            this.setReferenceId(data["reference_id"]);
         return this;
     }
 
@@ -996,6 +1024,7 @@ class Customer {
             "created_at": this.getCreatedAt(),
             "registered_at": this.getRegisteredAt(),
             "date_of_birth": this.getDateOfBirth(),
+            "reference_id": this.getReferenceId(),
         };
     }
 
@@ -1336,6 +1365,7 @@ class Customer {
 			'sex': this.getSex(), 
 			'metadata': this.getMetadata(), 
 			'id': this.getId(), 
+			'reference_id': this.getReferenceId(), 
 			'registered_at': this.getRegisteredAt(), 
 			'phone_number': this.getPhoneNumber()
         };

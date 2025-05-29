@@ -8,6 +8,16 @@ declare class Balances {
      */
     private vouchers;
     /**
+     * Available balance of the customer
+     * @type {p.Balance}
+     */
+    private availableBalance;
+    /**
+     * Customer action to be performed, such as redirecting to a URL
+     * @type {p.BalancesCustomerAction}
+     */
+    private customerAction;
+    /**
      * Balances constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -27,6 +37,32 @@ declare class Balances {
      * @return {Balances}
      */
     setVouchers(val: any): Balances;
+    /**
+     * Get AvailableBalance
+     * Available balance of the customer
+     * @return {p.Balance}
+     */
+    getAvailableBalance(): p.Balance;
+    /**
+     * Set AvailableBalance
+     * Available balance of the customer
+     * @param {p.Balance} val
+     * @return {Balances}
+     */
+    setAvailableBalance(val: p.Balance): Balances;
+    /**
+     * Get CustomerAction
+     * Customer action to be performed, such as redirecting to a URL
+     * @return {p.BalancesCustomerAction}
+     */
+    getCustomerAction(): p.BalancesCustomerAction;
+    /**
+     * Set CustomerAction
+     * Customer action to be performed, such as redirecting to a URL
+     * @param {p.BalancesCustomerAction} val
+     * @return {Balances}
+     */
+    setCustomerAction(val: p.BalancesCustomerAction): Balances;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

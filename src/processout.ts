@@ -141,6 +141,15 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new BalancesCustomerAction instance
+     * @param {array} prefill
+     * @return {BalancesCustomerAction}
+     */
+	public newBalancesCustomerAction(prefill?: p.BalancesCustomerAction): p.BalancesCustomerAction {
+        return new p.BalancesCustomerAction(this, prefill);
+    }
+	
+    /**
      * Create a new Card instance
      * @param {array} prefill
      * @return {Card}
@@ -654,15 +663,6 @@ class ProcessOut {
     }
 	
     /**
-     * Create a new CardCreateRequest instance
-     * @param {array} prefill
-     * @return {CardCreateRequest}
-     */
-	public newCardCreateRequest(prefill?: p.CardCreateRequest): p.CardCreateRequest {
-        return new p.CardCreateRequest(this, prefill);
-    }
-	
-    /**
      * Create a new Device instance
      * @param {array} prefill
      * @return {Device}
@@ -696,6 +696,15 @@ class ProcessOut {
      */
 	public newCardUpdateRequest(prefill?: p.CardUpdateRequest): p.CardUpdateRequest {
         return new p.CardUpdateRequest(this, prefill);
+    }
+	
+    /**
+     * Create a new CardCreateRequest instance
+     * @param {array} prefill
+     * @return {CardCreateRequest}
+     */
+	public newCardCreateRequest(prefill?: p.CardCreateRequest): p.CardCreateRequest {
+        return new p.CardCreateRequest(this, prefill);
     }
 	
     /**

@@ -97,6 +97,12 @@ declare class ProcessOut {
      */
     newBalance(prefill?: p.Balance): p.Balance;
     /**
+     * Create a new BalancesCustomerAction instance
+     * @param {array} prefill
+     * @return {BalancesCustomerAction}
+     */
+    newBalancesCustomerAction(prefill?: p.BalancesCustomerAction): p.BalancesCustomerAction;
+    /**
      * Create a new Card instance
      * @param {array} prefill
      * @return {Card}
@@ -439,12 +445,6 @@ declare class ProcessOut {
      */
     newWebhookEndpoint(prefill?: p.WebhookEndpoint): p.WebhookEndpoint;
     /**
-     * Create a new CardCreateRequest instance
-     * @param {array} prefill
-     * @return {CardCreateRequest}
-     */
-    newCardCreateRequest(prefill?: p.CardCreateRequest): p.CardCreateRequest;
-    /**
      * Create a new Device instance
      * @param {array} prefill
      * @return {Device}
@@ -468,6 +468,12 @@ declare class ProcessOut {
      * @return {CardUpdateRequest}
      */
     newCardUpdateRequest(prefill?: p.CardUpdateRequest): p.CardUpdateRequest;
+    /**
+     * Create a new CardCreateRequest instance
+     * @param {array} prefill
+     * @return {CardCreateRequest}
+     */
+    newCardCreateRequest(prefill?: p.CardCreateRequest): p.CardCreateRequest;
     /**
      * Create a new ErrorCodes instance
      * @param {array} prefill
