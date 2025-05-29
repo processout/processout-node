@@ -866,6 +866,7 @@ class Token {
 			'invoice_id': this.getInvoiceId(), 
 			'manual_invoice_cancellation': this.getManualInvoiceCancellation(), 
 			'webhook_url': this.getWebhookUrl(), 
+			'gateway_configuration_id': this.getGatewayConfigurationId(), 
 			'source': (options['source']) ? options['source'] : null, 
 			'settings': (options['settings']) ? options['settings'] : null, 
 			'device': (options['device']) ? options['device'] : null, 
@@ -935,7 +936,8 @@ class Token {
 			'verify_metadata': (options['verify_metadata']) ? options['verify_metadata'] : null, 
 			'set_default': (options['set_default']) ? options['set_default'] : null, 
 			'verify_statement_descriptor': (options['verify_statement_descriptor']) ? options['verify_statement_descriptor'] : null, 
-			'invoice_return_url': (options['invoice_return_url']) ? options['invoice_return_url'] : null
+			'invoice_return_url': (options['invoice_return_url']) ? options['invoice_return_url'] : null, 
+			'gateway_configuration_id': (options['gateway_configuration_id']) ? options['gateway_configuration_id'] : null
         };
 
         var cur = this;

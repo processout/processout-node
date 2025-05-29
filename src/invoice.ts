@@ -320,6 +320,12 @@ class Invoice {
     private autoCaptureAt: string = null;
 
     /**
+     * Merchant reference ID, custom ID for this Invoice provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @type {string}
+     */
+    private referenceId: string = null;
+
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -1466,6 +1472,26 @@ class Invoice {
     }
 
     /**
+     * Get ReferenceId
+     * Merchant reference ID, custom ID for this Invoice provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @return {string}
+     */
+    public getReferenceId(): string {
+        return this.referenceId;
+    }
+
+    /**
+     * Set ReferenceId
+     * Merchant reference ID, custom ID for this Invoice provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @param {string} val
+     * @return {Invoice}
+     */
+    public setReferenceId(val: string): Invoice {
+        this.referenceId = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Invoice}
@@ -1573,6 +1599,8 @@ class Invoice {
             this.setVerification(data["verification"]);
         if (data["auto_capture_at"])
             this.setAutoCaptureAt(data["auto_capture_at"]);
+        if (data["reference_id"])
+            this.setReferenceId(data["reference_id"]);
         return this;
     }
 
@@ -1633,6 +1661,7 @@ class Invoice {
             "unsupported_feature_bypass": this.getUnsupportedFeatureBypass(),
             "verification": this.getVerification(),
             "auto_capture_at": this.getAutoCaptureAt(),
+            "reference_id": this.getReferenceId(),
         };
     }
 
@@ -2282,6 +2311,7 @@ class Invoice {
 			'metadata': this.getMetadata(), 
 			'details': this.getDetails(), 
 			'submerchant': this.getSubmerchant(), 
+			'reference_id': this.getReferenceId(), 
 			'exemption_reason_3ds2': this.getExemptionReason3ds2(), 
 			'sca_exemption_reason': this.getScaExemptionReason(), 
 			'challenge_indicator': this.getChallengeIndicator(), 

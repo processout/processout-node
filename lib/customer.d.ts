@@ -158,6 +158,11 @@ declare class Customer {
      */
     private dateOfBirth;
     /**
+     * Merchant reference ID, custom ID for this Customer provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @type {string}
+     */
+    private referenceId;
+    /**
      * Customer constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -567,6 +572,19 @@ declare class Customer {
      * @return {Customer}
      */
     setDateOfBirth(val: string): Customer;
+    /**
+     * Get ReferenceId
+     * Merchant reference ID, custom ID for this Customer provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @return {string}
+     */
+    getReferenceId(): string;
+    /**
+     * Set ReferenceId
+     * Merchant reference ID, custom ID for this Customer provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @param {string} val
+     * @return {Customer}
+     */
+    setReferenceId(val: string): Customer;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

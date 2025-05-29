@@ -258,6 +258,11 @@ declare class Invoice {
      */
     private autoCaptureAt;
     /**
+     * Merchant reference ID, custom ID for this Invoice provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @type {string}
+     */
+    private referenceId;
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -927,6 +932,19 @@ declare class Invoice {
      * @return {Invoice}
      */
     setAutoCaptureAt(val: string): Invoice;
+    /**
+     * Get ReferenceId
+     * Merchant reference ID, custom ID for this Invoice provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @return {string}
+     */
+    getReferenceId(): string;
+    /**
+     * Set ReferenceId
+     * Merchant reference ID, custom ID for this Invoice provided by the API caller. At most 80 characters. Allowed only 1-byte ASCII characters from range 33 (inclusive) to 126 (inclusive) - non-whitespace, non-DEL characters.
+     * @param {string} val
+     * @return {Invoice}
+     */
+    setReferenceId(val: string): Invoice;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
