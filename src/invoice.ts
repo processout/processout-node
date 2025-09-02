@@ -1806,6 +1806,7 @@ class Invoice {
 			'override_mac_blocking': (options['override_mac_blocking']) ? options['override_mac_blocking'] : null, 
 			'external_three_d_s': (options['external_three_d_s']) ? options['external_three_d_s'] : null, 
 			'save_source': (options['save_source']) ? options['save_source'] : null, 
+			'capture_type': (options['capture_type']) ? options['capture_type'] : null, 
 			'source': source
         };
 
