@@ -529,7 +529,9 @@ class GatewayConfiguration {
                 var body = respBody;
                 body = body['gateway_configuration'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -583,7 +585,9 @@ class GatewayConfiguration {
                 var body = respBody;
                 body = body['gateway_configuration'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -681,7 +685,9 @@ class GatewayConfiguration {
                 var body = respBody;
                 body = body['gateway_configuration'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };

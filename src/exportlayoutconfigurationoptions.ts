@@ -186,7 +186,9 @@ class ExportLayoutConfigurationOptions {
                 var body = respBody;
                 body = body['export_layout_configuration_options'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };

@@ -114,7 +114,9 @@ class CardUpdateRequest {
                 var body = respBody;
                 body = body['card'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
