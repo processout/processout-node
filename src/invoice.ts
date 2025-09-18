@@ -1701,8 +1701,10 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj0 = cur.client.newTransaction();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newTransaction();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -1760,8 +1762,10 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj0 = cur.client.newTransaction();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newTransaction();
+                    returnValues.push(obj0.fillWithData(body));
+                }
                 var body = respBody;
                 body = body['customer_action'];
                 if (typeof body !== 'undefined') {
@@ -1827,8 +1831,10 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj0 = cur.client.newTransaction();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newTransaction();
+                    returnValues.push(obj0.fillWithData(body));
+                }
                 var body = respBody;
                 body = body['customer_action'];
                 if (typeof body !== 'undefined') {
@@ -1881,8 +1887,10 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['customer'];
-                var obj0 = cur.client.newCustomer();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newCustomer();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -1928,8 +1936,10 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['customer'];
-                var obj0 = cur.client.newCustomer();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newCustomer();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -1978,8 +1988,10 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj0 = cur.client.newTransaction();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newTransaction();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -2026,8 +2038,10 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['native_apm'];
-                var obj0 = cur.client.newNativeAPMTransactionDetails();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newNativeAPMTransactionDetails();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -2074,8 +2088,10 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj0 = cur.client.newTransaction();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newTransaction();
+                    returnValues.push(obj0.fillWithData(body));
+                }
                 var body = respBody;
                 body = body['native_apm'];
                 if (typeof body !== 'undefined') {
@@ -2129,8 +2145,10 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['customer_action'];
-                var obj0 = cur.client.newCustomerAction();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newCustomerAction();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -2176,8 +2194,10 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj0 = cur.client.newTransaction();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newTransaction();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -2224,8 +2244,10 @@ class Invoice {
                 
                 var body = respBody;
                 body = body['transaction'];
-                var obj0 = cur.client.newTransaction();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newTransaction();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -2360,7 +2382,9 @@ class Invoice {
                 var body = respBody;
                 body = body['invoice'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -2407,7 +2431,9 @@ class Invoice {
                 var body = respBody;
                 body = body['invoice'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -2498,7 +2524,9 @@ class Invoice {
                 var body = respBody;
                 body = body['invoice'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -2548,7 +2576,9 @@ class Invoice {
                 var body = respBody;
                 body = body['invoice'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };

@@ -152,8 +152,10 @@ class ApplePayAlternativeMerchantCertificates {
                 
                 var body = respBody;
                 body = body['applepay_certificates'];
-                var obj0 = cur.client.newApplePayAlternativeMerchantCertificates();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newApplePayAlternativeMerchantCertificates();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };

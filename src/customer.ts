@@ -1169,8 +1169,10 @@ class Customer {
                 
                 var body = respBody;
                 body = body['token'];
-                var obj0 = cur.client.newToken();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newToken();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -1389,7 +1391,9 @@ class Customer {
                 var body = respBody;
                 body = body['customer'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -1436,7 +1440,9 @@ class Customer {
                 var body = respBody;
                 body = body['customer'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -1503,7 +1509,9 @@ class Customer {
                 var body = respBody;
                 body = body['customer'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };

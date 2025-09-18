@@ -529,7 +529,9 @@ class Coupon {
                 var body = respBody;
                 body = body['coupon'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -576,7 +578,9 @@ class Coupon {
                 var body = respBody;
                 body = body['coupon'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -623,7 +627,9 @@ class Coupon {
                 var body = respBody;
                 body = body['coupon'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };

@@ -172,7 +172,9 @@ class ProjectSFTPSettingsPublic {
                 var body = respBody;
                 body = body['sftp_settings'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };

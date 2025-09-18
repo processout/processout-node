@@ -195,8 +195,10 @@ class Balances {
                 
                 var body = respBody;
                 body = body['balances'];
-                var obj0 = cur.client.newBalances();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newBalances();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };

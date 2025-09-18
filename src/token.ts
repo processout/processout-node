@@ -834,7 +834,9 @@ class Token {
                 var body = respBody;
                 body = body['token'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -897,7 +899,9 @@ class Token {
                 var body = respBody;
                 body = body['token'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
                 var body = respBody;
                 body = body['customer_action'];
                 if (typeof body !== 'undefined') {

@@ -439,8 +439,10 @@ class Product {
                 
                 var body = respBody;
                 body = body['invoice'];
-                var obj0 = cur.client.newInvoice();
-                returnValues.push(obj0.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newInvoice();
+                    returnValues.push(obj0.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -545,7 +547,9 @@ class Product {
                 var body = respBody;
                 body = body['product'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -592,7 +596,9 @@ class Product {
                 var body = respBody;
                 body = body['product'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
@@ -644,7 +650,9 @@ class Product {
                 var body = respBody;
                 body = body['product'];
                         
-                returnValues.push(cur.fillWithData(body));
+                if (typeof body !== 'undefined') {
+                    returnValues.push(cur.fillWithData(body));
+                }
 
                 return resolve.apply(this, returnValues);
             };
