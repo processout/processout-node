@@ -56,18 +56,6 @@ class Invoice {
     private customerId: string = null;
 
     /**
-     * Subscription to which the invoice is linked to, if any
-     * @type {p.Subscription}
-     */
-    private subscription: p.Subscription = null;
-
-    /**
-     * ID of the subscription to which the invoice is linked to, if any
-     * @type {string}
-     */
-    private subscriptionId: string = null;
-
-    /**
      * Token used to pay the invoice, if any
      * @type {p.Token}
      */
@@ -90,6 +78,12 @@ class Invoice {
      * @type {p.InvoiceSubmerchant}
      */
     private submerchant: p.InvoiceSubmerchant = null;
+
+    /**
+     * ID of the submerchant linked to the invoice, if any
+     * @type {string}
+     */
+    private submerchantId: string = null;
 
     /**
      * URL to which you may redirect your customer to proceed with the payment
@@ -326,6 +320,12 @@ class Invoice {
     private referenceId: string = null;
 
     /**
+     * Configuration related to payment processing of the invoice.
+     * @type {p.PaymentProcessingConfiguration}
+     */
+    private paymentProcessingConfig: p.PaymentProcessingConfiguration = null;
+
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -505,53 +505,6 @@ class Invoice {
     }
 
     /**
-     * Get Subscription
-     * Subscription to which the invoice is linked to, if any
-     * @return {p.Subscription}
-     */
-    public getSubscription(): p.Subscription {
-        return this.subscription;
-    }
-
-    /**
-     * Set Subscription
-     * Subscription to which the invoice is linked to, if any
-     * @param {p.Subscription} val
-     * @return {Invoice}
-     */
-    public setSubscription(val: p.Subscription): Invoice {
-        if (val.getProcessOutObjectClass &&
-            val.getProcessOutObjectClass() == this.client.newSubscription().getProcessOutObjectClass())
-            this.subscription = val;
-        else {
-            var obj = this.client.newSubscription();
-            obj.fillWithData(val);
-            this.subscription = obj;
-        }
-        return this;
-    }
-
-    /**
-     * Get SubscriptionId
-     * ID of the subscription to which the invoice is linked to, if any
-     * @return {string}
-     */
-    public getSubscriptionId(): string {
-        return this.subscriptionId;
-    }
-
-    /**
-     * Set SubscriptionId
-     * ID of the subscription to which the invoice is linked to, if any
-     * @param {string} val
-     * @return {Invoice}
-     */
-    public setSubscriptionId(val: string): Invoice {
-        this.subscriptionId = val;
-        return this;
-    }
-
-    /**
      * Get Token
      * Token used to pay the invoice, if any
      * @return {p.Token}
@@ -652,6 +605,26 @@ class Invoice {
             obj.fillWithData(val);
             this.submerchant = obj;
         }
+        return this;
+    }
+
+    /**
+     * Get SubmerchantId
+     * ID of the submerchant linked to the invoice, if any
+     * @return {string}
+     */
+    public getSubmerchantId(): string {
+        return this.submerchantId;
+    }
+
+    /**
+     * Set SubmerchantId
+     * ID of the submerchant linked to the invoice, if any
+     * @param {string} val
+     * @return {Invoice}
+     */
+    public setSubmerchantId(val: string): Invoice {
+        this.submerchantId = val;
         return this;
     }
 
@@ -1492,6 +1465,33 @@ class Invoice {
     }
 
     /**
+     * Get PaymentProcessingConfig
+     * Configuration related to payment processing of the invoice.
+     * @return {p.PaymentProcessingConfiguration}
+     */
+    public getPaymentProcessingConfig(): p.PaymentProcessingConfiguration {
+        return this.paymentProcessingConfig;
+    }
+
+    /**
+     * Set PaymentProcessingConfig
+     * Configuration related to payment processing of the invoice.
+     * @param {p.PaymentProcessingConfiguration} val
+     * @return {Invoice}
+     */
+    public setPaymentProcessingConfig(val: p.PaymentProcessingConfiguration): Invoice {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newPaymentProcessingConfiguration().getProcessOutObjectClass())
+            this.paymentProcessingConfig = val;
+        else {
+            var obj = this.client.newPaymentProcessingConfiguration();
+            obj.fillWithData(val);
+            this.paymentProcessingConfig = obj;
+        }
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Invoice}
@@ -1511,10 +1511,6 @@ class Invoice {
             this.setCustomer(data["customer"]);
         if (data["customer_id"])
             this.setCustomerId(data["customer_id"]);
-        if (data["subscription"])
-            this.setSubscription(data["subscription"]);
-        if (data["subscription_id"])
-            this.setSubscriptionId(data["subscription_id"]);
         if (data["token"])
             this.setToken(data["token"]);
         if (data["token_id"])
@@ -1523,6 +1519,8 @@ class Invoice {
             this.setDetails(data["details"]);
         if (data["submerchant"])
             this.setSubmerchant(data["submerchant"]);
+        if (data["submerchant_id"])
+            this.setSubmerchantId(data["submerchant_id"]);
         if (data["url"])
             this.setUrl(data["url"]);
         if (data["url_qrcode"])
@@ -1601,6 +1599,8 @@ class Invoice {
             this.setAutoCaptureAt(data["auto_capture_at"]);
         if (data["reference_id"])
             this.setReferenceId(data["reference_id"]);
+        if (data["payment_processing_config"])
+            this.setPaymentProcessingConfig(data["payment_processing_config"]);
         return this;
     }
 
@@ -1617,12 +1617,11 @@ class Invoice {
             "transaction_id": this.getTransactionId(),
             "customer": this.getCustomer(),
             "customer_id": this.getCustomerId(),
-            "subscription": this.getSubscription(),
-            "subscription_id": this.getSubscriptionId(),
             "token": this.getToken(),
             "token_id": this.getTokenId(),
             "details": this.getDetails(),
             "submerchant": this.getSubmerchant(),
+            "submerchant_id": this.getSubmerchantId(),
             "url": this.getUrl(),
             "url_qrcode": this.getUrlQrcode(),
             "name": this.getName(),
@@ -1662,9 +1661,81 @@ class Invoice {
             "verification": this.getVerification(),
             "auto_capture_at": this.getAutoCaptureAt(),
             "reference_id": this.getReferenceId(),
+            "payment_processing_config": this.getPaymentProcessingConfig(),
         };
     }
 
+    /**
+     * Autheticate the invoice using the given source (customer or token)
+	 * @param string source
+     * @param {any} options
+     * @return {Promise<any>}
+     */
+    public authenticate(source: string, options): Promise<any> {
+        if (!options) options = {};
+        this.fillWithData(options);
+
+        var request = new Request(this.client);
+        var path    = "/invoices/:invoice_id/authenticate";
+
+        var data = {
+			'device': this.getDevice(), 
+			'incremental': this.getIncremental(), 
+			'synchronous': (options['synchronous']) ? options['synchronous'] : null, 
+			'retry_drop_liability_shift': (options['retry_drop_liability_shift']) ? options['retry_drop_liability_shift'] : null, 
+			'capture_amount': (options['capture_amount']) ? options['capture_amount'] : null, 
+			'enable_three_d_s_2': (options['enable_three_d_s_2']) ? options['enable_three_d_s_2'] : null, 
+			'allow_fallback_to_sale': (options['allow_fallback_to_sale']) ? options['allow_fallback_to_sale'] : null, 
+			'auto_capture_at': (options['auto_capture_at']) ? options['auto_capture_at'] : null, 
+			'metadata': (options['metadata']) ? options['metadata'] : null, 
+			'override_mac_blocking': (options['override_mac_blocking']) ? options['override_mac_blocking'] : null, 
+			'external_three_d_s': (options['external_three_d_s']) ? options['external_three_d_s'] : null, 
+			'save_source': (options['save_source']) ? options['save_source'] : null, 
+			'provision_network_token': (options['provision_network_token']) ? options['provision_network_token'] : null, 
+			'invoice_line_items': (options['invoice_line_items']) ? options['invoice_line_items'] : null, 
+			'transaction_link_id': (options['transaction_link_id']) ? options['transaction_link_id'] : null, 
+			'source': source
+        };
+
+        var cur = this;
+        return new Promise(function(resolve, reject) {
+            var callback = async function(resp: fetch.Response) {
+                var respBody = {};
+                try {
+                    respBody = await resp.json();
+                } catch(err) {}
+
+                var response = new Response(resp, respBody);
+                var err = response.check();
+                if (err != null)
+                    return reject(err);
+
+                var returnValues = [];
+
+                
+                var body = respBody;
+                body = body['transaction'];
+                if (typeof body !== 'undefined') {
+                    var obj0 = cur.client.newTransaction();
+                    returnValues.push(obj0.fillWithData(body));
+                }
+                var body = respBody;
+                body = body['customer_action'];
+                if (typeof body !== 'undefined') {
+                    var obj1 = cur.client.newCustomerAction();
+                    var obj1Filled = obj1.fillWithData(body);
+                    returnValues[0].customerAction = obj1Filled;
+                }
+
+                return resolve.apply(this, returnValues);
+            };
+            var callbackError = function(err) {
+                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
+            };
+
+            request.post(path, data, options).then(callback, callbackError);
+            });
+    }
     /**
      * Create an incremental authorization
 	 * @param string amount
@@ -1741,6 +1812,9 @@ class Invoice {
 			'override_mac_blocking': (options['override_mac_blocking']) ? options['override_mac_blocking'] : null, 
 			'external_three_d_s': (options['external_three_d_s']) ? options['external_three_d_s'] : null, 
 			'save_source': (options['save_source']) ? options['save_source'] : null, 
+			'provision_network_token': (options['provision_network_token']) ? options['provision_network_token'] : null, 
+			'invoice_line_items': (options['invoice_line_items']) ? options['invoice_line_items'] : null, 
+			'transaction_link_id': (options['transaction_link_id']) ? options['transaction_link_id'] : null, 
 			'source': source
         };
 
@@ -1810,6 +1884,8 @@ class Invoice {
 			'override_mac_blocking': (options['override_mac_blocking']) ? options['override_mac_blocking'] : null, 
 			'external_three_d_s': (options['external_three_d_s']) ? options['external_three_d_s'] : null, 
 			'save_source': (options['save_source']) ? options['save_source'] : null, 
+			'provision_network_token': (options['provision_network_token']) ? options['provision_network_token'] : null, 
+			'transaction_link_id': (options['transaction_link_id']) ? options['transaction_link_id'] : null, 
 			'source': source
         };
 
@@ -1966,6 +2042,7 @@ class Invoice {
 
         var data = {
 			'force_gateway_configuration_id': (options['force_gateway_configuration_id']) ? options['force_gateway_configuration_id'] : null, 
+			'metadata': (options['metadata']) ? options['metadata'] : null, 
 			'gateway_configuration_id': gatewayConfigurationId, 
 			'source': source
         };
@@ -2333,6 +2410,7 @@ class Invoice {
 			'metadata': this.getMetadata(), 
 			'details': this.getDetails(), 
 			'submerchant': this.getSubmerchant(), 
+			'submerchant_id': this.getSubmerchantId(), 
 			'reference_id': this.getReferenceId(), 
 			'exemption_reason_3ds2': this.getExemptionReason3ds2(), 
 			'sca_exemption_reason': this.getScaExemptionReason(), 

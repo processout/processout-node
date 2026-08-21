@@ -32,6 +32,12 @@ class InvoiceExternalFraudTools {
     private signifyd: any = null;
 
     /**
+     * Riskified
+     * @type {any}
+     */
+    private riskified: any = null;
+
+    /**
      * InvoiceExternalFraudTools constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -110,6 +116,26 @@ class InvoiceExternalFraudTools {
     }
 
     /**
+     * Get Riskified
+     * Riskified
+     * @return {any}
+     */
+    public getRiskified(): any {
+        return this.riskified;
+    }
+
+    /**
+     * Set Riskified
+     * Riskified
+     * @param {any} val
+     * @return {InvoiceExternalFraudTools}
+     */
+    public setRiskified(val: any): InvoiceExternalFraudTools {
+        this.riskified = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {InvoiceExternalFraudTools}
@@ -121,6 +147,8 @@ class InvoiceExternalFraudTools {
             this.setRavelin(data["ravelin"]);
         if (data["signifyd"])
             this.setSignifyd(data["signifyd"]);
+        if (data["riskified"])
+            this.setRiskified(data["riskified"]);
         return this;
     }
 
@@ -133,6 +161,7 @@ class InvoiceExternalFraudTools {
             "forter": this.getForter(),
             "ravelin": this.getRavelin(),
             "signifyd": this.getSignifyd(),
+            "riskified": this.getRiskified(),
         };
     }
 

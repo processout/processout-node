@@ -22,10 +22,15 @@ declare class CardContact {
      */
     private state;
     /**
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Deprecated alias for billing_country_code. Billing country of the card holder (ISO-3166, 2 characters format). Kept for backward compatibility; prefer billing_country_code.
      * @type {string}
      */
     private countryCode;
+    /**
+     * Billing country of the card holder (ISO-3166, 2 characters format). Takes precedence over country_code when both are supplied.
+     * @type {string}
+     */
+    private billingCountryCode;
     /**
      * ZIP code of the card holder
      * @type {string}
@@ -92,17 +97,30 @@ declare class CardContact {
     setState(val: string): CardContact;
     /**
      * Get CountryCode
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Deprecated alias for billing_country_code. Billing country of the card holder (ISO-3166, 2 characters format). Kept for backward compatibility; prefer billing_country_code.
      * @return {string}
      */
     getCountryCode(): string;
     /**
      * Set CountryCode
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Deprecated alias for billing_country_code. Billing country of the card holder (ISO-3166, 2 characters format). Kept for backward compatibility; prefer billing_country_code.
      * @param {string} val
      * @return {CardContact}
      */
     setCountryCode(val: string): CardContact;
+    /**
+     * Get BillingCountryCode
+     * Billing country of the card holder (ISO-3166, 2 characters format). Takes precedence over country_code when both are supplied.
+     * @return {string}
+     */
+    getBillingCountryCode(): string;
+    /**
+     * Set BillingCountryCode
+     * Billing country of the card holder (ISO-3166, 2 characters format). Takes precedence over country_code when both are supplied.
+     * @param {string} val
+     * @return {CardContact}
+     */
+    setBillingCountryCode(val: string): CardContact;
     /**
      * Get Zip
      * ZIP code of the card holder

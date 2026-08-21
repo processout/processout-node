@@ -32,6 +32,18 @@ class Device {
     private channel: string = null;
 
     /**
+     * Preferred 3DS SDK type for authentication. Possible values: "web", "ios", "android", "other". This is the recommended field to use instead of channel for 3DS SDK selection
+     * @type {string}
+     */
+    private threedsSdk: string = null;
+
+    /**
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @type {string}
+     */
+    private platform: string = null;
+
+    /**
      * Device IP address. Use if request origin is "backend"
      * @type {string}
      */
@@ -166,6 +178,46 @@ class Device {
      */
     public setChannel(val: string): Device {
         this.channel = val;
+        return this;
+    }
+
+    /**
+     * Get ThreedsSdk
+     * Preferred 3DS SDK type for authentication. Possible values: "web", "ios", "android", "other". This is the recommended field to use instead of channel for 3DS SDK selection
+     * @return {string}
+     */
+    public getThreedsSdk(): string {
+        return this.threedsSdk;
+    }
+
+    /**
+     * Set ThreedsSdk
+     * Preferred 3DS SDK type for authentication. Possible values: "web", "ios", "android", "other". This is the recommended field to use instead of channel for 3DS SDK selection
+     * @param {string} val
+     * @return {Device}
+     */
+    public setThreedsSdk(val: string): Device {
+        this.threedsSdk = val;
+        return this;
+    }
+
+    /**
+     * Get Platform
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @return {string}
+     */
+    public getPlatform(): string {
+        return this.platform;
+    }
+
+    /**
+     * Set Platform
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @param {string} val
+     * @return {Device}
+     */
+    public setPlatform(val: string): Device {
+        this.platform = val;
         return this;
     }
 
@@ -381,6 +433,10 @@ class Device {
             this.setId(data["id"]);
         if (data["channel"])
             this.setChannel(data["channel"]);
+        if (data["threeds_sdk"])
+            this.setThreedsSdk(data["threeds_sdk"]);
+        if (data["platform"])
+            this.setPlatform(data["platform"]);
         if (data["ip_address"])
             this.setIpAddress(data["ip_address"]);
         if (data["user_agent"])
@@ -413,6 +469,8 @@ class Device {
             "request_origin": this.getRequestOrigin(),
             "id": this.getId(),
             "channel": this.getChannel(),
+            "threeds_sdk": this.getThreedsSdk(),
+            "platform": this.getPlatform(),
             "ip_address": this.getIpAddress(),
             "user_agent": this.getUserAgent(),
             "header_accept": this.getHeaderAccept(),

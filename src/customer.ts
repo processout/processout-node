@@ -50,12 +50,6 @@ class Customer {
     private tokens: any = null;
 
     /**
-     * List of the customer subscriptions
-     * @type {any}
-     */
-    private subscriptions: any = null;
-
-    /**
      * List of the customer transactions
      * @type {any}
      */
@@ -363,36 +357,6 @@ class Customer {
                 a.push(obj);
             }
             this.tokens = a;
-        }
-        return this;
-    }
-
-    /**
-     * Get Subscriptions
-     * List of the customer subscriptions
-     * @return {any}
-     */
-    public getSubscriptions(): any {
-        return this.subscriptions;
-    }
-
-    /**
-     * Set Subscriptions
-     * List of the customer subscriptions
-     * @param {any} val
-     * @return {Customer}
-     */
-    public setSubscriptions(val: any): Customer {
-        if (val.length > 0 && typeof val[0] === 'object')
-            this.subscriptions = val;
-        else {
-            var a = [];
-            for (var i = val.length; i--;) {
-                var obj = this.client.newSubscription();
-                obj.fillWithData(val);
-                a.push(obj);
-            }
-            this.subscriptions = a;
         }
         return this;
     }
@@ -932,8 +896,6 @@ class Customer {
             this.setDefaultTokenId(data["default_token_id"]);
         if (data["tokens"])
             this.setTokens(data["tokens"]);
-        if (data["subscriptions"])
-            this.setSubscriptions(data["subscriptions"]);
         if (data["transactions"])
             this.setTransactions(data["transactions"]);
         if (data["balance"])
@@ -999,7 +961,6 @@ class Customer {
             "default_token": this.getDefaultToken(),
             "default_token_id": this.getDefaultTokenId(),
             "tokens": this.getTokens(),
-            "subscriptions": this.getSubscriptions(),
             "transactions": this.getTransactions(),
             "balance": this.getBalance(),
             "currency": this.getCurrency(),
@@ -1028,59 +989,6 @@ class Customer {
         };
     }
 
-    /**
-     * Get the subscriptions belonging to the customer.
-
-     * @param {any} options
-     * @return {Promise<any>}
-     */
-    public fetchSubscriptions(options): Promise<any> {
-        if (!options) options = {};
-        this.fillWithData(options);
-
-        var request = new Request(this.client);
-        var path    = "/customers/" + encodeURI(this.getId()) + "/subscriptions";
-
-        var data = {
-
-        };
-
-        var cur = this;
-        return new Promise(function(resolve, reject) {
-            var callback = async function(resp: fetch.Response) {
-                var respBody = {};
-                try {
-                    respBody = await resp.json();
-                } catch(err) {}
-
-                var response = new Response(resp, respBody);
-                var err = response.check();
-                if (err != null)
-                    return reject(err);
-
-                var returnValues = [];
-
-                
-                var a    = [];
-                var body = respBody['subscriptions'];
-                for (var i = body.length; i--;) {
-                    var tmp = cur.client.newSubscription();
-                    tmp.fillWithData(body[i]);
-                    a.push(tmp);
-                }
-
-                returnValues.push(a);
-                    
-
-                return resolve.apply(this, returnValues);
-            };
-            var callbackError = function(err) {
-                return reject(new ProcessOutNetworkError('processout-sdk.network-issue', err.message));
-            };
-
-            request.get(path, data, options).then(callback, callbackError);
-            });
-    }
     /**
      * Get the customer's tokens.
 

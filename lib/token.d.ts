@@ -118,6 +118,11 @@ declare class Token {
      */
     private webhookUrl;
     /**
+     * Sticky preference controlling network token provisioning for this token. Null when unset (default behaviour applies), false to opt out, true to opt in
+     * @type {boolean}
+     */
+    private provisionNetworkToken;
+    /**
      * Token constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -423,6 +428,19 @@ declare class Token {
      * @return {Token}
      */
     setWebhookUrl(val: string): Token;
+    /**
+     * Get ProvisionNetworkToken
+     * Sticky preference controlling network token provisioning for this token. Null when unset (default behaviour applies), false to opt out, true to opt in
+     * @return {boolean}
+     */
+    getProvisionNetworkToken(): boolean;
+    /**
+     * Set ProvisionNetworkToken
+     * Sticky preference controlling network token provisioning for this token. Null when unset (default behaviour applies), false to opt out, true to opt in
+     * @param {boolean} val
+     * @return {Token}
+     */
+    setProvisionNetworkToken(val: boolean): Token;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

@@ -7,6 +7,11 @@ declare class UnsupportedFeatureBypass {
      */
     private incrementalAuthorization;
     /**
+     * Indicates whether to fallback to normal payment if split payments are not supported
+     * @type {boolean}
+     */
+    private splitPayments;
+    /**
      * UnsupportedFeatureBypass constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -26,6 +31,19 @@ declare class UnsupportedFeatureBypass {
      * @return {UnsupportedFeatureBypass}
      */
     setIncrementalAuthorization(val: boolean): UnsupportedFeatureBypass;
+    /**
+     * Get SplitPayments
+     * Indicates whether to fallback to normal payment if split payments are not supported
+     * @return {boolean}
+     */
+    getSplitPayments(): boolean;
+    /**
+     * Set SplitPayments
+     * Indicates whether to fallback to normal payment if split payments are not supported
+     * @param {boolean} val
+     * @return {UnsupportedFeatureBypass}
+     */
+    setSplitPayments(val: boolean): UnsupportedFeatureBypass;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

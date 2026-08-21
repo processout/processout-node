@@ -62,6 +62,12 @@ class CardCreateRequest {
     private preferredScheme: string = null;
 
     /**
+     * Preferred card type for combo cards
+     * @type {string}
+     */
+    private preferredCardType: string = null;
+
+    /**
      * Metadata related to the card, in the form of a dictionary (key-value pair)
      * @type {any}
      */
@@ -114,6 +120,12 @@ class CardCreateRequest {
      * @type {p.CardShipping}
      */
     private shipping: p.CardShipping = null;
+
+    /**
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @type {p.CardSchemeDetails}
+     */
+    private schemeDetails: p.CardSchemeDetails = null;
 
     /**
      * CardCreateRequest constructor
@@ -297,6 +309,26 @@ class CardCreateRequest {
      */
     public setPreferredScheme(val: string): CardCreateRequest {
         this.preferredScheme = val;
+        return this;
+    }
+
+    /**
+     * Get PreferredCardType
+     * Preferred card type for combo cards
+     * @return {string}
+     */
+    public getPreferredCardType(): string {
+        return this.preferredCardType;
+    }
+
+    /**
+     * Set PreferredCardType
+     * Preferred card type for combo cards
+     * @param {string} val
+     * @return {CardCreateRequest}
+     */
+    public setPreferredCardType(val: string): CardCreateRequest {
+        this.preferredCardType = val;
         return this;
     }
 
@@ -495,6 +527,33 @@ class CardCreateRequest {
     }
 
     /**
+     * Get SchemeDetails
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @return {p.CardSchemeDetails}
+     */
+    public getSchemeDetails(): p.CardSchemeDetails {
+        return this.schemeDetails;
+    }
+
+    /**
+     * Set SchemeDetails
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @param {p.CardSchemeDetails} val
+     * @return {CardCreateRequest}
+     */
+    public setSchemeDetails(val: p.CardSchemeDetails): CardCreateRequest {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newCardSchemeDetails().getProcessOutObjectClass())
+            this.schemeDetails = val;
+        else {
+            var obj = this.client.newCardSchemeDetails();
+            obj.fillWithData(val);
+            this.schemeDetails = obj;
+        }
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {CardCreateRequest}
@@ -516,6 +575,8 @@ class CardCreateRequest {
             this.setCvc2(data["cvc2"]);
         if (data["preferred_scheme"])
             this.setPreferredScheme(data["preferred_scheme"]);
+        if (data["preferred_card_type"])
+            this.setPreferredCardType(data["preferred_card_type"]);
         if (data["metadata"])
             this.setMetadata(data["metadata"]);
         if (data["token_type"])
@@ -534,6 +595,8 @@ class CardCreateRequest {
             this.setContact(data["contact"]);
         if (data["shipping"])
             this.setShipping(data["shipping"]);
+        if (data["scheme_details"])
+            this.setSchemeDetails(data["scheme_details"]);
         return this;
     }
 
@@ -551,6 +614,7 @@ class CardCreateRequest {
             "exp_year": this.getExpYear(),
             "cvc2": this.getCvc2(),
             "preferred_scheme": this.getPreferredScheme(),
+            "preferred_card_type": this.getPreferredCardType(),
             "metadata": this.getMetadata(),
             "token_type": this.getTokenType(),
             "eci": this.getEci(),
@@ -560,6 +624,7 @@ class CardCreateRequest {
             "payment_token": this.getPaymentToken(),
             "contact": this.getContact(),
             "shipping": this.getShipping(),
+            "scheme_details": this.getSchemeDetails(),
         };
     }
 
@@ -585,6 +650,7 @@ class CardCreateRequest {
 			'exp_year': this.getExpYear(), 
 			'cvc2': this.getCvc2(), 
 			'preferred_scheme': this.getPreferredScheme(), 
+			'preferred_card_type': this.getPreferredCardType(), 
 			'metadata': this.getMetadata(), 
 			'token_type': this.getTokenType(), 
 			'eci': this.getEci(), 
@@ -593,7 +659,8 @@ class CardCreateRequest {
 			'applepay_mid': this.getApplepayMid(), 
 			'payment_token': this.getPaymentToken(), 
 			'contact': this.getContact(), 
-			'shipping': this.getShipping()
+			'shipping': this.getShipping(), 
+			'scheme_details': this.getSchemeDetails()
         };
 
         var cur = this;

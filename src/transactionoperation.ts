@@ -176,6 +176,12 @@ class TransactionOperation {
     private paymentType: string = null;
 
     /**
+     * Capture type of the transaction
+     * @type {string}
+     */
+    private captureType: string = null;
+
+    /**
      * Metadata related to the operation, in the form of a dictionary (key-value pair)
      * @type {any}
      */
@@ -801,6 +807,26 @@ class TransactionOperation {
     }
 
     /**
+     * Get CaptureType
+     * Capture type of the transaction
+     * @return {string}
+     */
+    public getCaptureType(): string {
+        return this.captureType;
+    }
+
+    /**
+     * Set CaptureType
+     * Capture type of the transaction
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    public setCaptureType(val: string): TransactionOperation {
+        this.captureType = val;
+        return this;
+    }
+
+    /**
      * Get Metadata
      * Metadata related to the operation, in the form of a dictionary (key-value pair)
      * @return {any}
@@ -920,6 +946,8 @@ class TransactionOperation {
             this.setProcessedWithNetworkToken(data["processed_with_network_token"]);
         if (data["payment_type"])
             this.setPaymentType(data["payment_type"]);
+        if (data["capture_type"])
+            this.setCaptureType(data["capture_type"]);
         if (data["metadata"])
             this.setMetadata(data["metadata"]);
         if (data["gateway_fee"])
@@ -962,6 +990,7 @@ class TransactionOperation {
             "scheme_id": this.getSchemeId(),
             "processed_with_network_token": this.getProcessedWithNetworkToken(),
             "payment_type": this.getPaymentType(),
+            "capture_type": this.getCaptureType(),
             "metadata": this.getMetadata(),
             "gateway_fee": this.getGatewayFee(),
             "created_at": this.getCreatedAt(),
