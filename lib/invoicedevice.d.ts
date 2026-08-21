@@ -7,6 +7,11 @@ declare class InvoiceDevice {
      */
     private channel;
     /**
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @type {string}
+     */
+    private platform;
+    /**
      * IP address of the device
      * @type {string}
      */
@@ -36,6 +41,19 @@ declare class InvoiceDevice {
      * @return {InvoiceDevice}
      */
     setChannel(val: string): InvoiceDevice;
+    /**
+     * Get Platform
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @return {string}
+     */
+    getPlatform(): string;
+    /**
+     * Set Platform
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @param {string} val
+     * @return {InvoiceDevice}
+     */
+    setPlatform(val: string): InvoiceDevice;
     /**
      * Get IpAddress
      * IP address of the device

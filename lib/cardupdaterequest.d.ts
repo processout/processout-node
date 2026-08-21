@@ -1,4 +1,5 @@
 import ProcessOut = require('./processout');
+import * as p from '.';
 declare class CardUpdateRequest {
     private client;
     /**
@@ -6,6 +7,16 @@ declare class CardUpdateRequest {
      * @type {string}
      */
     private preferredScheme;
+    /**
+     * Preferred card type for combo cards, such as credit or debit.
+     * @type {string}
+     */
+    private preferredCardType;
+    /**
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @type {p.CardSchemeDetails}
+     */
+    private schemeDetails;
     /**
      * CardUpdateRequest constructor
      * @param {ProcessOut} client
@@ -26,6 +37,32 @@ declare class CardUpdateRequest {
      * @return {CardUpdateRequest}
      */
     setPreferredScheme(val: string): CardUpdateRequest;
+    /**
+     * Get PreferredCardType
+     * Preferred card type for combo cards, such as credit or debit.
+     * @return {string}
+     */
+    getPreferredCardType(): string;
+    /**
+     * Set PreferredCardType
+     * Preferred card type for combo cards, such as credit or debit.
+     * @param {string} val
+     * @return {CardUpdateRequest}
+     */
+    setPreferredCardType(val: string): CardUpdateRequest;
+    /**
+     * Get SchemeDetails
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @return {p.CardSchemeDetails}
+     */
+    getSchemeDetails(): p.CardSchemeDetails;
+    /**
+     * Set SchemeDetails
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @param {p.CardSchemeDetails} val
+     * @return {CardUpdateRequest}
+     */
+    setSchemeDetails(val: p.CardSchemeDetails): CardUpdateRequest;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

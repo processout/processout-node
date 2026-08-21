@@ -38,16 +38,6 @@ declare class Transaction {
      */
     private customerId;
     /**
-     * Subscription to which this transaction belongs
-     * @type {p.Subscription}
-     */
-    private subscription;
-    /**
-     * ID of the subscription to which the transaction belongs, if any
-     * @type {string}
-     */
-    private subscriptionId;
-    /**
      * Token that was used to capture the payment of the transaction, if any
      * @type {p.Token}
      */
@@ -338,6 +328,11 @@ declare class Transaction {
      */
     private externalDetails;
     /**
+     * The origin of the transaction, can be either 'api' - processed in the ProcessOut or 'pulling' - processed outside and pulled into the system.
+     * @type {string}
+     */
+    private origin;
+    /**
      * Transaction constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -435,32 +430,6 @@ declare class Transaction {
      * @return {Transaction}
      */
     setCustomerId(val: string): Transaction;
-    /**
-     * Get Subscription
-     * Subscription to which this transaction belongs
-     * @return {p.Subscription}
-     */
-    getSubscription(): p.Subscription;
-    /**
-     * Set Subscription
-     * Subscription to which this transaction belongs
-     * @param {p.Subscription} val
-     * @return {Transaction}
-     */
-    setSubscription(val: p.Subscription): Transaction;
-    /**
-     * Get SubscriptionId
-     * ID of the subscription to which the transaction belongs, if any
-     * @return {string}
-     */
-    getSubscriptionId(): string;
-    /**
-     * Set SubscriptionId
-     * ID of the subscription to which the transaction belongs, if any
-     * @param {string} val
-     * @return {Transaction}
-     */
-    setSubscriptionId(val: string): Transaction;
     /**
      * Get Token
      * Token that was used to capture the payment of the transaction, if any
@@ -1215,6 +1184,19 @@ declare class Transaction {
      * @return {Transaction}
      */
     setExternalDetails(val: any): Transaction;
+    /**
+     * Get Origin
+     * The origin of the transaction, can be either 'api' - processed in the ProcessOut or 'pulling' - processed outside and pulled into the system.
+     * @return {string}
+     */
+    getOrigin(): string;
+    /**
+     * Set Origin
+     * The origin of the transaction, can be either 'api' - processed in the ProcessOut or 'pulling' - processed outside and pulled into the system.
+     * @param {string} val
+     * @return {Transaction}
+     */
+    setOrigin(val: string): Transaction;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

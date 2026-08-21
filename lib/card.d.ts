@@ -118,10 +118,15 @@ declare class Card {
      */
     private zip;
     /**
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Country where the card was issued, derived from the IIN/BIN lookup (ISO-3166, 2 characters format)
      * @type {string}
      */
     private countryCode;
+    /**
+     * Billing country of the card holder (ISO-3166, 2 characters format), as supplied on the card's contact
+     * @type {string}
+     */
+    private billingCountryCode;
     /**
      * IP address of the card (IPv4 or IPv6)
      * @type {string}
@@ -167,6 +172,21 @@ declare class Card {
      * @type {string}
      */
     private createdAt;
+    /**
+     * Preferred card type for combo cards, such as credit or debit
+     * @type {string}
+     */
+    private preferredCardType;
+    /**
+     * Initial scheme transaction ID associated with the card for transaction chaining
+     * @type {string}
+     */
+    private initialSchemeTransactionId;
+    /**
+     * Payment Account Reference (PAR) of the card, a unique identifier associating the card with the underlying account across tokens
+     * @type {string}
+     */
+    private paymentAccountReference;
     /**
      * Card constructor
      * @param {ProcessOut} client
@@ -475,17 +495,30 @@ declare class Card {
     setZip(val: string): Card;
     /**
      * Get CountryCode
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Country where the card was issued, derived from the IIN/BIN lookup (ISO-3166, 2 characters format)
      * @return {string}
      */
     getCountryCode(): string;
     /**
      * Set CountryCode
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Country where the card was issued, derived from the IIN/BIN lookup (ISO-3166, 2 characters format)
      * @param {string} val
      * @return {Card}
      */
     setCountryCode(val: string): Card;
+    /**
+     * Get BillingCountryCode
+     * Billing country of the card holder (ISO-3166, 2 characters format), as supplied on the card's contact
+     * @return {string}
+     */
+    getBillingCountryCode(): string;
+    /**
+     * Set BillingCountryCode
+     * Billing country of the card holder (ISO-3166, 2 characters format), as supplied on the card's contact
+     * @param {string} val
+     * @return {Card}
+     */
+    setBillingCountryCode(val: string): Card;
     /**
      * Get IpAddress
      * IP address of the card (IPv4 or IPv6)
@@ -603,6 +636,45 @@ declare class Card {
      * @return {Card}
      */
     setCreatedAt(val: string): Card;
+    /**
+     * Get PreferredCardType
+     * Preferred card type for combo cards, such as credit or debit
+     * @return {string}
+     */
+    getPreferredCardType(): string;
+    /**
+     * Set PreferredCardType
+     * Preferred card type for combo cards, such as credit or debit
+     * @param {string} val
+     * @return {Card}
+     */
+    setPreferredCardType(val: string): Card;
+    /**
+     * Get InitialSchemeTransactionId
+     * Initial scheme transaction ID associated with the card for transaction chaining
+     * @return {string}
+     */
+    getInitialSchemeTransactionId(): string;
+    /**
+     * Set InitialSchemeTransactionId
+     * Initial scheme transaction ID associated with the card for transaction chaining
+     * @param {string} val
+     * @return {Card}
+     */
+    setInitialSchemeTransactionId(val: string): Card;
+    /**
+     * Get PaymentAccountReference
+     * Payment Account Reference (PAR) of the card, a unique identifier associating the card with the underlying account across tokens
+     * @return {string}
+     */
+    getPaymentAccountReference(): string;
+    /**
+     * Set PaymentAccountReference
+     * Payment Account Reference (PAR) of the card, a unique identifier associating the card with the underlying account across tokens
+     * @param {string} val
+     * @return {Card}
+     */
+    setPaymentAccountReference(val: string): Card;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

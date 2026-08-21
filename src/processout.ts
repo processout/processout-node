@@ -78,24 +78,6 @@ class ProcessOut {
 
     
     /**
-     * Create a new Activity instance
-     * @param {array} prefill
-     * @return {Activity}
-     */
-	public newActivity(prefill?: p.Activity): p.Activity {
-        return new p.Activity(this, prefill);
-    }
-	
-    /**
-     * Create a new Addon instance
-     * @param {array} prefill
-     * @return {Addon}
-     */
-	public newAddon(prefill?: p.Addon): p.Addon {
-        return new p.Addon(this, prefill);
-    }
-	
-    /**
      * Create a new APIVersion instance
      * @param {array} prefill
      * @return {APIVersion}
@@ -177,15 +159,6 @@ class ProcessOut {
     }
 	
     /**
-     * Create a new Coupon instance
-     * @param {array} prefill
-     * @return {Coupon}
-     */
-	public newCoupon(prefill?: p.Coupon): p.Coupon {
-        return new p.Coupon(this, prefill);
-    }
-	
-    /**
      * Create a new Customer instance
      * @param {array} prefill
      * @return {Customer}
@@ -210,15 +183,6 @@ class ProcessOut {
      */
 	public newToken(prefill?: p.Token): p.Token {
         return new p.Token(this, prefill);
-    }
-	
-    /**
-     * Create a new Discount instance
-     * @param {array} prefill
-     * @return {Discount}
-     */
-	public newDiscount(prefill?: p.Discount): p.Discount {
-        return new p.Discount(this, prefill);
     }
 	
     /**
@@ -420,6 +384,24 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new PaymentProcessingConfiguration instance
+     * @param {array} prefill
+     * @return {PaymentProcessingConfiguration}
+     */
+	public newPaymentProcessingConfiguration(prefill?: p.PaymentProcessingConfiguration): p.PaymentProcessingConfiguration {
+        return new p.PaymentProcessingConfiguration(this, prefill);
+    }
+	
+    /**
+     * Create a new APMPaymentProcessingConfiguration instance
+     * @param {array} prefill
+     * @return {APMPaymentProcessingConfiguration}
+     */
+	public newAPMPaymentProcessingConfiguration(prefill?: p.APMPaymentProcessingConfiguration): p.APMPaymentProcessingConfiguration {
+        return new p.APMPaymentProcessingConfiguration(this, prefill);
+    }
+	
+    /**
      * Create a new InvoiceDetail instance
      * @param {array} prefill
      * @return {InvoiceDetail}
@@ -501,15 +483,6 @@ class ProcessOut {
     }
 	
     /**
-     * Create a new Plan instance
-     * @param {array} prefill
-     * @return {Plan}
-     */
-	public newPlan(prefill?: p.Plan): p.Plan {
-        return new p.Plan(this, prefill);
-    }
-	
-    /**
      * Create a new Product instance
      * @param {array} prefill
      * @return {Product}
@@ -555,12 +528,21 @@ class ProcessOut {
     }
 	
     /**
-     * Create a new Subscription instance
+     * Create a new Submerchant instance
      * @param {array} prefill
-     * @return {Subscription}
+     * @return {Submerchant}
      */
-	public newSubscription(prefill?: p.Subscription): p.Subscription {
-        return new p.Subscription(this, prefill);
+	public newSubmerchant(prefill?: p.Submerchant): p.Submerchant {
+        return new p.Submerchant(this, prefill);
+    }
+	
+    /**
+     * Create a new SubmerchantMapping instance
+     * @param {array} prefill
+     * @return {SubmerchantMapping}
+     */
+	public newSubmerchantMapping(prefill?: p.SubmerchantMapping): p.SubmerchantMapping {
+        return new p.SubmerchantMapping(this, prefill);
     }
 	
     /**
@@ -663,6 +645,33 @@ class ProcessOut {
     }
 	
     /**
+     * Create a new CardUpdateRequest instance
+     * @param {array} prefill
+     * @return {CardUpdateRequest}
+     */
+	public newCardUpdateRequest(prefill?: p.CardUpdateRequest): p.CardUpdateRequest {
+        return new p.CardUpdateRequest(this, prefill);
+    }
+	
+    /**
+     * Create a new CardCreateRequest instance
+     * @param {array} prefill
+     * @return {CardCreateRequest}
+     */
+	public newCardCreateRequest(prefill?: p.CardCreateRequest): p.CardCreateRequest {
+        return new p.CardCreateRequest(this, prefill);
+    }
+	
+    /**
+     * Create a new CardSchemeDetails instance
+     * @param {array} prefill
+     * @return {CardSchemeDetails}
+     */
+	public newCardSchemeDetails(prefill?: p.CardSchemeDetails): p.CardSchemeDetails {
+        return new p.CardSchemeDetails(this, prefill);
+    }
+	
+    /**
      * Create a new Device instance
      * @param {array} prefill
      * @return {Device}
@@ -687,24 +696,6 @@ class ProcessOut {
      */
 	public newCardShipping(prefill?: p.CardShipping): p.CardShipping {
         return new p.CardShipping(this, prefill);
-    }
-	
-    /**
-     * Create a new CardUpdateRequest instance
-     * @param {array} prefill
-     * @return {CardUpdateRequest}
-     */
-	public newCardUpdateRequest(prefill?: p.CardUpdateRequest): p.CardUpdateRequest {
-        return new p.CardUpdateRequest(this, prefill);
-    }
-	
-    /**
-     * Create a new CardCreateRequest instance
-     * @param {array} prefill
-     * @return {CardCreateRequest}
-     */
-	public newCardCreateRequest(prefill?: p.CardCreateRequest): p.CardCreateRequest {
-        return new p.CardCreateRequest(this, prefill);
     }
 	
     /**

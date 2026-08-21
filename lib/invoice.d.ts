@@ -38,16 +38,6 @@ declare class Invoice {
      */
     private customerId;
     /**
-     * Subscription to which the invoice is linked to, if any
-     * @type {p.Subscription}
-     */
-    private subscription;
-    /**
-     * ID of the subscription to which the invoice is linked to, if any
-     * @type {string}
-     */
-    private subscriptionId;
-    /**
      * Token used to pay the invoice, if any
      * @type {p.Token}
      */
@@ -67,6 +57,11 @@ declare class Invoice {
      * @type {p.InvoiceSubmerchant}
      */
     private submerchant;
+    /**
+     * ID of the submerchant linked to the invoice, if any
+     * @type {string}
+     */
+    private submerchantId;
     /**
      * URL to which you may redirect your customer to proceed with the payment
      * @type {string}
@@ -263,6 +258,11 @@ declare class Invoice {
      */
     private referenceId;
     /**
+     * Configuration related to payment processing of the invoice.
+     * @type {p.PaymentProcessingConfiguration}
+     */
+    private paymentProcessingConfig;
+    /**
      * Invoice constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -361,32 +361,6 @@ declare class Invoice {
      */
     setCustomerId(val: string): Invoice;
     /**
-     * Get Subscription
-     * Subscription to which the invoice is linked to, if any
-     * @return {p.Subscription}
-     */
-    getSubscription(): p.Subscription;
-    /**
-     * Set Subscription
-     * Subscription to which the invoice is linked to, if any
-     * @param {p.Subscription} val
-     * @return {Invoice}
-     */
-    setSubscription(val: p.Subscription): Invoice;
-    /**
-     * Get SubscriptionId
-     * ID of the subscription to which the invoice is linked to, if any
-     * @return {string}
-     */
-    getSubscriptionId(): string;
-    /**
-     * Set SubscriptionId
-     * ID of the subscription to which the invoice is linked to, if any
-     * @param {string} val
-     * @return {Invoice}
-     */
-    setSubscriptionId(val: string): Invoice;
-    /**
      * Get Token
      * Token used to pay the invoice, if any
      * @return {p.Token}
@@ -438,6 +412,19 @@ declare class Invoice {
      * @return {Invoice}
      */
     setSubmerchant(val: p.InvoiceSubmerchant): Invoice;
+    /**
+     * Get SubmerchantId
+     * ID of the submerchant linked to the invoice, if any
+     * @return {string}
+     */
+    getSubmerchantId(): string;
+    /**
+     * Set SubmerchantId
+     * ID of the submerchant linked to the invoice, if any
+     * @param {string} val
+     * @return {Invoice}
+     */
+    setSubmerchantId(val: string): Invoice;
     /**
      * Get Url
      * URL to which you may redirect your customer to proceed with the payment
@@ -946,6 +933,19 @@ declare class Invoice {
      */
     setReferenceId(val: string): Invoice;
     /**
+     * Get PaymentProcessingConfig
+     * Configuration related to payment processing of the invoice.
+     * @return {p.PaymentProcessingConfiguration}
+     */
+    getPaymentProcessingConfig(): p.PaymentProcessingConfiguration;
+    /**
+     * Set PaymentProcessingConfig
+     * Configuration related to payment processing of the invoice.
+     * @param {p.PaymentProcessingConfiguration} val
+     * @return {Invoice}
+     */
+    setPaymentProcessingConfig(val: p.PaymentProcessingConfiguration): Invoice;
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Invoice}
@@ -956,6 +956,13 @@ declare class Invoice {
      * @return {any}
      */
     toJSON(): any;
+    /**
+     * Autheticate the invoice using the given source (customer or token)
+     * @param string source
+     * @param {any} options
+     * @return {Promise<any>}
+     */
+    authenticate(source: string, options: any): Promise<any>;
     /**
      * Create an incremental authorization
      * @param string amount

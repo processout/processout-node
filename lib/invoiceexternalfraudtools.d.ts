@@ -17,6 +17,11 @@ declare class InvoiceExternalFraudTools {
      */
     private signifyd;
     /**
+     * Riskified
+     * @type {any}
+     */
+    private riskified;
+    /**
      * InvoiceExternalFraudTools constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -62,6 +67,19 @@ declare class InvoiceExternalFraudTools {
      * @return {InvoiceExternalFraudTools}
      */
     setSignifyd(val: any): InvoiceExternalFraudTools;
+    /**
+     * Get Riskified
+     * Riskified
+     * @return {any}
+     */
+    getRiskified(): any;
+    /**
+     * Set Riskified
+     * Riskified
+     * @param {any} val
+     * @return {InvoiceExternalFraudTools}
+     */
+    setRiskified(val: any): InvoiceExternalFraudTools;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

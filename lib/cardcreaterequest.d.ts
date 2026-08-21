@@ -43,6 +43,11 @@ declare class CardCreateRequest {
      */
     private preferredScheme;
     /**
+     * Preferred card type for combo cards
+     * @type {string}
+     */
+    private preferredCardType;
+    /**
      * Metadata related to the card, in the form of a dictionary (key-value pair)
      * @type {any}
      */
@@ -87,6 +92,11 @@ declare class CardCreateRequest {
      * @type {p.CardShipping}
      */
     private shipping;
+    /**
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @type {p.CardSchemeDetails}
+     */
+    private schemeDetails;
     /**
      * CardCreateRequest constructor
      * @param {ProcessOut} client
@@ -198,6 +208,19 @@ declare class CardCreateRequest {
      * @return {CardCreateRequest}
      */
     setPreferredScheme(val: string): CardCreateRequest;
+    /**
+     * Get PreferredCardType
+     * Preferred card type for combo cards
+     * @return {string}
+     */
+    getPreferredCardType(): string;
+    /**
+     * Set PreferredCardType
+     * Preferred card type for combo cards
+     * @param {string} val
+     * @return {CardCreateRequest}
+     */
+    setPreferredCardType(val: string): CardCreateRequest;
     /**
      * Get Metadata
      * Metadata related to the card, in the form of a dictionary (key-value pair)
@@ -315,6 +338,19 @@ declare class CardCreateRequest {
      * @return {CardCreateRequest}
      */
     setShipping(val: p.CardShipping): CardCreateRequest;
+    /**
+     * Get SchemeDetails
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @return {p.CardSchemeDetails}
+     */
+    getSchemeDetails(): p.CardSchemeDetails;
+    /**
+     * Set SchemeDetails
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @param {p.CardSchemeDetails} val
+     * @return {CardCreateRequest}
+     */
+    setSchemeDetails(val: p.CardSchemeDetails): CardCreateRequest;
     /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data

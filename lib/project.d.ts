@@ -239,20 +239,6 @@ declare class Project {
      * @return {Promise<boolean>}
      */
     delete(options: any): Promise<boolean>;
-    /**
-     * Get all the supervised projects.
-     *
-     * @param {any} options
-     * @return {Promise<any>}
-     */
-    fetchSupervised(options: any): Promise<any>;
-    /**
-     * Create a new supervised project.
-     *
-     * @param {any} options
-     * @return {Promise<any>}
-     */
-    createSupervised(options: any): Promise<any>;
 }
 export = Project;
 //# sourceMappingURL=project.d.ts.map

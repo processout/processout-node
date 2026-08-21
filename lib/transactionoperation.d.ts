@@ -138,6 +138,11 @@ declare class TransactionOperation {
      */
     private paymentType;
     /**
+     * Capture type of the transaction
+     * @type {string}
+     */
+    private captureType;
+    /**
      * Metadata related to the operation, in the form of a dictionary (key-value pair)
      * @type {any}
      */
@@ -510,6 +515,19 @@ declare class TransactionOperation {
      * @return {TransactionOperation}
      */
     setPaymentType(val: string): TransactionOperation;
+    /**
+     * Get CaptureType
+     * Capture type of the transaction
+     * @return {string}
+     */
+    getCaptureType(): string;
+    /**
+     * Set CaptureType
+     * Capture type of the transaction
+     * @param {string} val
+     * @return {TransactionOperation}
+     */
+    setCaptureType(val: string): TransactionOperation;
     /**
      * Get Metadata
      * Metadata related to the operation, in the form of a dictionary (key-value pair)

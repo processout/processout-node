@@ -152,6 +152,12 @@ class Token {
     private webhookUrl: string = null;
 
     /**
+     * Sticky preference controlling network token provisioning for this token. Null when unset (default behaviour applies), false to opt out, true to opt in
+     * @type {boolean}
+     */
+    private provisionNetworkToken: boolean = null;
+
+    /**
      * Token constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -658,6 +664,26 @@ class Token {
     }
 
     /**
+     * Get ProvisionNetworkToken
+     * Sticky preference controlling network token provisioning for this token. Null when unset (default behaviour applies), false to opt out, true to opt in
+     * @return {boolean}
+     */
+    public getProvisionNetworkToken(): boolean {
+        return this.provisionNetworkToken;
+    }
+
+    /**
+     * Set ProvisionNetworkToken
+     * Sticky preference controlling network token provisioning for this token. Null when unset (default behaviour applies), false to opt out, true to opt in
+     * @param {boolean} val
+     * @return {Token}
+     */
+    public setProvisionNetworkToken(val: boolean): Token {
+        this.provisionNetworkToken = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Token}
@@ -709,6 +735,8 @@ class Token {
             this.setCanGetBalance(data["can_get_balance"]);
         if (data["webhook_url"])
             this.setWebhookUrl(data["webhook_url"]);
+        if (data["provision_network_token"])
+            this.setProvisionNetworkToken(data["provision_network_token"]);
         return this;
     }
 
@@ -741,6 +769,7 @@ class Token {
             "verification_status": this.getVerificationStatus(),
             "can_get_balance": this.getCanGetBalance(),
             "webhook_url": this.getWebhookUrl(),
+            "provision_network_token": this.getProvisionNetworkToken(),
         };
     }
 
@@ -877,7 +906,8 @@ class Token {
 			'set_default': (options['set_default']) ? options['set_default'] : null, 
 			'verify_statement_descriptor': (options['verify_statement_descriptor']) ? options['verify_statement_descriptor'] : null, 
 			'invoice_return_url': (options['invoice_return_url']) ? options['invoice_return_url'] : null, 
-			'summary': (options['summary']) ? options['summary'] : null
+			'summary': (options['summary']) ? options['summary'] : null, 
+			'provision_network_token': (options['provision_network_token']) ? options['provision_network_token'] : null
         };
 
         var cur = this;
@@ -941,7 +971,8 @@ class Token {
 			'set_default': (options['set_default']) ? options['set_default'] : null, 
 			'verify_statement_descriptor': (options['verify_statement_descriptor']) ? options['verify_statement_descriptor'] : null, 
 			'invoice_return_url': (options['invoice_return_url']) ? options['invoice_return_url'] : null, 
-			'gateway_configuration_id': (options['gateway_configuration_id']) ? options['gateway_configuration_id'] : null
+			'gateway_configuration_id': (options['gateway_configuration_id']) ? options['gateway_configuration_id'] : null, 
+			'provision_network_token': (options['provision_network_token']) ? options['provision_network_token'] : null
         };
 
         var cur = this;

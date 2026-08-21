@@ -33,11 +33,6 @@ declare class Customer {
      */
     private tokens;
     /**
-     * List of the customer subscriptions
-     * @type {any}
-     */
-    private subscriptions;
-    /**
      * List of the customer transactions
      * @type {any}
      */
@@ -247,19 +242,6 @@ declare class Customer {
      * @return {Customer}
      */
     setTokens(val: any): Customer;
-    /**
-     * Get Subscriptions
-     * List of the customer subscriptions
-     * @return {any}
-     */
-    getSubscriptions(): any;
-    /**
-     * Set Subscriptions
-     * List of the customer subscriptions
-     * @param {any} val
-     * @return {Customer}
-     */
-    setSubscriptions(val: any): Customer;
     /**
      * Get Transactions
      * List of the customer transactions
@@ -596,13 +578,6 @@ declare class Customer {
      * @return {any}
      */
     toJSON(): any;
-    /**
-     * Get the subscriptions belonging to the customer.
-
-     * @param {any} options
-     * @return {Promise<any>}
-     */
-    fetchSubscriptions(options: any): Promise<any>;
     /**
      * Get the customer's tokens.
 

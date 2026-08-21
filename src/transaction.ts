@@ -56,18 +56,6 @@ class Transaction {
     private customerId: string = null;
 
     /**
-     * Subscription to which this transaction belongs
-     * @type {p.Subscription}
-     */
-    private subscription: p.Subscription = null;
-
-    /**
-     * ID of the subscription to which the transaction belongs, if any
-     * @type {string}
-     */
-    private subscriptionId: string = null;
-
-    /**
      * Token that was used to capture the payment of the transaction, if any
      * @type {p.Token}
      */
@@ -416,6 +404,12 @@ class Transaction {
     private externalDetails: any = null;
 
     /**
+     * The origin of the transaction, can be either 'api' - processed in the ProcessOut or 'pulling' - processed outside and pulled into the system.
+     * @type {string}
+     */
+    private origin: string = null;
+
+    /**
      * Transaction constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -591,53 +585,6 @@ class Transaction {
      */
     public setCustomerId(val: string): Transaction {
         this.customerId = val;
-        return this;
-    }
-
-    /**
-     * Get Subscription
-     * Subscription to which this transaction belongs
-     * @return {p.Subscription}
-     */
-    public getSubscription(): p.Subscription {
-        return this.subscription;
-    }
-
-    /**
-     * Set Subscription
-     * Subscription to which this transaction belongs
-     * @param {p.Subscription} val
-     * @return {Transaction}
-     */
-    public setSubscription(val: p.Subscription): Transaction {
-        if (val.getProcessOutObjectClass &&
-            val.getProcessOutObjectClass() == this.client.newSubscription().getProcessOutObjectClass())
-            this.subscription = val;
-        else {
-            var obj = this.client.newSubscription();
-            obj.fillWithData(val);
-            this.subscription = obj;
-        }
-        return this;
-    }
-
-    /**
-     * Get SubscriptionId
-     * ID of the subscription to which the transaction belongs, if any
-     * @return {string}
-     */
-    public getSubscriptionId(): string {
-        return this.subscriptionId;
-    }
-
-    /**
-     * Set SubscriptionId
-     * ID of the subscription to which the transaction belongs, if any
-     * @param {string} val
-     * @return {Transaction}
-     */
-    public setSubscriptionId(val: string): Transaction {
-        this.subscriptionId = val;
         return this;
     }
 
@@ -1864,6 +1811,26 @@ class Transaction {
     }
 
     /**
+     * Get Origin
+     * The origin of the transaction, can be either 'api' - processed in the ProcessOut or 'pulling' - processed outside and pulled into the system.
+     * @return {string}
+     */
+    public getOrigin(): string {
+        return this.origin;
+    }
+
+    /**
+     * Set Origin
+     * The origin of the transaction, can be either 'api' - processed in the ProcessOut or 'pulling' - processed outside and pulled into the system.
+     * @param {string} val
+     * @return {Transaction}
+     */
+    public setOrigin(val: string): Transaction {
+        this.origin = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Transaction}
@@ -1883,10 +1850,6 @@ class Transaction {
             this.setCustomer(data["customer"]);
         if (data["customer_id"])
             this.setCustomerId(data["customer_id"]);
-        if (data["subscription"])
-            this.setSubscription(data["subscription"]);
-        if (data["subscription_id"])
-            this.setSubscriptionId(data["subscription_id"]);
         if (data["token"])
             this.setToken(data["token"]);
         if (data["token_id"])
@@ -2003,6 +1966,8 @@ class Transaction {
             this.setNativeApm(data["native_apm"]);
         if (data["external_details"])
             this.setExternalDetails(data["external_details"]);
+        if (data["origin"])
+            this.setOrigin(data["origin"]);
         return this;
     }
 
@@ -2019,8 +1984,6 @@ class Transaction {
             "invoice_id": this.getInvoiceId(),
             "customer": this.getCustomer(),
             "customer_id": this.getCustomerId(),
-            "subscription": this.getSubscription(),
-            "subscription_id": this.getSubscriptionId(),
             "token": this.getToken(),
             "token_id": this.getTokenId(),
             "card": this.getCard(),
@@ -2079,6 +2042,7 @@ class Transaction {
             "eci": this.getEci(),
             "native_apm": this.getNativeApm(),
             "external_details": this.getExternalDetails(),
+            "origin": this.getOrigin(),
         };
     }
 

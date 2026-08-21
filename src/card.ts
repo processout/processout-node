@@ -152,10 +152,16 @@ class Card {
     private zip: string = null;
 
     /**
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Country where the card was issued, derived from the IIN/BIN lookup (ISO-3166, 2 characters format)
      * @type {string}
      */
     private countryCode: string = null;
+
+    /**
+     * Billing country of the card holder (ISO-3166, 2 characters format), as supplied on the card's contact
+     * @type {string}
+     */
+    private billingCountryCode: string = null;
 
     /**
      * IP address of the card (IPv4 or IPv6)
@@ -210,6 +216,24 @@ class Card {
      * @type {string}
      */
     private createdAt: string = null;
+
+    /**
+     * Preferred card type for combo cards, such as credit or debit
+     * @type {string}
+     */
+    private preferredCardType: string = null;
+
+    /**
+     * Initial scheme transaction ID associated with the card for transaction chaining
+     * @type {string}
+     */
+    private initialSchemeTransactionId: string = null;
+
+    /**
+     * Payment Account Reference (PAR) of the card, a unique identifier associating the card with the underlying account across tokens
+     * @type {string}
+     */
+    private paymentAccountReference: string = null;
 
     /**
      * Card constructor
@@ -705,7 +729,7 @@ class Card {
 
     /**
      * Get CountryCode
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Country where the card was issued, derived from the IIN/BIN lookup (ISO-3166, 2 characters format)
      * @return {string}
      */
     public getCountryCode(): string {
@@ -714,12 +738,32 @@ class Card {
 
     /**
      * Set CountryCode
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Country where the card was issued, derived from the IIN/BIN lookup (ISO-3166, 2 characters format)
      * @param {string} val
      * @return {Card}
      */
     public setCountryCode(val: string): Card {
         this.countryCode = val;
+        return this;
+    }
+
+    /**
+     * Get BillingCountryCode
+     * Billing country of the card holder (ISO-3166, 2 characters format), as supplied on the card's contact
+     * @return {string}
+     */
+    public getBillingCountryCode(): string {
+        return this.billingCountryCode;
+    }
+
+    /**
+     * Set BillingCountryCode
+     * Billing country of the card holder (ISO-3166, 2 characters format), as supplied on the card's contact
+     * @param {string} val
+     * @return {Card}
+     */
+    public setBillingCountryCode(val: string): Card {
+        this.billingCountryCode = val;
         return this;
     }
 
@@ -904,6 +948,66 @@ class Card {
     }
 
     /**
+     * Get PreferredCardType
+     * Preferred card type for combo cards, such as credit or debit
+     * @return {string}
+     */
+    public getPreferredCardType(): string {
+        return this.preferredCardType;
+    }
+
+    /**
+     * Set PreferredCardType
+     * Preferred card type for combo cards, such as credit or debit
+     * @param {string} val
+     * @return {Card}
+     */
+    public setPreferredCardType(val: string): Card {
+        this.preferredCardType = val;
+        return this;
+    }
+
+    /**
+     * Get InitialSchemeTransactionId
+     * Initial scheme transaction ID associated with the card for transaction chaining
+     * @return {string}
+     */
+    public getInitialSchemeTransactionId(): string {
+        return this.initialSchemeTransactionId;
+    }
+
+    /**
+     * Set InitialSchemeTransactionId
+     * Initial scheme transaction ID associated with the card for transaction chaining
+     * @param {string} val
+     * @return {Card}
+     */
+    public setInitialSchemeTransactionId(val: string): Card {
+        this.initialSchemeTransactionId = val;
+        return this;
+    }
+
+    /**
+     * Get PaymentAccountReference
+     * Payment Account Reference (PAR) of the card, a unique identifier associating the card with the underlying account across tokens
+     * @return {string}
+     */
+    public getPaymentAccountReference(): string {
+        return this.paymentAccountReference;
+    }
+
+    /**
+     * Set PaymentAccountReference
+     * Payment Account Reference (PAR) of the card, a unique identifier associating the card with the underlying account across tokens
+     * @param {string} val
+     * @return {Card}
+     */
+    public setPaymentAccountReference(val: string): Card {
+        this.paymentAccountReference = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {Card}
@@ -957,6 +1061,8 @@ class Card {
             this.setZip(data["zip"]);
         if (data["country_code"])
             this.setCountryCode(data["country_code"]);
+        if (data["billing_country_code"])
+            this.setBillingCountryCode(data["billing_country_code"]);
         if (data["ip_address"])
             this.setIpAddress(data["ip_address"]);
         if (data["fingerprint"])
@@ -975,6 +1081,12 @@ class Card {
             this.setSandbox(data["sandbox"]);
         if (data["created_at"])
             this.setCreatedAt(data["created_at"]);
+        if (data["preferred_card_type"])
+            this.setPreferredCardType(data["preferred_card_type"]);
+        if (data["initial_scheme_transaction_id"])
+            this.setInitialSchemeTransactionId(data["initial_scheme_transaction_id"]);
+        if (data["payment_account_reference"])
+            this.setPaymentAccountReference(data["payment_account_reference"]);
         return this;
     }
 
@@ -1008,6 +1120,7 @@ class Card {
             "state": this.getState(),
             "zip": this.getZip(),
             "country_code": this.getCountryCode(),
+            "billing_country_code": this.getBillingCountryCode(),
             "ip_address": this.getIpAddress(),
             "fingerprint": this.getFingerprint(),
             "token_type": this.getTokenType(),
@@ -1017,6 +1130,9 @@ class Card {
             "expires_soon": this.getExpiresSoon(),
             "sandbox": this.getSandbox(),
             "created_at": this.getCreatedAt(),
+            "preferred_card_type": this.getPreferredCardType(),
+            "initial_scheme_transaction_id": this.getInitialSchemeTransactionId(),
+            "payment_account_reference": this.getPaymentAccountReference(),
         };
     }
 

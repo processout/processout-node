@@ -17,6 +17,16 @@ declare class Device {
      */
     private channel;
     /**
+     * Preferred 3DS SDK type for authentication. Possible values: "web", "ios", "android", "other". This is the recommended field to use instead of channel for 3DS SDK selection
+     * @type {string}
+     */
+    private threedsSdk;
+    /**
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @type {string}
+     */
+    private platform;
+    /**
      * Device IP address. Use if request origin is "backend"
      * @type {string}
      */
@@ -112,6 +122,32 @@ declare class Device {
      * @return {Device}
      */
     setChannel(val: string): Device;
+    /**
+     * Get ThreedsSdk
+     * Preferred 3DS SDK type for authentication. Possible values: "web", "ios", "android", "other". This is the recommended field to use instead of channel for 3DS SDK selection
+     * @return {string}
+     */
+    getThreedsSdk(): string;
+    /**
+     * Set ThreedsSdk
+     * Preferred 3DS SDK type for authentication. Possible values: "web", "ios", "android", "other". This is the recommended field to use instead of channel for 3DS SDK selection
+     * @param {string} val
+     * @return {Device}
+     */
+    setThreedsSdk(val: string): Device;
+    /**
+     * Get Platform
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @return {string}
+     */
+    getPlatform(): string;
+    /**
+     * Set Platform
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @param {string} val
+     * @return {Device}
+     */
+    setPlatform(val: string): Device;
     /**
      * Get IpAddress
      * Device IP address. Use if request origin is "backend"

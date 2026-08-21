@@ -20,6 +20,18 @@ class CardUpdateRequest {
     private preferredScheme: string = null;
 
     /**
+     * Preferred card type for combo cards, such as credit or debit.
+     * @type {string}
+     */
+    private preferredCardType: string = null;
+
+    /**
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @type {p.CardSchemeDetails}
+     */
+    private schemeDetails: p.CardSchemeDetails = null;
+
+    /**
      * CardUpdateRequest constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -58,6 +70,53 @@ class CardUpdateRequest {
     }
 
     /**
+     * Get PreferredCardType
+     * Preferred card type for combo cards, such as credit or debit.
+     * @return {string}
+     */
+    public getPreferredCardType(): string {
+        return this.preferredCardType;
+    }
+
+    /**
+     * Set PreferredCardType
+     * Preferred card type for combo cards, such as credit or debit.
+     * @param {string} val
+     * @return {CardUpdateRequest}
+     */
+    public setPreferredCardType(val: string): CardUpdateRequest {
+        this.preferredCardType = val;
+        return this;
+    }
+
+    /**
+     * Get SchemeDetails
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @return {p.CardSchemeDetails}
+     */
+    public getSchemeDetails(): p.CardSchemeDetails {
+        return this.schemeDetails;
+    }
+
+    /**
+     * Set SchemeDetails
+     * Scheme details for transaction chaining (e.g. scheme transaction ID)
+     * @param {p.CardSchemeDetails} val
+     * @return {CardUpdateRequest}
+     */
+    public setSchemeDetails(val: p.CardSchemeDetails): CardUpdateRequest {
+        if (val.getProcessOutObjectClass &&
+            val.getProcessOutObjectClass() == this.client.newCardSchemeDetails().getProcessOutObjectClass())
+            this.schemeDetails = val;
+        else {
+            var obj = this.client.newCardSchemeDetails();
+            obj.fillWithData(val);
+            this.schemeDetails = obj;
+        }
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {CardUpdateRequest}
@@ -65,6 +124,10 @@ class CardUpdateRequest {
     public fillWithData(data: any): CardUpdateRequest {
         if (data["preferred_scheme"])
             this.setPreferredScheme(data["preferred_scheme"]);
+        if (data["preferred_card_type"])
+            this.setPreferredCardType(data["preferred_card_type"]);
+        if (data["scheme_details"])
+            this.setSchemeDetails(data["scheme_details"]);
         return this;
     }
 
@@ -75,6 +138,8 @@ class CardUpdateRequest {
     public toJSON(): any {
         return {
             "preferred_scheme": this.getPreferredScheme(),
+            "preferred_card_type": this.getPreferredCardType(),
+            "scheme_details": this.getSchemeDetails(),
         };
     }
 
@@ -92,7 +157,8 @@ class CardUpdateRequest {
         var path    = "/cards/" + encodeURI(cardId) + "";
 
         var data = {
-			'preferred_scheme': this.getPreferredScheme()
+			'preferred_scheme': this.getPreferredScheme(), 
+			'scheme_details': this.getSchemeDetails()
         };
 
         var cur = this;

@@ -20,6 +20,12 @@ class InvoiceDevice {
     private channel: string = null;
 
     /**
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @type {string}
+     */
+    private platform: string = null;
+
+    /**
      * IP address of the device
      * @type {string}
      */
@@ -66,6 +72,26 @@ class InvoiceDevice {
      */
     public setChannel(val: string): InvoiceDevice {
         this.channel = val;
+        return this;
+    }
+
+    /**
+     * Get Platform
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @return {string}
+     */
+    public getPlatform(): string {
+        return this.platform;
+    }
+
+    /**
+     * Set Platform
+     * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
+     * @param {string} val
+     * @return {InvoiceDevice}
+     */
+    public setPlatform(val: string): InvoiceDevice {
+        this.platform = val;
         return this;
     }
 
@@ -117,6 +143,8 @@ class InvoiceDevice {
     public fillWithData(data: any): InvoiceDevice {
         if (data["channel"])
             this.setChannel(data["channel"]);
+        if (data["platform"])
+            this.setPlatform(data["platform"]);
         if (data["ip_address"])
             this.setIpAddress(data["ip_address"]);
         if (data["id"])
@@ -131,6 +159,7 @@ class InvoiceDevice {
     public toJSON(): any {
         return {
             "channel": this.getChannel(),
+            "platform": this.getPlatform(),
             "ip_address": this.getIpAddress(),
             "id": this.getId(),
         };

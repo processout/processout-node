@@ -55,18 +55,6 @@ declare class ProcessOut {
      */
     getProjectSecret(): string;
     /**
-     * Create a new Activity instance
-     * @param {array} prefill
-     * @return {Activity}
-     */
-    newActivity(prefill?: p.Activity): p.Activity;
-    /**
-     * Create a new Addon instance
-     * @param {array} prefill
-     * @return {Addon}
-     */
-    newAddon(prefill?: p.Addon): p.Addon;
-    /**
      * Create a new APIVersion instance
      * @param {array} prefill
      * @return {APIVersion}
@@ -121,12 +109,6 @@ declare class ProcessOut {
      */
     newPhone(prefill?: p.Phone): p.Phone;
     /**
-     * Create a new Coupon instance
-     * @param {array} prefill
-     * @return {Coupon}
-     */
-    newCoupon(prefill?: p.Coupon): p.Coupon;
-    /**
      * Create a new Customer instance
      * @param {array} prefill
      * @return {Customer}
@@ -144,12 +126,6 @@ declare class ProcessOut {
      * @return {Token}
      */
     newToken(prefill?: p.Token): p.Token;
-    /**
-     * Create a new Discount instance
-     * @param {array} prefill
-     * @return {Discount}
-     */
-    newDiscount(prefill?: p.Discount): p.Discount;
     /**
      * Create a new Event instance
      * @param {array} prefill
@@ -283,6 +259,18 @@ declare class ProcessOut {
      */
     newUnsupportedFeatureBypass(prefill?: p.UnsupportedFeatureBypass): p.UnsupportedFeatureBypass;
     /**
+     * Create a new PaymentProcessingConfiguration instance
+     * @param {array} prefill
+     * @return {PaymentProcessingConfiguration}
+     */
+    newPaymentProcessingConfiguration(prefill?: p.PaymentProcessingConfiguration): p.PaymentProcessingConfiguration;
+    /**
+     * Create a new APMPaymentProcessingConfiguration instance
+     * @param {array} prefill
+     * @return {APMPaymentProcessingConfiguration}
+     */
+    newAPMPaymentProcessingConfiguration(prefill?: p.APMPaymentProcessingConfiguration): p.APMPaymentProcessingConfiguration;
+    /**
      * Create a new InvoiceDetail instance
      * @param {array} prefill
      * @return {InvoiceDetail}
@@ -337,12 +325,6 @@ declare class ProcessOut {
      */
     newPayoutItemAmountBreakdowns(prefill?: p.PayoutItemAmountBreakdowns): p.PayoutItemAmountBreakdowns;
     /**
-     * Create a new Plan instance
-     * @param {array} prefill
-     * @return {Plan}
-     */
-    newPlan(prefill?: p.Plan): p.Plan;
-    /**
      * Create a new Product instance
      * @param {array} prefill
      * @return {Product}
@@ -373,11 +355,17 @@ declare class ProcessOut {
      */
     newRefund(prefill?: p.Refund): p.Refund;
     /**
-     * Create a new Subscription instance
+     * Create a new Submerchant instance
      * @param {array} prefill
-     * @return {Subscription}
+     * @return {Submerchant}
      */
-    newSubscription(prefill?: p.Subscription): p.Subscription;
+    newSubmerchant(prefill?: p.Submerchant): p.Submerchant;
+    /**
+     * Create a new SubmerchantMapping instance
+     * @param {array} prefill
+     * @return {SubmerchantMapping}
+     */
+    newSubmerchantMapping(prefill?: p.SubmerchantMapping): p.SubmerchantMapping;
     /**
      * Create a new Transaction instance
      * @param {array} prefill
@@ -445,6 +433,24 @@ declare class ProcessOut {
      */
     newWebhookEndpoint(prefill?: p.WebhookEndpoint): p.WebhookEndpoint;
     /**
+     * Create a new CardUpdateRequest instance
+     * @param {array} prefill
+     * @return {CardUpdateRequest}
+     */
+    newCardUpdateRequest(prefill?: p.CardUpdateRequest): p.CardUpdateRequest;
+    /**
+     * Create a new CardCreateRequest instance
+     * @param {array} prefill
+     * @return {CardCreateRequest}
+     */
+    newCardCreateRequest(prefill?: p.CardCreateRequest): p.CardCreateRequest;
+    /**
+     * Create a new CardSchemeDetails instance
+     * @param {array} prefill
+     * @return {CardSchemeDetails}
+     */
+    newCardSchemeDetails(prefill?: p.CardSchemeDetails): p.CardSchemeDetails;
+    /**
      * Create a new Device instance
      * @param {array} prefill
      * @return {Device}
@@ -462,18 +468,6 @@ declare class ProcessOut {
      * @return {CardShipping}
      */
     newCardShipping(prefill?: p.CardShipping): p.CardShipping;
-    /**
-     * Create a new CardUpdateRequest instance
-     * @param {array} prefill
-     * @return {CardUpdateRequest}
-     */
-    newCardUpdateRequest(prefill?: p.CardUpdateRequest): p.CardUpdateRequest;
-    /**
-     * Create a new CardCreateRequest instance
-     * @param {array} prefill
-     * @return {CardCreateRequest}
-     */
-    newCardCreateRequest(prefill?: p.CardCreateRequest): p.CardCreateRequest;
     /**
      * Create a new ErrorCodes instance
      * @param {array} prefill

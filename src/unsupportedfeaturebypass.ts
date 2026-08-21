@@ -20,6 +20,12 @@ class UnsupportedFeatureBypass {
     private incrementalAuthorization: boolean = null;
 
     /**
+     * Indicates whether to fallback to normal payment if split payments are not supported
+     * @type {boolean}
+     */
+    private splitPayments: boolean = null;
+
+    /**
      * UnsupportedFeatureBypass constructor
      * @param {ProcessOut} client
      * @param {array} prefill (optional)
@@ -58,6 +64,26 @@ class UnsupportedFeatureBypass {
     }
 
     /**
+     * Get SplitPayments
+     * Indicates whether to fallback to normal payment if split payments are not supported
+     * @return {boolean}
+     */
+    public getSplitPayments(): boolean {
+        return this.splitPayments;
+    }
+
+    /**
+     * Set SplitPayments
+     * Indicates whether to fallback to normal payment if split payments are not supported
+     * @param {boolean} val
+     * @return {UnsupportedFeatureBypass}
+     */
+    public setSplitPayments(val: boolean): UnsupportedFeatureBypass {
+        this.splitPayments = val;
+        return this;
+    }
+
+    /**
      * Fills the current object with the new values pulled from the data
      * @param  {array} data
      * @return {UnsupportedFeatureBypass}
@@ -65,6 +91,8 @@ class UnsupportedFeatureBypass {
     public fillWithData(data: any): UnsupportedFeatureBypass {
         if (data["incremental_authorization"])
             this.setIncrementalAuthorization(data["incremental_authorization"]);
+        if (data["split_payments"])
+            this.setSplitPayments(data["split_payments"]);
         return this;
     }
 
@@ -75,6 +103,7 @@ class UnsupportedFeatureBypass {
     public toJSON(): any {
         return {
             "incremental_authorization": this.getIncrementalAuthorization(),
+            "split_payments": this.getSplitPayments(),
         };
     }
 

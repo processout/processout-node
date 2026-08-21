@@ -38,10 +38,16 @@ class CardContact {
     private state: string = null;
 
     /**
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Deprecated alias for billing_country_code. Billing country of the card holder (ISO-3166, 2 characters format). Kept for backward compatibility; prefer billing_country_code.
      * @type {string}
      */
     private countryCode: string = null;
+
+    /**
+     * Billing country of the card holder (ISO-3166, 2 characters format). Takes precedence over country_code when both are supplied.
+     * @type {string}
+     */
+    private billingCountryCode: string = null;
 
     /**
      * ZIP code of the card holder
@@ -149,7 +155,7 @@ class CardContact {
 
     /**
      * Get CountryCode
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Deprecated alias for billing_country_code. Billing country of the card holder (ISO-3166, 2 characters format). Kept for backward compatibility; prefer billing_country_code.
      * @return {string}
      */
     public getCountryCode(): string {
@@ -158,12 +164,32 @@ class CardContact {
 
     /**
      * Set CountryCode
-     * Country code of the card holder (ISO-3166, 2 characters format)
+     * Deprecated alias for billing_country_code. Billing country of the card holder (ISO-3166, 2 characters format). Kept for backward compatibility; prefer billing_country_code.
      * @param {string} val
      * @return {CardContact}
      */
     public setCountryCode(val: string): CardContact {
         this.countryCode = val;
+        return this;
+    }
+
+    /**
+     * Get BillingCountryCode
+     * Billing country of the card holder (ISO-3166, 2 characters format). Takes precedence over country_code when both are supplied.
+     * @return {string}
+     */
+    public getBillingCountryCode(): string {
+        return this.billingCountryCode;
+    }
+
+    /**
+     * Set BillingCountryCode
+     * Billing country of the card holder (ISO-3166, 2 characters format). Takes precedence over country_code when both are supplied.
+     * @param {string} val
+     * @return {CardContact}
+     */
+    public setBillingCountryCode(val: string): CardContact {
+        this.billingCountryCode = val;
         return this;
     }
 
@@ -203,6 +229,8 @@ class CardContact {
             this.setState(data["state"]);
         if (data["country_code"])
             this.setCountryCode(data["country_code"]);
+        if (data["billing_country_code"])
+            this.setBillingCountryCode(data["billing_country_code"]);
         if (data["zip"])
             this.setZip(data["zip"]);
         return this;
@@ -219,6 +247,7 @@ class CardContact {
             "city": this.getCity(),
             "state": this.getState(),
             "country_code": this.getCountryCode(),
+            "billing_country_code": this.getBillingCountryCode(),
             "zip": this.getZip(),
         };
     }
