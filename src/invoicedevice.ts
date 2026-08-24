@@ -20,6 +20,12 @@ class InvoiceDevice {
     private channel: string = null;
 
     /**
+     * Preferred 3DS SDK type for authentication. This is the recommended field to use instead of channel for 3DS SDK selection
+     * @type {string}
+     */
+    private threedsSdk: string = null;
+
+    /**
      * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
      * @type {string}
      */
@@ -72,6 +78,26 @@ class InvoiceDevice {
      */
     public setChannel(val: string): InvoiceDevice {
         this.channel = val;
+        return this;
+    }
+
+    /**
+     * Get ThreedsSdk
+     * Preferred 3DS SDK type for authentication. This is the recommended field to use instead of channel for 3DS SDK selection
+     * @return {string}
+     */
+    public getThreedsSdk(): string {
+        return this.threedsSdk;
+    }
+
+    /**
+     * Set ThreedsSdk
+     * Preferred 3DS SDK type for authentication. This is the recommended field to use instead of channel for 3DS SDK selection
+     * @param {string} val
+     * @return {InvoiceDevice}
+     */
+    public setThreedsSdk(val: string): InvoiceDevice {
+        this.threedsSdk = val;
         return this;
     }
 
@@ -143,6 +169,8 @@ class InvoiceDevice {
     public fillWithData(data: any): InvoiceDevice {
         if (data["channel"])
             this.setChannel(data["channel"]);
+        if (data["threeds_sdk"])
+            this.setThreedsSdk(data["threeds_sdk"]);
         if (data["platform"])
             this.setPlatform(data["platform"]);
         if (data["ip_address"])
@@ -159,6 +187,7 @@ class InvoiceDevice {
     public toJSON(): any {
         return {
             "channel": this.getChannel(),
+            "threeds_sdk": this.getThreedsSdk(),
             "platform": this.getPlatform(),
             "ip_address": this.getIpAddress(),
             "id": this.getId(),

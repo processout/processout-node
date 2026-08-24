@@ -20,7 +20,7 @@ class PaymentProcessingConfiguration {
     private bypassUnsupportedSplitPayments: boolean = null;
 
     /**
-     * Alternative Payment Method (APM) specific payment processing cofiguration.
+     * Alternative Payment Method (APM) specific payment processing configuration.
      * @type {p.APMPaymentProcessingConfiguration}
      */
     private apmPaymentConfig: p.APMPaymentProcessingConfiguration = null;
@@ -65,7 +65,7 @@ class PaymentProcessingConfiguration {
 
     /**
      * Get ApmPaymentConfig
-     * Alternative Payment Method (APM) specific payment processing cofiguration.
+     * Alternative Payment Method (APM) specific payment processing configuration.
      * @return {p.APMPaymentProcessingConfiguration}
      */
     public getApmPaymentConfig(): p.APMPaymentProcessingConfiguration {
@@ -74,7 +74,7 @@ class PaymentProcessingConfiguration {
 
     /**
      * Set ApmPaymentConfig
-     * Alternative Payment Method (APM) specific payment processing cofiguration.
+     * Alternative Payment Method (APM) specific payment processing configuration.
      * @param {p.APMPaymentProcessingConfiguration} val
      * @return {PaymentProcessingConfiguration}
      */
