@@ -7,6 +7,11 @@ declare class InvoiceDevice {
      */
     private channel;
     /**
+     * Preferred 3DS SDK type for authentication. This is the recommended field to use instead of channel for 3DS SDK selection
+     * @type {string}
+     */
+    private threedsSdk;
+    /**
      * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
      * @type {string}
      */
@@ -41,6 +46,19 @@ declare class InvoiceDevice {
      * @return {InvoiceDevice}
      */
     setChannel(val: string): InvoiceDevice;
+    /**
+     * Get ThreedsSdk
+     * Preferred 3DS SDK type for authentication. This is the recommended field to use instead of channel for 3DS SDK selection
+     * @return {string}
+     */
+    getThreedsSdk(): string;
+    /**
+     * Set ThreedsSdk
+     * Preferred 3DS SDK type for authentication. This is the recommended field to use instead of channel for 3DS SDK selection
+     * @param {string} val
+     * @return {InvoiceDevice}
+     */
+    setThreedsSdk(val: string): InvoiceDevice;
     /**
      * Get Platform
      * Platform of the device for analytics and metadata. Possible values: "web", "ios", "android", "other"
